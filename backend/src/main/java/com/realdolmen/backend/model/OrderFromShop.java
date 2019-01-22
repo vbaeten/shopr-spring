@@ -10,7 +10,7 @@ import java.util.List;
 
 @Entity
 @Data
-public class Order implements Serializable
+public class OrderFromShop implements Serializable
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

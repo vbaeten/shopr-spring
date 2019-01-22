@@ -4,12 +4,11 @@ import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.io.Serializable;
 
 @Entity
 @Data
 @DiscriminatorValue(value = "lp")
-public class Lp extends Article implements Serializable
+public class Lp extends Article
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -5,8 +5,6 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
-
 import java.io.Serializable;
 
 import static javax.persistence.DiscriminatorType.STRING;
@@ -14,6 +12,7 @@ import static javax.persistence.DiscriminatorType.STRING;
 @Entity
 @Data
 @DiscriminatorColumn(discriminatorType = STRING , name = "type")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Article implements Serializable
 {
     @Id
