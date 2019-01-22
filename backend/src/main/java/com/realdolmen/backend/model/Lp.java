@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Entity
 @Data
 @DiscriminatorValue(value = "lp")
-public class Lp implements Serializable
+public class Lp extends Article implements Serializable
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

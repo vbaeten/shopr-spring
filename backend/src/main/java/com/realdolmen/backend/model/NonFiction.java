@@ -8,7 +8,7 @@ import java.io.Serializable;
 @Entity
 @Data
 @DiscriminatorValue(value = "nonFiction")
-public class NonFiction implements Serializable
+public class NonFiction extends Book implements Serializable
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

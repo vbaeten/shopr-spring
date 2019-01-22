@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "book_type")
 @DiscriminatorValue(value = "book")
-public abstract class Book
+public abstract class Book extends Article
 {
 
     @Id
