@@ -1,5 +1,6 @@
 package com.realdolmen.backend.model;
 
+import com.realdolmen.backend.model.enums.LpGenreEnum;
 import lombok.Data;
 
 import javax.persistence.*;

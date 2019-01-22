@@ -1,4 +1,4 @@
-package com.realdolmen.backend.model;
+package com.realdolmen.backend.model.enums;
 
 public enum OrderStateEnum
 {

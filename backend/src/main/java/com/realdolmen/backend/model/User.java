@@ -1,5 +1,6 @@
 package com.realdolmen.backend.model;
 
+import com.realdolmen.backend.model.enums.UserRoleEnum;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -11,7 +12,6 @@ import java.util.List;
 @Data
 public class User implements Serializable
 {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
