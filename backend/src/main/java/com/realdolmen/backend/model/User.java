@@ -20,8 +20,8 @@ public class User implements Serializable
     private String firstName;
     @NotBlank
     private String lastName;
-    @Enumerated
-    private UserRoleEnum userRoleEnum;
+    @Enumerated(EnumType.STRING)
+    UserRoleEnum userRoleEnum;
     @ManyToMany
     private List<Rating> ratingList;
     @ManyToMany
