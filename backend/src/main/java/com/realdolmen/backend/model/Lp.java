@@ -8,6 +8,7 @@ import java.io.Serializable;
 
 @Entity
 @Data
+@DiscriminatorValue(value = "lp")
 public class Lp implements Serializable
 {
     @Id
