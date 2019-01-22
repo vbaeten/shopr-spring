@@ -18,6 +18,7 @@ public class Review {
 
     private String description;
 
+    @Transient
     private User user;
 
     @ManyToOne

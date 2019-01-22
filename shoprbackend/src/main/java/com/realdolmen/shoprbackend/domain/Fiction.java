@@ -1,11 +1,13 @@
 package com.realdolmen.shoprbackend.domain;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.Size;
 
 @Entity
+@DiscriminatorValue("fiction book")
 public class Fiction extends Book{
 
 
