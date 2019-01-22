@@ -7,6 +7,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Data
+@DiscriminatorValue(value = "fiction")
 public class Fiction
 {
 

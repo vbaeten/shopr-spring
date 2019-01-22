@@ -6,12 +6,19 @@ import javax.persistence.*;
 
 @Entity
 @Data
-public class Book
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "book_type")
+@DiscriminatorValue(value = "book")
+public abstract class Book
 {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id;
+
+    private String author;
+    private String isbn;
+    private int nrPages;
 
 }
