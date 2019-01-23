@@ -12,7 +12,7 @@ import javax.persistence.Enumerated;
 @Setter
 @Getter
 @Entity
-@DiscriminatorValue("nonfiction")
+@DiscriminatorValue("booknonfiction")
 public class Booknonfiction extends Book {
 
     @Enumerated(EnumType.STRING)

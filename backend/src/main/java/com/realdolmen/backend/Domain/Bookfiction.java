@@ -13,7 +13,7 @@ import javax.validation.constraints.Size;
 @Setter
 @Getter
 @Entity
-@DiscriminatorValue("fiction")
+@DiscriminatorValue("bookfiction")
 public class Bookfiction extends Book {
 
     @Enumerated(EnumType.STRING)
