@@ -19,9 +19,6 @@ public class RatingController
     @Autowired
     RatingDao ratingDao;
 
-    @Autowired
-    FictionDao fictionDao;
-
     @GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public List<Rating> getAllComponents()
