@@ -3,29 +3,19 @@ package com.realdolmen.backend.services;
 import com.realdolmen.backend.dao.UserDao;
 import com.realdolmen.backend.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import java.util.List;
-
-public class UserServiceImpl implements UserService
+@Service
+public class UserServiceImpl
 {
     @Autowired
     UserDao userDao;
 
-    @Override
-    public User findUserById(Long id)
+
+    public User findUserByLastName(String name)
     {
-        return userDao.getOne(id);
+        return userDao.findOneByLastName(name);
     }
 
-    @Override
-    public User findUserByName(String name)
-    {
-        return null;
-    }
 
-    @Override
-    public List<User> findAllUsers()
-    {
-        return null;
-    }
 }
