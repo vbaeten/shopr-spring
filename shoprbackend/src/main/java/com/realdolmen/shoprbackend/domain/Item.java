@@ -8,20 +8,21 @@ import java.util.List;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name="type")
+@Table(name="items")
 public abstract class Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
+
     @Size(max=100)
     private String title;
 
     @Column(name="type", insertable = false, updatable = false)
     private String type;
 
-    @NotNull
+
     private double price;
 
     @OneToMany(mappedBy = "item")

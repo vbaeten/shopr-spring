@@ -8,6 +8,7 @@ import static javax.persistence.CascadeType.MERGE;
 import static javax.persistence.CascadeType.PERSIST;
 
 @Entity
+@Table(name="orders")
 public class Order {
 
     @Id

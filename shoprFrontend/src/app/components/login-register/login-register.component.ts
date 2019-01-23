@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {User} from "../../models/user";
 
 @Component({
@@ -9,22 +9,30 @@ import {User} from "../../models/user";
 })
 export class LoginRegisterComponent implements OnInit {
 
-  loginRegisterForm:FormGroup;
+  registerForm:FormGroup;
+  user:User;
 
-  constructor() { }
+  registerForm = this.fb.group(
+
+  )
+
+
+
+  constructor( fb:FormBuilder) { }
 
   ngOnInit() {
   }
 
-  login(){
-    let user = new User();
-    user.firstName= this.getFormControlValue('firstName');
+  register(){
+
+    this.user = new User(
+      this.registerForm.value.
+    )
+
   }
 
 
 
-  getFormControlValue(formValue: string){
-    return formValue ? this.loginRegisterForm.controls[formValue].value:null;
-  }
+
 
 }

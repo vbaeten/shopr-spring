@@ -1,12 +1,10 @@
 package com.realdolmen.shoprbackend.domain;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
 
 @Entity
 @DiscriminatorValue("non-fiction book")
+@Table(name="non_fiction")
 public class NonFiction extends Book{
 
 

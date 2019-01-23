@@ -1,40 +1,44 @@
 package com.realdolmen.shoprbackend.services;
 
-import com.realdolmen.shoprbackend.domain.User;
-import com.realdolmen.shoprbackend.repository.UserRepository;
+import com.realdolmen.shoprbackend.domain.Game;
+import com.realdolmen.shoprbackend.exception.NotFoundException;
+import com.realdolmen.shoprbackend.repository.GameRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
-public class GameService implements CrudService<User, Long> {
+public class GameService implements CrudService<Game, Long> {
 
-    private final UserRepository userRepository;
+    private final GameRepository gameRepository;
 
 
 
     @Override
-    public <S extends User> S save(S entity) {
-        return userRepository.save(entity);
+    public <S extends Game> S save(S game) {
+        return gameRepository.save(game);
     }
 
     @Override
-    public User findById(Long primaryKey) {
-        return null;
+    public Game findById(Long id) {
+
+        return gameRepository.findById(id)
+                .orElseThrow(NotFoundException::new);
     }
 
     @Override
-    public List<User> findAll() {
-        return null;
+    public List<Game> findAll() {
+        return gameRepository.findAll();
     }
 
     @Override
-    public void delete(User entity) {
+    public void delete(Game game) {
 
+        gameRepository.delete(game);
     }
 
 
 
-    public GameService(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public GameService(GameRepository gameRepository) {
+        this.gameRepository =gameRepository;
     }
 }

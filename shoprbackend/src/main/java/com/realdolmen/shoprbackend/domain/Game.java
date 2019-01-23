@@ -11,6 +11,7 @@ public class Game extends Item {
     @Size(max = 100)
     private String publisher;
 
+    @Column(name="min_age")
     private short minAge;
 
     @Enumerated(EnumType.STRING)
@@ -39,5 +40,15 @@ public class Game extends Item {
 
     public void setGenre(GameGenre genre) {
         this.genre = genre;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Game{" +
+                "publisher='" + publisher + '\'' +
+                ", minAge=" + minAge +
+                ", genre=" + genre +
+                '}';
     }
 }

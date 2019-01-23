@@ -24,7 +24,7 @@ create table fiction (
 
 create table games (
   genre     VARCHAR(255),
-  minAge    smallint,
+  min_age    smallint,
   publisher VARCHAR(255),
   id        BIGINT NOT NULL,
   PRIMARY KEY (id)
@@ -33,7 +33,7 @@ create table games (
 create table items (
 
   type  VARCHAR(31),
-  id    bigint not null,
+  id    bigint not null AUTO_INCREMENT,
   price double,
   title VARCHAR(100),
   primary key (id)

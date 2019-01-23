@@ -1,13 +1,47 @@
-<p>
-  loging-register works!
-</p>
 
 
-<div [FormGroup]="formGroup">
+<div class="afterNavMessage">
 
-  <mat-form-field>
+  <h3>Login or Register please!</h3>
+</div>
 
-    <input matInput id="{{firstNameInputField}}" name="firstNameInputField" placeholder="enter name" [formControlName]="'firstName'">
+
+<div class="afterNav">
+<form class="RegisterForm" [formGroup]="registerForm">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Last Name" formControlName="lastName">
   </mat-form-field>
 
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="First Name" formControlName="firtName">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="User Name" formControlName="userName">
+  </mat-form-field>
+
+  <button mat-button (click)="register()">Register</button>
+</form>
 </div>
+
+
+
+<div class="afterNav">
+
+
+  <form class="LoginForm">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="UserName">
+    </mat-form-field>
+
+    <button mat-button>Login</button>
+  </form>
+
+
+</div>
+
+
+
+
+
+
