@@ -8,7 +8,8 @@ import {ArticleService} from "./services/article.service";
 import {HttpClientModule} from "@angular/common/http";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { NavbarComponent } from './components/navbar/navbar.component';
-import {MatToolbarModule} from "@angular/material";
+import {MatButton, MatButtonModule, MatToolbarModule} from "@angular/material";
+
 
 @NgModule({
   declarations: [
@@ -18,11 +19,11 @@ import {MatToolbarModule} from "@angular/material";
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatToolbarModule
-
+    MatToolbarModule,
+    MatButtonModule,
+    AppRoutingModule
   ],
   providers: [ArticleService],
   bootstrap: [AppComponent]

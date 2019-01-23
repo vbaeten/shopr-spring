@@ -1,11 +1,19 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {ArticlesOverviewComponent} from "./components/articles-overview/articles-overview.component";
+import {RouterModule, Routes} from "@angular/router";
 
-const routes: Routes = [{path: 'article', component:ArticlesOverviewComponent, pathMatch:'full'}];
+const routes: Routes = [
+
+
+  {path: 'articles', component: ArticlesOverviewComponent}
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  declarations: [],
+  imports: [
+    RouterModule.forRoot(routes , {enableTracing:false, useHash:true})
+  ], exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
