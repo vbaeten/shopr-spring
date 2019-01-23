@@ -1,7 +1,8 @@
 package com.realdolmen.backend.controllers;
 
-import com.realdolmen.backend.dao.GameDao;
-import com.realdolmen.backend.model.Game;
+import com.realdolmen.backend.dao.FictionDao;
+import com.realdolmen.backend.model.Fiction;
+import com.realdolmen.backend.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -11,33 +12,30 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/game")
-public class GameController
+@RequestMapping("/fiction")
+public class FictionController
 {
 @Autowired
-    GameDao gameDao;
-
+    FictionDao fictionDao;
 
     @GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public List<Game> getAllComponents()
+    public List<Fiction> getAllComponents()
     {
-        return gameDao.findAll();
+        return fictionDao.findAll();
     }
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public Game getOneForId(@PathVariable Long id)
+    public Fiction getOneForId(@PathVariable Long id)
     {
-        return gameDao.getOne(id);
-
+        return fictionDao.getOne(id);
     }
 
     @PostMapping(value = "/save", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public Game save(@RequestBody @Valid Game game)
-    {
-        return gameDao.save( game);
+    public Fiction save(@RequestBody @Valid Fiction fiction){
+        return fictionDao.save( fiction);
     }
 
 
