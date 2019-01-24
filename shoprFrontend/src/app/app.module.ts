@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -23,6 +22,8 @@ import { SearchComponent } from './components/search/search.component';
 import { AddItemsComponent } from './components/add-items/add-items.component';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
+import {HttpClientModule} from "@angular/common/http";
+import {UserService} from "./services/user.service";
 
 @NgModule({
   declarations: [
@@ -53,9 +54,11 @@ import { LoginFormComponent } from './components/login-form/login-form.component
     MatButtonModule,
     ReactiveFormsModule,
     MatSelectModule,
+    HttpClientModule,
+
 
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
