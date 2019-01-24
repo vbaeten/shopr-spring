@@ -9,30 +9,14 @@ import {User} from "../../models/user";
 })
 export class LoginRegisterComponent implements OnInit {
 
-  registerForm:FormGroup;
-  user:User;
-
-  registerForm = this.fb.group(
-
-  )
 
 
 
-  constructor( fb:FormBuilder) { }
+
+  constructor( ) { }
 
   ngOnInit() {
   }
-
-  register(){
-
-    this.user = new User(
-      this.registerForm.value.
-    )
-
-  }
-
-
-
 
 
 }

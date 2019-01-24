@@ -1,5 +1,3 @@
-
-
 <div class="afterNavMessage">
 
   <h3>Login or Register please!</h3>
@@ -7,37 +5,13 @@
 
 
 <div class="afterNav">
-<form class="RegisterForm" [formGroup]="registerForm">
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Last Name" formControlName="lastName">
-  </mat-form-field>
-
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="First Name" formControlName="firtName">
-  </mat-form-field>
-
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="User Name" formControlName="userName">
-  </mat-form-field>
-
-  <button mat-button (click)="register()">Register</button>
-</form>
+  <app-register-form></app-register-form>
 </div>
-
 
 
 <div class="afterNav">
 
-
-  <form class="LoginForm">
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="UserName">
-    </mat-form-field>
-
-    <button mat-button>Login</button>
-  </form>
-
-
+  <app-login-form></app-login-form>
 </div>
 
 

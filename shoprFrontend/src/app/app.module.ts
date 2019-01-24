@@ -10,10 +10,10 @@ import {
   MatCheckboxModule,
   MatFormFieldModule,
   MatIconModule, MatInputModule,
-  MatMenuModule,
+  MatMenuModule, MatSelectModule,
   MatToolbarModule
 } from "@angular/material";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { LoginRegisterComponent } from './components/login-register/login-register.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -21,6 +21,8 @@ import { IndexComponent } from './components/index/index.component';
 import { OverviewComponent } from './components/overview/overview.component';
 import { SearchComponent } from './components/search/search.component';
 import { AddItemsComponent } from './components/add-items/add-items.component';
+import { RegisterFormComponent } from './components/register-form/register-form.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { AddItemsComponent } from './components/add-items/add-items.component';
     IndexComponent,
     OverviewComponent,
     SearchComponent,
-    AddItemsComponent
+    AddItemsComponent,
+    RegisterFormComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +51,8 @@ import { AddItemsComponent } from './components/add-items/add-items.component';
     BrowserAnimationsModule,
     MatInputModule,
     MatButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule,
 
   ],
   providers: [],
