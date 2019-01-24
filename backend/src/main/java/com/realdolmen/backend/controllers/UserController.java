@@ -3,7 +3,9 @@ package com.realdolmen.backend.controllers;
 import com.realdolmen.backend.dao.UserDao;
 import com.realdolmen.backend.model.User;
 import com.realdolmen.backend.services.UserServiceImpl;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +15,8 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/login")
+@RequestMapping("/user")
+@Scope("session")
 public class UserController
 {
     @Autowired
@@ -21,6 +24,8 @@ public class UserController
 
     @Autowired
     UserServiceImpl userServiceImpl;
+
+    User currentUser;
 
 
     @GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -42,13 +47,19 @@ public class UserController
 
     @PostMapping(value = "/save", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public User save(@RequestBody @Valid User user){
-        return userDao.save( user);
+    public User save(@RequestBody @Valid User user)
+    {
+        return userDao.save(user);
     }
 
 
+    @PostMapping(value = "/currentuser")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void setCurrentUser(@RequestBody @Valid User user)
+    {
+    this.currentUser = user;
 
-
+    }
 
 
 }
