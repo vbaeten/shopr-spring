@@ -19,7 +19,7 @@ private FictionDao fictionDao;
 
     public Fiction findById(Long id)
     {
-        return fictionDao.findById(id).orElseThrow(() -> new NotFoundException("user not found"));
+        return fictionDao.findById(id).orElseThrow(() -> new NotFoundException("book not found"));
     }
 
     public List<Fiction> findAll()
