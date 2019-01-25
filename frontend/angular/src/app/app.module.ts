@@ -19,6 +19,8 @@ import {
 } from "@angular/material";
 import {TableArticlesComponent} from "./components/table-articles/table-articles.component";
 import {FooterComponent} from './components/footer/footer.component';
+import {HomeComponent} from './components/home/home.component';
+import {CreateComponent} from './components/create/create.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import {FooterComponent} from './components/footer/footer.component';
     ArticlesOverviewComponent,
     NavbarComponent,
     TableArticlesComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent,
+    CreateComponent
   ],
   imports: [
     BrowserModule,
