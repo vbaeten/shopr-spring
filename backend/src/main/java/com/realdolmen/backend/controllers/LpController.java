@@ -1,9 +1,5 @@
 package com.realdolmen.backend.controllers;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.realdolmen.backend.model.Lp;
 import com.realdolmen.backend.model.enums.LpGenreEnum;
 import com.realdolmen.backend.services.LpServiceImpl;

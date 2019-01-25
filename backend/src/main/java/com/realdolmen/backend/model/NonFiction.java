@@ -18,6 +18,8 @@ public class NonFiction extends Book implements Serializable
 
     @Enumerated(EnumType.STRING)
     NonFictionGenreEnum nonFictionGenreEnum;
+    @Transient
+    private String genre;
 
 
 

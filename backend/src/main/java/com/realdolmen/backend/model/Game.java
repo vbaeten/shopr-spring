@@ -21,6 +21,8 @@ public class Game extends Article
     private int age = 6;
     @Enumerated(EnumType.STRING)
     GameGenreEnum gameGenreEnum;
+    @Transient
+    private String genre;
 
 
 

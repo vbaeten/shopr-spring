@@ -20,5 +20,7 @@ public class Fiction extends Book
     private String about;
     @Enumerated(EnumType.STRING)
     FictionGenreEnum fictionGenreEnum;
+    @Transient
+    private String genre;
 
 }
