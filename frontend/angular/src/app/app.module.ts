@@ -18,6 +18,7 @@ import {
   MatToolbarModule
 } from "@angular/material";
 import {TableArticlesComponent} from "./components/table-articles/table-articles.component";
+import {FooterComponent} from './components/footer/footer.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import {TableArticlesComponent} from "./components/table-articles/table-articles
     AppComponent,
     ArticlesOverviewComponent,
     NavbarComponent,
-    TableArticlesComponent
+    TableArticlesComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
