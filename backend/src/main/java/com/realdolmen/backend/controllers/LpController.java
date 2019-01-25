@@ -46,9 +46,7 @@ public class LpController
 
     public Lp save(@RequestBody @Valid Lp lp)
     {
-
         return lpService.save(lp);
-
     }
 
     @GetMapping(value = "/genre", produces = MediaType.APPLICATION_JSON_VALUE)

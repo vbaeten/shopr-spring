@@ -9,7 +9,9 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/game")
@@ -40,6 +42,12 @@ public class GameController
     public Game save(@RequestBody @Valid Game game)
     {
         return gameDao.save( game);
+    }
+
+    @GetMapping(value = "/genre", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<String> getGenres()
+    {
+        return Arrays.stream(GameGenreEnum.values()).map(GameGenreEnum::toString).collect(Collectors.toList());
     }
 
 
