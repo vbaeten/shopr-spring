@@ -3,6 +3,8 @@ package com.realdolmen.backend.services;
 import com.realdolmen.backend.dao.FictionDao;
 import com.realdolmen.backend.exceptions.NotFoundException;
 import com.realdolmen.backend.model.Fiction;
+import com.realdolmen.backend.model.enums.FictionGenreEnum;
+import com.realdolmen.backend.model.enums.GameGenreEnum;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,6 +31,19 @@ private FictionDao fictionDao;
 
     public Fiction save(Fiction fiction)
     {
+        switch (fiction.getGenre())
+        {
 
+            case "sciencefiction":
+                fiction.setFictionGenreEnum(FictionGenreEnum.SCIENCEFICTION);
+                break;
+            case "detctive":
+               fiction.setFictionGenreEnum(FictionGenreEnum.DETECTIVE);
+                break;
+            case "drama":
+                fiction.setFictionGenreEnum(FictionGenreEnum.DRAMA);
+                break;
+
+        }
         return fictionDao.save(fiction);
     }}
