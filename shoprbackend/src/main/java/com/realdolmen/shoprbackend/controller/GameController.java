@@ -25,12 +25,12 @@ public class GameController {
         return game;
     }
 
-    @GetMapping
-    public Game findById(Long id){
+    @GetMapping("/id")
+    public Game findById(@PathVariable Long id){
         return gameService.findById(id);
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public List<Game> findAll(){
         return gameService.findAll();
     }

@@ -13,7 +13,7 @@ public abstract class Book extends Item{
     @Size(max=100)
     private String author;
 
-    @NotNull
+
     @Column(unique = true)
     private String isbn;
 

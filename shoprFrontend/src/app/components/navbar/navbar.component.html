@@ -2,7 +2,17 @@
   <span routerLink="/index">shopr</span>
   <button mat-button="Login/register" routerLink="/index"> Login/Register</button>
 
-  <button mat-button="Add Items" routerLink="/addItems"> Add Items</button>
+
+  <button mat-button [matMenuTriggerFor]="appMenu">Add Items</button>
+  <mat-menu #appMenu="matMenu">
+    <button mat-menu-item routerLink="/addGame">Add Game</button>
+    <button mat-menu-item routerLink="/addLp" >Add Lp</button>
+    <button mat-menu-item routerLink="/addFiction" >Add Fiction Book</button>
+    <button mat-menu-item routerLink="/addNonFiction" >Add NonFiction Book</button>
+  </mat-menu>
+
+
+
   <button mat-button="overview"> Overview</button>
   <button mat-button="ShoppingCart"> Shopping Cart</button>
   <button mat-button="Search"> Search</button>

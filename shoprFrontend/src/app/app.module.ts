@@ -7,8 +7,8 @@ import { AddGameComponent } from './components/add-game/add-game.component';
 import {
   MatButtonModule,
   MatCheckboxModule,
-  MatFormFieldModule,
-  MatIconModule, MatInputModule,
+  MatFormFieldModule, MatGridListModule,
+  MatIconModule, MatInputModule, MatMenuItem,
   MatMenuModule, MatSelectModule,
   MatToolbarModule
 } from "@angular/material";
@@ -24,6 +24,10 @@ import { RegisterFormComponent } from './components/register-form/register-form.
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import {HttpClientModule} from "@angular/common/http";
 import {UserService} from "./services/user.service";
+import { AddLpComponent } from './components/add-lp/add-lp.component';
+import { AddFictionComponent } from './components/add-fiction/add-fiction.component';
+import { AddNonFictionComponent } from './components/add-non-fiction/add-non-fiction.component';
+import {GameService} from "./services/game.service";
 
 @NgModule({
   declarations: [
@@ -37,7 +41,10 @@ import {UserService} from "./services/user.service";
     SearchComponent,
     AddItemsComponent,
     RegisterFormComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    AddLpComponent,
+    AddFictionComponent,
+    AddNonFictionComponent
   ],
   imports: [
     BrowserModule,
@@ -55,10 +62,11 @@ import {UserService} from "./services/user.service";
     ReactiveFormsModule,
     MatSelectModule,
     HttpClientModule,
-
+    MatMenuModule,
+    MatGridListModule,
 
   ],
-  providers: [UserService],
+  providers: [UserService,GameService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -11,7 +11,6 @@ import {UserService} from "../../services/user.service";
 export class RegisterFormComponent implements OnInit {
 
   user
-  firstName:string
 
   constructor(private userService:UserService) { }
 
@@ -25,8 +24,6 @@ export class RegisterFormComponent implements OnInit {
     this.user.userName = form.value.userName
     this.userService.registerUser(this.user)
                     .subscribe(data =>this.user=data)
-    console.log(this.user)
-
 
   }
 

@@ -1,0 +1,30 @@
+<app-navbar></app-navbar>
+<div class="afterNavMessage">
+  <h3>cReate an lp</h3>
+</div>
+
+<div class="afterNav">
+
+  <form class="createLpForm" #f="ngForm" (ngSubmit)="addLp(f)">
+
+    <div class="addItems">
+      <app-add-items (newPrice)="setPrice($event)" (newTitle)="setTitle($event)" ></app-add-items>
+    </div>
+
+
+    <div>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="publisher" name="publisher">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Genre" name="genre">
+      </mat-form-field>
+    </div>
+    <button mat-button>cReate!</button>
+  </form>
+
+</div>
+
+<app-footer></app-footer>
