@@ -1,21 +1,23 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { ArticlesOverviewComponent } from './components/articles-overview/articles-overview.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {ArticlesOverviewComponent} from './components/articles-overview/articles-overview.component';
 import {ArticleService} from "./services/article.service";
 import {HttpClientModule} from "@angular/common/http";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import { NavbarComponent } from './components/navbar/navbar.component';
-import {MatButton, MatButtonModule, MatToolbarModule} from "@angular/material";
+import {NavbarComponent} from './components/navbar/navbar.component';
+import {MatButtonModule, MatPaginatorModule, MatTableModule, MatToolbarModule} from "@angular/material";
+import {TableArticlesComponent} from "./components/table-articles/table-articles.component";
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ArticlesOverviewComponent,
-    NavbarComponent
+    NavbarComponent,
+    TableArticlesComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +25,9 @@ import {MatButton, MatButtonModule, MatToolbarModule} from "@angular/material";
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [ArticleService],
   bootstrap: [AppComponent]
