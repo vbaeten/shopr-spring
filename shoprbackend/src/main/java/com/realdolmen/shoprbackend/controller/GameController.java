@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-//@RestController
-//@RequestMapping("/game")
+@RestController
+@RequestMapping("/games")
 public class GameController {
 
    private  GameService gameService;

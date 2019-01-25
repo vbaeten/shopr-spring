@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class LpService implements CrudService<Lp,Long>  {
 
-    LpRepository lpRepository;
+   private final LpRepository lpRepository;
 
     @Override
     public <S extends Lp> S save(S lp) {

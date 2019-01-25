@@ -19,6 +19,7 @@ public class UserController {
         userService.save(user);
         return user;
     }
+
     @GetMapping(path = "/{id}")
     public User findById(@PathVariable Long id){
         return userService.findById(id);
