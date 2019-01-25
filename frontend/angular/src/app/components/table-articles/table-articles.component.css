@@ -1,3 +1,11 @@
 table {
-  width: 100%;
+  width: 97%;
+  margin: auto;
+}
+#outer{
+  width: 80%;
+  margin: 0 auto;
+}
+mat-form-field{
+  margin: 0 auto;
 }

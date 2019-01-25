@@ -1,37 +1,43 @@
-<table mat-table [dataSource]="dataSource">
+<div id="outer">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+  <div id="inner" class="mat-elevation-z8">
+<table mat-table [dataSource]="dataSource" matSort>
 
   <!-- Title Column -->
   <ng-container matColumnDef="title">
-    <th mat-header-cell *matHeaderCellDef> Title</th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Title</th>
     <td mat-cell *matCellDef="let article"> {{article.title}}</td>
   </ng-container>
 
   <!-- Type Column -->
   <ng-container matColumnDef="type">
-    <th mat-header-cell *matHeaderCellDef> Type</th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Type</th>
     <td mat-cell *matCellDef="let article"> {{article.type}}</td>
   </ng-container>
 
   <!-- Price Column -->
   <ng-container matColumnDef="price">
-    <th mat-header-cell *matHeaderCellDef> Price</th>
-    <td mat-cell *matCellDef="let article"> {{article.price}}</td>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Price</th>
+    <td mat-cell *matCellDef="let article"> €{{article.price}}</td>
   </ng-container>
 
   <!-- Article Id Column -->
-  <ng-container matColumnDef="article_id">
-    <th mat-header-cell *matHeaderCellDef> Article Id</th>
-    <td mat-cell *matCellDef="let article"> {{article.article_id}}</td>
+  <ng-container matColumnDef="articleId">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Article Id</th>
+    <td mat-cell *matCellDef="let article"> {{article.articleId}}</td>
   </ng-container>
 
   <!-- Supplier Id Column -->
-  <ng-container matColumnDef="supplier_id">
-    <th mat-header-cell *matHeaderCellDef> Supplier Id</th>
-    <td mat-cell *matCellDef="let article"> {{article.supplier_id}}</td>
+  <ng-container matColumnDef="supplierId">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Supplier Id</th>
+    <td mat-cell *matCellDef="let article"> {{article.supplierId}}</td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-
+</div>
+</div>

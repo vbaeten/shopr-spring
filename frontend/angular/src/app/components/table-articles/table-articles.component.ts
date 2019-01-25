@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator, MatTableDataSource} from "@angular/material";
+import {MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
 import {Article} from "../../domain/Article";
 import {ArticleService} from "../../services/article.service";
 
@@ -9,17 +9,30 @@ import {ArticleService} from "../../services/article.service";
   templateUrl: './table-articles.component.html',
 })
 export class TableArticlesComponent implements OnInit {
-  displayedColumns: string[] = ['title', 'type', 'price', 'article_id', 'supplier_id'];
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  displayedColumns: string[] = ['title', 'type', 'price', 'articleId', 'supplierId'];
   dataSource: MatTableDataSource<Article>;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(private service: ArticleService) {
   }
-
-
   ngOnInit() {
     this.service.allArticles().subscribe(data => {
       this.dataSource = new MatTableDataSource<Article>(data);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     });
   }
+
+  applyFilter(filterValue: String) {
+    this.dataSource.filter = filterValue.trim().toLocaleLowerCase();
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+
+
+
+
 }

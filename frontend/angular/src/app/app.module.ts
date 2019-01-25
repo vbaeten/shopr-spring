@@ -8,7 +8,15 @@ import {ArticleService} from "./services/article.service";
 import {HttpClientModule} from "@angular/common/http";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {NavbarComponent} from './components/navbar/navbar.component';
-import {MatButtonModule, MatPaginatorModule, MatTableModule, MatToolbarModule} from "@angular/material";
+import {
+  MatButtonModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatPaginatorModule,
+  MatSortModule,
+  MatTableModule,
+  MatToolbarModule
+} from "@angular/material";
 import {TableArticlesComponent} from "./components/table-articles/table-articles.component";
 
 
@@ -27,8 +35,12 @@ import {TableArticlesComponent} from "./components/table-articles/table-articles
     MatButtonModule,
     AppRoutingModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatFormFieldModule,
+    MatSortModule,
+    MatInputModule,
   ],
+
   providers: [ArticleService],
   bootstrap: [AppComponent]
 })
