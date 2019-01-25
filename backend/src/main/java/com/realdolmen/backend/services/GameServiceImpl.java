@@ -3,8 +3,6 @@ package com.realdolmen.backend.services;
 import com.realdolmen.backend.dao.GameDao;
 import com.realdolmen.backend.exceptions.NotFoundException;
 import com.realdolmen.backend.model.Game;
-import com.realdolmen.backend.model.User;
-import com.realdolmen.backend.model.enums.UserRoleEnum;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
