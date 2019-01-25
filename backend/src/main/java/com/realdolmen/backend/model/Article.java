@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 import static javax.persistence.DiscriminatorType.STRING;
@@ -21,7 +22,7 @@ public class Article implements Serializable
     private Long id;
     @NotBlank
     private String title;
-    @NotBlank
+   @NotNull
     @Digits(integer=6, fraction = 2)
     private int price;
     private String distributor;

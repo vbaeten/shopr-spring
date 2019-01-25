@@ -20,9 +20,6 @@ public class UserController
         this.userServiceImpl = userServiceImpl;
     }
 
-    User currentUser;
-
-
     @GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public List<User> getAllComponents()
@@ -45,14 +42,6 @@ public class UserController
         return userServiceImpl.save(user);
     }
 
-
-//    @PostMapping(value = "/currentuser")
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public void setCurrentUser(@RequestBody @Valid User user)
-//    {
-//        this.currentUser = user;
-//
-//    }
 
 
 }

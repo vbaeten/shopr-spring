@@ -19,6 +19,8 @@ public class Lp extends Article
     private String artist;
     @Enumerated(EnumType.STRING)
     LpGenreEnum lpGenreEnum;
+    @Transient
+    private String genre;
 
 
 }
