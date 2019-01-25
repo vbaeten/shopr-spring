@@ -1,9 +1,11 @@
 package com.realdolmen.backend.domain;
 
+import com.realdolmen.backend.domain.enums.FictionGenre;
 import lombok.Data;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.Table;
 
 @Entity
@@ -13,4 +15,7 @@ import javax.persistence.Table;
 public class Fiction extends Book {
 
     private String summary;
+
+    @Enumerated
+    private FictionGenre genre;
 }

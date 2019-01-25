@@ -8,11 +8,11 @@ import javax.persistence.*;
 @Entity
 @Data
 @Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorValue("product")
+@DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING, name = "type")
 public abstract class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String title;
