@@ -1,9 +1,6 @@
 package com.realdolmen.backend.domain;
 
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -18,6 +15,7 @@ public class Game extends Article implements Serializable {
     private int minAge;
 
     @Column(name= "genre")
+    @Enumerated
     private GameGenre gameGenre;
 
     public String getPublisher() {

@@ -2,6 +2,7 @@ package com.realdolmen.backend.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "article")
@@ -12,7 +13,7 @@ public class Article implements Serializable {
     @Id
     @GeneratedValue
     @Column
-    private int id;
+    private Long id;
 
     @Column
     private String title;
@@ -26,11 +27,16 @@ public class Article implements Serializable {
     @Column(name="type", insertable = false, updatable = false)
     private String type;
 
-    public int getId() {
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "article")
+    private List<Rating> ratings;
+
+
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -64,5 +70,13 @@ public class Article implements Serializable {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public List<Rating> getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(List<Rating> ratings) {
+        this.ratings = ratings;
     }
 }

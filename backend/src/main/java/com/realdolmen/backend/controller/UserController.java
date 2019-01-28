@@ -11,11 +11,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/user")
+@CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
 
     private UserServiceImpl userServiceImpl;
 
-    @Autowired
     public UserController( UserServiceImpl userServiceImpl) {
         this.userServiceImpl = userServiceImpl;
     }
@@ -27,9 +27,10 @@ public class UserController {
     }
 
     @PostMapping
-    @RequestMapping("/create")
-    public void createUser(@RequestBody User user) {
+    @RequestMapping("/register")
+    public User registerUser(@RequestBody User user) {
         userServiceImpl.save(user);
+        return user;
     }
 
     @GetMapping("/{id}")

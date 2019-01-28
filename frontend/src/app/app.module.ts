@@ -16,8 +16,9 @@ import { LoginComponent } from './components/user/login/login.component';
 import { UsersComponent } from './components/user/users/users.component';
 import { LpDetailComponent } from './components/articles/details/lp-detail/lp-detail.component';
 import { GameDetailComponent } from './components/articles/details/game-detail/game-detail.component';
-import { FictiondetailComponent } from './components/articles/details/game-detail/fictiondetail/fictiondetail.component';
 import { UserDetailComponent } from './components/user/user-detail/user-detail.component';
+import { FictionDetailComponent } from './components/articles/details/fiction-detail/fiction-detail.component';
+import { NonFictionDetailComponent } from './components/articles/details/non-fiction-detail/non-fiction-detail.component';
 
 
 @NgModule({
@@ -34,6 +35,8 @@ import { UserDetailComponent } from './components/user/user-detail/user-detail.c
     LpDetailComponent,
     GameDetailComponent,
     UserDetailComponent,
+    FictionDetailComponent,
+    NonFictionDetailComponent
   ],
   imports: [
     BrowserModule,

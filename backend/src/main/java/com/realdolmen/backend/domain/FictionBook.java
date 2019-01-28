@@ -1,9 +1,6 @@
 package com.realdolmen.backend.domain;
 
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @DiscriminatorValue("Fiction")
@@ -11,6 +8,7 @@ import java.io.Serializable;
 @Table(name = "fiction")
 public class FictionBook extends Book implements Serializable {
 
-    @Column
+    @Column(name = "genre")
+    @Enumerated
     private BookGenre bookGenre;
 }
