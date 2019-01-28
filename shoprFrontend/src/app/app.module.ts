@@ -78,7 +78,8 @@ import { AllItemsOverviewComponent } from './components/overview/all-items-overv
     MatMenuModule,
     MatGridListModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+
 
   ],
   providers: [UserService,GameService,LpService,FictionService,NonFictionService],

@@ -10,7 +10,7 @@ export class GamesOverviewComponent implements OnInit {
 
 
   games = []
-  displayedColumns: string[] =['no', 'Title', 'Age'];
+  displayedColumns: string[] =['no', 'Title', 'Age','details'];
 
 
   constructor(private gameService: GameService) {
