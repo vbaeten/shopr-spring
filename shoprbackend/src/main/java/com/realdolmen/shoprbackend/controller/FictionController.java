@@ -28,7 +28,7 @@ public class FictionController {
         return fictionService.findById(id);
     }
 
-    @GetMapping("/al")
+    @GetMapping("/all")
     public List<Fiction> findAll(){
         return fictionService.findAll();
     }

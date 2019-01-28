@@ -8,7 +8,7 @@ import {
   MatButtonModule,
   MatCheckboxModule,
   MatFormFieldModule, MatGridListModule,
-  MatIconModule, MatInputModule, MatMenuItem,
+  MatIconModule, MatInputModule,
   MatMenuModule, MatSelectModule,
   MatToolbarModule
 } from "@angular/material";
@@ -28,6 +28,9 @@ import { AddLpComponent } from './components/add-lp/add-lp.component';
 import { AddFictionComponent } from './components/add-fiction/add-fiction.component';
 import { AddNonFictionComponent } from './components/add-non-fiction/add-non-fiction.component';
 import {GameService} from "./services/game.service";
+import {LpService} from "./services/lp.service";
+import {FictionService} from "./services/fiction.service";
+import {NonFictionService} from "./services/non-fiction.service";
 
 @NgModule({
   declarations: [
@@ -66,7 +69,7 @@ import {GameService} from "./services/game.service";
     MatGridListModule,
 
   ],
-  providers: [UserService,GameService],
+  providers: [UserService,GameService,LpService,FictionService,NonFictionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

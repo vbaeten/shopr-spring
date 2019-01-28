@@ -14,6 +14,26 @@
       <app-add-items (newPrice)="setPrice($event)" (newTitle)="setTitle($event)" ></app-add-items>
     </div>
 
+    <div>
+    <mat-form-field >
+      <input matInput placeholder="Author" ngModel name="author">
+    </mat-form-field>
+  </div>
+
+    <div>
+      <mat-form-field >
+        <input matInput placeholder="total pages" ngModel name="totalPages">
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field >
+        <input matInput placeholder="ISBN" ngModel name="isbn">
+      </mat-form-field>
+    </div>
+
+
+
 
     <div>
       <mat-form-field class="example-full-width">

@@ -14,8 +14,9 @@ public class Game extends Item {
     @Column(name="min_age")
     private short minAge;
 
-    @Enumerated(EnumType.STRING)
-    private GameGenre genre;
+//    @Transient
+//    @Enumerated(EnumType.STRING)
+//    private GameGenre genre;
 
 
     public String getPublisher() {
@@ -34,21 +35,21 @@ public class Game extends Item {
         this.minAge = minAge;
     }
 
-    public GameGenre getGenre() {
-        return genre;
-    }
-
-    public void setGenre(GameGenre genre) {
-        this.genre = genre;
-    }
-
-
-    @Override
-    public String toString() {
-        return "Game{" +
-                "publisher='" + publisher + '\'' +
-                ", minAge=" + minAge +
-                ", genre=" + genre +
-                '}';
-    }
+//    public GameGenre getGenre() {
+//        return genre;
+//    }
+//
+//    public void setGenre(GameGenre genre) {
+//        this.genre = genre;
+//    }
+//
+//
+//    @Override
+//    public String toString() {
+//        return "Game{" +
+//                "publisher='" + publisher + '\'' +
+//                ", minAge=" + minAge +
+//                ", genre=" + genre +
+//                '}';
+//    }
 }

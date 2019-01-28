@@ -10,13 +10,13 @@ create table book (
   id         bigint not null,
   author     VARCHAR(255),
   isbn       VARCHAR(255),
-  totalPages smallint,
+  total_pages smallint,
   primary key (id)
 
 );
 
 create table fiction (
-  bookGenre VARCHAR(255),
+  book_genre VARCHAR(255),
   preview   VARCHAR(255),
   id        bigint not null,
   PRIMARY KEY (id)
@@ -71,7 +71,7 @@ create table order_line(
 create table orders(
   id bigint not null,
   date DATETIME,
-  totalPrice double,
+  total_price double,
   primary key (id)
 
 );

@@ -8,18 +8,18 @@ import javax.persistence.*;
 public class NonFiction extends Book{
 
 
-    @Enumerated(EnumType.STRING)
-    private Subject subject;
+//    @Enumerated(EnumType.STRING)
+//    private Subject subject;
 
 
 
 
-
-    public Subject getSubject() {
-        return subject;
-    }
-
-    public void setSubject(Subject subject) {
-        this.subject = subject;
-    }
+//
+//    public Subject getSubject() {
+//        return subject;
+//    }
+//
+//    public void setSubject(Subject subject) {
+//        this.subject = subject;
+//    }
 }

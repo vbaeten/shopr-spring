@@ -17,6 +17,7 @@ public abstract class Book extends Item{
     @Column(unique = true)
     private String isbn;
 
+    @Column(name="total_pages")
     private Short totalPages;
 
 

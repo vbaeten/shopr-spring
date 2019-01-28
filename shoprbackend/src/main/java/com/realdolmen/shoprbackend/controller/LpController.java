@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Lps")
+@RequestMapping("/lps")
 public class LpController {
 
 
@@ -16,7 +16,8 @@ public class LpController {
 
     @PostMapping
     public Lp createLp(@RequestBody Lp lp){
-        return lpService.save(lp);
+         lpService.save(lp);
+         return lp;
     }
 
     @DeleteMapping

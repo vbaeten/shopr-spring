@@ -6,7 +6,6 @@ import {AddGameComponent} from "./components/add-game/add-game.component";
 import {AddLpComponent} from "./components/add-lp/add-lp.component";
 import {AddFictionComponent} from "./components/add-fiction/add-fiction.component";
 import {AddNonFictionComponent} from "./components/add-non-fiction/add-non-fiction.component";
-import {AddItemsComponent} from "./components/add-items/add-items.component";
 
 const routes: Routes = [
   {path: 'index', component: IndexComponent},
