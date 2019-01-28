@@ -1,0 +1,9 @@
+.game-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5em;
+}
+
+.game-container > * {
+  width: 60%;
+}

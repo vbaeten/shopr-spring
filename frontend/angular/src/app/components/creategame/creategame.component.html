@@ -1,0 +1,26 @@
+<div class="game-container">
+  <mat-form-field color="accent">
+    <input matInput placeholder="Title">
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <input matInput placeholder="Price">
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <input matInput placeholder="Publisher">
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <input matInput placeholder="Supplier Id">
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <input matInput placeholder="Minimum Age">
+  </mat-form-field>
+
+  <mat-select placeholder="Gamegenre" [(ngModel)]="selectedValue">
+    <mat-option *ngFor="let gamegenre of gamegenres" [value]="gamegenre.value">
+      {{gamegenre.viewValue}}
+    </mat-option>
+  </mat-select>
+
+
+</div>
+

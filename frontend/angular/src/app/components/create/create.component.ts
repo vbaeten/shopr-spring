@@ -24,8 +24,8 @@ types: Type[] = [
 ];
 
   pickArticle(){
-    let adres:string = this.selectedValue;
-    switch(adres) {
+    let adress:string = this.selectedValue;
+    switch(adress) {
       case "lp":
         this.router.navigate(['/createlp'])
             break;

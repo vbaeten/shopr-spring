@@ -3,9 +3,9 @@ table {
   margin: auto;
 }
 #outer{
-  width: 80%;
-  margin: 0 auto;
-}
+   width: 80%;
+   margin: 0 auto;
+ }
 mat-form-field{
   margin: 0 auto;
 }
