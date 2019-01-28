@@ -3,7 +3,6 @@ package com.realdolmen.backend.services;
 import com.realdolmen.backend.dao.NonFictionDao;
 import com.realdolmen.backend.exceptions.NotFoundException;
 import com.realdolmen.backend.model.NonFiction;
-import com.realdolmen.backend.model.enums.GameGenreEnum;
 import com.realdolmen.backend.model.enums.NonFictionGenreEnum;
 import org.springframework.stereotype.Service;
 
