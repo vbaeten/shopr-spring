@@ -4,6 +4,7 @@ import com.realdolmen.backend.dao.NonFictionDao;
 import com.realdolmen.backend.model.NonFiction;
 import com.realdolmen.backend.model.enums.LpGenreEnum;
 import com.realdolmen.backend.model.enums.NonFictionGenreEnum;
+import com.realdolmen.backend.services.NonFictionServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -18,28 +19,32 @@ import java.util.stream.Collectors;
 @RequestMapping("nonfiction")
 public class NonFictionController
 {
-    @Autowired
-    NonFictionDao nonFictionDao;
+    NonFictionServiceImpl nonFictionService;
+
+    public NonFictionController(NonFictionServiceImpl nonFictionService)
+    {
+        this.nonFictionService = nonFictionService;
+    }
 
     @GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public List<NonFiction> getAllComponents()
     {
-        return nonFictionDao.findAll();
+        return nonFictionService.findAll();
     }
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public NonFiction getOneForId(@PathVariable Long id)
     {
-        return nonFictionDao.getOne(id);
+        return nonFictionService.findById(id);
     }
 
     @PostMapping(value = "/save", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public NonFiction save(@RequestBody @Valid NonFiction nonFiction)
+    public NonFiction save(@RequestBody  NonFiction nonFiction)
     {
-        return nonFictionDao.save(nonFiction );
+        return nonFictionService.save(nonFiction );
     }
 
     @GetMapping(value = "/genre", produces = MediaType.APPLICATION_JSON_VALUE)

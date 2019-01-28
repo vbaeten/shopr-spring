@@ -17,7 +17,6 @@ public class Fiction extends Book
     @Column
     private Long id;
     @Size(max = 250)
-    private String about;
     @Enumerated(EnumType.STRING)
     FictionGenreEnum fictionGenreEnum;
     @Transient

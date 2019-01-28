@@ -5,6 +5,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Data
@@ -17,13 +18,12 @@ public class Game extends Article
     private Long id;
     @NotBlank
     private String studio;
-    @NotBlank
+    @NotNull
     private int age = 6;
     @Enumerated(EnumType.STRING)
     GameGenreEnum gameGenreEnum;
     @Transient
     private String genre;
-
 
 
 }

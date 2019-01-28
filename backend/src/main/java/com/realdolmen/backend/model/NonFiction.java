@@ -20,6 +20,7 @@ public class NonFiction extends Book implements Serializable
     NonFictionGenreEnum nonFictionGenreEnum;
     @Transient
     private String genre;
+    private String about;
 
 
 

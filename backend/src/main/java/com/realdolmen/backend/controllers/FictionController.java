@@ -3,6 +3,7 @@ package com.realdolmen.backend.controllers;
 import com.realdolmen.backend.dao.FictionDao;
 import com.realdolmen.backend.model.Fiction;
 import com.realdolmen.backend.model.enums.FictionGenreEnum;
+import com.realdolmen.backend.services.FictionServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -17,28 +18,32 @@ import java.util.stream.Collectors;
 @RequestMapping("/fiction")
 public class FictionController
 {
-@Autowired
-    FictionDao fictionDao;
+FictionServiceImpl fictionService;
+
+    public FictionController(FictionServiceImpl fictionService)
+    {
+        this.fictionService = fictionService;
+    }
 
     @GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public List<Fiction> getAllComponents()
     {
-        return fictionDao.findAll();
+        return fictionService.findAll();
     }
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public Fiction getOneForId(@PathVariable Long id)
     {
-        return fictionDao.getOne(id);
+        return fictionService.findById(id);
     }
 
     @PostMapping(value = "/save", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public Fiction save(@RequestBody @Valid Fiction fiction)
+    public Fiction save(@RequestBody  Fiction fiction)
     {
-        return fictionDao.save( fiction);
+        return fictionService.save( fiction);
     }
 
     @GetMapping(value = "/genre", produces = MediaType.APPLICATION_JSON_VALUE)
