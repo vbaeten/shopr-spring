@@ -37,7 +37,7 @@ private FictionDao fictionDao;
             case "sciencefiction":
                 fiction.setFictionGenreEnum(FictionGenreEnum.SCIENCEFICTION);
                 break;
-            case "detctive":
+            case "detective":
                fiction.setFictionGenreEnum(FictionGenreEnum.DETECTIVE);
                 break;
             case "drama":

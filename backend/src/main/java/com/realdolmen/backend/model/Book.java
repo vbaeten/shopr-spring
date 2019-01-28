@@ -16,7 +16,6 @@ public abstract class Book extends Article
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id;
-
     private String author;
     private String isbn;
     private int nrPages;

@@ -16,7 +16,6 @@ public class Fiction extends Book
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id;
-    @Size(max = 250)
     @Enumerated(EnumType.STRING)
     FictionGenreEnum fictionGenreEnum;
     @Transient
