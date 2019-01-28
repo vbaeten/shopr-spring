@@ -1,8 +1,12 @@
+<h4>What type of article would you like to create?</h4>
 <mat-form-field>
-  <mat-select placeholder="What type of article would you like to create?" disableRipple>
-    <mat-option value="1">LP</mat-option>
-    <mat-option value="2">Game</mat-option>
-    <mat-option value="3">Fiction Book</mat-option>
-    <mat-option value="4">Non Fiction Book</mat-option>
+  <mat-select placeholder="Type of article" [(ngModel)]="selectedValue">
+    <mat-option *ngFor="let type of types" [value]="type.value">
+      {{type.viewValue}}
+    </mat-option>
   </mat-select>
 </mat-form-field>
+<button
+  color="accent" (click)="pickArticle()">Go</button>
+
+<p>Selected value: {{selectedValue}}</p>

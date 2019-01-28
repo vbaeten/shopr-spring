@@ -12,7 +12,9 @@ import {
   MatButtonModule,
   MatFormFieldModule,
   MatInputModule,
+  MatOptionModule,
   MatPaginatorModule,
+  MatSelectModule,
   MatSortModule,
   MatTableModule,
   MatToolbarModule
@@ -21,6 +23,11 @@ import {TableArticlesComponent} from "./components/table-articles/table-articles
 import {FooterComponent} from './components/footer/footer.component';
 import {HomeComponent} from './components/home/home.component';
 import {CreateComponent} from './components/create/create.component';
+import {FormsModule} from "@angular/forms";
+import {CreatelpComponent} from './components/createlp/createlp.component';
+import {CreategameComponent} from './components/creategame/creategame.component';
+import {CreatebookfictionComponent} from './components/createbookfiction/createbookfiction.component';
+import {CreatebooknonfictionComponent} from './components/createbooknonfiction/createbooknonfiction.component';
 
 
 @NgModule({
@@ -31,7 +38,11 @@ import {CreateComponent} from './components/create/create.component';
     TableArticlesComponent,
     FooterComponent,
     HomeComponent,
-    CreateComponent
+    CreateComponent,
+    CreatelpComponent,
+    CreategameComponent,
+    CreatebookfictionComponent,
+    CreatebooknonfictionComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +56,10 @@ import {CreateComponent} from './components/create/create.component';
     MatFormFieldModule,
     MatSortModule,
     MatInputModule,
+    MatOptionModule,
+    MatSelectModule,
+    FormsModule
+
   ],
 
   providers: [ArticleService],

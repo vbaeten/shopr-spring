@@ -2,10 +2,20 @@ import {NgModule} from '@angular/core';
 import {ArticlesOverviewComponent} from "./components/articles-overview/articles-overview.component";
 import {RouterModule, Routes} from "@angular/router";
 import {HomeComponent} from "./components/home/home.component";
+import {CreateComponent} from "./components/create/create.component";
+import {CreatelpComponent} from "./components/createlp/createlp.component";
+import {CreategameComponent} from "./components/creategame/creategame.component";
+import {CreatebookfictionComponent} from "./components/createbookfiction/createbookfiction.component";
+import {CreatebooknonfictionComponent} from "./components/createbooknonfiction/createbooknonfiction.component";
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
+  {path: 'createlp', component: CreatelpComponent},
+  {path: 'creategame', component: CreategameComponent},
+  {path: 'createbookfiction', component: CreatebookfictionComponent},
+  {path: 'createbooknonfiction', component: CreatebooknonfictionComponent},
   {path: 'articles', component: ArticlesOverviewComponent},
+  {path: 'create', component: CreateComponent},
   {path: '**', redirectTo: 'home', pathMatch: 'full'}
 ];
 
