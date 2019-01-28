@@ -59,6 +59,8 @@ CREATE TABLE order_line (
 );
 
 CREATE TABLE rating (
-  id INT AUTO_INCREMENT PRIMARY KEY
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user INT,
+  article INT
 )
 

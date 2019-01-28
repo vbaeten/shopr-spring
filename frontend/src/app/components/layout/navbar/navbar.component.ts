@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {first} from "rxjs/operators";
+import {User} from "../../../models/user";
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+
+    @Input() user: User;
+    firstName: string;
+
+
+  }
 
   ngOnInit() {
+
+
+
   }
 
 }
