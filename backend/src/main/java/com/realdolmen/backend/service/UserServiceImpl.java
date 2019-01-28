@@ -3,11 +3,13 @@ package com.realdolmen.backend.service;
 import com.realdolmen.backend.domain.User;
 import com.realdolmen.backend.exceptions.NotFoundException;
 import com.realdolmen.backend.repository.UserRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;

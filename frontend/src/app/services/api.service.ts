@@ -1,13 +1,6 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {environment} from "../../environments/environment";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
-
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json',
-  })
-};
 
 @Injectable({
   providedIn: 'root'
@@ -18,31 +11,30 @@ export class ApiService {
   }
 
   public doGet(uri: string, parameters?: Map<string, string>): Observable<any> {
-    return this.httpClient.get(`${environment.baseApiUrl}` + uri + this.generateQueryString(parameters));
+    return this.httpClient.get(uri, {params: this.appendParameters(parameters)});
   }
 
   public doPost(uri: string, body: Object, parameters?: Map<string, string>) {
-    return this.httpClient.post(`${environment.baseApiUrl}` + uri + this.generateQueryString(parameters), body, httpOptions);
+    return this.httpClient.post(uri, body, {params: this.appendParameters(parameters)});
   }
 
   public doPut(uri: string, body: Object, parameters?: Map<string, string>) {
-    return this.httpClient.put(`${environment.baseApiUrl}` + uri + this.generateQueryString(parameters), body, httpOptions);
+    return this.httpClient.put(uri, body, {params: this.appendParameters(parameters)});
   }
 
   public doDelete(uri: string) {
-    return this.httpClient.delete(`${environment.baseApiUrl}` + uri);
+    return this.httpClient.delete(uri);
   }
 
-  public generateQueryString(parameters: Map<string, string>): string {
-    if (parameters === undefined || parameters === null || parameters.size === 0) {
-      return "";
-    } else {
-      var queryString: string = "?";
-      parameters.forEach((value: string, key: string) => {
-        queryString += key + "=" + value + "&";
+  public appendParameters(parameters: Map<string, string>) {
+    let params = new HttpParams();
+    if (parameters.size > 0) {
+      parameters.forEach((value, key) => {
+        params = params.append(key, value);
       });
-      return queryString;
+
     }
+    return params;
   }
 
 }

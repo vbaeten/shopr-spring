@@ -14,12 +14,13 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
+@RequestMapping(path = "/user")
 public class UserController {
 
     private final UserServiceImpl userService;
 
     @PostMapping
-    public User save(User user) {
+    public User save(@RequestBody User user) {
         return userService.save(user);
     }
 
