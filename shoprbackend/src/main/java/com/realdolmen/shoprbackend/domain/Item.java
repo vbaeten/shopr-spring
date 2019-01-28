@@ -9,7 +9,7 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name="type")
 @Table(name="items")
-public abstract class Item {
+public class Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,6 +26,7 @@ public abstract class Item {
     private double price;
 
     @OneToMany(mappedBy = "item")
+    @Transient
     private List <Review> reviews;
 
 

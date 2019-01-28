@@ -1,19 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { LoginFormComponent } from './login-form.component';
 
-describe('LoginFormComponent', () => {
-  let component: LoginFormComponent;
-  let fixture: ComponentFixture<LoginFormComponent>;
+import { LpsOverviewComponent } from './lps-overview.component';
+
+describe('LpsOverviewComponent', () => {
+  let component: LpsOverviewComponent;
+  let fixture: ComponentFixture<LpsOverviewComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoginFormComponent ]
+      declarations: [ LpsOverviewComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoginFormComponent);
+    fixture = TestBed.createComponent(LpsOverviewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

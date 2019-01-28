@@ -1,6 +1,6 @@
 <mat-toolbar>
-  <span routerLink="/index">shopr</span>
-  <button mat-button="Login/register" routerLink="/index"> Login/Register</button>
+  <span routerLink="">shopr</span>
+  <button mat-button="Login/register" routerLink=""> Login/Register</button>
 
 
   <button mat-button [matMenuTriggerFor]="appMenu">Add Items</button>
@@ -12,8 +12,17 @@
   </mat-menu>
 
 
+  <button mat-button [matMenuTriggerFor]="appMenuTwo">Overview</button>
+  <mat-menu #appMenuTwo="matMenu">
+    <button mat-menu-item routerLink="/itemsOverview">All items</button>
+    <button mat-menu-item routerLink="/gamesOverview">All games</button>
+    <button mat-menu-item routerLink="/lpsOverview" > All Lps</button>
+    <button mat-menu-item routerLink="/fictionsOverview" > All Fiction books</button>
+    <button mat-menu-item routerLink="/nonFictionsOverview" > All non-Fiction books</button>
 
-  <button mat-button="overview"> Overview</button>
+  </mat-menu>
+
+
   <button mat-button="ShoppingCart"> Shopping Cart</button>
   <button mat-button="Search"> Search</button>
 

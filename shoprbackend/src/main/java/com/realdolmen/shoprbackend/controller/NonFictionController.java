@@ -30,7 +30,7 @@ public class NonFictionController {
         return nonFictionService.findById(id);
     }
 
-    @GetMapping("/all")
+    @GetMapping("")
     public List<NonFiction> findAll(){
         return nonFictionService.findAll();
     }

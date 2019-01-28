@@ -2,6 +2,7 @@ package com.realdolmen.shoprbackend.controller;
 
 import com.realdolmen.shoprbackend.domain.Game;
 import com.realdolmen.shoprbackend.services.GameService;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,7 +31,8 @@ public class GameController {
         return gameService.findById(id);
     }
 
-    @GetMapping("/all")
+    @GetMapping("")
+    @ResponseStatus(HttpStatus.OK)
     public List<Game> findAll(){
         return gameService.findAll();
     }

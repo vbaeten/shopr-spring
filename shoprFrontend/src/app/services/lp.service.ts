@@ -20,7 +20,7 @@ export class LpService {
 
   }
 
-  getLp():Observable<Lp[]>{
+  getLps():Observable<Lp[]>{
     return this.http.get<Lp[]>(this.classUrl);
   }
 }

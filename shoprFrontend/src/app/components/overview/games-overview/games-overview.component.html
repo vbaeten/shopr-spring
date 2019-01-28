@@ -1,0 +1,27 @@
+<app-navbar></app-navbar>
+
+<h3>List of all Games</h3>
+<div class="table">
+<table mat-table [dataSource]="games" class="mat-elevation-z8">
+  <ng-container matColumnDef="no">
+    <th mat-header-cell *matHeaderCellDef> no</th>
+    <td mat-cell *matCellDef="let element">{{element.id}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="Title">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Age">
+    <th mat-header-cell *matHeaderCellDef> min age </th>
+    <td mat-cell *matCellDef="let element"> {{element.minAge}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+</div>
+
+<app-footer></app-footer>

@@ -32,6 +32,9 @@ export class AddFictionComponent implements OnInit {
     this.fiction.price = this.price
     this.fiction.bookGenre = form.value.genre
     this.fiction.preview = form.value.preview
+    this.fiction.author = form.value.author
+    this.fiction.totalPages = form.value.totalPages
+    this.fiction.isbn = form.value.isbn
     this.fictionService.createFiction(this.fiction)
       .subscribe(data=>this.fiction=data)
   }

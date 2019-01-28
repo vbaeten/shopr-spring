@@ -32,7 +32,6 @@ export class AddGameComponent implements OnInit {
     this.game.minAge = form.value.minAge
     this.game.price = this._price;
     this.game.title = this._title;
-    this.game.genre = form.value.genre
     this.game.publisher = form.value.publisher
     this.gameService.createGame(this.game)
       .subscribe(data => this.game = data)

@@ -9,7 +9,7 @@ import {
   MatCheckboxModule,
   MatFormFieldModule, MatGridListModule,
   MatIconModule, MatInputModule,
-  MatMenuModule, MatSelectModule,
+  MatMenuModule, MatSelectModule, MatSortModule, MatTableModule,
   MatToolbarModule
 } from "@angular/material";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -17,7 +17,6 @@ import { LoginRegisterComponent } from './components/login-register/login-regist
 import { FooterComponent } from './components/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IndexComponent } from './components/index/index.component';
-import { OverviewComponent } from './components/overview/overview.component';
 import { SearchComponent } from './components/search/search.component';
 import { AddItemsComponent } from './components/add-items/add-items.component';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
@@ -31,6 +30,12 @@ import {GameService} from "./services/game.service";
 import {LpService} from "./services/lp.service";
 import {FictionService} from "./services/fiction.service";
 import {NonFictionService} from "./services/non-fiction.service";
+import { GamesOverviewComponent } from './components/overview/games-overview/games-overview.component';
+import { LpsOverviewComponent } from './components/overview/lps-overview/lps-overview.component';
+import { BooksOverviewComponent } from './components/overview/books-overview/books-overview.component';
+import { FictionsOverviewComponent } from './components/overview/fictions-overview/fictions-overview.component';
+import { NonFictionsOverviewComponent } from './components/overview/non-fictions-overview/non-fictions-overview.component';
+import { AllItemsOverviewComponent } from './components/overview/all-items-overview/all-items-overview.component';
 
 @NgModule({
   declarations: [
@@ -40,14 +45,19 @@ import {NonFictionService} from "./services/non-fiction.service";
     LoginRegisterComponent,
     FooterComponent,
     IndexComponent,
-    OverviewComponent,
     SearchComponent,
     AddItemsComponent,
     RegisterFormComponent,
     LoginFormComponent,
     AddLpComponent,
     AddFictionComponent,
-    AddNonFictionComponent
+    AddNonFictionComponent,
+    GamesOverviewComponent,
+    LpsOverviewComponent,
+    BooksOverviewComponent,
+    FictionsOverviewComponent,
+    NonFictionsOverviewComponent,
+    AllItemsOverviewComponent
   ],
   imports: [
     BrowserModule,
@@ -67,6 +77,8 @@ import {NonFictionService} from "./services/non-fiction.service";
     HttpClientModule,
     MatMenuModule,
     MatGridListModule,
+    MatTableModule,
+    MatSortModule
 
   ],
   providers: [UserService,GameService,LpService,FictionService,NonFictionService],

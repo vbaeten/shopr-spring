@@ -7,3 +7,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   width: 25%;
   margin: 2%;
 }
+
+table {
+  width: 100%;
+}
+
+.table{
+  margin-top:5% ;
+  margin-left:10%;
+  margin-right:10%;
+  margin-bottom:10%
+}
+

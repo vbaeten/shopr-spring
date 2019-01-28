@@ -30,7 +30,7 @@ public class LpController {
         return lpService.findById(id);
     }
 
-    @GetMapping("/all")
+    @GetMapping("")
     public List<Lp> findAll(){
         return lpService.findAll();
     }
