@@ -1,10 +1,13 @@
 package com.realdolmen.backend.Domain;
 
-import com.realdolmen.backend.Domain.enums.Gamegenre;
+import com.realdolmen.backend.Domain.enums.GameGenre;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 @Setter
 @Getter
@@ -13,7 +16,7 @@ import javax.persistence.*;
 public class Game extends Article {
 
     @Enumerated(EnumType.STRING)
-    private Gamegenre gamegenre;
+    private GameGenre gamegenre;
 
     private Integer minimumAge;
 

@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {GameService} from "../../services/game.service";
+import {Game} from "../../domain/Game";
 
 export interface Gamegenre {
   value: string;
@@ -16,16 +18,18 @@ export class CreategameComponent implements OnInit {
   publisher: string;
   supplierId: string;
   minimumAge: number;
-  Gamegenre: string;
-  constructor() { }
-  gamegenres: Gamegenre[] = [
-    {value: 'MMORPG', viewValue: 'MMORPG'},
-    {value: 'RPG', viewValue: 'RPG'},
-    {value: 'FPS', viewValue: 'FPS'},
-    {value: 'RACE', viewValue: 'RACE'},
-    {value: 'RTS', viewValue: 'RTS'}
-  ];
+  gameGenre: string;
+  gamegenres: string[];
+
+  constructor(private service: GameService) {
+
+  }
   ngOnInit() {
+    this.service.getGameGenres().subscribe(gamegenres => this.gamegenres = gamegenres);
   }
 
+  submit() {
+    let newGame = new Game(this.title, 'game', this.price, this.supplierId, this.gameGenre, this.minimumAge, this.publisher);
+    this.service.createGame(newGame).toPromise();
+  }
 }
