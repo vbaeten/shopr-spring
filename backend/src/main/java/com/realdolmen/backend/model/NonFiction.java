@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 @Entity
 @Data
-@DiscriminatorValue(value = "nonFiction")
+@DiscriminatorValue(value = "nonfiction")
 public class NonFiction extends Book implements Serializable
 {
     @Id

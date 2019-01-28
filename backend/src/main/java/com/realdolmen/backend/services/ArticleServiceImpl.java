@@ -11,6 +11,11 @@ public class ArticleServiceImpl
 {
 private ArticleDao articleDao;
 
+    public ArticleServiceImpl(ArticleDao articleDao)
+    {
+        this.articleDao = articleDao;
+    }
+
     public List<Article> findAll()
     {
         return articleDao.findAll();
