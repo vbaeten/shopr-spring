@@ -1,7 +1,9 @@
 package com.realdolmen.backend.service;
 
 import com.realdolmen.backend.domain.User;
+import com.realdolmen.backend.exception.NotFoundException;
 import com.realdolmen.backend.repository.UserRepository;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,18 +33,25 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findById(Long primaryKey) {
-        return null;
+    public User findById(Long id) {
+        return userRepository.findById(id)
+                .orElseThrow(NotFoundException::new);
     }
 
     @Override
     public List<User> findAll() {
-        return null;
+        return userRepository.findAll();
     }
 
     @Override
-    public void delete(User user) {
+    public void delete(Long id) {
+        User user = findById(id);
         userRepository.delete(user);
+    }
+
+    @Override
+    public void delete(User entity) {
+
     }
 }
 

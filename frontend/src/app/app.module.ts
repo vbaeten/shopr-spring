@@ -11,6 +11,14 @@ import { UserService} from "./services/user.service";
 import { AdminComponent } from './components/admin/admin.component';
 import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/user/register/register.component';
+import { AppMaterialModule } from "./modules/app-material/app-material.module";
+import { LoginComponent } from './components/user/login/login.component';
+import { UsersComponent } from './components/user/users/users.component';
+import { LpDetailComponent } from './components/articles/details/lp-detail/lp-detail.component';
+import { GameDetailComponent } from './components/articles/details/game-detail/game-detail.component';
+import { FictiondetailComponent } from './components/articles/details/game-detail/fictiondetail/fictiondetail.component';
+import { UserDetailComponent } from './components/user/user-detail/user-detail.component';
+
 
 @NgModule({
   declarations: [
@@ -20,12 +28,18 @@ import { RegisterComponent } from './components/user/register/register.component
     NavbarComponent,
     AdminComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent,
+    UsersComponent,
+    LpDetailComponent,
+    GameDetailComponent,
+    UserDetailComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    AppMaterialModule
   ],
   providers: [
     UserService

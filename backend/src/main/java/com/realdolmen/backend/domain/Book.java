@@ -1,9 +1,10 @@
 package com.realdolmen.backend.domain;
 
 import javax.persistence.Entity;
+import java.io.Serializable;
 
 @Entity
-public class Book extends Article {
+public class Book extends Article implements Serializable {
 
     private String author;
     private long isbn;

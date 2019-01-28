@@ -5,6 +5,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "article")
+@Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name="type")
 public class Article implements Serializable {
 

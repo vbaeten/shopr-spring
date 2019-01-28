@@ -2,35 +2,43 @@ package com.realdolmen.backend.controller;
 
 import com.realdolmen.backend.domain.User;
 import com.realdolmen.backend.repository.UserRepository;
+import com.realdolmen.backend.service.UserServiceImpl;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/user")
 public class UserController {
 
-    private UserRepository userRepository;
+    private UserServiceImpl userServiceImpl;
 
-    public UserController(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    @Autowired
+    public UserController( UserServiceImpl userServiceImpl) {
+        this.userServiceImpl = userServiceImpl;
     }
 
     @GetMapping
-    public List<User> getUsers() {
-        return userRepository.findAll();
+    @RequestMapping("/list")
+      public List<User> getUsers() {
+        return userServiceImpl.findAll();
     }
 
     @PostMapping
-    @ResponseStatus(HttpStatus.OK)
-    public void create(@RequestBody User user) {
-        userRepository.save(user);
+    @RequestMapping("/create")
+    public void createUser(@RequestBody User user) {
+        userServiceImpl.save(user);
     }
 
     @GetMapping("/{id}")
-    public User get(@PathVariable("id") Long id) {
-        return userRepository.getOne(id);
+    public User findById(@PathVariable("id") Long id) {
+        return userServiceImpl.findById(id);
+    }
+
+    @DeleteMapping(value = "/delete/{id}")
+    public void deleteUser(@PathVariable("id") Long id) {
+        userServiceImpl.delete(id);
     }
 }

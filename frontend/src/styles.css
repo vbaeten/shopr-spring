@@ -2,5 +2,28 @@
 body {
   background-color: aliceblue;
   font-family: "Source Code Pro";
+  align-self: center;
+  height: 100%;
+  margin: 0;
+}
+
+.flex-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-container > * {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.container {
+  background: #eed7da;
+  alignment: center;
+  margin-left: 180px;
+  margin-right: 180px;
+  flex-direction: column;
 
 }
+
+
