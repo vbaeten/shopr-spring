@@ -9,7 +9,7 @@ import {ArticleService} from "../../services/article.service";
   templateUrl: './table-articles.component.html',
 })
 export class TableArticlesComponent implements OnInit {
-  displayedColumns: string[] = ['title', 'type', 'price', 'articleId', 'supplierId'];
+  displayedColumns: string[] = ['title', 'type', 'price', 'articleId', 'supplierId', 'detail'];
   dataSource: MatTableDataSource<Article>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
