@@ -1,20 +1,17 @@
 package com.realdolmen.backend.Domain;
 
-import com.realdolmen.backend.Domain.enums.Booknonfictiongenre;
+import com.realdolmen.backend.Domain.enums.BooknonfictionGenre;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
 
 @Setter
 @Getter
 @Entity
 @DiscriminatorValue("booknonfiction")
 public class Booknonfiction extends Book {
-
+    @Column(name = "booknonfiction_genre")
     @Enumerated(EnumType.STRING)
-    private Booknonfictiongenre booknonfictiongenre;
+    private BooknonfictionGenre booknonfictionGenre;
 }

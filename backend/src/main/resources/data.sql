@@ -12,16 +12,20 @@ insert into shopr.game(article_id, game_genre, minimum_age, publisher) VALUES (1
 
 insert into shopr.article(article_id, title, price, supplier_id, type, version_id) VALUES (1004, 'War and Peace', 22, 'Penguin Books Ltd', 'bookfiction', 1);
 insert into shopr.book(article_id, author, isbn, number_of_pages ) VALUES (1004, 'Leo Tolstoy', '978-02-4126-554-3', 1440);
-insert into shopr.bookfiction(article_id, bookfictiongenre, summary) VALUES (1004,'THRILLER','Summary');
+insert into shopr.bookfiction (article_id, bookfiction_genre, summary)
+VALUES (1004, 'THRILLER', 'Summary');
 
 insert into shopr.article(article_id, title, price, supplier_id, type, version_id) VALUES (1005, 'The clan of the cave bear', 16.16, 'Crown Publishing Group', 'bookfiction', 1);
 insert into shopr.book(article_id, author, isbn, number_of_pages ) VALUES (1005, 'Jean M. Auel', '978-05-5338-167-2', 468);
-insert into shopr.bookfiction(article_id, bookfictiongenre, summary) VALUES (1005, 'THRILLER', 'Summary');
+insert into shopr.bookfiction (article_id, bookfiction_genre, summary)
+VALUES (1005, 'THRILLER', 'Summary');
 
 insert into shopr.article(article_id, title, price, supplier_id, type, version_id) VALUES (1006, 'The Vegetable Butcher', 20.36, 'Workman Publishing New York', 'booknonfiction', 1);
 insert into shopr.book(article_id, author, isbn, number_of_pages ) VALUES (1006, 'Cara Mangini', '978-07-6118-052-4', 352);
-insert into shopr.booknonfiction(article_id, booknonfictiongenre) VALUES (1006, 'COOKBOOK');
+insert into shopr.booknonfiction (article_id, booknonfiction_genre)
+VALUES (1006, 'COOKBOOK');
 
 insert into shopr.article(article_id, title, price, supplier_id, type, version_id) VALUES (1007, 'Long walk to freedom', 16.99, 'Little, Brown & Company', 'booknonfiction', 1);
 insert into shopr.book(article_id, author, isbn, number_of_pages ) VALUES (1007, 'Nelson Mandela', '978-03-1654-818-2', 656);
-insert into shopr.booknonfiction(article_id, booknonfictiongenre) VALUES (1007, 'BIOGRAPHY');
+insert into shopr.booknonfiction (article_id, booknonfiction_genre)
+VALUES (1007, 'BIOGRAPHY');

@@ -1,5 +1,5 @@
 package com.realdolmen.backend.Domain.enums;
 
-public enum Booknonfictiongenre {
+public enum BooknonfictionGenre {
     HISTORY, COOKBOOK, SCIENCE, SPORTS, BIOGRAPHY;
 }

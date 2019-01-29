@@ -1,3 +1,35 @@
-<p>
-  createbookfiction works!
-</p>
+<div class="bookfiction-container">
+  <mat-form-field color="accent">
+    <input matInput placeholder="Title" [(ngModel)]="title">
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <input matInput placeholder="Price" [(ngModel)]="price">
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <input matInput placeholder="Author" [(ngModel)]="author">
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <input matInput placeholder="Supplier Id" [(ngModel)]="supplierId">
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <input matInput placeholder="Isbn" [(ngModel)]="isbn">
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <input matInput placeholder="Number Of Pages" [(ngModel)]="numberOfPages">
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <input matInput placeholder="Summary" [(ngModel)]="summary">
+  </mat-form-field>
+
+  <mat-select placeholder="Genre" [(ngModel)]="bookfictionGenre">
+    <mat-option *ngFor="let bookfictionGenre of bookfictionGenres" [value]="bookfictionGenre">
+      {{bookfictionGenre}}
+    </mat-option>
+  </mat-select>
+
+
+</div>
+
+<button id="gobookfictionbutton" mat-raised-button
+        color="accent" (click)="submit()">Go
+</button>

@@ -1,5 +1,5 @@
 package com.realdolmen.backend.Domain.enums;
 
-public enum Bookfictiongenre {
+public enum BookfictionGenre {
     THRILLER, FANTASY, DETECTIVE, ROMANCE, SCIFI;
 }

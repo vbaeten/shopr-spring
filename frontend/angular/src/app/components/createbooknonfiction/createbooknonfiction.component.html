@@ -1,3 +1,32 @@
-<p>
-  createbooknonfiction works!
-</p>
+<div class="booknonfiction-container">
+  <mat-form-field color="accent">
+    <input matInput placeholder="Title" [(ngModel)]="title">
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <input matInput placeholder="Price" [(ngModel)]="price">
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <input matInput placeholder="Author" [(ngModel)]="author">
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <input matInput placeholder="Supplier Id" [(ngModel)]="supplierId">
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <input matInput placeholder="Isbn" [(ngModel)]="isbn">
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <input matInput placeholder="Number Of Pages" [(ngModel)]="numberOfPages">
+  </mat-form-field>
+
+  <mat-select placeholder="Genre" [(ngModel)]="booknonfictionGenre">
+    <mat-option *ngFor="let booknonfictionGenre of booknonfictionGenres" [value]="booknonfictionGenre">
+      {{booknonfictionGenre}}
+    </mat-option>
+  </mat-select>
+
+
+</div>
+
+<button id="gobooknonfictionbutton" mat-raised-button
+        color="accent" (click)="submit()">Go
+</button>

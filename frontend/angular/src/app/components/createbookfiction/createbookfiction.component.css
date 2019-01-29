@@ -1,0 +1,15 @@
+.bookfiction-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5em;
+}
+
+.bookfiction-container > * {
+  width: 60%;
+}
+
+#gobookfictionbutton {
+  flex-direction: column;
+  marging-left: 10em;
+  display: flex;
+}

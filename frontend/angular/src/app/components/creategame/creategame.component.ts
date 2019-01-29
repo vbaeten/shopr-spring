@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {GameService} from "../../services/game.service";
 import {Game} from "../../domain/Game";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -17,7 +18,7 @@ export class CreategameComponent implements OnInit {
   gameGenre: string;
   gameGenres: string[];
 
-  constructor(private service: GameService) {
+  constructor(private service: GameService, public router: Router) {
 
   }
   ngOnInit() {
@@ -27,5 +28,6 @@ export class CreategameComponent implements OnInit {
   submit() {
     let newGame = new Game(this.title, 'game', this.price, this.supplierId, this.gameGenre, this.minimumAge, this.publisher);
     this.service.createGame(newGame).toPromise();
+    this.router.navigate(['/articles'])
   }
 }
