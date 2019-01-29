@@ -28,7 +28,7 @@ export class ApiService {
 
   public appendParameters(parameters: Map<string, string>) {
     let params = new HttpParams();
-    if (parameters.size > 0) {
+    if (parameters !== undefined && parameters.size > 0) {
       parameters.forEach((value, key) => {
         params = params.append(key, value);
       });
