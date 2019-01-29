@@ -3,25 +3,26 @@
     <input matInput placeholder="Title" [(ngModel)]="title">
   </mat-form-field>
   <mat-form-field color="accent">
-    <input matInput placeholder="Price">
+    <input matInput placeholder="Price" [(ngModel)]="price">
   </mat-form-field>
   <mat-form-field color="accent">
-    <input matInput placeholder="Publisher">
+    <input matInput placeholder="Publisher" [(ngModel)]="publisher">
   </mat-form-field>
   <mat-form-field color="accent">
-    <input matInput placeholder="Supplier Id">
+    <input matInput placeholder="Supplier Id" [(ngModel)]="supplierId">
   </mat-form-field>
   <mat-form-field color="accent">
-    <input matInput placeholder="Minimum Age">
+    <input matInput placeholder="Minimum Age" [(ngModel)]="minimumAge">
   </mat-form-field>
 
-  <mat-select placeholder="Gamegenre" [(ngModel)]="selectedValue">
-    <mat-option *ngFor="let gamegenre of gamegenres" [value]="gamegenre">
-      {{gamegenre}}
+  <mat-select placeholder="Gamegenre" [(ngModel)]="gameGenre">
+    <mat-option *ngFor="let gameGenre of gameGenres" [value]="gameGenre">
+      {{gameGenre}}
     </mat-option>
   </mat-select>
 
-  <button mat-raised-button
-          color="accent" (click)="submit()">Go</button>
+
 </div>
 
+<button id="gobutton" mat-raised-button
+        color="accent" (click)="submit()">Go</button>

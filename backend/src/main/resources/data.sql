@@ -1,14 +1,14 @@
 insert into shopr.article(article_id, title, price, supplier_id, type, version_id) VALUES (1000, 'Rumours', 10, 'LP Studio', 'lp', 1);
-insert into shopr.lp(article_id, artist, lpgenre) VALUES (1000, 'Fleetwood Mac', 'ROCK');
+insert into shopr.lp(article_id, artist, lp_genre) VALUES (1000, 'Fleetwood Mac', 'ROCK');
 
 insert into shopr.article(article_id, title, price, supplier_id, type, version_id) VALUES (1001, 'All Killer No Filler', 8, 'LP Studio', 'lp', 1);
-insert into shopr.lp(article_id, artist, lpgenre) VALUES (1001, 'Sum41', 'ROCK');
+insert into shopr.lp(article_id, artist, lp_genre) VALUES (1001, 'Sum41', 'ROCK');
 
 insert into shopr.article(article_id, title, price, supplier_id, type, version_id) VALUES (1002, 'Duck Hunt', 12.99, 'Gamewalhalla', 'game', 1);
-insert into shopr.game(article_id, gameGenre, minimum_age, publisher) VALUES (1002, 'RTS', 6, 'Nintendo');
+insert into shopr.game(article_id, game_genre, minimum_age, publisher) VALUES (1002, 'RTS', 6, 'Nintendo');
 
 insert into shopr.article(article_id, title, price, supplier_id, type, version_id) VALUES (1003, 'The Sims', 10.99, 'Gamesync', 'game', 1);
-insert into shopr.game(article_id, gameGenre, minimum_age, publisher) VALUES (1003, 'RACE', 7, 'Electronic Arts');
+insert into shopr.game(article_id, game_genre, minimum_age, publisher) VALUES (1003, 'RACE', 7, 'Electronic Arts');
 
 insert into shopr.article(article_id, title, price, supplier_id, type, version_id) VALUES (1004, 'War and Peace', 22, 'Penguin Books Ltd', 'bookfiction', 1);
 insert into shopr.book(article_id, author, isbn, number_of_pages ) VALUES (1004, 'Leo Tolstoy', '978-02-4126-554-3', 1440);

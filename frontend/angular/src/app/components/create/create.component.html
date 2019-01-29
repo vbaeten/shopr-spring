@@ -1,12 +1,12 @@
 <div id="createouter">
-<h4>What type of article would you like to create?</h4>
-<mat-form-field color="accent">
-  <mat-select placeholder="Type of article" [(ngModel)]="selectedValue">
-    <mat-option *ngFor="let type of types" [value]="type.value">
-      {{type.viewValue}}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
-<button mat-raised-button
-  color="accent" (click)="pickArticle()">Go</button>
+  <h4>What type of article would you like to create?</h4>
+  <mat-form-field color="accent">
+    <mat-select placeholder="Type of article" [(ngModel)]="selectedValue">
+      <mat-option *ngFor="let type of types" [value]="type.value">
+        {{type.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-raised-button
+          color="accent" (click)="pickArticle()">Go</button>
 </div>

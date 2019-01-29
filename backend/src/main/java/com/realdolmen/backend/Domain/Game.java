@@ -4,19 +4,16 @@ import com.realdolmen.backend.Domain.enums.GameGenre;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
 
 @Setter
 @Getter
 @Entity
 @DiscriminatorValue("game")
 public class Game extends Article {
-
+    @Column(name = "game_genre")
     @Enumerated(EnumType.STRING)
-    private GameGenre gamegenre;
+    private GameGenre gameGenre;
 
     private Integer minimumAge;
 

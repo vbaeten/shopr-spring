@@ -2,10 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {GameService} from "../../services/game.service";
 import {Game} from "../../domain/Game";
 
-export interface Gamegenre {
-  value: string;
-  viewValue: string;
-}
 
 @Component({
   selector: 'app-creategame',
@@ -19,13 +15,13 @@ export class CreategameComponent implements OnInit {
   supplierId: string;
   minimumAge: number;
   gameGenre: string;
-  gamegenres: string[];
+  gameGenres: string[];
 
   constructor(private service: GameService) {
 
   }
   ngOnInit() {
-    this.service.getGameGenres().subscribe(gamegenres => this.gamegenres = gamegenres);
+    this.service.getGameGenres().subscribe(gameGenres => this.gameGenres = gameGenres);
   }
 
   submit() {

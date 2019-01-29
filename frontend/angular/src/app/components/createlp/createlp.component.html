@@ -1,3 +1,26 @@
-<p>
-  createlp works!
-</p>
+<div class="lp-container">
+  <mat-form-field color="accent">
+    <input matInput placeholder="Title" [(ngModel)]="title">
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <input matInput placeholder="Price" [(ngModel)]="price">
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <input matInput placeholder="Artist" [(ngModel)]="artist">
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <input matInput placeholder="Supplier Id" [(ngModel)]="supplierId">
+  </mat-form-field>
+
+  <mat-select placeholder="Lpgenre" [(ngModel)]="lpGenre">
+    <mat-option *ngFor="let lpGenre of lpGenres" [value]="lpGenre">
+      {{lpGenre}}
+    </mat-option>
+  </mat-select>
+
+
+</div>
+
+<button id="golpbutton" mat-raised-button
+        color="accent" (click)="submit()">Go</button>
+
