@@ -1,11 +1,12 @@
 @import "../node_modules/angular-material/angular-material.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 body {
   background-color: aliceblue;
   font-family: "Source Code Pro";
   align-self: center;
   height: 100%;
-  margin: 0;
+  margin: 0px;
 }
 
 .flex-container{
@@ -19,12 +20,18 @@ body {
 }
 
 .container {
-  background: #fbf7ff;
+  background: #abcbff;
   alignment: center;
   margin-left: 180px;
   margin-right: 180px;
   flex-direction: column;
+  margin-top: 0px;
 
+}
+
+.userDetailCard{
+  padding: 20px;
+  margin: 20px;
 }
 
 

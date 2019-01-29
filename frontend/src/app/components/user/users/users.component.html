@@ -1,0 +1,22 @@
+<p>
+  List of Registed Users:
+</p>
+<table id="userlist" class="mat-display-1">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Delete</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr></tr>
+  </tbody>
+</table>
+<button class="btn-primary">Add User</button>
+
+
+<div *ngFor="let user of users">
+  <p>{{user.firstName}}</p>
+</div>
