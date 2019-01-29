@@ -22,7 +22,18 @@ export class GameService {
 
   }
 
-  getGames():Observable<Game[]>{
-    return this.http.get<Game[]>(this.classUrl);
+
+  public getGameById(id:number):Observable<Game>{
+    return this.http.get<Game>(this.classUrl+'/'+id)
   }
+
+
+  getGames():Observable<Game[]>{
+    return this.http.get<Game[]>(this.classUrl+'/all');
+  }
+
+  public deleteById(id:number):Observable<Game>{
+    return this.http.delete<Game>(this.classUrl+'/'+id)
+  }
+
 }

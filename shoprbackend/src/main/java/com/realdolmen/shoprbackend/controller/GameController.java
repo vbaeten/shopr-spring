@@ -26,20 +26,20 @@ public class GameController {
         return game;
     }
 
-    @GetMapping("/id")
+    @GetMapping("/{id}")
     public Game findById(@PathVariable Long id){
         return gameService.findById(id);
     }
 
-    @GetMapping("")
+    @GetMapping("/all")
     @ResponseStatus(HttpStatus.OK)
     public List<Game> findAll(){
         return gameService.findAll();
     }
 
-    @DeleteMapping
-    public void delete(@RequestBody Game game){
-        gameService.delete(game);
+    @DeleteMapping(value ="/{id}")
+    public void deleteById(@PathVariable("id") Long id){
+        gameService.deleteById(id);
     }
 
 

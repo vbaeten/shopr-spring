@@ -36,6 +36,10 @@ public class GameService implements CrudService<Game, Long> {
         gameRepository.delete(game);
     }
 
+    public void deleteById(Long id) {
+        Game game = findById(id);
+        gameRepository.delete(game);
+    }
 
 
     public GameService(GameRepository gameRepository) {

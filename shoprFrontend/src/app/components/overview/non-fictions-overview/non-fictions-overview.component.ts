@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NonFictionService} from "../../../services/non-fiction.service";
+import {LpService} from "../../../services/lp.service";
+import {DataService} from "../../../services/data.service";
 
 @Component({
   selector: 'app-non-fictions-overview',
@@ -10,15 +12,20 @@ export class NonFictionsOverviewComponent implements OnInit {
 
 
   nonFictions=[]
-  displayedColumns: string[] =['no', 'Title', 'price','author','totalPages','isbn']
+  displayedColumns: string[] =['no', 'Title', 'price','author','totalPages','isbn','details']
 
 
-  constructor(private nonFictionService:NonFictionService) { }
+  constructor(private nonFictionService:NonFictionService,private dataService:DataService) { }
 
   ngOnInit() {
 
     this.nonFictionService.getNonFictions()
       .subscribe(data=>this.nonFictions=data)
+  }
+
+
+  passId(toPassId){
+    this.dataService.changeId(toPassId)
   }
 
 }

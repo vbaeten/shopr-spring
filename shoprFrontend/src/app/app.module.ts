@@ -36,6 +36,12 @@ import { BooksOverviewComponent } from './components/overview/books-overview/boo
 import { FictionsOverviewComponent } from './components/overview/fictions-overview/fictions-overview.component';
 import { NonFictionsOverviewComponent } from './components/overview/non-fictions-overview/non-fictions-overview.component';
 import { AllItemsOverviewComponent } from './components/overview/all-items-overview/all-items-overview.component';
+import { GamesDetailComponent } from './components/detail-components/games-detail/games-detail.component';
+import {DataService} from "./services/data.service";
+import { LpsDetailComponent } from './components/detail-components/lps-detail/lps-detail.component';
+import { FictionsDetailComponent } from './components/detail-components/fictions-detail/fictions-detail.component';
+import { NonFictionsDetailComponent } from './components/detail-components/non-fictions-detail/non-fictions-detail.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +63,12 @@ import { AllItemsOverviewComponent } from './components/overview/all-items-overv
     BooksOverviewComponent,
     FictionsOverviewComponent,
     NonFictionsOverviewComponent,
-    AllItemsOverviewComponent
+    AllItemsOverviewComponent,
+    GamesDetailComponent,
+    LpsDetailComponent,
+    FictionsDetailComponent,
+    NonFictionsDetailComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -75,14 +86,13 @@ import { AllItemsOverviewComponent } from './components/overview/all-items-overv
     ReactiveFormsModule,
     MatSelectModule,
     HttpClientModule,
-    MatMenuModule,
     MatGridListModule,
     MatTableModule,
     MatSortModule,
 
 
   ],
-  providers: [UserService,GameService,LpService,FictionService,NonFictionService],
+  providers: [UserService,GameService,LpService,FictionService,NonFictionService,DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

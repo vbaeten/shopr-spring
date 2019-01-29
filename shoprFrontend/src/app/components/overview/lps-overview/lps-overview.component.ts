@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {LpService} from "../../../services/lp.service";
+import {DataService} from "../../../services/data.service";
 
 @Component({
   selector: 'app-lps-overview',
@@ -10,10 +11,10 @@ export class LpsOverviewComponent implements OnInit {
 
 
   lps = []
-  displayedColumns: string[] =['no', 'Title', 'price','publisher']
+  displayedColumns: string[] =['no', 'Title', 'price','publisher','details']
 
 
-  constructor(private lpService:LpService) { }
+  constructor(private lpService:LpService,private dataService:DataService) { }
 
   ngOnInit() {
 
@@ -22,4 +23,7 @@ export class LpsOverviewComponent implements OnInit {
   }
 
 
+  passId(toPassId){
+    this.dataService.changeId(toPassId)
+  }
 }

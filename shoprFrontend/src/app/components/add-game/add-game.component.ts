@@ -4,6 +4,7 @@ import {Game} from "../../models/game";
 import {NgForm} from "@angular/forms";
 import {Item} from "../../models/item";
 import {AddItemsComponent} from "../add-items/add-items.component";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -17,7 +18,7 @@ export class AddGameComponent implements OnInit {
   private _price: number;
   game: Game;
 
-  constructor(private gameService: GameService) {
+  constructor(private gameService: GameService,private router:Router) {
   }
 
 
@@ -35,6 +36,7 @@ export class AddGameComponent implements OnInit {
     this.game.publisher = form.value.publisher
     this.gameService.createGame(this.game)
       .subscribe(data => this.game = data)
+    this.router.navigate(['/gamesOverview'])
 
   }
 

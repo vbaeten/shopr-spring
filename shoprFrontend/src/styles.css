@@ -1,11 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html {
+  height: 100%;
+}
 
-.addForm{
-  width: 25%;
-  margin: 2%;
+body {
+  min-height: 100vh;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 table {
@@ -19,3 +21,14 @@ table {
   margin-bottom:10%
 }
 
+.banner{
+  height: 200px;
+  width:100%
+}
+
+
+.afterNavMessage {
+  margin-bottom: 2%;
+  margin-left: 2%;
+  margin-top: 2%;
+}

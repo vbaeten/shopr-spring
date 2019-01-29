@@ -1,0 +1,20 @@
+<app-header></app-header>
+<app-navbar></app-navbar>
+
+
+
+<div>
+  {{game.title}}
+{{game.price}}
+{{game.minAge}}
+{{game.publisher}}
+{{game.id}}
+
+</div>
+
+
+<button mat-button color="warn" routerLink="/gamesOverview" (click)="delete()">delete</button>
+
+
+
+<app-footer></app-footer>

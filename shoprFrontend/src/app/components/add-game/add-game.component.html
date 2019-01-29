@@ -1,48 +1,39 @@
+<app-header></app-header>
 
 <app-navbar></app-navbar>
 <div class="afterNavMessage">
   <h3> cReate Game</h3>
 </div>
 
-<div  class="addForm">
-    <div class="addGame">
-      <form class="createGameForm" #f="ngForm" (ngSubmit)="addGame(f)">
 
-        <div class="addItems">
-          <app-add-items (newPrice)="setPrice($event)" (newTitle)="setTitle($event)" ></app-add-items>
-        </div>
+<div class="addGame">
+  <form class="createGameForm" #f="ngForm" (ngSubmit)="addGame(f)">
+    <div class="addForm">
+      <div class="addItems">
+        <app-add-items (newPrice)="setPrice($event)" (newTitle)="setTitle($event)"></app-add-items>
+      </div>
 
+      <div class="uno">
+        <mat-form-field>
+          <input matInput placeholder="Minimum Age" ngModel name="minAge">
+        </mat-form-field>
+      </div>
 
-        <div>
-          <mat-form-field >
-            <input matInput placeholder="Minimum Age" ngModel name="minAge">
-          </mat-form-field>
-        </div>
-
-        <div>
-          <mat-form-field >
-            <input matInput placeholder="publisher" ngModel name="publisher">
-          </mat-form-field>
-        </div>
-        <div>
-          <mat-form-field >
-            <input matInput placeholder="Genre" ngModel name="genre">
-          </mat-form-field>
-        </div>
-        <button mat-button>cReate!</button>
-      </form>
+      <div class="dos">
+        <mat-form-field>
+          <input matInput placeholder="publisher" ngModel name="publisher">
+        </mat-form-field>
+      </div>
+      <div class="tres">
+        <mat-form-field>
+          <input matInput placeholder="Genre" ngModel name="genre">
+        </mat-form-field>
+      </div>
+      <button mat-button>cReate!</button>
     </div>
+  </form>
 
 </div>
-
-
-
-
-
-
-
-
-
 
 
 <app-footer></app-footer>

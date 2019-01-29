@@ -14,4 +14,10 @@ export class BooksOverviewComponent implements OnInit {
   ngOnInit() {
   }
 
+
+  passId(toPassId){
+    this.dataService.changeId(toPassId)
+  }
+
+
 }
