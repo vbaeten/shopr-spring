@@ -11,9 +11,6 @@ export class NavbarComponent implements OnInit {
 
   constructor() {
 
-    @Input() user: User;
-    firstName: string;
-
 
   }
 
