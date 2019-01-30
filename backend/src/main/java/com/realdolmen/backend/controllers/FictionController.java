@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 public class FictionController
 {
 FictionServiceImpl fictionService;
+Fiction fiction;
 
     public FictionController(FictionServiceImpl fictionService)
     {
@@ -33,7 +34,10 @@ FictionServiceImpl fictionService;
     @ResponseStatus(HttpStatus.OK)
     public Fiction getOneForId(@PathVariable Long id)
     {
-        return fictionService.findById(id);
+        fiction = new Fiction();
+        fiction= fictionService.findById(id);
+        fiction.setGenre(fiction.getFictionGenreEnum().toString());
+        return fiction;
     }
 
     @PostMapping(value = "/save", consumes = MediaType.APPLICATION_JSON_VALUE)

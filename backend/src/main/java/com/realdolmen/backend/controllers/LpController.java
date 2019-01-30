@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 public class LpController
 {
     private LpServiceImpl lpService;
+    Lp lp;
 
     public LpController(LpServiceImpl lpService)
     {
@@ -34,7 +35,10 @@ public class LpController
     @ResponseStatus(HttpStatus.OK)
     public Lp getOneForId(@PathVariable Long id)
     {
-        return lpService.findById(id);
+        lp = new Lp();
+        lp = lpService.findById(id);
+        lp.setGenre(lp.getLpGenreEnum().toString());
+        return lp;
     }
 
     @PostMapping(value = "/save", consumes = MediaType.APPLICATION_JSON_VALUE)
