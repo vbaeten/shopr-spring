@@ -20,6 +20,7 @@ import java.util.stream.Collectors;
 public class NonFictionController
 {
     NonFictionServiceImpl nonFictionService;
+    NonFiction nonFiction;
 
     public NonFictionController(NonFictionServiceImpl nonFictionService)
     {
@@ -37,7 +38,10 @@ public class NonFictionController
     @ResponseStatus(HttpStatus.OK)
     public NonFiction getOneForId(@PathVariable Long id)
     {
-        return nonFictionService.findById(id);
+        nonFiction = new NonFiction();
+        nonFiction = nonFictionService.findById(id);
+        nonFiction.setGenre(nonFiction.getNonFictionGenreEnum().toString());
+        return nonFiction;
     }
 
     @PostMapping(value = "/save", consumes = MediaType.APPLICATION_JSON_VALUE)
