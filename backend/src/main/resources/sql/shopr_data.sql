@@ -1,7 +1,12 @@
-INSERT INTO  user (id, first_name, last_name) VALUES (1000, 'John', 'Doe');
-INSERT INTO  user (id, first_name, last_name) VALUES (2000, 'Joe', 'Buck');
-INSERT INTO  user (id, first_name, last_name) VALUES (3000, 'Nancy', 'Doe');
+INSERT INTO  user (id, username, firstname, lastname, password, active) VALUES (1000, 'jdoe', 'John', 'Doe', '$2a$10$ckFULcsmnz2Nw/lDLh0ApuVI4L6wxOUc79g7403jtSgp2SNM4wd4a',1); #123456
+INSERT INTO  user (id, username, firstname, lastname, password, active) VALUES (2000, 'ndoe', 'Nancy', 'Doe', '$2a$10$1vySPJT4f6aDJLAFKJtvl.2qhIFlpY314ItTA9trNSOI0Y2QNJC4K',1); #pass123
 
+REPLACE INTO `role` VALUES (1,'ADMIN');
+REPLACE INTO `role` VALUES (2,'GUEST');
+REPLACE INTO `role` VALUES (3,'CUSTOMER');
+
+INSERT  user_role values (1000,1);
+INSERT  user_role values (2000,2);
 
 INSERT INTO product (id, title, supplier_id, price, type) VALUES (1001, 'Thriller Book', 'Best Thrillers', 39.99, 'fiction');
 INSERT INTO product (id, title, supplier_id, price, type) VALUES (1002, 'Fantasy Book', 'Best Fantasies', 9.99, 'fiction');
