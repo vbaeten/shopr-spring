@@ -20,6 +20,7 @@ public class GameController
 {
 
     private GameServiceImpl gameService;
+    Game game;
 
     public GameController(GameServiceImpl gameService)
     {
@@ -38,7 +39,10 @@ public class GameController
     @ResponseStatus(HttpStatus.OK)
     public Game getOneForId(@PathVariable Long id)
     {
-        return gameService.findById(id);
+        game = new Game();
+        game =  gameService.findById(id);
+        game.setGenre(game.getGameGenreEnum().toString());
+        return game;
 
     }
 
