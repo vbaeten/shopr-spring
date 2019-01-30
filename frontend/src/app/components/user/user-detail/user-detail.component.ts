@@ -9,7 +9,7 @@ import {User} from "../../../models/user";
 })
 export class UserDetailComponent implements OnInit {
 
-  user: Object;
+  user: User;
   id: number = 10;
   name: string = "Van Gucht";
   firstName: string = "Ines";

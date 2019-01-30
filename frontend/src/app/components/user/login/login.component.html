@@ -1,3 +1,16 @@
-<p>
-  login here!
-</p>
+<div class="myContainer">
+
+  <p>
+    login here!
+  </p>
+  <mat-form-field appearance="outline">
+    <mat-select placeholder="Select User">
+      <mat-option *ngFor="let user of users" [value]="user.id" >
+        {{user.firstName}} {{user.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-stroked-button color="accent">Login</button>
+  <p>
+  </p>
+</div>

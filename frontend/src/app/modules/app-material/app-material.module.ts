@@ -6,7 +6,7 @@ import {
   MatIconModule,
   MatTableModule,
   MatToolbarModule,
-  MatMenuModule
+  MatMenuModule, MatSelectModule, MatFormFieldModule, MatInputModule
 } from "@angular/material";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
@@ -24,7 +24,10 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
     BrowserAnimationsModule,
     MatMenuModule,
     MatIconModule,
-    NgbModule
+    NgbModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   exports: [
     MatCardModule,
@@ -35,7 +38,10 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
     BrowserAnimationsModule,
     MatMenuModule,
     MatIconModule,
-    NgbModule
+    NgbModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatInputModule
   ]
 })
 

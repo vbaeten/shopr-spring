@@ -19,19 +19,50 @@ body {
   margin: 0 auto;
 }
 
-.container {
-  background: #abcbff;
+.myContainer {
+  background: white;
   alignment: center;
-  margin-left: 180px;
-  margin-right: 180px;
-  flex-direction: column;
-  margin-top: 0px;
+  padding: 10px;
+}
 
+.shoprIndex {
+  background-color: #ffcae8;
+  margin: 0px;
+}
+
+.shoprFooter {
+  background-color: #00bea4;
+  alignment: center;
+  padding-top: 0px;
+  text-align: center;
+  margin: 0px;
+  heigth: 100px;
+}
+
+.shoprHeader {
+  background-color: #00bea4;
+  alignment: center;
+  padding-top: 0px;
+  text-align: center;
+  margin: 0px;
+}
+
+
+.page {
+  background: white;
+  alignment: center;
+  font-family: "Source Code Pro", Helvetica;
+  width: 1200px;
+  margin: auto;
 }
 
 .userDetailCard{
   padding: 20px;
   margin: 20px;
+}
+
+.mat-header-cell {
+  color: blue;
 }
 
 
