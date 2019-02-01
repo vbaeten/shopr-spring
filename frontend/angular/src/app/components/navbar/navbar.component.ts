@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../services/auth.service";
+import {UserService} from "../../services/user.service";
+import {User} from "../../models/users.model";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-navbar',
@@ -7,17 +10,26 @@ import {AuthService} from "../../services/auth.service";
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  private _authenticated: boolean;
+  private _isAuthenticatedUser: boolean;
+  private _currentUser: User;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private userService: UserService, private router: Router) {
+  }
 
   ngOnInit() {
-    this._authenticated = this.authService.isAuthenticated(undefined, undefined);
-    console.log('is authenticated: ' + this._authenticated)
+    this.authService.authenticatedObservable.subscribe(data => {
+      this._isAuthenticatedUser = data
+    });
+    console.log('currentUser is : ' + this._currentUser);
   }
 
-
-  get authenticated(): boolean {
-    return this._authenticated;
+  logout() {
+    this.authService.logout();
+    this.router.navigate(["/"]);
   }
+
+  get isAuthenticatedUser(): boolean {
+    return this._isAuthenticatedUser;
+  }
+
 }

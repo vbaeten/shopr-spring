@@ -3,15 +3,15 @@
     <h1>ShopR</h1>
     <a mat-button routerLink="/">Home</a>
     <span class="spacer"></span>
-    auth {{authenticated}}
-    <a *ngIf="!authenticated" routerLink="/register">Register</a>
-    <a *ngIf="!authenticated" routerLink="/login">Login</a>
-    <div *ngIf="authenticated">
-      Welcome !
-      <a class="nav-link"
-         routerLink="/logout"
-         routerLinkActive="active">
-      </a>
+    <div *ngIf="!isAuthenticatedUser">
+      <button mat-button routerLink="/register">Register</button>
+      <button mat-button routerLink="/login">Login</button>
+    </div>
+    <div *ngIf="isAuthenticatedUser">
+      <div>
+        Welcome !
+        <button mat-button (click)="logout()">Logout</button>
+      </div>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>

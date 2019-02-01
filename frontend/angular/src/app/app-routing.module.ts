@@ -4,9 +4,11 @@ import {RegisterComponent} from "./components/auth/register/register.component";
 import {LoginComponent} from "./components/auth/login/login.component";
 import {ProductListComponent} from "./components/product-list/product-list.component";
 import {AuthGuard} from "./services/auth-guard.service";
+import {DashboardComponent} from "./components/dashboard/dashboard.component";
 
 const routes: Routes = [
-  {path: 'products', component: ProductListComponent, canActivate: [AuthGuard] },
+  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+  {path: 'products', component: ProductListComponent}, // TODO add authGard
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
   { path: '', redirectTo: '/products', pathMatch: 'full'}

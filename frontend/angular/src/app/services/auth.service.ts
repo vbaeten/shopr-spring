@@ -1,55 +1,51 @@
 import {Injectable} from '@angular/core';
 import {TokenStorage} from "./token.storage";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Router} from "@angular/router";
+import {BehaviorSubject, Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private _authenticated: boolean =false;
+  private _authenticated: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  authenticatedObservable: Observable<boolean> = this._authenticated.asObservable();
 
   constructor(
     private tokenStorage: TokenStorage,
-    private httpClient: HttpClient,
-    private router: Router,
-    private http: HttpClient
+    private httpClient: HttpClient
   ) {
   }
 
   isAuthenticated(credentials, callback) {
     console.log(this.tokenStorage.getToken());
-    if (!this.tokenStorage.getToken()) {
-      let token;
-      if (credentials !== undefined) {
-        token = 'Basic ' + btoa(credentials.username + ':' + credentials.password);
-        this.tokenStorage.saveToken(token);
-      }
-
-      const headers = new HttpHeaders(credentials ? {
-        Authorization: token
-      } : {});
-      this.httpClient.get('/api/user/currentuser', {headers: headers}).subscribe(response => {
-        if (response['name']) {
-          this._authenticated = true;
-        } else {
-          this._authenticated = false;
-        }
-        return callback && callback();
-      });
-      return this.authenticated;
+    let token;
+    if (!this.tokenStorage.getToken() && credentials !== undefined) {
+      token = 'Basic ' + btoa(credentials.username + ':' + credentials.password);
+      this.tokenStorage.saveToken(token);
+    } else {
+      token = this.tokenStorage.getToken();
     }
-    this._authenticated = true;
-    return true;
+
+    let headers = new HttpHeaders(credentials ? {
+      Authorization: token,
+    } : {});
+    headers = headers.append("X-Requested-With", "XMLHttpRequest");
+    this.httpClient.get('/api/user/currentuser', {headers: headers}).subscribe(response => {
+      if (response['name']) {
+        this._authenticated.next(true);
+      } else {
+        this._authenticated.next(false);
+      }
+      return callback && callback();
+    });
   }
 
   logout() {
-    localStorage.removeItem('currentUser');
-    this._authenticated = false;
+    this.httpClient.get("/api/logout").subscribe(() => {
+      this.tokenStorage.signOut();
+      this._authenticated.next(false)
+    });
   }
 
 
-  get authenticated(): boolean {
-    return this._authenticated;
-  }
 }

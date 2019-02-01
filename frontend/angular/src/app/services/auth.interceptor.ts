@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {HttpHandler, HttpInterceptor, HttpRequest} from "@angular/common/http";
+import {HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest} from "@angular/common/http";
 import {TokenStorage} from "./token.storage";
 import {Router} from "@angular/router";
 
@@ -11,8 +11,11 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
+    let httpHeader: HttpHeaders = new HttpHeaders();
+    httpHeader= httpHeader.set('Authenticate', this.tokenStorage.getToken());
+    httpHeader= httpHeader.set('X-Requested-With', "XMLHttpRequest");
     const auth = req.clone({
-      headers: req.headers.set('Authenticate', this.tokenStorage.getToken())
+      headers: httpHeader
     });
     return next.handle(auth);
   }
