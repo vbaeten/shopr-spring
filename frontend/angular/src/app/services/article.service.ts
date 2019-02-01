@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {Observable, Subject} from "rxjs";
 import {Article} from "../domain/Article";
 
 @Injectable({
@@ -21,8 +21,21 @@ export class ArticleService {
     return articlesObservable;
   }
 
-  getArticleById(articleId: number): Observable<Article> {
-    return this.httpClient.get<Article>("/articles/" + articleId);
-  }
+  getArticleById(articleId: number): Observable<any> {
+    let subject: Subject<any> = new Subject();
+    this.httpClient.get("/articles/" + articleId).subscribe((article: Article) => {
+      switch (article.type) {
+        case "game":
+          return this.httpClient.get("/game/" + articleId).subscribe(response => subject.next(response));
+        case "lp":
+          return this.httpClient.get("/lp/" + articleId).subscribe(response => subject.next(response));
+        case "bookfiction":
+          return this.httpClient.get("/bookfiction/" + articleId).subscribe(response => subject.next(response));
+        case "booknonfiction":
+          return this.httpClient.get("/booknonfiction/" + articleId).subscribe(response => subject.next(response));
+      }
+    });
+    return subject.asObservable();
 
+  }
 }

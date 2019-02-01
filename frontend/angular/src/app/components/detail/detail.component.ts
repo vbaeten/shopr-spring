@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ArticleService} from "../../services/article.service";
-import {Article} from "../../domain/Article";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-detail',
@@ -8,14 +8,16 @@ import {Article} from "../../domain/Article";
   styleUrls: ['./detail.component.css']
 })
 export class DetailComponent implements OnInit {
-  article: Article;
+  article: any;
   articleId: number;
 
-  constructor(private service: ArticleService) {
+  constructor(private articleService: ArticleService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.service.getArticleById(this.articleId);
+    this.articleId = this.route.snapshot.params['articleId'];
+    // this.route.params.subscribe(params => this.articleId = params['articleId']);
+    this.articleService.getArticleById(this.articleId).subscribe(article => this.article = article);
   }
 
 }

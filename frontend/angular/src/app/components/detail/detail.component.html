@@ -1,19 +1,52 @@
+<div class="outer">
+  <br/>
+  <br/>
 <mat-card class="example-card">
   <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>Shiba Inu</mat-card-title>
-    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+    <mat-card-title>{{article.title}}</mat-card-title>
+    <mat-card-subtitle>{{article.type}}</mat-card-subtitle>
   </mat-card-header>
-  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+
   <mat-card-content>
+    <br/>
     <p>
-      The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-      A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-      bred for hunting.
+      price : {{article.price}}
     </p>
+    <p>
+      supplier : {{article.supplierId}}
+    </p>
+    <p>
+      article ID : {{article.articleId}}
+    </p>
+    <p *ngIf="article.publisher">
+      Publisher : {{article.publisher}}
+    </p>
+    <p *ngIf="article.gameGenre">
+      Game genre : {{article.gameGenre}}
+    </p>
+    <p *ngIf="article.minimumAge">
+      Minimum age: {{article.minimumAge}}
+    </p>
+    <p *ngIf="article.artist">
+      Minimum age: {{article.artist}}
+    </p>
+    <p *ngIf="article.lpGenre">
+      Minimum age: {{article.lpGenre}}
+    </p>
+    <p *ngIf="article.minimumAge">
+      Minimum age: {{article.minimumAge}}
+    </p>
+    <p *ngIf="article.minimumAge">
+      Minimum age: {{article.minimumAge}}
+    </p>
+
+
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
+    <button mat-raised-button color="accent">Add to cart</button>
+    <button mat-raised-button color="primary">Edit</button>
+    <button mat-raised-button color="warn">Delete</button>
+
   </mat-card-actions>
 </mat-card>
+</div>

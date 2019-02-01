@@ -2,8 +2,8 @@ package com.realdolmen.backend.repositories;
 
 import com.realdolmen.backend.Domain.Lp;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-@Repository
+@RepositoryRestResource(collectionResourceRel = "lp", path = "lp")
 public interface LpRepository extends JpaRepository<Lp, Long> {
 }
