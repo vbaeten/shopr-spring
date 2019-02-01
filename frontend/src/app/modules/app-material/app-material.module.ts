@@ -11,6 +11,7 @@ import {
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [],
@@ -27,7 +28,8 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
     NgbModule,
     MatSelectModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    ReactiveFormsModule
   ],
   exports: [
     MatCardModule,
@@ -41,7 +43,8 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
     NgbModule,
     MatSelectModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    ReactiveFormsModule
   ]
 })
 

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NonFictionDetailComponent } from './non-fiction-detail.component';
+import { ExampleComponent } from './example.component';
 
-describe('NonFictionDetailComponent', () => {
-  let component: NonFictionDetailComponent;
-  let fixture: ComponentFixture<NonFictionDetailComponent>;
+describe('ExampleComponent', () => {
+  let component: ExampleComponent;
+  let fixture: ComponentFixture<ExampleComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NonFictionDetailComponent ]
+      declarations: [ ExampleComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NonFictionDetailComponent);
+    fixture = TestBed.createComponent(ExampleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

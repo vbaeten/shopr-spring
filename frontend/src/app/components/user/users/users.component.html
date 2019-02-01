@@ -1,43 +1,9 @@
 <p>
   List of Registered Users:
 </p>
+
 <div>
-  <a *ngFor="let user of users">
+  <li *ngFor="let user of users">
     {{user.firstName}} {{user.name}}
-  </a>
-</div>
-<div class="container">
-
-  <ul class="users">
-    <li *ngFor="let user of data">
-      {{user.id}}
-    </li>
-  </ul>
-  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
-      <td mat-cell *matCellDef="let user">{{user.id}}</td>
-    </ng-container>
-    <ng-container matColumnDef="firstName">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name</th>
-      <td mat-cell *matCellDef="let user">{{user.firstName }}</td>
-    </ng-container>
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-      <td mat-cell *matCellDef="let user">{{user.name}}</td>
-    </ng-container>
-  </table>
-
-  <table mat-table>
-    <tr>
-      <th mat-header-row="id">Id</th>
-      <th mat-header-row="firstName">First Name</th>
-      <th mat-header-row="name">Name</th>
-    </tr>
-    <tr *ngFor="let user of users">
-      <td>{{user.id}}</td>
-      <td>{{user.firstName}}</td>
-      <td>{{user.name}}</td>
-    </tr>
-  </table>
+  </li>
 </div>

@@ -1,9 +1,11 @@
 <div class="myContainer">
-  <mat-form-field appearance="standard">
-    <input matInput placeholder="First Name">
-  </mat-form-field>
-  <mat-form-field appearance="standard">
-    <input matInput placeholder="Last Name">
-  </mat-form-field>
-  <button mat-stroked-button color="accent">Register</button>
+  <form [formGroup]="registrationForm" (ngSubmit)="registerUser()">
+    <mat-form-field appearance="standard">
+      <input matInput placeholder="First Name" type="text" name="name">
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <input matInput placeholder="Last Name" type="text" name="lastName">
+    </mat-form-field>
+    <button id="register-button" mat-stroked-button color="accent" type="submit">Register</button>
+  </form>
 </div>

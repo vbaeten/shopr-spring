@@ -3,31 +3,27 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {User} from "../models/user";
 import {environment} from "../../environments/environment";
+import {ApiService} from "./api.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  private classUrl: string = environment.apiUrl + '/user';
-  private userUrl: string = environment.baseApiUrl + '/user';
 
-  constructor( private http:HttpClient) {
+  constructor(
+    private apiService: ApiService) {
   }
 
   getUsers(): Observable<User[]>{
-    return this.http.get<User[]>(this.classUrl + "/list");
-  }
-
-  getUserz(): void {
-    this.http.get<User[]>('/user/list')
+    return this.apiService.doGet('/user/list');
   }
 
   getUser(id: number): Observable<User> {
-    return this.http.get<User>('/user/' + id);
+    return this.apiService.doGet<User>('/user/' + id);
   }
 
-  // createUser(user: User): Observable<User> {
-  //   return this.http.post('user/register')
-  // }
+  registerUser(user:User): Observable<User> {
+    return this.apiService.doPost('/user/register', user)
+  }
 }

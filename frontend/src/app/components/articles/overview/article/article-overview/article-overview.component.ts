@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from "../../../../../services/user.service";
 import {User} from "../../../../../models/user";
+import {Article} from "../../../../../models/article";
+import {ArticleService} from "../../../../../services/article.service";
 
 @Component({
   selector: 'app-article-overview',
@@ -9,11 +11,14 @@ import {User} from "../../../../../models/user";
 })
 export class ArticleOverviewComponent implements OnInit {
 
-  users: User[] = [];
+  articles: Article[] = [];
 
-  constructor(private userService: UserService) { }
+  constructor(private articleService: ArticleService) { }
+
+  columns: string[] = ['id', 'title', 'price']
 
   ngOnInit() {
+    this.articleService.getArticles()
   }
 
 }

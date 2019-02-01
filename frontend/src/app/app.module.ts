@@ -21,6 +21,8 @@ import { NonFictionDetailComponent } from './components/articles/details/non-fic
 import { ArticleOverviewComponent } from './components/articles/overview/article/article-overview/article-overview.component';
 import { ShopComponent } from './components/shop/shop/shop.component';
 import { ShoppingCartComponent } from './components/order/shopping-cart/shopping-cart.component';
+import { ExampleComponent } from './components/temp/example/example.component';
+import { OrderArticleComponent } from './components/order/order-article/order-article.component';
 
 
 @NgModule({
@@ -40,7 +42,9 @@ import { ShoppingCartComponent } from './components/order/shopping-cart/shopping
     NonFictionDetailComponent,
     ArticleOverviewComponent,
     ShopComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    ExampleComponent,
+    OrderArticleComponent
   ],
   imports: [
     BrowserModule,

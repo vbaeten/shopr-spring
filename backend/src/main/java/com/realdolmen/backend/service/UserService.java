@@ -12,5 +12,4 @@ public interface UserService extends CrudService<User, Long> {
 
     void delete(Long id);
 
-
 }

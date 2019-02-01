@@ -4,11 +4,11 @@ import com.realdolmen.backend.domain.Article;
 
 import java.util.List;
 
-public interface ArticleService {
+public interface ArticleService extends CrudService<Article, Long> {
 
     Article findById(Long id);
 
-    Article delete(Article article);
+    Article delete(Long id);
 
     List<Article> findAll();
 

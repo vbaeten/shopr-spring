@@ -11,4 +11,7 @@ public class FictionBook extends Book implements Serializable {
     @Column(name = "genre")
     @Enumerated
     private BookGenre bookGenre;
+
+    @Column
+    private String synopsis;
 }
