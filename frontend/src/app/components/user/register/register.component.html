@@ -1,8 +1,5 @@
-
-
-
 <mat-card>
-  <form [formGroup]="registerUserForm" (ngSubmit)="registerUser(registerUserForm.value)">
+  <form [formGroup]="registerUserForm" (ngSubmit)="registerUser()">
 
     <table class="register-user" cellspacing="0">
       <tr>
@@ -16,10 +13,17 @@
             <input matInput placeholder="Name" formControlName="name">
           </mat-form-field>
         </td>
+<!--
+        <td>
+          <mat-checkbox [formGroup]="registerUserForm" [formControlName]="checked">
+            Admin
+          </mat-checkbox>
+        </td>
+-->
       </tr>
       <tr>
         <button mat-button class="register-button" type = submit>
-        Register
+          Register
         </button>
       </tr>
     </table>
@@ -27,8 +31,6 @@
   </form>
 </mat-card>
 
-
-
 <p>
-  user works!
+  Register works!
 </p>

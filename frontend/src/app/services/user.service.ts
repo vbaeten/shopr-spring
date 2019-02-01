@@ -19,6 +19,24 @@ export class UserService {
       })
   };
 
+  public login(user: User) {
+    this.apiService.doPut("/user", user).subscribe(response => {
+        this.notification.open("You are logged in", "👍", {duration: 3000});
+      },
+      err => {
+        this.notification.open("Something went wrong", "You are not logged in, try again! 👎", {duration: 3000});
+      })
+  }
+
+  public logout(user: User) {
+    this.apiService.doPut("/user", user).subscribe(response => {
+        this.notification.open("You are logged out", "👍", {duration: 3000});
+      },
+      err => {
+        this.notification.open("Something went wrong", "You are not logged out, try again! 👎", {duration: 3000});
+      })
+  }
+
   public getUsers(): Promise<User[]> {
     return this.apiService.doGet("/user")
       .toPromise()
@@ -28,4 +46,10 @@ export class UserService {
   private handleError(error: any): Promise<any> {
     return Promise.reject(error.message | error);
   }
+
+  deleteById(id: number) {
+    return this.apiService.doDelete("/id")
+
+  }
+
 }

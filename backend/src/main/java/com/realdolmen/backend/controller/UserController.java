@@ -1,9 +1,6 @@
 package com.realdolmen.backend.controller;
 
 import com.realdolmen.backend.domain.User;
-import com.realdolmen.backend.dto.UserDto;
-import com.realdolmen.backend.facade.UserFacade;
-import com.realdolmen.backend.facade.UserFacadeImpl;
 import com.realdolmen.backend.service.UserService;
 import com.realdolmen.backend.service.UserServiceImpl;
 import lombok.AllArgsConstructor;
@@ -25,7 +22,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public User findById(@PathVariable Long id) {
+    public User findById(@PathVariable("id") Long id) {
         return userService.findById(id);
     }
 
@@ -34,17 +31,18 @@ public class UserController {
         return userService.findAll();
     }
 
-    @DeleteMapping
-    public void delete(User user) {
+    @PutMapping
+    public void update(@RequestBody User user){
+        userService.update(user);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable("id") Long id) {
+        User user = findById(id);
         userService.delete(user);
     }
 
 
-
-//    @GetMapping("/users")
-//    public List<UserDto> findAll(){
-//        return userFacade.findAll();
-//    }
 
 
 }

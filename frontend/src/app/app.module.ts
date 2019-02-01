@@ -4,16 +4,30 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/user/register/register.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {MatCardModule, MatFormFieldModule, MatInputModule, MatSnackBarModule} from '@angular/material';
+import {
+  MatCardModule,
+  MatCheckboxModule,
+  MatFormFieldModule,
+  MatInputModule, MatSelectModule,
+  MatSnackBarModule, MatToolbarModule
+} from '@angular/material';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { LoginComponent } from './components/user/login/login.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { CreateArticleComponent } from './components/article/create-article/create-article.component';
+import { UserComponent } from './components/user/user/user.component';
+import { UserDetailsComponent } from './components/user/user-details/user-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    NavBarComponent,
+    CreateArticleComponent,
+    UserComponent,
+    UserDetailsComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -25,7 +39,10 @@ import { LoginComponent } from './components/user/login/login.component';
     MatCardModule,
     MatSnackBarModule,
     MatFormFieldModule,
-    HttpClientModule
+    MatToolbarModule,
+    MatCheckboxModule,
+    HttpClientModule,
+    MatSelectModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]
