@@ -1,4 +1,4 @@
-<div class="bookfiction-container">
+<div class="game-container">
   <mat-form-field color="accent">
     <input matInput placeholder="Title" [(ngModel)]="title">
   </mat-form-field>
@@ -15,14 +15,14 @@
     <input matInput placeholder="Minimum Age" [(ngModel)]="minimumAge">
   </mat-form-field>
 
-  <mat-select placeholder="Bookfictiongenre" [(ngModel)]="bookfictionGenre">
-    <mat-option *ngFor="let bookfictionGenre of bookfictionGenres" [value]="bookfictionGenre">
-      {{bookfictionGenre}}
+  <mat-select placeholder="Gamegenre" [(ngModel)]="gameGenre">
+    <mat-option *ngFor="let gameGenre of gameGenres" [value]="gameGenre">
+      {{gameGenre}}
     </mat-option>
   </mat-select>
 
 
 </div>
 
-<button id="gobookfictionbutton" mat-raised-button
+<button id="gogamebutton" mat-raised-button
         color="accent" (click)="submit()">Go</button>

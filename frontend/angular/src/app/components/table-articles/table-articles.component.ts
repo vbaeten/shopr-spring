@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
 import {Article} from "../../domain/Article";
 import {ArticleService} from "../../services/article.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-table-articles',
@@ -14,8 +15,9 @@ export class TableArticlesComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private service: ArticleService) {
+  constructor(private service: ArticleService, public router: Router) {
   }
+
   ngOnInit() {
     this.service.allArticles().subscribe(data => {
       this.dataSource = new MatTableDataSource<Article>(data);
@@ -31,8 +33,7 @@ export class TableArticlesComponent implements OnInit {
     }
   }
 
-
-
-
-
+  goToDetail(articleId: Number) {
+    this.router.navigate(['/articles', articleId]);
+  }
 }

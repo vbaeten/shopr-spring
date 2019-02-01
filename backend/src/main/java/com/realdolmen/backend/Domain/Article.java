@@ -1,6 +1,7 @@
 package com.realdolmen.backend.Domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -8,12 +9,14 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 
 @Entity
 @Data
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING, name = "type")
-public abstract class Article extends BaseObject {
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+public abstract class Article extends BaseObject implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

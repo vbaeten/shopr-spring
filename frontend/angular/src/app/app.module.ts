@@ -10,6 +10,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {
   MatButtonModule,
+  MatCardModule,
   MatFormFieldModule,
   MatInputModule,
   MatOptionModule,
@@ -28,6 +29,7 @@ import {CreatelpComponent} from './components/createlp/createlp.component';
 import {CreategameComponent} from './components/creategame/creategame.component';
 import {CreatebookfictionComponent} from './components/createbookfiction/createbookfiction.component';
 import {CreatebooknonfictionComponent} from './components/createbooknonfiction/createbooknonfiction.component';
+import {DetailComponent} from './components/detail/detail.component';
 
 
 @NgModule({
@@ -42,7 +44,8 @@ import {CreatebooknonfictionComponent} from './components/createbooknonfiction/c
     CreatelpComponent,
     CreategameComponent,
     CreatebookfictionComponent,
-    CreatebooknonfictionComponent
+    CreatebooknonfictionComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +61,8 @@ import {CreatebooknonfictionComponent} from './components/createbooknonfiction/c
     MatInputModule,
     MatOptionModule,
     MatSelectModule,
-    FormsModule
+    FormsModule,
+    MatCardModule,
 
   ],
 

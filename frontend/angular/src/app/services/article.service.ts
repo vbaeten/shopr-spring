@@ -11,8 +11,18 @@ export class ArticleService {
   constructor(private httpClient: HttpClient) {
   }
 
+  private articleList: Article[];
+
   allArticles(): Observable<Article[]> {
-    return this.httpClient.get<Article[]>("/articles/all");
+    let articlesObservable = this.httpClient.get<Article[]>("/articles/all");
+    articlesObservable.subscribe(response => {
+      this.articleList = response;
+    });
+    return articlesObservable;
+  }
+
+  getArticleById(articleId: number): Observable<Article> {
+    return this.httpClient.get<Article>("/articles/" + articleId);
   }
 
 }
