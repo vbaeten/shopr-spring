@@ -1,12 +1,19 @@
 package com.realdolmen.backend.service;
 
 import com.realdolmen.backend.domain.Article;
+import com.realdolmen.backend.repository.ArticleRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class ArticleServiceImpl implements ArticleService {
+
+    private final ArticleRepository articleRepository;
+
+    public ArticleServiceImpl(ArticleRepository articleRepository) {
+        this.articleRepository = articleRepository;
+    }
 
     @Override
     public <S extends Article> S save(S entity) {
@@ -30,6 +37,6 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public List<Article> findAll() {
-        return null;
+        return articleRepository.findAll();
     }
 }

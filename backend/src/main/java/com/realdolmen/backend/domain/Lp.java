@@ -11,10 +11,10 @@ import java.io.Serializable;
 @DiscriminatorValue("Lp")
 public class Lp extends Article implements Serializable {
 
-    @Column
+    @Column(name="artist")
     private String artist;
 
-    @Column
+    @Column(name="genre")
     private MusicGenre musicGenre;
 
     public String getArtist() {

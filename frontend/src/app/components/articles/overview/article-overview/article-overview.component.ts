@@ -11,13 +11,23 @@ import {ArticleService} from '../../../../services/article.service';
 export class ArticleOverviewComponent implements OnInit {
 
   articles: Article[] = [];
+  dataSource;
+  displayedColumns: string[] = ['id', 'title', 'price'];
 
   constructor(private articleService: ArticleService) { }
 
-  columns: string[] = ['id', 'title', 'price'];
-
   ngOnInit() {
-    this.articleService.getArticles().subscribe(datasource => this.articles = datasource);
+    this.articleService.getArticles().subscribe(data => {
+      this.articles = data;
+      this.dataSource = this.articles;
+    });
   }
+
+  // ngOnInit() {
+  //   this.userService.getUsers().subscribe(data => {
+  //     this.users = data;
+  //     this.dataSource = this.users;
+  //   });
+  // }
 
 }

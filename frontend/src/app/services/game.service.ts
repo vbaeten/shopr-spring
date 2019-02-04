@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {ApiService} from "./api.service";
-import {Observable} from "rxjs";
-import {Fiction} from "../models/fiction";
+import {ApiService} from './api.service';
+import {Observable} from 'rxjs';
+import {Game} from '../models/game';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class GameService {
     private apiService: ApiService) {
   }
 
-  getGames(): Observable<Fiction[]>{
+  getGames(): Observable<Game[]> {
     return this.apiService.doGet('/game/list');
   }
 

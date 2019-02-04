@@ -6,3 +6,4 @@ INSERT INTO user(id, name, first_name) VALUES (5, 'Van Gucht', 'Ines');
 INSERT INTO user(id, name, first_name) VALUES (6, 'Van Gucht', 'Laurens');
 INSERT INTO user(id, name, first_name) VALUES (7, 'Debruyne', 'Karel');
 INSERT INTO user(id, name, first_name) VALUES (8, 'De Clercq', 'Ellis');
+

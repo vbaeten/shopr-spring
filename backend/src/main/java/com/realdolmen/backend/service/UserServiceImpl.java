@@ -3,7 +3,6 @@ package com.realdolmen.backend.service;
 import com.realdolmen.backend.domain.User;
 import com.realdolmen.backend.exception.NotFoundException;
 import com.realdolmen.backend.repository.UserRepository;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

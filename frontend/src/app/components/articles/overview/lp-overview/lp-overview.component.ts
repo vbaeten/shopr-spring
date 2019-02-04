@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Lp} from "../../../../models/lp";
+import {Lp} from '../../../../models/lp';
+import {LpService} from '../../../../services/lp.service';
 
 @Component({
   selector: 'app-lp-overview',
@@ -9,10 +10,15 @@ import {Lp} from "../../../../models/lp";
 export class LpOverviewComponent implements OnInit {
 
   lps: Lp[] = [];
+  dataSource;
+  displayedColumns: string[] = ['id', 'title', 'price'];
 
-  constructor() { }
+  constructor(private lpService: LpService) { }
 
   ngOnInit() {
+    this.lpService.getLps().subscribe(data => {
+      this.lps = data;
+      this.dataSource = this.lps;
+    });
   }
-
 }

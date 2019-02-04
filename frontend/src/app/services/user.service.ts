@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {Observable} from "rxjs";
-import {User} from "../models/user";
-import {ApiService} from "./api.service";
+import {Observable} from 'rxjs';
+import {User} from '../models/user';
+import {ApiService} from './api.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class UserService {
     private apiService: ApiService) {
   }
 
-  getUsers(): Observable<User[]>{
+  getUsers(): Observable<User[]> {
     return this.apiService.doGet('/user/list');
   }
 
@@ -21,7 +21,7 @@ export class UserService {
     return this.apiService.doGet('/user/' + id);
   }
 
-  registerUser(user:User): Observable<User> {
-    return this.apiService.doPost('/user/register', user)
+  registerUser(user: User): Observable<User> {
+    return this.apiService.doPost('/user/register', user);
   }
 }

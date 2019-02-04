@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {ApiService} from "./api.service";
-import {Observable} from "rxjs";
-import {Fiction} from "../models/fiction";
+import {ApiService} from './api.service';
+import {Observable} from 'rxjs';
+import {Lp} from '../models/lp';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class LpService {
     private apiService: ApiService) {
   }
 
-  getLps(): Observable<Fiction[]>{
+  getLps(): Observable<Lp[]> {
     return this.apiService.doGet('/lp/list');
   }
 

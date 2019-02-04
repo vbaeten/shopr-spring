@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NonFiction} from '../../../../models/non-fiction';
+import {NonFictionService} from '../../../../services/non-fiction.service';
 
 @Component({
   selector: 'app-non-fiction-overview',
@@ -9,10 +10,18 @@ import {NonFiction} from '../../../../models/non-fiction';
 export class NonFictionOverviewComponent implements OnInit {
 
   nonFictionBooks: NonFiction[] = [];
+  dataSource;
+  displayedColumns: string[] = ['id', 'title', 'price'];
 
-  constructor() { }
+
+  constructor(private nonFictionService: NonFictionService) {
+  }
 
   ngOnInit() {
+    this.nonFictionService.getNonFictionBooks().subscribe(data => {
+      this.nonFictionBooks = data;
+      this.dataSource = this.nonFictionBooks;
+    });
   }
 
 }

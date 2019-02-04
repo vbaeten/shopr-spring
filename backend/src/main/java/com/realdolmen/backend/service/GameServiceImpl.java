@@ -1,12 +1,19 @@
 package com.realdolmen.backend.service;
 
 import com.realdolmen.backend.domain.Game;
+import com.realdolmen.backend.repository.GameRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class GameServiceImpl implements  GameService {
+
+    private final GameRepository gameRepository;
+
+    public GameServiceImpl(GameRepository gameRepository) {
+        this.gameRepository = gameRepository;
+    }
 
     @Override
     public <S extends Game> S save(S entity) {
@@ -25,7 +32,7 @@ public class GameServiceImpl implements  GameService {
 
     @Override
     public List<Game> findAll() {
-        return null;
+        return gameRepository.findAll();
     }
 
     @Override

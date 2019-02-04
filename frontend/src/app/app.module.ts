@@ -74,7 +74,7 @@ import { NonFictionOverviewComponent } from './components/articles/overview/non-
     AppMaterialModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
   ],
   providers: [
     UserService
