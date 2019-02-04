@@ -6,12 +6,18 @@ import {
   MatIconModule,
   MatTableModule,
   MatToolbarModule,
-  MatMenuModule, MatSelectModule, MatFormFieldModule, MatInputModule, MatSortModule
-} from "@angular/material";
-import {FlexLayoutModule} from "@angular/flex-layout";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
-import {ReactiveFormsModule} from "@angular/forms";
+  MatMenuModule,
+  MatSelectModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatSortModule,
+  MatSnackBarModule,
+  MatExpansionModule
+} from '@angular/material';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [],
@@ -30,7 +36,9 @@ import {ReactiveFormsModule} from "@angular/forms";
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatSortModule
+    MatSortModule,
+    MatSnackBarModule,
+    MatExpansionModule
   ],
   exports: [
     MatCardModule,
@@ -46,7 +54,9 @@ import {ReactiveFormsModule} from "@angular/forms";
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatSortModule
+    MatSortModule,
+    MatSnackBarModule,
+    MatExpansionModule
   ]
 })
 

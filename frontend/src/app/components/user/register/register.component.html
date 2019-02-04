@@ -1,5 +1,5 @@
 <div class="myContainer">
-  <form [formGroup]="registrationForm" (ngSubmit)="registerUser()">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <mat-form-field appearance="standard">
       <input matInput placeholder="First Name" type="text" name="name">
     </mat-form-field>

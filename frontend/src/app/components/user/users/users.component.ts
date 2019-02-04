@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../../services/user.service';
 import {User} from '../../../models/user';
+import {assertNumber} from "@angular/core/src/render3/assert";
+import {element} from "protractor";
 
 @Component({
   selector: 'app-users',
@@ -11,7 +13,7 @@ export class UsersComponent implements OnInit {
 
   users: User[] = [];
   dataSource;
-  displayedColumns: string[] = ['id', 'firstName', 'name'];
+  displayedColumns: string[] = ['id', 'firstName', 'name', 'delete'];
 
   constructor(private userService: UserService) {
   }
@@ -21,5 +23,10 @@ export class UsersComponent implements OnInit {
       this.users = data;
       this.dataSource = this.users;
     });
+  }
+
+  deleteUser(user: User): void {
+    this.userService.deleteUser(user).subscribe();
+
   }
 }

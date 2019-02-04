@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from "../../../services/user.service";
-import {User} from "../../../models/user";
-import {FormBuilder, FormControl} from "@angular/forms";
+import {UserService} from '../../../services/user.service';
+import {User} from '../../../models/user';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -10,11 +10,9 @@ import {FormBuilder, FormControl} from "@angular/forms";
 })
 export class RegisterComponent implements OnInit {
 
-  user: User;
-  firstName = '';
-  name = '';
-
-  registrationForm = this.formBuilder.group({})
+  registerForm: FormGroup;
+  loading = false;
+  submitted = false;
 
   constructor(
     private userService: UserService,
@@ -25,14 +23,25 @@ export class RegisterComponent implements OnInit {
 
 
   ngOnInit() {
-    this.registrationForm.addControl(this.firstName, new FormControl()),
-      this.registrationForm.addControl(this.name, new FormControl())
+    this.registerForm = this.formBuilder.group({
+      firstName: ['', Validators.required],
+      name: ['', Validators.required]
+    });
   }
 
-  registerUser() {
-    this.registrationForm.value.firstName,
-      this.registrationForm.value.name,
-      this.userService.registerUser(this.user)
+  get f() {
+    return this.registerForm.controls;
   }
 
+  onSubmit() {
+    this.submitted = true;
+
+    if (this.registerForm.invalid) {
+      return;
+    }
+
+    this.loading = true;
+    this.userService.registerUser(this.registerForm.value);
+  }
 }
+

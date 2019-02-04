@@ -12,7 +12,7 @@ export class ArticleOverviewComponent implements OnInit {
 
   articles: Article[] = [];
   dataSource;
-  displayedColumns: string[] = ['id', 'title', 'price'];
+  displayedColumns: string[] = ['id', 'title', 'price', 'type'];
 
   constructor(private articleService: ArticleService) { }
 
