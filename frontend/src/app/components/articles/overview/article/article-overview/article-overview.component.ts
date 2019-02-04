@@ -18,7 +18,7 @@ export class ArticleOverviewComponent implements OnInit {
   columns: string[] = ['id', 'title', 'price']
 
   ngOnInit() {
-    this.articleService.getArticles()
+    this.articleService.getArticles().subscribe(datasource => this.articles = datasource);
   }
 
 }

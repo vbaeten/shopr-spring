@@ -6,7 +6,7 @@ import {
   MatIconModule,
   MatTableModule,
   MatToolbarModule,
-  MatMenuModule, MatSelectModule, MatFormFieldModule, MatInputModule
+  MatMenuModule, MatSelectModule, MatFormFieldModule, MatInputModule, MatSortModule
 } from "@angular/material";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
@@ -29,7 +29,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     MatSelectModule,
     MatFormFieldModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSortModule
   ],
   exports: [
     MatCardModule,
@@ -44,7 +45,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     MatSelectModule,
     MatFormFieldModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSortModule
   ]
 })
 

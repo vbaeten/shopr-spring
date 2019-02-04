@@ -36,15 +36,24 @@ body {
   padding-top: 0px;
   text-align: center;
   margin: 0px;
-  heigth: 100px;
+  min-height: 10vh;
+  bottom:0;
 }
 
 .shoprHeader {
+  height: 200px;
   background-color: #00bea4;
   alignment: center;
   padding-top: 0px;
   text-align: center;
   margin: 0px;
+}
+
+.shoprToolBar {
+  position: sticky;
+  position: -webkit-sticky; /* For macOS/iOS Safari */
+  top: 0; /* Sets the sticky toolbar to be on top */
+  z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
 }
 
 

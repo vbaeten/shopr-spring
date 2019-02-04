@@ -1,9 +1,23 @@
-<p>
+<div class="myContainer">
+<h4>
   List of Registered Users:
-</p>
 
-<div>
-  <li *ngFor="let user of users">
-    {{user.firstName}} {{user.name}}
-  </li>
+</h4>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z3" width="100%">
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> User ID</th>
+    <td mat-cell *matCellDef="let element"> {{element.id}}</td>
+  </ng-container>
+  <ng-container matColumnDef="firstName">
+    <th mat-header-cell *matHeaderCellDef> First Name</th>
+    <td mat-cell *matCellDef="let element"> {{element.firstName}}</td>
+  </ng-container>
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Last Name</th>
+    <td mat-cell *matCellDef="let element"> {{element.name}}</td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
 </div>

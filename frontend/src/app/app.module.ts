@@ -23,6 +23,11 @@ import { ShopComponent } from './components/shop/shop/shop.component';
 import { ShoppingCartComponent } from './components/order/shopping-cart/shopping-cart.component';
 import { ExampleComponent } from './components/temp/example/example.component';
 import { OrderArticleComponent } from './components/order/order-article/order-article.component';
+import { AddLpComponent } from './components/articles/add/add-lp/add-lp.component';
+import { AddGameComponent } from './components/articles/add/add-game/add-game.component';
+import { AddNonFictionComponent } from './components/articles/add/add-non-fiction/add-non-fiction.component';
+import { AddFictionComponent } from './components/articles/add/add-fiction/add-fiction.component';
+import { AddArticlesComponent } from './components/articles/add/add-articles/add-articles.component';
 
 
 @NgModule({
@@ -44,7 +49,12 @@ import { OrderArticleComponent } from './components/order/order-article/order-ar
     ShopComponent,
     ShoppingCartComponent,
     ExampleComponent,
-    OrderArticleComponent
+    OrderArticleComponent,
+    AddLpComponent,
+    AddGameComponent,
+    AddNonFictionComponent,
+    AddFictionComponent,
+    AddArticlesComponent
   ],
   imports: [
     BrowserModule,

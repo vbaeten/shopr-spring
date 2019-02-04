@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../../services/user.service";
 import {User} from "../../../models/user";
+import {DataSource} from "@angular/cdk/table";
 
 @Component({
   selector: 'app-users',
@@ -10,7 +11,8 @@ import {User} from "../../../models/user";
 export class UsersComponent implements OnInit {
 
   users: User[] = [];
-  data;
+  dataSource;
+  displayedColumns: string[] = ['id', 'firstName', 'name'];
 
   constructor(private userService: UserService) {
   }
@@ -18,6 +20,7 @@ export class UsersComponent implements OnInit {
   ngOnInit() {
     this.userService.getUsers().subscribe(data => {
       this.users = data;
-    })
+      this.dataSource = this.users;
+    });
   }
 }
