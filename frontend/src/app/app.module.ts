@@ -18,7 +18,7 @@ import { GameDetailComponent } from './components/articles/details/game-detail/g
 import { UserDetailComponent } from './components/user/user-detail/user-detail.component';
 import { FictionDetailComponent } from './components/articles/details/fiction-detail/fiction-detail.component';
 import { NonFictionDetailComponent } from './components/articles/details/non-fiction-detail/non-fiction-detail.component';
-import { ArticleOverviewComponent } from './components/articles/overview/article/article-overview/article-overview.component';
+import { ArticleOverviewComponent } from './components/articles/overview/article-overview/article-overview.component';
 import { ShopComponent } from './components/shop/shop/shop.component';
 import { ShoppingCartComponent } from './components/order/shopping-cart/shopping-cart.component';
 import { ExampleComponent } from './components/temp/example/example.component';
@@ -28,6 +28,12 @@ import { AddGameComponent } from './components/articles/add/add-game/add-game.co
 import { AddNonFictionComponent } from './components/articles/add/add-non-fiction/add-non-fiction.component';
 import { AddFictionComponent } from './components/articles/add/add-fiction/add-fiction.component';
 import { AddArticlesComponent } from './components/articles/add/add-articles/add-articles.component';
+import { TesttableComponent } from './components/temp/testtable/testtable.component';
+import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
+import { LpOverviewComponent } from './components/articles/overview/lp-overview/lp-overview.component';
+import { GameOverviewComponent } from './components/articles/overview/game-overview/game-overview.component';
+import { FictionOverviewComponent } from './components/articles/overview/fiction-overview/fiction-overview.component';
+import { NonFictionOverviewComponent } from './components/articles/overview/non-fiction-overview/non-fiction-overview.component';
 
 
 @NgModule({
@@ -54,13 +60,21 @@ import { AddArticlesComponent } from './components/articles/add/add-articles/add
     AddGameComponent,
     AddNonFictionComponent,
     AddFictionComponent,
-    AddArticlesComponent
+    AddArticlesComponent,
+    TesttableComponent,
+    LpOverviewComponent,
+    GameOverviewComponent,
+    FictionOverviewComponent,
+    NonFictionOverviewComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    AppMaterialModule
+    AppMaterialModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [
     UserService

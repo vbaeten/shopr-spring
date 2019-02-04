@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from "../../../../../services/user.service";
-import {User} from "../../../../../models/user";
-import {Article} from "../../../../../models/article";
-import {ArticleService} from "../../../../../services/article.service";
+
+import {Article} from '../../../../models/article';
+import {ArticleService} from '../../../../services/article.service';
 
 @Component({
   selector: 'app-article-overview',
@@ -15,7 +14,7 @@ export class ArticleOverviewComponent implements OnInit {
 
   constructor(private articleService: ArticleService) { }
 
-  columns: string[] = ['id', 'title', 'price']
+  columns: string[] = ['id', 'title', 'price'];
 
   ngOnInit() {
     this.articleService.getArticles().subscribe(datasource => this.articles = datasource);
