@@ -8,6 +8,7 @@ import {CreategameComponent} from "./components/creategame/creategame.component"
 import {CreatebookfictionComponent} from "./components/createbookfiction/createbookfiction.component";
 import {CreatebooknonfictionComponent} from "./components/createbooknonfiction/createbooknonfiction.component";
 import {DetailComponent} from "./components/detail/detail.component";
+import {LoginComponent} from "./components/login/login.component";
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'articles', component: ArticlesOverviewComponent},
   {path: 'articles/:articleId', component: DetailComponent},
   {path: 'create', component: CreateComponent},
+  {path: 'login', component: LoginComponent},
   {path: '**', redirectTo: 'home', pathMatch: 'full'}
 ];
 

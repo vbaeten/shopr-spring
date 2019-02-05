@@ -11,10 +11,12 @@ import {NavbarComponent} from './components/navbar/navbar.component';
 import {
   MatButtonModule,
   MatCardModule,
+  MatCheckboxModule,
   MatFormFieldModule,
   MatInputModule,
   MatOptionModule,
   MatPaginatorModule,
+  MatRadioModule,
   MatSelectModule,
   MatSortModule,
   MatTableModule,
@@ -30,6 +32,8 @@ import {CreategameComponent} from './components/creategame/creategame.component'
 import {CreatebookfictionComponent} from './components/createbookfiction/createbookfiction.component';
 import {CreatebooknonfictionComponent} from './components/createbooknonfiction/createbooknonfiction.component';
 import {DetailComponent} from './components/detail/detail.component';
+import {LoginComponent} from './components/login/login.component';
+import {UserService} from "./services/user.service";
 
 
 @NgModule({
@@ -45,7 +49,8 @@ import {DetailComponent} from './components/detail/detail.component';
     CreategameComponent,
     CreatebookfictionComponent,
     CreatebooknonfictionComponent,
-    DetailComponent
+    DetailComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -63,10 +68,12 @@ import {DetailComponent} from './components/detail/detail.component';
     MatSelectModule,
     FormsModule,
     MatCardModule,
+    MatCheckboxModule,
+    MatRadioModule,
 
   ],
 
-  providers: [ArticleService],
+  providers: [ArticleService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

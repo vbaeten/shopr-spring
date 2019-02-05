@@ -1,10 +1,13 @@
 package com.realdolmen.backend.restcontrollers;
 
 import com.realdolmen.backend.Domain.User;
+import com.realdolmen.backend.exception.NotFoundException;
 import com.realdolmen.backend.repositories.UserRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/user")
@@ -15,7 +18,8 @@ public class UserRestController {
         this.userRepository = userRepository;
     }
 
-    @PostMapping
+    @PostMapping("/create")
+    @ResponseStatus(HttpStatus.CREATED)
     public User save(@RequestBody User user) {
         return userRepository.save(user);
     }
@@ -41,5 +45,19 @@ public class UserRestController {
         User user = findById(userId);
         userRepository.delete(user);
     }
+
+    @PostMapping("/register")
+    public User registerUser(@RequestBody User user) {
+        return userRepository.save(user);
+    }
+
+
+    @GetMapping(path = "/login/{userName}")
+    public User login(@PathVariable("userName") String userName) {
+        Optional<User> user = userRepository.findByUserName(userName);
+        return user
+                .orElseThrow(() -> new NotFoundException());
+    }
+
 
 }

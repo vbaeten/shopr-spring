@@ -1,3 +1,22 @@
-<p>
-  login works!
-</p>
+<div class="bookfiction-container">
+  <mat-form-field color="accent">
+    <input matInput placeholder="First Name" [(ngModel)]="firstName">
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <input matInput placeholder="Last Name" [(ngModel)]="lastName">
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <input matInput placeholder="Username" [(ngModel)]="userName">
+  </mat-form-field>
+  <!--<section class="example-section">-->
+  <!--<label class="example-margin">Login as admin:</label>-->
+  <!--<mat-radio-group [(ngModel)]="admin">-->
+  <!--<mat-radio-button class="example-margin" value="true">After</mat-radio-button>-->
+  <!--<mat-radio-button class="example-margin" value="false">Before</mat-radio-button>-->
+  <!--</mat-radio-group>-->
+  <!--</section>-->
+</div>
+
+<button mat-raised-button
+        color="accent" (click)="submit()">Go
+</button>
