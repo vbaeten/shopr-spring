@@ -1,3 +1,46 @@
 <app-header></app-header>
 <app-navbar></app-navbar>
+
+<mat-card class="detailCard">
+  <mat-card-header>
+    <mat-card-title> {{fiction.title}}</mat-card-title>
+    <mat-card-subtitle> publisher: {{fiction.publisher}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div>
+     Author:
+    </div>
+    <p>{{fiction.author}}</p>
+    <div>
+     total pages:
+    </div>
+    <p> {{fiction.totalPages}}</p>
+    <div>
+     ISBN:
+    </div>
+    <p>{{fiction.isbn}}</p>
+    <div>
+     Genre:
+    </div>
+    <div>
+     Preview:
+    </div>
+    <p>{{fiction.preview}} </p>
+    <div>
+     price:
+    </div>
+    <p>{{fiction.price}}</p>
+
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>edit</button>
+    <button mat-button color="warn" routerLink="/fictionOverview" (click)="delete()">delete</button>
+    <button mat-button>add to cart</button>
+
+  </mat-card-actions>
+
+
+</mat-card>
+
+
 <app-footer></app-footer>

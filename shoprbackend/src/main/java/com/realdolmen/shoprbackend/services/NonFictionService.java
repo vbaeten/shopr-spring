@@ -37,6 +37,11 @@ public class NonFictionService implements CrudService<NonFiction,Long> {
         nonFictionRepository.delete(entity);
     }
 
+    public void deleteById(Long id) {
+        NonFiction nonFiction = findById(id);
+        nonFictionRepository.delete(nonFiction);
+    }
+
 
     public NonFictionService(NonFictionRepository nonFictionRepository) {
         this.nonFictionRepository = nonFictionRepository;

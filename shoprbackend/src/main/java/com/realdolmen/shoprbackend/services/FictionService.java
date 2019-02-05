@@ -39,6 +39,11 @@ public class FictionService implements CrudService<Fiction,Long> {
 
     }
 
+    public void deleteById(Long id) {
+        Fiction fiction = findById(id);
+        fictionRepository.delete(fiction);
+    }
+
 
     public FictionService(FictionRepository fictionRepository) {
         this.fictionRepository = fictionRepository;

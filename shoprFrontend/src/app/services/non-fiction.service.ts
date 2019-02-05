@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {Observable} from "rxjs";
-import {Game} from "../models/game";
 import {NonFiction} from "../models/nonFiction";
 
 @Injectable({
@@ -22,6 +21,15 @@ export class NonFictionService {
   }
 
   getNonFictions():Observable<NonFiction[]>{
-    return this.http.get<NonFiction[]>(this.classUrl);
+    return this.http.get<NonFiction[]>(this.classUrl+'/all');
   }
+
+  public getById(id:number):Observable<NonFiction>{
+    return this.http.get<NonFiction>(this.classUrl+'/'+id)
+  }
+
+  public deleteById(id:number):Observable<NonFiction>{
+    return this.http.delete<NonFiction>(this.classUrl+'/'+id)
+  }
+
 }

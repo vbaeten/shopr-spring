@@ -21,6 +21,15 @@ export class LpService {
   }
 
   getLps():Observable<Lp[]>{
-    return this.http.get<Lp[]>(this.classUrl);
+    return this.http.get<Lp[]>(this.classUrl+'/all');
   }
+
+  public getById(id:number):Observable<Lp>{
+    return this.http.get<Lp>(this.classUrl+'/'+id)
+  }
+
+  public deleteById(id:number):Observable<Lp>{
+    return this.http.delete<Lp>(this.classUrl+'/'+id)
+  }
+
 }

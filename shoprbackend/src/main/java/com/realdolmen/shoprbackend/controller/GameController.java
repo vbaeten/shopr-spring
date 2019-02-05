@@ -26,10 +26,14 @@ public class GameController {
         return game;
     }
 
+
+
     @GetMapping("/{id}")
     public Game findById(@PathVariable Long id){
         return gameService.findById(id);
     }
+
+
 
     @GetMapping("/all")
     @ResponseStatus(HttpStatus.OK)

@@ -22,6 +22,16 @@ export class FictionService {
   }
 
   getFictions():Observable<Fiction[]>{
-    return this.http.get<Fiction[]>(this.classUrl);
+    return this.http.get<Fiction[]>(this.classUrl+'/all');
   }
+
+  public getById(id:number):Observable<Fiction>{
+    return this.http.get<Fiction>(this.classUrl+'/'+id)
+  }
+
+  public deleteById(id:number):Observable<Fiction>{
+    return this.http.delete<Fiction>(this.classUrl+'/'+id)
+  }
+
+
 }

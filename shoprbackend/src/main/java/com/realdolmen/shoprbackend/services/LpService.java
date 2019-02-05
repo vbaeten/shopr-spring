@@ -34,6 +34,11 @@ public class LpService implements CrudService<Lp,Long>  {
         lpRepository.delete(lp);
     }
 
+    public void deleteById(Long id) {
+        Lp lp   = findById(id);
+        lpRepository.delete(lp);
+    }
+
 
 
 

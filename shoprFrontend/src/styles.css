@@ -32,3 +32,14 @@ table {
   margin-left: 2%;
   margin-top: 2%;
 }
+
+.detailCard{
+
+  max-width: 300px;
+  margin-left: 2%;
+
+}
+
+.navBar{
+  margin-bottom: 2%;
+}

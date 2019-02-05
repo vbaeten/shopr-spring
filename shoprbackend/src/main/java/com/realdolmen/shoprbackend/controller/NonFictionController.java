@@ -20,17 +20,17 @@ public class NonFictionController {
         return nonFictionService.save(nonFiction);
     }
 
-    @DeleteMapping
-    public void deleteNonFiction(@RequestBody NonFiction nonFiction){
-        nonFictionService.delete(nonFiction);
+    @DeleteMapping(value ="/{id}")
+    public void deleteById (@PathVariable Long id){
+        nonFictionService.deleteById(id);
     }
 
-    @GetMapping("/id")
-    public NonFiction findById(Long id){
+    @GetMapping("/{id}")
+    public NonFiction findById(@PathVariable Long id){
         return nonFictionService.findById(id);
     }
 
-    @GetMapping("")
+    @GetMapping("/all")
     public List<NonFiction> findAll(){
         return nonFictionService.findAll();
     }

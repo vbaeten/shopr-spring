@@ -20,17 +20,17 @@ public class LpController {
          return lp;
     }
 
-    @DeleteMapping
-    public void deleteLp(@RequestBody Lp lp){
-        lpService.delete(lp);
+    @DeleteMapping(value ="/{id}")
+    public void deleteById (@PathVariable("id") Long id){
+        lpService.deleteById(id);
     }
 
-    @GetMapping("/id")
-    public Lp findById(Long id){
+    @GetMapping("/{id}")
+    public Lp findById(@PathVariable Long id){
         return lpService.findById(id);
     }
 
-    @GetMapping("")
+    @GetMapping("/all")
     public List<Lp> findAll(){
         return lpService.findAll();
     }

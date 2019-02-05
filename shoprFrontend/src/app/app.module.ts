@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AddGameComponent } from './components/add-game/add-game.component';
 import {
-  MatButtonModule,
+  MatButtonModule, MatCardModule,
   MatCheckboxModule,
   MatFormFieldModule, MatGridListModule,
   MatIconModule, MatInputModule,
@@ -89,6 +89,7 @@ import { HeaderComponent } from './components/header/header.component';
     MatGridListModule,
     MatTableModule,
     MatSortModule,
+    MatCardModule
 
 
   ],

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {LpService} from "../../services/lp.service";
 import {Lp} from "../../models/lp";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-lp',
@@ -16,7 +17,7 @@ export class AddLpComponent implements OnInit {
   price:number
 
 
-  constructor(private lpService:LpService) { }
+  constructor(private lpService:LpService, private router:Router) { }
 
   ngOnInit() {
   }
@@ -32,6 +33,7 @@ export class AddLpComponent implements OnInit {
     this.lp.price = this.price
     this.lpService.createLp(this.lp)
       .subscribe(data=>this.lp=data)
+    this.router.navigate(['/lpsOverview'])
   }
 
 

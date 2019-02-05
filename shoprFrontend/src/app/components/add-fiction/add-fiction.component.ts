@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Fiction} from "../../models/fiction";
 import {FictionService} from "../../services/fiction.service";
 import {NgForm} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-fiction',
@@ -16,7 +17,7 @@ export class AddFictionComponent implements OnInit {
   price:number
 
 
-  constructor( private fictionService:FictionService) { }
+  constructor( private fictionService:FictionService, private router:Router) { }
 
 
 
@@ -37,6 +38,7 @@ export class AddFictionComponent implements OnInit {
     this.fiction.isbn = form.value.isbn
     this.fictionService.createFiction(this.fiction)
       .subscribe(data=>this.fiction=data)
+    this.router.navigate(['/fictionsOverview'])
   }
 
 

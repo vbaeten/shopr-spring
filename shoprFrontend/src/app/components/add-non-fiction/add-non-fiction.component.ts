@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {NonFictionService} from "../../services/non-fiction.service";
 import {NonFiction} from "../../models/nonFiction";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-non-fiction',
@@ -16,7 +17,7 @@ export class AddNonFictionComponent implements OnInit {
   price:number
 
 
-  constructor(private nonFictionService:NonFictionService) { }
+  constructor(private nonFictionService:NonFictionService, private router:Router) { }
 
   ngOnInit() {
   }
@@ -36,6 +37,7 @@ export class AddNonFictionComponent implements OnInit {
     this.nonFiction.isbn = form.value.isbn
     this.nonFictionService.createNonFiction(this.nonFiction)
       .subscribe(data=>this.nonFiction=data)
+    this.router.navigate(['/nonFictionsOverview'])
 
   }
 
