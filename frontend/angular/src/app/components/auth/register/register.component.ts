@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
+import {FormBuilder, Validators} from "@angular/forms";
+
 import {AuthService} from "../../../services/auth.service";
 import {UserService} from "../../../services/user.service";
-import {Router} from "@angular/router";
 import {User} from "../../../models/users.model";
 
 @Component({
@@ -11,20 +13,34 @@ import {User} from "../../../models/users.model";
 })
 export class RegisterComponent implements OnInit {
 
-  user: User = <User>{};
+  user: User;
 
-  constructor(private auth: AuthService, private userService: UserService, private router: Router) { }
+  registrationForm = this.fb.group({
+    username: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]],
+    firstname: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]],
+    lastname: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]],
+    password: ['', [Validators.required,Validators.minLength(5),Validators.maxLength(20)]],
+    confirmPassword: ['', [Validators.required,Validators.minLength(5),Validators.maxLength(20)]],
+  })
+
+  constructor(private auth: AuthService, private userService: UserService, private router: Router, private fb: FormBuilder) { }
 
   ngOnInit() {
   }
 
-  register() {
-    this.userService.create(this.user).subscribe(
-      data => {
-        console.log("Registration successful", true);
-        this.router.navigate(['/login']);
-      }
-    )
+  registerUser() {
+    if(this.registrationForm.value.password != this.registrationForm.value.confirmPassword) {
+      alert("Passwords don't match");
+    } else {
+      this.user = new User(
+        this.registrationForm.value.username,
+        this.registrationForm.value.firstname,
+        this.registrationForm.value.lastname,
+        this.registrationForm.value.password)
+    }
+    this.userService.registerUser(this.user);
+    this.router.navigate(['login']);
+    console.log("User: " + JSON.stringify(this.user));
   }
 
 }

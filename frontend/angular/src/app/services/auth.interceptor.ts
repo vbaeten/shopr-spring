@@ -12,7 +12,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     let httpHeader: HttpHeaders = new HttpHeaders();
-    httpHeader= httpHeader.set('Authenticate', this.tokenStorage.getToken());
+    httpHeader= httpHeader.set('Authorization', this.tokenStorage.getToken());
     httpHeader= httpHeader.set('X-Requested-With', "XMLHttpRequest");
     const auth = req.clone({
       headers: httpHeader

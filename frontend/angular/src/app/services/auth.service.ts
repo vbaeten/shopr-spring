@@ -31,6 +31,7 @@ export class AuthService {
     } : {});
     headers = headers.append("X-Requested-With", "XMLHttpRequest");
     this.httpClient.get('/api/user/currentuser', {headers: headers}).subscribe(response => {
+      console.log("Response " + JSON.stringify(response));
       if (response['name']) {
         this._authenticated.next(true);
       } else {

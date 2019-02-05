@@ -38,11 +38,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable().httpBasic()
-                .and()
+        http.csrf().disable().httpBasic().and()
                 .authorizeRequests()
                 .antMatchers("/dashboard").hasAuthority("ADMIN")
-                .antMatchers("/", "/register", "/login",  "/products/all").permitAll()
+                .antMatchers("/", "/register", "/login", "/products/all").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .logout()

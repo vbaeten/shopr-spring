@@ -18,12 +18,19 @@ export class UserService {
     return this.http.get(`/user/` + id);
   }
 
-  create(user: User) {
-    return this.http.post('/api/users', user);
-  }
-
   delete(id: number) {
     return this.http.delete('/api/users/' + id);
+  }
+
+  registerUser(user: User): boolean {
+    this.http.post("/api/user/register", user).subscribe(success => {
+      alert("You are registered");
+      return true;
+    }, err => {
+      alert("Something went wrong");
+      return false;
+    });
+    return false;
   }
 
 }
