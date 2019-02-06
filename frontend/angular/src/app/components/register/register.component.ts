@@ -4,11 +4,11 @@ import {UserService} from "../../services/user.service";
 import {User} from "../../domain/User";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
-export class LoginComponent implements OnInit {
+export class RegisterComponent implements OnInit {
   firstName: string;
   lastName: string;
   loggedIn: boolean;

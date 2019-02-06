@@ -32,8 +32,9 @@ import {CreategameComponent} from './components/creategame/creategame.component'
 import {CreatebookfictionComponent} from './components/createbookfiction/createbookfiction.component';
 import {CreatebooknonfictionComponent} from './components/createbooknonfiction/createbooknonfiction.component';
 import {DetailComponent} from './components/detail/detail.component';
-import {LoginComponent} from './components/login/login.component';
+import {RegisterComponent} from './components/register/register.component';
 import {UserService} from "./services/user.service";
+import {SigninComponent} from './components/signin/signin.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import {UserService} from "./services/user.service";
     CreatebookfictionComponent,
     CreatebooknonfictionComponent,
     DetailComponent,
-    LoginComponent
+    RegisterComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,

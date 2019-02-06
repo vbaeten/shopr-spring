@@ -18,12 +18,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.userSubscription = this.userService.userSubject.subscribe(sessionUser => {
-      this.currentUser = sessionUser
+      this.currentUser = sessionUser;
     });
-  }
-
-  getCurrentUser() {
-
   }
 
   ngOnDestroy(): void {

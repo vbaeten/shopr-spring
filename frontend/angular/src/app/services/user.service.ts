@@ -7,7 +7,7 @@ import {User} from "../domain/User";
   providedIn: 'root'
 })
 export class UserService {
-  userSubject = new Subject();
+  userSubject = new Subject<User>();
   private userKey: string = 'user';
 
   constructor(private httpClient: HttpClient) {
