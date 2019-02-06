@@ -1,22 +1,27 @@
-<div class="bookfiction-container">
+<div class="outer"><h3 class="ellis">Register</h3>
   <mat-form-field color="accent">
     <input matInput placeholder="First Name" [(ngModel)]="firstName">
   </mat-form-field>
+  <br/>
   <mat-form-field color="accent">
     <input matInput placeholder="Last Name" [(ngModel)]="lastName">
   </mat-form-field>
+  <br/>
   <mat-form-field color="accent">
     <input matInput placeholder="Username" [(ngModel)]="userName">
   </mat-form-field>
-  <!--<section class="example-section">-->
-  <!--<label class="example-margin">Login as admin:</label>-->
-  <!--<mat-radio-group [(ngModel)]="admin">-->
-  <!--<mat-radio-button class="example-margin" value="true">After</mat-radio-button>-->
-  <!--<mat-radio-button class="example-margin" value="false">Before</mat-radio-button>-->
-  <!--</mat-radio-group>-->
-  <!--</section>-->
+  <br/>
+  <section>
+    <mat-radio-group [(ngModel)]="admin">
+      <mat-radio-button class="example-margin" value="true">Admin</mat-radio-button>
+      <br/>
+      <br/>
+      <mat-radio-button class="example-margin" value="false">User</mat-radio-button>
+    </mat-radio-group>
+  </section>
+  <br/>
+  <button mat-raised-button
+          color="accent" (click)="submit()">Go
+  </button>
 </div>
 
-<button mat-raised-button
-        color="accent" (click)="submit()">Go
-</button>

@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {UserService} from "../../services/user.service";
 import {User} from "../../domain/User";
 import {Subscription} from "rxjs";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-navbar',
@@ -13,7 +14,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   currentUser: User;
   private userSubscription: Subscription;
 
-  constructor(public userService: UserService) {
+  constructor(public userService: UserService, public router: Router) {
   }
 
   ngOnInit() {
@@ -28,6 +29,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   logout(): void {
     this.userService.logout();
+    this.router.navigate(['/home']);
   }
 
 }

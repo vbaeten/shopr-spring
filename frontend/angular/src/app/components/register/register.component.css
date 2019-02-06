@@ -1,14 +1,18 @@
-.example-h2 {
-  margin: 10px;
+table {
+  width: 100%;
+  margin: auto;
 }
 
-.example-section {
-  display: flex;
-  align-content: center;
-  align-items: center;
-  height: 60px;
+.outer {
+  width: 80%;
+  margin: 0 auto;
 }
 
-.example-margin {
-  margin: 0 10px;
+mat-form-field {
+  margin: 0 auto;
 }
+
+.ellis {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+

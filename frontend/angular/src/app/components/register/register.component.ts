@@ -15,6 +15,7 @@ export class RegisterComponent implements OnInit {
   admin: boolean;
   checked = false;
   indeterminate = false;
+  labelPosition = 'after';
   userName: string;
 
   constructor(private service: UserService, public router: Router) {
@@ -26,6 +27,6 @@ export class RegisterComponent implements OnInit {
   submit() {
     let newUser = new User(this.firstName, this.lastName, this.userName, this.loggedIn, this.admin);
     this.service.register(newUser);
-    this.router.navigate(['/articles']);
+    this.router.navigate(['/signin']);
   }
 }
