@@ -25,7 +25,11 @@ export class UserService {
     return this.apiService.doPost('/user/register', user);
   }
 
-  deleteUser(id: number): Observable<User> {
+  deleteUserById(id: number): Observable<User> {
     return this.apiService.doDelete('/user/delete/' + id);
+  }
+
+  deleteUser(user: User | number): Observable<User> {
+    return this.apiService.doDelete('/user/delete');
   }
 }

@@ -1,11 +1,12 @@
 <div class="myContainer">
-  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
     <mat-form-field appearance="standard">
-      <input matInput placeholder="First Name" type="text" name="name">
+      <input matInput id="firstName" placeholder="First Name" type="text" name="firstName" ngForm>
     </mat-form-field>
     <mat-form-field appearance="standard">
-      <input matInput placeholder="Last Name" type="text" name="lastName">
+      <input matInput id="name" placeholder="Last Name" type="text" name="name" ngForm>
     </mat-form-field>
     <button id="register-button" mat-stroked-button color="accent" type="submit">Register</button>
+    <p>Register as {{name}}</p>
   </form>
 </div>

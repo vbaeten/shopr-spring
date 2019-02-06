@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../../services/user.service';
 import {User} from '../../../models/user';
-import {assertNumber} from "@angular/core/src/render3/assert";
-import {element} from "protractor";
+import {assertNumber} from '@angular/core/src/render3/assert';
+import {element} from 'protractor';
 
 @Component({
   selector: 'app-users',
@@ -27,6 +27,9 @@ export class UsersComponent implements OnInit {
 
   deleteUser(user: User): void {
     this.userService.deleteUser(user).subscribe();
+  }
 
+  deleteUserById(id: number): void {
+    this.userService.deleteUserById(id).subscribe();
   }
 }

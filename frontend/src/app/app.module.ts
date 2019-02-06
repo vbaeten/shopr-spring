@@ -1,16 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule} from "@angular/common/http";
+import { HttpClientModule} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/layout/header/header.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
 import { NavbarComponent } from './components/layout/navbar/navbar.component';
-import { UserService} from "./services/user.service";
+import { UserService} from './services/user.service';
 import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/user/register/register.component';
-import { AppMaterialModule } from "./modules/app-material/app-material.module";
+import { AppMaterialModule } from './modules/app-material/app-material.module';
 import { LoginComponent } from './components/user/login/login.component';
 import { UsersComponent } from './components/user/users/users.component';
 import { LpDetailComponent } from './components/articles/details/lp-detail/lp-detail.component';
@@ -34,6 +34,7 @@ import { LpOverviewComponent } from './components/articles/overview/lp-overview/
 import { GameOverviewComponent } from './components/articles/overview/game-overview/game-overview.component';
 import { FictionOverviewComponent } from './components/articles/overview/fiction-overview/fiction-overview.component';
 import { NonFictionOverviewComponent } from './components/articles/overview/non-fiction-overview/non-fiction-overview.component';
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -65,7 +66,7 @@ import { NonFictionOverviewComponent } from './components/articles/overview/non-
     LpOverviewComponent,
     GameOverviewComponent,
     FictionOverviewComponent,
-    NonFictionOverviewComponent
+    NonFictionOverviewComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,6 +76,7 @@ import { NonFictionOverviewComponent } from './components/articles/overview/non-
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    FormsModule
   ],
   providers: [
     UserService

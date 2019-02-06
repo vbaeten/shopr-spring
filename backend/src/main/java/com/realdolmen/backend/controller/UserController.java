@@ -33,7 +33,12 @@ public class UserController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public void deleteUser(@PathVariable("id") Long id) {
-        userServiceImpl.delete(id);
+    public void deleteUserById(@PathVariable("id") Long id) {
+        userServiceImpl.deleteById(id);
+    }
+
+    @DeleteMapping("/delete")
+    public void deleteUser(User user) {
+        userServiceImpl.delete(user);
     }
 }
