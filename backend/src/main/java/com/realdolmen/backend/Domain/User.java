@@ -3,6 +3,7 @@ package com.realdolmen.backend.Domain;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Data
@@ -17,6 +18,7 @@ public class User extends BaseObject implements Serializable {
 
     private String firstName;
     @Column(unique = true)
+    @Size(max = 50)
     private String userName;
 
     private boolean loggedOn;
