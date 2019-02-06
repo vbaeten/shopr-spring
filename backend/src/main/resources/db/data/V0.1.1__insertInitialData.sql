@@ -1,0 +1,1 @@
+INSERT INTO product (id, title, supplier_id, price, type) VALUES (1001, 'Thriller Book', 'Best Thrillers', 39.99, 'fiction');

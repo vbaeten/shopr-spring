@@ -16,6 +16,7 @@ import {AuthService} from "./services/auth.service";
 import {TokenStorage} from "./services/token.storage";
 import {AuthInterceptor} from "./services/auth.interceptor";
 import {NavbarComponent} from './components/navbar/navbar.component';
+import {UserService} from "./services/user.service";
 
 @NgModule({
   declarations: [
@@ -35,9 +36,8 @@ import {NavbarComponent} from './components/navbar/navbar.component';
     LayoutModule,
     ReactiveFormsModule,
     FormsModule
-
   ],
-  providers: [AuthService, TokenStorage, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
+  providers: [AuthService, UserService, TokenStorage, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

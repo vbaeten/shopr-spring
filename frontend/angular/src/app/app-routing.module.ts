@@ -3,14 +3,14 @@ import {RouterModule, Routes} from '@angular/router';
 import {RegisterComponent} from "./components/auth/register/register.component";
 import {LoginComponent} from "./components/auth/login/login.component";
 import {ProductListComponent} from "./components/product-list/product-list.component";
-import {AuthGuard} from "./services/auth-guard.service";
 import {DashboardComponent} from "./components/dashboard/dashboard.component";
+import {AdminGuard} from "./services/admin.guard";
 
 const routes: Routes = [
-  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
-  {path: 'products', component: ProductListComponent}, // TODO add authGard
+  {path: 'products', component: ProductListComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'dashboard', component: DashboardComponent, canActivate: [AdminGuard]},
   { path: '', redirectTo: '/products', pathMatch: 'full'}
 
 ];

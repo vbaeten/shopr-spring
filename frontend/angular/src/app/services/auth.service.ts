@@ -1,14 +1,14 @@
 import {Injectable} from '@angular/core';
 import {TokenStorage} from "./token.storage";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {BehaviorSubject, Observable} from "rxjs";
+import {Subject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private _authenticated: BehaviorSubject<boolean> = new BehaviorSubject(false);
-  authenticatedObservable: Observable<boolean> = this._authenticated.asObservable();
+  private _authenticated: Subject<boolean> = new Subject();
+  // authenticatedObservable: Observable<boolean> = this._authenticated.asObservable();
 
   constructor(
     private tokenStorage: TokenStorage,
@@ -17,22 +17,20 @@ export class AuthService {
   }
 
   isAuthenticated(credentials, callback) {
-    console.log(this.tokenStorage.getToken());
     let token;
+    let headers = new HttpHeaders();
+
     if (!this.tokenStorage.getToken() && credentials !== undefined) {
       token = 'Basic ' + btoa(credentials.username + ':' + credentials.password);
       this.tokenStorage.saveToken(token);
     } else {
       token = this.tokenStorage.getToken();
     }
+    headers = headers.set("Authorization", token);
 
-    let headers = new HttpHeaders(credentials ? {
-      Authorization: token,
-    } : {});
-    headers = headers.append("X-Requested-With", "XMLHttpRequest");
     this.httpClient.get('/api/user/currentuser', {headers: headers}).subscribe(response => {
-      console.log("Response " + JSON.stringify(response));
       if (response['name']) {
+        this.tokenStorage.setCurrentUser(response['name']);
         this._authenticated.next(true);
       } else {
         this._authenticated.next(false);

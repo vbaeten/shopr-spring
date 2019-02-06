@@ -27,7 +27,7 @@ public class UserService {
 
     public User create(User user) {
         user.setPassword(encoder.encode(user.getPassword()));
-        Role userRole = roleRepository.findByRole("ADMIN");
+        Role userRole = roleRepository.findByRole("CUSTOMER");
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         return userRepository.saveAndFlush(user);
     }

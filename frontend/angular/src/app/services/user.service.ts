@@ -2,16 +2,17 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 
 import {User} from "../models/users.model";
+import {TokenStorage} from "./token.storage";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private tokenStorage:TokenStorage) { }
 
   getCurrentUser() {
-    return this.http.get('/api/user/currentuser');
+    return this.tokenStorage.currentUserSubject;
   }
 
   getById(id: number) {
@@ -31,6 +32,19 @@ export class UserService {
       return false;
     });
     return false;
+  }
+
+  isAdmin(): boolean {
+     this.http.get('/api/user/currentuser').subscribe(response => {
+        let roles = [];
+        roles = response['authorities'];
+        roles.forEach(role => {
+          if (role.toString().substr("ADMIN")) {
+            return true;
+          }
+        });
+      });
+     return false;
   }
 
 }

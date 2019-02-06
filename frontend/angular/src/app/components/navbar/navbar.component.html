@@ -1,17 +1,18 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <h1>ShopR</h1>
-    <a mat-button routerLink="/">Home</a>
-    <span class="spacer"></span>
-    <div *ngIf="!isAuthenticatedUser">
-      <button mat-button routerLink="/register">Register</button>
-      <button mat-button routerLink="/login">Login</button>
-    </div>
-    <div *ngIf="isAuthenticatedUser">
-      <div>
-        Welcome !
+<form>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <h1>ShopR</h1>
+      <a mat-button routerLink="/">Home</a>
+
+      <span class="spacer"></span>
+      <ng-container *ngIf="!isLoggedIn">
+        <button mat-button routerLink="/register">Register</button>
+        <button mat-button routerLink="/login">Login</button>
+      </ng-container>
+      <ng-container *ngIf="isLoggedIn">
+        Welcome ! {{currentUser}}
         <button mat-button (click)="logout()">Logout</button>
-      </div>
-    </div>
-  </mat-toolbar-row>
-</mat-toolbar>
+      </ng-container>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</form>

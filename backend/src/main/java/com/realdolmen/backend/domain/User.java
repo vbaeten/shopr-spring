@@ -24,7 +24,7 @@ public class User {
     private String password;
 
     @Column(name = "active")
-    private int active;
+    private boolean active;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_role",

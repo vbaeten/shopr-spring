@@ -1,15 +1,19 @@
 import {Injectable} from "@angular/core";
+import {Subject} from "rxjs";
 
 const TOKEN_KEY = 'AuthToken';
+const CURRENT_USER = 'CurrentUser';
 
 @Injectable()
 export class TokenStorage {
 
+  currentUserSubject = new Subject();
+
   constructor() {}
 
   signOut() {
-    sessionStorage.removeItem(TOKEN_KEY);
     sessionStorage.clear();
+    this.currentUserSubject.next();
   }
 
   public saveToken(token: string) {
@@ -24,4 +28,8 @@ export class TokenStorage {
     return sessionStorage.getItem(TOKEN_KEY);
   }
 
+  setCurrentUser(user){
+    sessionStorage.setItem(CURRENT_USER, user);
+    this.currentUserSubject.next(user);
+  }
 }

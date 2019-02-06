@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../services/auth.service";
 import {UserService} from "../../services/user.service";
-import {User} from "../../models/users.model";
 import {Router} from "@angular/router";
+import {TokenStorage} from "../../services/token.storage";
 
 @Component({
   selector: 'app-navbar',
@@ -10,26 +10,29 @@ import {Router} from "@angular/router";
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  private _isAuthenticatedUser: boolean;
-  private _currentUser: User;
+  currentUser: string;
 
-  constructor(private authService: AuthService, private userService: UserService, private router: Router) {
+  isLoggedIn: boolean = false;
+
+  constructor(private tokenStorage: TokenStorage, private authService: AuthService, private userService: UserService, private router: Router) {
   }
 
   ngOnInit() {
-    this.authService.authenticatedObservable.subscribe(data => {
-      this._isAuthenticatedUser = data
+    this.userService.getCurrentUser().subscribe(response => {
+      this.currentUser = response;
+      if(this.currentUser !== undefined){
+        this.isLoggedIn = true;
+      }else {
+        this.isLoggedIn = false;
+      }
     });
-    console.log('currentUser is : ' + this._currentUser);
   }
+
 
   logout() {
     this.authService.logout();
+    this.isLoggedIn = false;
     this.router.navigate(["/"]);
-  }
-
-  get isAuthenticatedUser(): boolean {
-    return this._isAuthenticatedUser;
   }
 
 }

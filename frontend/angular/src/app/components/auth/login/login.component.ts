@@ -24,9 +24,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(): boolean {
-    console.log('test')
     this.authService.isAuthenticated(this.credentials, () => {
-      console.log('testé');
       this.router.navigate(['']);
     });
     return false;

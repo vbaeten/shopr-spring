@@ -32,11 +32,12 @@ export class RegisterComponent implements OnInit {
     if(this.registrationForm.value.password != this.registrationForm.value.confirmPassword) {
       alert("Passwords don't match");
     } else {
-      this.user = new User(
-        this.registrationForm.value.username,
-        this.registrationForm.value.firstname,
-        this.registrationForm.value.lastname,
-        this.registrationForm.value.password)
+      this.user = new User();
+      this.user.username = this.registrationForm.value.username;
+      this.user.firstname = this.registrationForm.value.firstname;
+      this.user.lastname = this.registrationForm.value.lastname;
+      this.user.password = this.registrationForm.value.password;
+      this.user.active = true;
     }
     this.userService.registerUser(this.user);
     this.router.navigate(['login']);

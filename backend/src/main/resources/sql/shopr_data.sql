@@ -1,5 +1,5 @@
-INSERT INTO  user (id, active, username, firstname, lastname, password) VALUES (1000, 1, 'jdoe', 'John', 'Doe', '$2a$10$ckFULcsmnz2Nw/lDLh0ApuVI4L6wxOUc79g7403jtSgp2SNM4wd4a'); #123456
-INSERT INTO  user (id, active, username, firstname, lastname, password) VALUES (2000, 1, 'ndoe', 'Nancy', 'Doe', '$2a$10$1vySPJT4f6aDJLAFKJtvl.2qhIFlpY314ItTA9trNSOI0Y2QNJC4K'); #pass123
+INSERT INTO  user (id, active, username, firstname, lastname, password) VALUES (1000, true, 'jdoe', 'John', 'Doe', '$2a$10$ckFULcsmnz2Nw/lDLh0ApuVI4L6wxOUc79g7403jtSgp2SNM4wd4a'); #123456
+INSERT INTO  user (id, active, username, firstname, lastname, password) VALUES (2000, true, 'ndoe', 'Nancy', 'Doe', '$2a$10$1vySPJT4f6aDJLAFKJtvl.2qhIFlpY314ItTA9trNSOI0Y2QNJC4K'); #pass123
 
 REPLACE INTO `role` VALUES (0,'GUEST');
 REPLACE INTO `role` VALUES (1,'ADMIN');
