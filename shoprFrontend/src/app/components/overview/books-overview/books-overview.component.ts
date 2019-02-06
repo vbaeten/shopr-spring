@@ -15,9 +15,6 @@ export class BooksOverviewComponent implements OnInit {
   }
 
 
-  passId(toPassId){
-    this.dataService.changeId(toPassId)
-  }
 
 
 }

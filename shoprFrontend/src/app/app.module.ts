@@ -42,6 +42,7 @@ import { LpsDetailComponent } from './components/detail-components/lps-detail/lp
 import { FictionsDetailComponent } from './components/detail-components/fictions-detail/fictions-detail.component';
 import { NonFictionsDetailComponent } from './components/detail-components/non-fictions-detail/non-fictions-detail.component';
 import { HeaderComponent } from './components/header/header.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { HeaderComponent } from './components/header/header.component';
     LpsDetailComponent,
     FictionsDetailComponent,
     NonFictionsDetailComponent,
-    HeaderComponent
+    HeaderComponent,
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,

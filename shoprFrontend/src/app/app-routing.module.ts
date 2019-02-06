@@ -16,6 +16,7 @@ import {LpsDetailComponent} from "./components/detail-components/lps-detail/lps-
 import {FictionsDetailComponent} from "./components/detail-components/fictions-detail/fictions-detail.component";
 import {NonFictionsDetailComponent} from "./components/detail-components/non-fictions-detail/non-fictions-detail.component";
 import {SearchComponent} from "./components/search/search.component";
+import {ShoppingCartComponent} from "./components/shopping-cart/shopping-cart.component";
 
 const routes: Routes = [
   {path: '', component: IndexComponent},
@@ -33,7 +34,8 @@ const routes: Routes = [
   {path: 'gameDetails', component: GamesDetailComponent},
   {path: 'lpDetails', component: LpsDetailComponent},
   {path: 'fictionDetails', component: FictionsDetailComponent},
-  {path: 'nonFictionDetails', component: NonFictionsDetailComponent}
+  {path: 'nonFictionDetails', component: NonFictionsDetailComponent},
+  {path: 'shoppingCart', component: ShoppingCartComponent}
 
 ];
 
