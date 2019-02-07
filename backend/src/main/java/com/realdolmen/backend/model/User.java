@@ -26,6 +26,8 @@ public class User implements Serializable
     private List<Rating> ratingList;
     @ManyToMany
     private List<Article> articleList;
+    @Transient
+    private String role;
 
 
 }
