@@ -19,8 +19,7 @@ export class ApiService {
   }
 
   public doPost(path: string, body: Object = {}): Observable<any> {
-    return this.http.post(`${environment.apiUrl}${path}`, JSON.stringify(body)
-    );
+    return this.http.post(`${environment.apiUrl}${path}`, JSON.stringify(body));
   }
 
   public doDelete(path): Observable<any> {

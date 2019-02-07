@@ -2,6 +2,8 @@ package com.realdolmen.backend.controller;
 
 import com.realdolmen.backend.domain.User;
 import com.realdolmen.backend.service.UserServiceImpl;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,7 +25,7 @@ public class UserController {
 
     @PostMapping("/register")
     public User registerUser(@RequestBody User user) {
-        userServiceImpl.save(user);
+        userServiceImpl.create(user);
         return user;
     }
 

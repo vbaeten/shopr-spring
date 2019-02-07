@@ -34,7 +34,7 @@ import { LpOverviewComponent } from './components/articles/overview/lp-overview/
 import { GameOverviewComponent } from './components/articles/overview/game-overview/game-overview.component';
 import { FictionOverviewComponent } from './components/articles/overview/fiction-overview/fiction-overview.component';
 import { NonFictionOverviewComponent } from './components/articles/overview/non-fiction-overview/non-fiction-overview.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({

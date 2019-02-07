@@ -12,7 +12,7 @@ import java.util.List;
 public class User implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column
@@ -21,11 +21,11 @@ public class User implements Serializable {
     @Column(name = "first_name")
     private String firstName;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<Rating> ratings;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<Order> orders;
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+//    private List<Rating> ratings;
+//
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+//    private List<Order> orders;
 
     public Long getId() {
         return id;
@@ -51,19 +51,19 @@ public class User implements Serializable {
         this.firstName = firstName;
     }
 
-    public List<Rating> getRatings() {
-        return ratings;
-    }
-
-    public void setRatings(List<Rating> ratings) {
-        this.ratings = ratings;
-    }
-
-    public List<Order> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
-    }
+//    public List<Rating> getRatings() {
+//        return ratings;
+//    }
+//
+//    public void setRatings(List<Rating> ratings) {
+//        this.ratings = ratings;
+//    }
+//
+//    public List<Order> getOrders() {
+//        return orders;
+//    }
+//
+//    public void setOrders(List<Order> orders) {
+//        this.orders = orders;
+//    }
 }
