@@ -4,9 +4,13 @@
   <br/>
 
     <button mat-stroked-button class="navbarbutton" routerLink="/articles">All articles</button>
-    <button mat-stroked-button class="navbarbutton" routerLink="/articles">Shopping Cart</button>
+    <button *ngIf="currentUser && !currentUser.admin.valueOf()" mat-stroked-button class="navbarbutton"
+            routerLink="/articles">Shopping Cart
+    </button>
     <button mat-stroked-button class="navbarbutton" routerLink="/articles">My Orders</button>
-    <button mat-stroked-button class="navbarbutton" routerLink="/create">Create</button>
+    <button *ngIf="currentUser && currentUser.admin.valueOf()" mat-stroked-button class="navbarbutton"
+            routerLink="/create">Create
+    </button>
     <button *ngIf="currentUser" mat-stroked-button class="navbarbutton">{{currentUser.userName}}</button>
     <button *ngIf="currentUser" mat-stroked-button class="navbarbutton" (click)="logout()">logout</button>
     <button *ngIf="!currentUser" mat-stroked-button class="navbarbutton" routerLink="/signin">Login</button>

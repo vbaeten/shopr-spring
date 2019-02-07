@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/user")
@@ -52,11 +51,9 @@ public class UserRestController {
     }
 
 
-    @GetMapping(path = "/login/{userName}")
-    public User login(@PathVariable("userName") String userName) {
-        Optional<User> user = userRepository.findByUserName(userName);
-        return user
-                .orElseThrow(() -> new NotFoundException());
+    @PostMapping(path = "/login/")
+    public User login(@RequestBody String userName) {
+        return userRepository.findByUserName(userName).orElseThrow(() -> new NotFoundException());
     }
 
 

@@ -1,6 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {ArticlesOverviewComponent} from './components/articles-overview/articles-overview.component';
@@ -52,7 +51,7 @@ import {SigninComponent} from './components/signin/signin.component';
     CreatebooknonfictionComponent,
     DetailComponent,
     RegisterComponent,
-    SigninComponent
+    SigninComponent,
   ],
   imports: [
     BrowserModule,

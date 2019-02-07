@@ -15,16 +15,17 @@ export class UserService {
 
   register(user: User): void {
     this.httpClient.post<User>('/user/register', user).subscribe(userObject => {
-      this.userSubject.next(userObject);
-      sessionStorage.setItem(this.userKey, JSON.stringify(userObject));
+      // this.userSubject.next(userObject);
+      // sessionStorage.setItem(this.userKey, JSON.stringify(userObject));
     });
 
   }
 
   login(userName: string): void {
-    this.httpClient.get<User>('/user/login/' + userName).subscribe(userObject => {
+    this.httpClient.post<User>('/user/login/', userName).subscribe(userObject => {
       sessionStorage.setItem(this.userKey, JSON.stringify(userObject));
       this.userSubject.next(userObject);
+
     });
   }
 
