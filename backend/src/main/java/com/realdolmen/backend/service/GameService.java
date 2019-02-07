@@ -2,7 +2,6 @@ package com.realdolmen.backend.service;
 
 import com.realdolmen.backend.domain.Game;
 import com.realdolmen.backend.repository.GameRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,8 +9,11 @@ import java.util.List;
 @Service
 public class GameService {
 
-    @Autowired
-    private GameRepository gameRepository;
+    public GameService(GameRepository gameRepository) {
+        this.gameRepository = gameRepository;
+    }
+
+    private final GameRepository gameRepository;
 
     public Game save(Game game) {
         return gameRepository.saveAndFlush(game);

@@ -19,6 +19,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     this.userService.getCurrentUser().subscribe(response => {
+      console.log(response);
       this.currentUser = response;
       if(this.currentUser !== undefined){
         this.isLoggedIn = true;

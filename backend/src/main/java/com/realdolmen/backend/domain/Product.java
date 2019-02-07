@@ -19,4 +19,6 @@ public abstract class Product {
     private String price;
     private String supplierId;
 
+    @Column(name = "type", insertable = false, updatable = false)
+    private String type;
 }

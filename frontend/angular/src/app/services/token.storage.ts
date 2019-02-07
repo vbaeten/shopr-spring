@@ -7,9 +7,10 @@ const CURRENT_USER = 'CurrentUser';
 @Injectable()
 export class TokenStorage {
 
-  currentUserSubject = new Subject();
+  currentUserSubject: Subject<string> = new Subject();
 
-  constructor() {}
+  constructor() {
+  }
 
   signOut() {
     sessionStorage.clear();
@@ -22,13 +23,13 @@ export class TokenStorage {
   }
 
   public getToken(): string {
-    if(sessionStorage.getItem(TOKEN_KEY) === null){
+    if (sessionStorage.getItem(TOKEN_KEY) === null) {
       return "";
     }
     return sessionStorage.getItem(TOKEN_KEY);
   }
 
-  setCurrentUser(user){
+  setCurrentUser(user: string) {
     sessionStorage.setItem(CURRENT_USER, user);
     this.currentUserSubject.next(user);
   }

@@ -2,10 +2,7 @@ package com.realdolmen.backend.controller;
 
 import com.realdolmen.backend.domain.Product;
 import com.realdolmen.backend.repository.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -13,13 +10,21 @@ import java.util.List;
 @RequestMapping("/products")
 public class ProductController {
 
-    @Autowired
-    private ProductRepository productRepository;
+    private final ProductRepository productService;
+
+    public ProductController(ProductRepository productService) {
+        this.productService = productService;
+    }
 
     @GetMapping(path = "/all")
     public List<Product> getProducts() {
-        return productRepository.findAll();
+        return productService.findAll();
     }
 
+    @RequestMapping(path = "/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public Product getProduct(@PathVariable("id") Long id) {
+        return productService.findById(id).orElseThrow(NullPointerException::new);
+    }
 
 }

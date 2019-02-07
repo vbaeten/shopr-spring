@@ -7,7 +7,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {MaterialModule} from './material.module';
-import {ProductListComponent} from './components/product-list/product-list.component';
+import {ProductListComponent} from './components/products/product-list/product-list.component';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {LayoutModule} from '@angular/cdk/layout';
 import {RegisterComponent} from './components/auth/register/register.component';
@@ -17,6 +17,7 @@ import {TokenStorage} from "./services/token.storage";
 import {AuthInterceptor} from "./services/auth.interceptor";
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {UserService} from "./services/user.service";
+import {ProductDetailsComponent} from './components/products/product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {UserService} from "./services/user.service";
     DashboardComponent,
     RegisterComponent,
     LoginComponent,
-    NavbarComponent
+    NavbarComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,

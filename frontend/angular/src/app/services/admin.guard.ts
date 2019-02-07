@@ -14,8 +14,9 @@ export class AdminGuard implements CanActivate {
     private router: Router) {}
 
   canActivate(): boolean {
-    this.userService.getCurrentUser().subscribe(response => {
-      this.currentUser = response;
-      if(this.currentUser !== undefined){
+  //   this.userService.getCurrentUser().subscribe(response => {
+  //     this.currentUser = response;
+  //     if(this.currentUser !== undefined){
+    return true;
   }
 }
