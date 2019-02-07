@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from "../../services/user.service";
-import {DataService} from "../../services/data.service";
 import {User} from "../../models/user";
-import {Router} from "@angular/router";
+import {DataService} from "../../services/data.service";
 
 @Component({
   selector: 'app-login-form',
@@ -14,9 +13,9 @@ export class LoginFormComponent implements OnInit {
 
 
   public users = []
-  selectedUser
+  selectedUser:User
 
-  constructor(private userService:UserService, private dataService:DataService, private router:Router) { }
+  constructor(private userService:UserService, private dataService: DataService) { }
 
   ngOnInit() {
 
@@ -25,9 +24,8 @@ export class LoginFormComponent implements OnInit {
   }
 
   login(){
-
-    this.dataService.changeUser(this.selectedUser)
-    this.router.navigate(['/itemsOverview'])
+    this.userService.login(this.selectedUser)
   }
+
 
 }

@@ -25,7 +25,9 @@
 
   <button mat-button="ShoppingCart" routerLink="/shoppingCart"> Shopping Cart</button>
   <button mat-button="Search" routerLink="/search"> Search</button>
- <span>logged in as: {{currentUser}}</span>
-
+  <button mat-button="logout" (click)="logOut()"> LogOut</button>
+ <span *ngIf="isLoggedIn">logged in as: {{currentUser.userName}}</span>
 
 </mat-toolbar>
+
+

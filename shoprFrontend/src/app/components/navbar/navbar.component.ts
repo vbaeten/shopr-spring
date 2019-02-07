@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {DataService} from "../../services/data.service";
-import {User} from "../../models/user";
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-navbar',
@@ -9,14 +9,28 @@ import {User} from "../../models/user";
 })
 export class NavbarComponent implements OnInit {
 
-  currentUser: User
+  currentUser
+  isLoggedIn
 
+  constructor(private dataService: DataService, private userService: UserService) {
+  }
 
-  constructor(private dataService:DataService) { }
 
   ngOnInit() {
 
-    this.dataService.currentUser.subscribe(data=>this.currentUser=data)
+    this.currentUser=this.userService.getCurrentUser()
+
+    if(this.currentUser==null){
+      this.isLoggedIn=false
+    }else{
+      this.isLoggedIn=true
+    }
+
+  }
+
+
+  logOut(){
+    this.userService.logOut()
   }
 
 }
