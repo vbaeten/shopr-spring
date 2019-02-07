@@ -16,4 +16,8 @@ export class LpService {
     return this.apiService.doGet('/lp/list');
   }
 
+  addLp(lp: Lp): Observable<Lp> {
+    return this.apiService.doPost('/lp/add', lp);
+  }
+
 }

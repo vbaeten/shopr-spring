@@ -25,11 +25,11 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  deleteUser(user: User): void {
-    this.userService.deleteUser(user).subscribe();
-  }
-
   deleteUserById(id: number): void {
     this.userService.deleteUserById(id).subscribe();
+    // this.userService.getUsers().subscribe(data => {
+    //   this.users = data;
+    //   this.dataSource = this.users;
+    // });
   }
 }

@@ -41,7 +41,7 @@ public class Article implements Serializable {
     private List<OrderLine> orderLines;
 
     @OneToMany
-    @JoinColumn(name="article_ratings")
+    @JoinColumn(name="score")
     private List<Rating> ratings;
 
     public Long getId() {

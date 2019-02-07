@@ -8,4 +8,6 @@ public interface GameService extends CrudService<Game, Long>{
 
     Game findById(Long id);
 
+    void delete(Game game);
+
 }

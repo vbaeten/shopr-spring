@@ -16,4 +16,16 @@ export class GameService {
     return this.apiService.doGet('/game/list');
   }
 
+  addGame(game: Game): Observable<Game> {
+    return this.apiService.doPost('/game/add', game);
+  }
+
+  deleteGame(game: Game): Observable<Game> {
+    return this.apiService.doDelete('/game/delete');
+  }
+
+  deleteGameById(id: number): Observable<Game> {
+    return this.apiService.doDelete('/game/delete/' + id);
+  }
+
 }

@@ -21,8 +21,8 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public void delete(Article entity) {
-
+    public void delete(Article article) {
+        articleRepository.delete(article);
     }
 
     @Override
@@ -31,8 +31,9 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public Article delete(Long id) {
-        return null;
+    public void deleteById(Long id) {
+        Article article = findById(id);
+        articleRepository.deleteById(id);
     }
 
     @Override

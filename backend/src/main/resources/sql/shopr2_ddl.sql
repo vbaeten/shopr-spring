@@ -1,32 +1,38 @@
-CREATE TABLE user (
+CREATE TABLE user
+(
   id         INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name       VARCHAR(255) NOT NULL,
   first_name VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE article (
+CREATE TABLE article
+(
   id       INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  title    VARCHAR(100),
-  type     VARCHAR(31),
+  title    VARCHAR(100) NOT NULL,
+  type     VARCHAR(31)  NOT NULL,
   price    DOUBLE       NOT NULL,
   supplier VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE lp (
+CREATE TABLE lp
+(
   artist VARCHAR(100),
   genre  INT,
-
   id     INT NOT NULL PRIMARY KEY,
   FOREIGN KEY (id) REFERENCES article (id)
 );
 
-CREATE TABLE game (
-
-  id INT NOT NULL PRIMARY KEY,
+CREATE TABLE game
+(
+  genre     INT NOT NULL,
+  min_age   INT,
+  id        INT NOT NULL PRIMARY KEY,
+  publisher VARCHAR(100),
   FOREIGN KEY (id) REFERENCES article (id)
 );
 
-CREATE TABLE book (
+CREATE TABLE book
+(
   author VARCHAR(100),
   isbn   BIGINT NOT NULL,
   pages  INT,
@@ -35,14 +41,16 @@ CREATE TABLE book (
   FOREIGN KEY (id) REFERENCES article (id)
 );
 
-CREATE TABLE non_fiction (
+CREATE TABLE non_fiction
+(
   subject INT,
 
   id      INT NOT NULL PRIMARY KEY,
   FOREIGN KEY (id) REFERENCES article (id)
 );
 
-CREATE TABLE fiction (
+CREATE TABLE fiction
+(
   genre    INT,
   synopsis VARCHAR(255),
 
@@ -50,17 +58,29 @@ CREATE TABLE fiction (
   FOREIGN KEY (id) REFERENCES article (id)
 );
 
-CREATE TABLE orders (
-  id INT AUTO_INCREMENT PRIMARY KEY
+CREATE TABLE orders
+(
+  id         INT AUTO_INCREMENT PRIMARY KEY,
+  order_date DATETIME,
+  user_id    INT,
+  total      DOUBLE
 );
 
-CREATE TABLE order_line (
-  id INT AUTO_INCREMENT PRIMARY KEY
-);
-
-CREATE TABLE rating (
+CREATE TABLE order_line
+(
   id INT AUTO_INCREMENT PRIMARY KEY,
-  user INT,
-  article INT
+  quantity INT NOT NULL,
+  sub_total DOUBLE,
+  article_id INT,
+  order_id INT
+);
+
+CREATE TABLE rating
+(
+  id          INT AUTO_INCREMENT PRIMARY KEY,
+  user_id     INT,
+  article_id  INT,
+  description VARCHAR(255),
+  score       INT
 )
 

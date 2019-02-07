@@ -15,4 +15,8 @@ export class FictionService {
   getFictionBooks(): Observable<Fiction[]> {
     return this.apiService.doGet('/fiction/list');
   }
+
+  addFiction(fiction: Fiction): Observable<Fiction> {
+    return this.apiService.doPost('fiction/add', fiction);
+  }
 }

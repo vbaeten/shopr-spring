@@ -74,4 +74,10 @@ body {
   color: blue;
 }
 
+.addForm {
+  display: flex;
+  flex-direction: column;
+  font-size: small;
+}
+
 

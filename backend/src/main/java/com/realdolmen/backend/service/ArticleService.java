@@ -8,7 +8,7 @@ public interface ArticleService extends CrudService<Article, Long> {
 
     Article findById(Long id);
 
-    Article delete(Long id);
+    void deleteById(Long id);
 
     List<Article> findAll();
 

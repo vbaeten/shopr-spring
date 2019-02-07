@@ -11,7 +11,8 @@ export class Fiction {
   public price: number;
 
 
-  constructor(id: number, title: string, author: string, isbn: number, pages: number, genre: string, synopsis: string, supplier: string, price: number) {
+  constructor(id?: number, title?: string, author?: string, isbn?: number, pages?: number, genre?: string,
+              synopsis?: string, supplier?: string, price?: number) {
     this.id = id;
     this.title = title;
     this.author = author;

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Game} from '../../../../models/game';
 import {GameService} from "../../../../services/game.service";
+import {ArticleService} from "../../../../services/article.service";
 
 @Component({
   selector: 'app-game-overview',
@@ -11,10 +12,10 @@ export class GameOverviewComponent implements OnInit {
 
   games: Game[] = [];
   dataSource;
-  displayedColumns: string[] = ['id', 'title', 'price'];
+  displayedColumns: string[] = ['id', 'title', 'price', 'delete'];
 
 
-  constructor(private gameService: GameService) { }
+  constructor(private gameService: GameService, private articleService: ArticleService) { }
 
   ngOnInit() {
     this.gameService.getGames().subscribe(
@@ -22,7 +23,10 @@ export class GameOverviewComponent implements OnInit {
         this.games = data;
         this.dataSource = this.games;
       }
-    )
+    );
   }
 
+  deleteArticle(id: number): void {
+    this.articleService.deleteArticleById(id).subscribe();
+  }
 }

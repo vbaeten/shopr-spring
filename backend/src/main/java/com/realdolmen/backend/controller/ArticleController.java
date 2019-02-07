@@ -22,8 +22,13 @@ public class ArticleController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public void deleteArticle(@PathVariable("id") Long id) {
-        articleServiceImpl.delete(id);
+    public void deleteArticleById(@PathVariable("id") Long id) {
+        articleServiceImpl.deleteById(id);
+    }
+
+    @DeleteMapping("/delete")
+    public void deleteArticle(Article article) {
+        articleServiceImpl.delete(article);
     }
 
 }

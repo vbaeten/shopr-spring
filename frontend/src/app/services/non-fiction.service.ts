@@ -16,4 +16,8 @@ export class NonFictionService {
     return this.apiService.doGet('/nonfiction/list');
   }
 
+  addNonFiction(nonFiction: NonFiction) {
+    return this.apiService.doPost('/nonfiction/add', nonFiction);
+  }
+
 }

@@ -15,11 +15,11 @@ export class ApiService {
   }
 
   public doPut(path: string, body: Object = {}): Observable<any> {
-    return this.http.put(`${environment.apiUrl}${path}`, JSON.stringify(body));
+    return this.http.put(`${environment.apiUrl}${path}`, body);
   }
 
   public doPost(path: string, body: Object = {}): Observable<any> {
-    return this.http.post(`${environment.apiUrl}${path}`, JSON.stringify(body));
+    return this.http.post(`${environment.apiUrl}${path}`, body);
   }
 
   public doDelete(path): Observable<any> {

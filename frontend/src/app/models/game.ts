@@ -9,7 +9,7 @@ export class Game {
   public price: number;
 
 
-  constructor(id: number, title: string, genre: string, publisher: string, minAge: number, supplier: string, price: number) {
+  constructor(id?: number, title?: string, genre?: string, publisher?: string, minAge?: number, supplier?: string, price?: number) {
     this.id = id;
     this.title = title;
     this.genre = genre;

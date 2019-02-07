@@ -8,7 +8,7 @@ export class Lp {
   public price: number;
 
 
-  constructor(id: number, title: string, artist: string, genre: string, supplier: string, price: number) {
+  constructor(id?: number, title?: string, artist?: string, genre?: string, supplier?: string, price?: number) {
     this.id = id;
     this.title = title;
     this.artist = artist;

@@ -9,10 +9,9 @@ import {environment} from '../../environments/environment';
   providedIn: 'root'
 })
 export class UserService {
-private classUrl: string = environment.apiUrl;
 
   constructor(
-    private apiService: ApiService, private http: HttpClient) {
+    private apiService: ApiService) {
   }
 
   getUsers(): Observable<User[]> {
@@ -25,10 +24,6 @@ private classUrl: string = environment.apiUrl;
 
   registerUser(user: User): Observable<User> {
     return this.apiService.doPost('/user/register', user);
-  }
-
-  createUser(user: User): Observable<User> {
-    return this.http.post<User>(this.classUrl + '/user/register', user);
   }
 
   deleteUserById(id: number): Observable<User> {

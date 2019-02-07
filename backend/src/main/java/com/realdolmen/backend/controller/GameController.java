@@ -25,4 +25,9 @@ public class GameController {
     public Game addGame(@RequestBody Game game) {
         return gameServiceImpl.create(game);
     }
+
+    @DeleteMapping("/delete")
+    public void deleteGame(Game game) {
+        gameServiceImpl.delete(game);
+    }
 }

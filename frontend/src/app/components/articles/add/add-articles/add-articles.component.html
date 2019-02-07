@@ -1,16 +1,31 @@
 <div class="myContainer">
   <h3>
     Add Articles here.
+
+    <mat-tab-group>
+      <mat-tab label="Game">
+        <app-add-game></app-add-game>
+      </mat-tab>
+      <mat-tab label="Lp">
+        <app-add-lp></app-add-lp>
+      </mat-tab>
+      <mat-tab label="Fiction Book">
+        <app-add-fiction></app-add-fiction>
+      </mat-tab>
+      <mat-tab label="Non-Fiction Book">
+        <app-add-non-fiction></app-add-non-fiction>
+      </mat-tab>
+    </mat-tab-group>>
   </h3>
 
   <h3>
     Lists of articles by type.
   </h3>
   <!--<mat-accordion>-->
-    <!--<mat-expansion-panel>-->
-      <!--<mat-expansion-panel-header>List</mat-expansion-panel-header>-->
-      <!--<app-lp-overview></app-lp-overview>-->
-    <!--</mat-expansion-panel>-->
+  <!--<mat-expansion-panel>-->
+  <!--<mat-expansion-panel-header>List</mat-expansion-panel-header>-->
+  <!--<app-lp-overview></app-lp-overview>-->
+  <!--</mat-expansion-panel>-->
   <!--</mat-accordion>-->
 
   <app-lp-overview></app-lp-overview>
@@ -21,4 +36,5 @@
   <app-fiction-overview></app-fiction-overview>
   <br>
   <app-non-fiction-overview></app-non-fiction-overview>
+
 </div>

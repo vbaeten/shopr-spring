@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Fiction} from '../../../../models/fiction';
 import {FictionService} from '../../../../services/fiction.service';
+import {ArticleService} from '../../../../services/article.service';
 
 @Component({
   selector: 'app-fiction-overview',
@@ -11,9 +12,9 @@ export class FictionOverviewComponent implements OnInit {
 
   fictionBooks: Fiction[] = [];
   dataSource;
-  displayedColumns: string[] = ['id', 'title', 'price'];
+  displayedColumns: string[] = ['id', 'title', 'price', 'delete'];
 
-  constructor(private fictionService: FictionService) {
+  constructor(private fictionService: FictionService, private articleService: ArticleService) {
   }
 
   ngOnInit() {
@@ -21,5 +22,9 @@ export class FictionOverviewComponent implements OnInit {
       this.fictionBooks = data;
       this.dataSource = this.fictionBooks;
     });
+  }
+
+  deleteArticle(id: number): void {
+    this.articleService.deleteArticleById(id).subscribe();
   }
 }

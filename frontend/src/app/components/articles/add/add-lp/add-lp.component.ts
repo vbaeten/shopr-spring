@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {NgForm} from "@angular/forms";
+import {Lp} from "../../../../models/lp";
 
 @Component({
   selector: 'app-add-lp',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddLpComponent implements OnInit {
 
+  lp: Lp;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onSubmit(form: NgForm) {
+    this.lp = new Lp();
+    this.lp.title = form.value.title;
+    this.lp.artist = form.value.artist;
+    this.lp.genre = form.value.genre;
+    this.lp.price = form.value.price;
+    this.lp.supplier = form.value.supplier;
   }
 
 }
