@@ -1,6 +1,7 @@
 package com.realdolmen.backend.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
@@ -9,6 +10,7 @@ import java.io.Serializable;
 public class Game extends Article implements Serializable {
 
     @Column(name = "publisher")
+    @Size(max = 100)
     private String publisher;
 
     @Column(name = "min_age")

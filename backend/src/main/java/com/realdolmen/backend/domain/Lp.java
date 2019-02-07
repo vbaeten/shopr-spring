@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
@@ -12,6 +13,7 @@ import java.io.Serializable;
 public class Lp extends Article implements Serializable {
 
     @Column(name="artist")
+    @Size(max = 100)
     private String artist;
 
     @Column(name="genre")
