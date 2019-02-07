@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from "../../domain/User";
-import {Subscription} from "rxjs";
 import {UserService} from "../../services/user.service";
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-footer',
@@ -12,13 +10,12 @@ import {Router} from "@angular/router";
 export class FooterComponent implements OnInit {
 
   currentUser: User;
-  private userSubscription: Subscription;
 
-  constructor(public userService: UserService, public router: Router) {
+  constructor(public userService: UserService) {
   }
 
   ngOnInit() {
-    this.userSubscription = this.userService.userSubject.subscribe(sessionUser => {
+    this.userService.userSubject.subscribe(sessionUser => {
       this.currentUser = sessionUser;
     });
   }

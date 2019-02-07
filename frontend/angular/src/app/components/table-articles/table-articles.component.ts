@@ -34,6 +34,7 @@ export class TableArticlesComponent implements OnInit {
   }
 
   goToDetail(articleId: Number) {
-    this.router.navigate(['/articles', articleId]);
+    console.log("goto detail")
+    this.router.navigate(['/articles/detail', articleId]);
   }
 }

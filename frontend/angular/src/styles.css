@@ -7,4 +7,30 @@
 .ellis {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   color: #ff4081;
+  margin: 0.2em;
 }
+
+.create-container {
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 5em;
+}
+
+.create-container > * {
+  width: 60%;
+}
+
+.gocreatebutton {
+  flex-direction: column;
+  margin-left: 10em;
+  display: flex;
+  max-width: 100px;
+}
+
+.selectcreate {
+  max-width: 200px;
+  margin-top: 20px;
+  margin-bottom: 35px;
+}
+

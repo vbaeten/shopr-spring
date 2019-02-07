@@ -21,6 +21,11 @@ export class ArticleService {
     return articlesObservable;
   }
 
+  deleteArticleById(articleId: number): void {
+    this.httpClient.delete("/articles/detail" + articleId);
+
+  }
+
   getArticleById(articleId: number): Observable<any> {
     let subject: Subject<any> = new Subject();
     this.httpClient.get("/articles/" + articleId).subscribe((article: Article) => {
@@ -39,3 +44,4 @@ export class ArticleService {
 
   }
 }
+

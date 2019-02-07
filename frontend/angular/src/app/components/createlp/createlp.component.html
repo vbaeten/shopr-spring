@@ -1,4 +1,4 @@
-<div class="lp-container">
+<div class="create-container">
   <mat-form-field color="accent">
     <input matInput placeholder="Title" [(ngModel)]="title">
   </mat-form-field>
@@ -12,7 +12,7 @@
     <input matInput placeholder="Supplier Id" [(ngModel)]="supplierId">
   </mat-form-field>
 
-  <mat-select placeholder="Lpgenre" [(ngModel)]="lpGenre">
+  <mat-select class="selectcreate" placeholder="Lpgenre" [(ngModel)]="lpGenre">
     <mat-option *ngFor="let lpGenre of lpGenres" [value]="lpGenre">
       {{lpGenre}}
     </mat-option>
@@ -21,6 +21,6 @@
 
 </div>
 
-<button id="golpbutton" mat-raised-button
+<button class="gocreatebutton" mat-raised-button
         color="accent" (click)="submit()">Go</button>
 

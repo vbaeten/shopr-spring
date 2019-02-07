@@ -1,5 +1,5 @@
 <div id="createouter">
-  <h4>What type of article would you like to create?</h4>
+  <h4 class="ellis">What type of article would you like to create?</h4>
   <mat-form-field color="accent">
     <mat-select placeholder="Type of article" [(ngModel)]="selectedValue">
       <mat-option *ngFor="let type of types" [value]="type.value">
@@ -7,6 +7,6 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-  <button mat-raised-button
+  <button id="choice" mat-raised-button
           color="accent" (click)="pickArticle()">Go</button>
 </div>

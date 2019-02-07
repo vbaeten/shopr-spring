@@ -2,8 +2,9 @@
 <footer class="footer">
   <mat-toolbar color="accent">
     <mat-toolbar-row >
-      <span *ngIf="currentUser"> <p class="ty">{{currentUser.userName}}, thank you for shopping at Shopr</p></span>
+      <span *ngIf="currentUser &&!currentUser.admin.valueOf()"> <p class="ty">{{currentUser.userName}}, thank you for shopping at Shopr</p></span>
       <span *ngIf="!currentUser"> <p class="ty">Thank you for shopping at Shopr</p></span>
+      <span *ngIf="currentUser &&currentUser.admin.valueOf()"><p class="ty">Welcome {{currentUser.userName}}, ready to make some changes?</p></span>
       <br/>
 
     </mat-toolbar-row>

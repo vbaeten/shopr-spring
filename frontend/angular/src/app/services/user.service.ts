@@ -1,13 +1,13 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Subject} from "rxjs";
+import {BehaviorSubject} from "rxjs";
 import {User} from "../domain/User";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  userSubject = new Subject<User>();
+  userSubject: BehaviorSubject<User> = new BehaviorSubject<User>(null);
   private userKey: string = 'user';
 
   constructor(private httpClient: HttpClient) {
@@ -31,7 +31,7 @@ export class UserService {
 
   logout(): void {
     sessionStorage.removeItem(this.userKey);
-    this.userSubject.next();
+    this.userSubject.next(null);
   }
 
   getCurrentUser(): User {

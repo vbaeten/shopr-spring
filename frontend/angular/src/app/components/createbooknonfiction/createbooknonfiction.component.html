@@ -1,4 +1,4 @@
-<div class="booknonfiction-container">
+<div class="create-container">
   <mat-form-field color="accent">
     <input matInput placeholder="Title" [(ngModel)]="title">
   </mat-form-field>
@@ -18,7 +18,7 @@
     <input matInput placeholder="Number Of Pages" [(ngModel)]="numberOfPages">
   </mat-form-field>
 
-  <mat-select placeholder="Genre" [(ngModel)]="booknonfictionGenre">
+  <mat-select class="selectcreate" placeholder="Genre" [(ngModel)]="booknonfictionGenre">
     <mat-option *ngFor="let booknonfictionGenre of booknonfictionGenres" [value]="booknonfictionGenre">
       {{booknonfictionGenre}}
     </mat-option>
@@ -27,6 +27,6 @@
 
 </div>
 
-<button id="gobooknonfictionbutton" mat-raised-button
+<button class="gocreatebutton" mat-raised-button
         color="accent" (click)="submit()">Go
 </button>

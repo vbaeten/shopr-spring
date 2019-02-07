@@ -1,4 +1,4 @@
-<div class="game-container">
+<div class="create-container">
   <mat-form-field color="accent">
     <input matInput placeholder="Title" [(ngModel)]="title">
   </mat-form-field>
@@ -15,7 +15,7 @@
     <input matInput placeholder="Minimum Age" [(ngModel)]="minimumAge">
   </mat-form-field>
 
-  <mat-select placeholder="Gamegenre" [(ngModel)]="gameGenre">
+  <mat-select class="selectcreate" placeholder="Gamegenre" [(ngModel)]="gameGenre">
     <mat-option *ngFor="let gameGenre of gameGenres" [value]="gameGenre">
       {{gameGenre}}
     </mat-option>
@@ -24,5 +24,5 @@
 
 </div>
 
-<button id="gogamebutton" mat-raised-button
+<button class="gocreatebutton" mat-raised-button
         color="accent" (click)="submit()">Go</button>

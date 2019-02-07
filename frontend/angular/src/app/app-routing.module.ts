@@ -10,19 +10,20 @@ import {CreatebooknonfictionComponent} from "./components/createbooknonfiction/c
 import {DetailComponent} from "./components/detail/detail.component";
 import {RegisterComponent} from "./components/register/register.component";
 import {SigninComponent} from "./components/signin/signin.component";
+import {AdminGuard} from "./guard/admin.guard";
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
-  {path: 'createlp', component: CreatelpComponent},
-  {path: 'creategame', component: CreategameComponent},
-  {path: 'createbookfiction', component: CreatebookfictionComponent},
-  {path: 'createbooknonfiction', component: CreatebooknonfictionComponent},
+  {path: 'createlp', component: CreatelpComponent, canActivate: [AdminGuard]},
+  {path: 'creategame', component: CreategameComponent, canActivate: [AdminGuard]},
+  {path: 'createbookfiction', component: CreatebookfictionComponent, canActivate: [AdminGuard]},
+  {path: 'createbooknonfiction', component: CreatebooknonfictionComponent, canActivate: [AdminGuard]},
   {path: 'articles', component: ArticlesOverviewComponent},
-  {path: 'articles/:articleId', component: DetailComponent},
-  {path: 'create', component: CreateComponent},
+  {path: 'articles/detail/:articleId', component: DetailComponent},
+  {path: 'create', component: CreateComponent, canActivate: [AdminGuard]},
   {path: 'register', component: RegisterComponent},
   {path: 'signin', component: SigninComponent},
-  {path: '**', redirectTo: 'home', pathMatch: 'full'}
+  {path: '**', redirectTo: 'home'}
 ];
 
 @NgModule({
