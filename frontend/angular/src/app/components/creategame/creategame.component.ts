@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {GameService} from "../../services/game.service";
 import {Game} from "../../domain/Game";
 import {Router} from "@angular/router";
+import {ArticleService} from "../../services/article.service";
 
 
 @Component({
@@ -18,16 +19,24 @@ export class CreategameComponent implements OnInit {
   gameGenre: string;
   gameGenres: string[];
 
-  constructor(private service: GameService, public router: Router) {
+  constructor(private gameservice: GameService, private articleservice: ArticleService, public router: Router) {
 
   }
   ngOnInit() {
-    this.service.getGameGenres().subscribe(gameGenres => this.gameGenres = gameGenres);
+    this.gameservice.getGameGenres().subscribe(gameGenres => this.gameGenres = gameGenres);
   }
 
   submit() {
     let newGame = new Game(this.title, 'game', this.price, this.supplierId, this.gameGenre, this.minimumAge, this.publisher);
-    this.service.createGame(newGame).toPromise();
-    this.router.navigate(['/articles'])
+    this.gameservice.createGame(newGame).subscribe(
+      result => {
+        this.articleservice.allArticles();
+
+      },
+      error1 => {
+        alert("create failed")
+      },
+    )
+    this.router.navigate(['/articles']);
   }
 }

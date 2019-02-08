@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {BookfictionService} from "../../services/bookfiction.service";
 import {Bookfiction} from "../../domain/Bookfiction";
 import {Router} from "@angular/router";
+import {ArticleService} from "../../services/article.service";
 
 
 @Component({
@@ -20,7 +21,7 @@ export class CreatebookfictionComponent implements OnInit {
   bookfictionGenres: string[];
   summary: string;
 
-  constructor(private service: BookfictionService, public router: Router) {
+  constructor(private service: BookfictionService, private articleservice: ArticleService, public router: Router) {
 
   }
 
@@ -30,7 +31,14 @@ export class CreatebookfictionComponent implements OnInit {
 
   submit() {
     let newBookfiction = new Bookfiction(this.title, 'bookfiction', this.price, this.supplierId, this.author, this.isbn, this.numberOfPages, this.bookfictionGenre, this.summary);
-    this.service.createBookfiction(newBookfiction).toPromise();
+    this.service.createBookfiction(newBookfiction).subscribe(
+      result => {
+        this.articleservice.allArticles();
+      },
+      error1 => {
+        alert("create failed")
+      },
+    );
     this.router.navigate(['/articles'])
   }
 }

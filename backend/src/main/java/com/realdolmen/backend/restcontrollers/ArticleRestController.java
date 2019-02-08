@@ -21,11 +21,6 @@ public class ArticleRestController {
         return articleRepository.findAll();
     }
 
-//    @GetMapping("/{articleId}")
-////    public Article findById(@PathVariable("articleId") Long articleId) {
-////        return articleRepository.getOne(articleId);
-////    }
-
     @GetMapping(value = "/{articleId}")
     public Article getArticle(@PathVariable Long articleId) {
         return articleRepository.getOne(articleId);

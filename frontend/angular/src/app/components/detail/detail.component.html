@@ -66,6 +66,9 @@
       <button *ngIf="currentUser && currentUser.admin" (click)="deleteArticleById(articleId)" mat-raised-button
               color="warn">Delete
       </button>
+      <button *ngIf="!currentUser" class="ellis" routerLink="/signin" mat-raised-button color="accent">Please login to
+        perform actions
+      </button>
 
     </mat-card-actions>
   </mat-card>

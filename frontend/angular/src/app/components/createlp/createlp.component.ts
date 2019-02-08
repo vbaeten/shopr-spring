@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {LpService} from "../../services/lp.service";
 import {Lp} from "../../domain/Lp";
 import {Router} from "@angular/router";
+import {ArticleService} from "../../services/article.service";
 
 @Component({
   selector: 'app-createlp',
@@ -16,7 +17,7 @@ export class CreatelpComponent implements OnInit {
   lpGenre: string;
   lpGenres: string[];
 
-  constructor(private service: LpService, public router: Router) {
+  constructor(private service: LpService, private articleservice: ArticleService, public router: Router) {
   }
 
   ngOnInit() {
@@ -24,7 +25,13 @@ export class CreatelpComponent implements OnInit {
   }
   submit() {
     let newLp = new Lp(this.title, 'lp', this.price, this.supplierId, this.lpGenre, this.artist );
-    this.service.createLp(newLp).toPromise();
+    this.service.createLp(newLp).subscribe(result => {
+        this.articleservice.allArticles();
+      },
+      error1 => {
+        alert("create failed")
+      },);
+
     this.router.navigate(["/articles"])
   }
 }
