@@ -18,4 +18,8 @@ export class BooknonfictionService {
   getBooknonfictionGenres(): Observable<string[]> {
     return this.httpClient.get<string[]>("/booknonfiction/genres");
   }
+
+  updateBooknonfiction(booknonfiction: Booknonfiction): Observable<void> {
+    return this.httpClient.put<void>('booknonfiction/edit', booknonfiction);
+  }
 }

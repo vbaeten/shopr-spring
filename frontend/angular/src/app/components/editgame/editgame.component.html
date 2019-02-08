@@ -1,0 +1,26 @@
+<div class="create-container" *ngIf="game">
+  <mat-form-field color="accent">
+    <input matInput placeholder="Title" [(ngModel)]="game.title">
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <input matInput placeholder="Price" [(ngModel)]="game.price">
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <input matInput placeholder="Publisher" [(ngModel)]="game.publisher">
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <input matInput placeholder="Supplier Id" [(ngModel)]="game.supplierId">
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <input matInput placeholder="Minimum age" [(ngModel)]="game.minimumAge">
+  </mat-form-field>
+
+  <mat-select class="selectcreate" placeholder="Genre" [(ngModel)]="game.gameGenre">
+    <mat-option *ngFor="let gameGenre of gameGenres" [value]="gameGenre">
+      {{gameGenre}}
+    </mat-option>
+  </mat-select>
+  <button class="gocreatebutton" mat-raised-button
+          color="accent" (click)="edit()">Save Changes
+  </button>
+</div>

@@ -10,15 +10,7 @@ import {Bookfiction} from "../../domain/Bookfiction";
   styleUrls: ['./editbookfiction.component.css']
 })
 export class EditbookfictionComponent implements OnInit {
-  // price: number;
-  // title: string;
-  // author: string;
-  // supplierId: string;
-  // isbn: string;
-  // numberOfPages: number;
-  // bookfictionGenre: string;
   bookfictionGenres: string[];
-  // summary: string;
   bookfiction: Bookfiction;
 
   constructor(private bookfictionservice: BookfictionService, private articleservice: ArticleService, public router: Router, private route: ActivatedRoute) {
@@ -32,7 +24,6 @@ export class EditbookfictionComponent implements OnInit {
   }
 
   edit() {
-    // let newBookfiction = new Bookfiction(this.title, 'bookfiction', this.price, this.supplierId, this.author, this.isbn, this.numberOfPages, this.bookfictionGenre, this.summary);
     this.bookfictionservice.updateBookfiction(this.bookfiction).subscribe(
       () => {
         this.router.navigate(['/articles'])

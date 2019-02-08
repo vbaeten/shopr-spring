@@ -16,4 +16,8 @@ export class LpService {
   getLpGenres(): Observable <string[]> {
     return this.httpclient.get<string[]>("/lp/genres");
 }
+
+  updateLp(lp: Lp): Observable<void> {
+    return this.httpclient.put<void>('lp/edit', lp);
+  }
 }

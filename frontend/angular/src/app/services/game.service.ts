@@ -17,4 +17,8 @@ export class GameService {
   getGameGenres(): Observable <string[]> {
     return this.httpClient.get<string[]>("/game/genres");
   }
+
+  updateGame(game: Game): Observable<void> {
+    return this.httpClient.put<void>('game/edit', game);
+  }
 }

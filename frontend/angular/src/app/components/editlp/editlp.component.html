@@ -1,0 +1,23 @@
+<div class="create-container" *ngIf="lp">
+  <mat-form-field color="accent">
+    <input matInput placeholder="Title" [(ngModel)]="lp.title">
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <input matInput placeholder="Price" [(ngModel)]="lp.price">
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <input matInput placeholder="Artist" [(ngModel)]="lp.artist">
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <input matInput placeholder="Supplier Id" [(ngModel)]="lp.supplierId">
+  </mat-form-field>
+
+  <mat-select class="selectcreate" placeholder="Genre" [(ngModel)]="lp.lpGenre">
+    <mat-option *ngFor="let lpGenre of lpGenres" [value]="lpGenre">
+      {{lpGenre}}
+    </mat-option>
+  </mat-select>
+  <button class="gocreatebutton" mat-raised-button
+          color="accent" (click)="edit()">Save Changes
+  </button>
+</div>

@@ -2,6 +2,7 @@ package com.realdolmen.backend.restcontrollers;
 
 import com.realdolmen.backend.Domain.Booknonfiction;
 import com.realdolmen.backend.Domain.enums.BooknonfictionGenre;
+import com.realdolmen.backend.exception.NotFoundException;
 import com.realdolmen.backend.repositories.BooknonfictionRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -28,5 +29,20 @@ public class BooknonfictionRestController {
     @GetMapping("/genres")
     public List<BooknonfictionGenre> getBooknonfictionGenres() {
         return Arrays.stream(BooknonfictionGenre.values()).collect(Collectors.toList());
+    }
+
+
+    @GetMapping(value = "/{articleId}")
+    public Booknonfiction getBookFiction(@PathVariable Long articleId) {
+        return booknonfictionRepository.findById(articleId)
+                .orElseThrow(NotFoundException::new);
+    }
+
+    @PutMapping(path = "/edit")
+    public void updateById(@RequestBody Booknonfiction booknonfiction) {
+        Booknonfiction existingBooknonfiction = booknonfictionRepository.findById(booknonfiction.getArticleId())
+                .orElseThrow(NotFoundException::new);
+        booknonfiction.setVersionId(existingBooknonfiction.getVersionId());
+        booknonfictionRepository.save(booknonfiction);
     }
 }

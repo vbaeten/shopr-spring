@@ -2,6 +2,7 @@ package com.realdolmen.backend.restcontrollers;
 
 import com.realdolmen.backend.Domain.Lp;
 import com.realdolmen.backend.Domain.enums.LpGenre;
+import com.realdolmen.backend.exception.NotFoundException;
 import com.realdolmen.backend.repositories.LpRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -27,4 +28,19 @@ public class LpRestController {
 
     @GetMapping("/genres")
     public List<LpGenre> getLpGenres(){return Arrays.stream(LpGenre.values()).collect(Collectors.toList());}
+
+
+    @GetMapping(value = "/{articleId}")
+    public Lp getBookFiction(@PathVariable Long articleId) {
+        return lpRepository.findById(articleId)
+                .orElseThrow(NotFoundException::new);
+    }
+
+    @PutMapping(path = "/edit")
+    public void updateById(@RequestBody Lp lp) {
+        Lp existingLp = lpRepository.findById(lp.getArticleId())
+                .orElseThrow(NotFoundException::new);
+        lp.setVersionId(existingLp.getVersionId());
+        lpRepository.save(lp);
+    }
 }
