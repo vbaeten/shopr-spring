@@ -19,9 +19,8 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     this.userService.getCurrentUser().subscribe(response => {
-      console.log(response);
       this.currentUser = response;
-      if(this.currentUser !== undefined){
+      if(this.currentUser !== null){
         this.isLoggedIn = true;
       }else {
         this.isLoggedIn = false;
@@ -34,6 +33,10 @@ export class NavbarComponent implements OnInit {
     this.authService.logout();
     this.isLoggedIn = false;
     this.router.navigate(["/"]);
+  }
+
+  isAdmin() {
+    return this.userService.isAdmin().subscribe();
   }
 
 }

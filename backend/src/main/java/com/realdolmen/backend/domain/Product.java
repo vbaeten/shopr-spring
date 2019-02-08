@@ -16,7 +16,7 @@ public abstract class Product {
     private Long id;
 
     private String title;
-    private String price;
+    private double price;
     private String supplierId;
 
     @Column(name = "type", insertable = false, updatable = false)

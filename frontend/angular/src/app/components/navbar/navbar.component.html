@@ -10,7 +10,8 @@
         <button mat-button routerLink="/login">Login</button>
       </ng-container>
       <ng-container *ngIf="isLoggedIn">
-        Welcome ! {{currentUser}}
+        Welcome {{currentUser}} !
+        <button mat-button routerLink="/dashboard">Dashboard</button>
         <button mat-button (click)="logout()">Logout</button>
       </ng-container>
     </mat-toolbar-row>

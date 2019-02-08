@@ -9,11 +9,11 @@ import java.util.List;
 @Service
 public class ProductService {
 
+    private final ProductRepository productRepository;
+
     public ProductService(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
-
-    private final ProductRepository productRepository;
 
     public Product save(Product product) {
         return productRepository.saveAndFlush(product);

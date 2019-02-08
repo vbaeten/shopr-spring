@@ -3,13 +3,15 @@ import {HttpClient} from '@angular/common/http';
 
 import {User} from "../models/users.model";
 import {TokenStorage} from "./token.storage";
+import {Observable, Subject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private http: HttpClient, private tokenStorage:TokenStorage) { }
+  constructor(private http: HttpClient, private tokenStorage: TokenStorage) {
+  }
 
   getCurrentUser() {
     return this.tokenStorage.currentUserSubject;
@@ -34,17 +36,18 @@ export class UserService {
     return false;
   }
 
-  isAdmin(): boolean {
-     this.http.get('/api/user/currentuser').subscribe(response => {
-        let roles = [];
-        roles = response['authorities'];
-        roles.forEach(role => {
-          if (role.toString().substr("ADMIN")) {
-            return true;
-          }
-        });
+  isAdmin(): Observable<boolean> {
+    let currentUserObservable: Subject<boolean> = new Subject<boolean>();
+    this.http.get('/api/user/currentuser').subscribe(response => {
+      let isAdmin = false;
+      response['authorities'].forEach(item => {
+        if (item.authority === 'ADMIN') {
+          isAdmin = true;
+        }
       });
-     return false;
+      currentUserObservable.next(isAdmin);
+    });
+    return currentUserObservable.asObservable();
   }
 
 }

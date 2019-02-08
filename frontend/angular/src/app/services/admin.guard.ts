@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
-import {CanActivate, Router} from '@angular/router';
+import {ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot} from '@angular/router';
+import {Observable} from 'rxjs';
 import {UserService} from "./user.service";
 import {AuthService} from "./auth.service";
 
@@ -8,15 +9,14 @@ import {AuthService} from "./auth.service";
 })
 export class AdminGuard implements CanActivate {
 
-  constructor(
-    private authService: AuthService,
-    private userService: UserService,
-    private router: Router) {}
+  constructor(private userService: UserService, private authService: AuthService) {}
 
-  canActivate(): boolean {
-  //   this.userService.getCurrentUser().subscribe(response => {
-  //     this.currentUser = response;
-  //     if(this.currentUser !== undefined){
-    return true;
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+    this.authService.isAuthenticated(undefined, () => {
+     this.userService.isAdmin().subscribe(respone =>  console.log(respone));
+    });
+    return this.userService.isAdmin();
   }
 }
