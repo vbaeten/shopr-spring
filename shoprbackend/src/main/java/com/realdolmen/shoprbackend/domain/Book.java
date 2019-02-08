@@ -14,7 +14,7 @@ public abstract class Book extends Item{
     private String author;
 
 
-    @Column(unique = true)
+    @Column(unique = true, length = 11)
     private String isbn;
 
     @Column(name="total_pages")

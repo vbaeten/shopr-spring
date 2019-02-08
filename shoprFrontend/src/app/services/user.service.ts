@@ -12,7 +12,7 @@ export class UserService {
 
   private classUrl: string = environment.baseApiUrl+'/users';
   key:string='1'
-  private updateHeader = new Subject()
+  updateHeader = new Subject()
 
 
 

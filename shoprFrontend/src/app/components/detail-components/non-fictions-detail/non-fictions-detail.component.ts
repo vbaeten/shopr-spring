@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {DataService} from "../../../services/data.service";
 import {NonFictionService} from "../../../services/non-fiction.service";
+import {NgForm} from "@angular/forms";
+import {Orderline} from "../../../models/Orderline";
+import {OrderLineService} from "../../../services/order-line.service";
 
 @Component({
   selector: 'app-non-fictions-detail',
@@ -11,8 +14,9 @@ export class NonFictionsDetailComponent implements OnInit {
 
   passedId:number
   nonFiction
+  orderLine
 
-  constructor(private dataService:DataService,private nonFictionService:NonFictionService) { }
+  constructor(private dataService:DataService,private nonFictionService:NonFictionService, private orderLineService:OrderLineService) { }
 
 
   ngOnInit() {
@@ -23,6 +27,15 @@ export class NonFictionsDetailComponent implements OnInit {
   delete(){
     console.log(this.passedId)
     this.nonFictionService.deleteById(this.passedId).subscribe(nonFiction=>this.nonFiction=nonFiction)
+  }
+
+  addToCart(form:NgForm){
+
+    this.orderLine=new Orderline()
+    this.orderLine.item=this.nonFiction
+    this.orderLine.quantity=form.value.quantity
+    this.orderLine.subTotal = this.nonFiction.quantity*this.nonFiction.price
+    this.orderLineService.createOrderLine(this.orderLine).subscribe(data=>this.orderLine=data)
   }
 
 }

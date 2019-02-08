@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {DataService} from "../../../services/data.service";
 import {LpService} from "../../../services/lp.service";
+import {NgForm} from "@angular/forms";
+import {Orderline} from "../../../models/Orderline";
+import {OrderLineService} from "../../../services/order-line.service";
 
 @Component({
   selector: 'app-lps-detail',
@@ -11,8 +14,9 @@ export class LpsDetailComponent implements OnInit {
 
   passedId:number
   lp
+  orderLine
 
-  constructor(private dataService:DataService,private lpService:LpService) { }
+  constructor(private dataService:DataService,private lpService:LpService,private orderLineService:OrderLineService) { }
 
 
   ngOnInit() {
@@ -23,6 +27,16 @@ export class LpsDetailComponent implements OnInit {
   delete(){
     console.log(this.passedId)
     this.lpService.deleteById(this.passedId).subscribe(lp=>this.lp=lp)
+  }
+
+  addToCart(form:NgForm){
+
+    this.orderLine=new Orderline()
+    this.orderLine.item=this.lp
+    this.orderLine.quantity=form.value.quantity
+    this.orderLine.subTotal = this.lp.quantity*this.lp.price
+
+    this.orderLineService.createOrderLine(this.orderLine).subscribe(data=>this.orderLine=data)
   }
 
 }

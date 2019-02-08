@@ -28,9 +28,18 @@
 
   </mat-card-content>
   <mat-card-actions>
+
+
+    <div>
+      <form #f="ngForm" (ngSubmit)="addToCart(f)">
+        <mat-form-field>
+          <input matInput placeholder="amount" ngModel name="quantity">
+        </mat-form-field>
+        <button mat-button >add to cart</button>
+      </form>
+    </div>
     <button mat-button>edit</button>
     <button mat-button color="warn" routerLink="/nonFictionsOverview" (click)="delete()">delete</button>
-    <button mat-button>add to cart</button>
 
   </mat-card-actions>
 

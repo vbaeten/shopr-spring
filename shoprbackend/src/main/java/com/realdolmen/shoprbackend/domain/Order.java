@@ -4,8 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
 
-import static javax.persistence.CascadeType.MERGE;
-import static javax.persistence.CascadeType.PERSIST;
+import static javax.persistence.CascadeType.*;
 
 @Entity
 @Table(name="orders")
@@ -17,12 +16,12 @@ public class Order {
 
     private Timestamp date;
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @OneToMany(cascade = {MERGE, REMOVE},fetch = FetchType.EAGER)
     @JoinColumn
     private List<OrderLine> orderLines;
 
 
-    @ManyToOne(cascade = {PERSIST,MERGE})
+    @ManyToOne(cascade = {MERGE})
     @JoinColumn
     private User user;
 

@@ -17,7 +17,7 @@ export class GamesDetailComponent implements OnInit {
   passedId:number
   game
 
-  orderline:Orderline
+  orderLine
 
   constructor(private dataService:DataService,private gameService:GameService,private orderLineService:OrderLineService) { }
 
@@ -35,13 +35,11 @@ export class GamesDetailComponent implements OnInit {
 
   addToCart(form:NgForm){
 
-    this.orderline=new Orderline()
-    this.orderline.item=this.game
-    this.orderline.quantity=form.value.quantity
-    this.orderline.subTotal = this.orderline.quantity*this.game.price
-    console.log(this.orderline.quantity)
-    console.log(this.orderline.subTotal)
-    this.orderLineService.createOrderLine(this.orderline).subscribe(data=>this.orderline=data)
+    this.orderLine=new Orderline()
+    this.orderLine.item=this.game
+    this.orderLine.quantity=form.value.quantity
+    this.orderLine.subTotal = this.orderLine.quantity*this.game.price
+    this.orderLineService.createOrderLine(this.orderLine).subscribe(data=>this.orderLine=data)
   }
 
 
