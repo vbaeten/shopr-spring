@@ -29,7 +29,7 @@ export class DetailComponent implements OnInit {
   }
 
   deleteArticleById(articleId) {
-    this.articleService.deleteArticleById(articleId);
+    this.articleService.deleteArticleById(articleId).subscribe();
     this.router.navigate(['/articles']);
   }
 

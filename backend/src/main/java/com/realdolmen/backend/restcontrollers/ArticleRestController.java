@@ -21,10 +21,10 @@ public class ArticleRestController {
         return articleRepository.findAll();
     }
 
-    @GetMapping("/{articleId}")
-    public Article findById(@PathVariable("articleId") Long articleId) {
-        return articleRepository.getOne(articleId);
-    }
+//    @GetMapping("/{articleId}")
+////    public Article findById(@PathVariable("articleId") Long articleId) {
+////        return articleRepository.getOne(articleId);
+////    }
 
     @GetMapping(value = "/{articleId}")
     public Article getArticle(@PathVariable Long articleId) {
@@ -33,7 +33,7 @@ public class ArticleRestController {
 
     @DeleteMapping("/{articleId}")
     public void deleteById(@PathVariable("articleId") Long articleId) {
-        Article article = findById(articleId);
+        Article article = getArticle(articleId);
         articleRepository.delete(article);
     }
 

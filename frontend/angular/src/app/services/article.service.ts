@@ -21,9 +21,8 @@ export class ArticleService {
     return articlesObservable;
   }
 
-  deleteArticleById(articleId: number): void {
-    this.httpClient.delete("/articles/detail" + articleId);
-
+  deleteArticleById(articleId: number): Observable<Article> {
+    return this.httpClient.delete<Article>("/articles/" + articleId);
   }
 
   getArticleById(articleId: number): Observable<any> {
