@@ -43,6 +43,7 @@ import { FictionsDetailComponent } from './components/detail-components/fictions
 import { NonFictionsDetailComponent } from './components/detail-components/non-fictions-detail/non-fictions-detail.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import {OrderLineService} from "./services/order-line.service";
 
 @NgModule({
   declarations: [
@@ -95,7 +96,7 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
 
 
   ],
-  providers: [UserService,GameService,LpService,FictionService,NonFictionService,DataService],
+  providers: [UserService,GameService,LpService,FictionService,NonFictionService,DataService,OrderLineService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

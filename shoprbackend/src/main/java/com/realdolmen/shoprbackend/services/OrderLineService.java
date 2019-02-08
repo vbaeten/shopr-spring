@@ -1,0 +1,40 @@
+package com.realdolmen.shoprbackend.services;
+
+
+import com.realdolmen.shoprbackend.domain.OrderLine;
+import com.realdolmen.shoprbackend.repository.OrderLineRepository;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class OrderLineService implements CrudService<OrderLine,Long> {
+
+
+    private OrderLineRepository orderLineRepository;
+
+
+    @Override
+    public <S extends OrderLine> S save(S entity) {
+        return orderLineRepository.save(entity);
+    }
+
+    @Override
+    public OrderLine findById(Long primaryKey) {
+        return null;
+    }
+
+    @Override
+    public List<OrderLine> findAll() {
+        return orderLineRepository.findAll();
+    }
+
+    @Override
+    public void delete(OrderLine entity) {
+
+    }
+
+    public OrderLineService(OrderLineRepository orderLineRepository) {
+        this.orderLineRepository = orderLineRepository;
+    }
+}

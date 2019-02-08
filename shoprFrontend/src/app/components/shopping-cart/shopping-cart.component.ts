@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {OrderLineService} from "../../services/order-line.service";
 
 @Component({
   selector: 'app-shopping-cart',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShoppingCartComponent implements OnInit {
 
-  constructor() { }
+  orderLines = []
+
+  constructor( private orderLineService:OrderLineService) { }
 
   ngOnInit() {
+    this.orderLineService.getOrderLines().subscribe(data=>this.orderLines=data)
   }
+
 
 }

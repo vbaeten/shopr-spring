@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {GamesOverviewComponent} from "../../overview/games-overview/games-overview.component";
 import {DataService} from "../../../services/data.service";
 import {GameService} from "../../../services/game.service";
+import {Orderline} from "../../../models/Orderline";
+import {NgForm} from "@angular/forms";
+import {OrderLineService} from "../../../services/order-line.service";
 
 @Component({
   selector: 'app-games-detail',
@@ -14,7 +17,9 @@ export class GamesDetailComponent implements OnInit {
   passedId:number
   game
 
-  constructor(private dataService:DataService,private gameService:GameService) { }
+  orderline:Orderline
+
+  constructor(private dataService:DataService,private gameService:GameService,private orderLineService:OrderLineService) { }
 
 
   ngOnInit() {
@@ -28,6 +33,16 @@ export class GamesDetailComponent implements OnInit {
   }
 
 
+  addToCart(form:NgForm){
+
+    this.orderline=new Orderline()
+    this.orderline.item=this.game
+    this.orderline.quantity=form.value.quantity
+    this.orderline.subTotal = this.orderline.quantity*this.game.price
+    console.log(this.orderline.quantity)
+    console.log(this.orderline.subTotal)
+    this.orderLineService.createOrderLine(this.orderline).subscribe(data=>this.orderline=data)
+  }
 
 
 }

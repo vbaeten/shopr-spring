@@ -10,14 +10,16 @@ public class OrderLine {
     @GeneratedValue
     private Long id;
 
+
     @ManyToOne
     private Item item;
 
+    @Transient
     @ManyToOne(cascade = CascadeType.ALL)
     private Order order;
 
-    @Transient
     private double subTotal;
+
     private int quantity;
 
 

@@ -1,6 +1,25 @@
+<div>
+<p>Shopping Cart</p>
+</div>
+<table matSort class="cartTable">
+  <tr>
+    <th mat-sort-header="name">Item</th>
+    <th mat-sort-header="title">Title</th>
+    <th mat-sort-header="price">price</th>
+    <th mat-sort-header="quantity">quantity</th>
+    <th mat-sort-header="subTotal">Subtotal</th>
+  </tr>
 
+  <tr *ngFor="let orderLine of orderLines">
+    <td>{{orderLine.item.type}}</td>
+    <td>{{orderLine.item.title}}</td>
+    <td>{{orderLine.item.price}}</td>
+    <td>{{orderLine.quantity}}</td>
+    <td>{{orderLine.subTotal}}</td>
+  </tr>
+</table>
+<div>
+<button mat-button="order">Order!</button>
+<button mat-button="clearAll">Clear</button>
 
-
-
-
-
+</div>
