@@ -16,6 +16,7 @@ public class UserController
 {
     private UserServiceImpl userServiceImpl;
     User currentUser;
+    User editUser;
 
     public UserController(UserServiceImpl userServiceImpl)
     {
@@ -30,7 +31,6 @@ public class UserController
     }
 
     /**
-     *
      * @param id
      * @return
      */
@@ -39,12 +39,12 @@ public class UserController
     public User getOneForId(@PathVariable Long id)
     {
         currentUser = new User();
-        currentUser =  userServiceImpl.findById(id);
+        currentUser = userServiceImpl.findById(id);
         currentUser.setRole(currentUser.getUserRoleEnum().toString());
         return currentUser;
     }
 
-    @PostMapping(path = "/save",consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "/save", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public User save(@RequestBody @Valid User user)
     {
@@ -52,13 +52,15 @@ public class UserController
         return userServiceImpl.save(user);
     }
 
-    @PostMapping(path = "/edit", consumes = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.CREATED)
-    public User edit(@RequestBody User user)
+    @PutMapping(path = "/edit/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public User edit(@PathVariable Long id, @RequestBody User user)
     {
-        return userServiceImpl.edit(user);
+        editUser = new User();
+        editUser = userServiceImpl.edit(user);
+        editUser.setRole(user.getUserRoleEnum().toString());
+        return editUser;
     }
-
 
 
 }
