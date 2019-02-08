@@ -39,4 +39,9 @@ public class UserServiceImpl
         user.setUserRoleEnum(UserRoleEnum.USER);
         return userDao.save(user);
     }
+
+    public User edit(User user)
+    {
+        return userDao.save(user);
+    }
 }

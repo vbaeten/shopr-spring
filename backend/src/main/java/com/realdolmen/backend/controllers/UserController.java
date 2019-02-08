@@ -52,6 +52,13 @@ public class UserController
         return userServiceImpl.save(user);
     }
 
+    @PostMapping(path = "/edit", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.CREATED)
+    public User edit(@RequestBody User user)
+    {
+        return userServiceImpl.edit(user);
+    }
+
 
 
 }
