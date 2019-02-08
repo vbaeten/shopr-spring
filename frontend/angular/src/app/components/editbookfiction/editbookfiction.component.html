@@ -1,0 +1,31 @@
+<div class="create-container" *ngIf="bookfiction">
+  <mat-form-field color="accent">
+    <input matInput placeholder="Title" [(ngModel)]="bookfiction.title">
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <input matInput placeholder="Price" [(ngModel)]="bookfiction.price">
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <input matInput placeholder="Author" [(ngModel)]="bookfiction.author">
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <input matInput placeholder="Supplier Id" [(ngModel)]="bookfiction.supplierId">
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <input matInput placeholder="Isbn" [(ngModel)]="bookfiction.isbn">
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <input matInput placeholder="Number Of Pages" [(ngModel)]="bookfiction.numberOfPages">
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <input matInput placeholder="Summary" [(ngModel)]="bookfiction.summary">
+  </mat-form-field>
+  <mat-select class="selectcreate" placeholder="Genre" [(ngModel)]="bookfiction.bookfictionGenre">
+    <mat-option *ngFor="let bookfictionGenre of bookfictionGenres" [value]="bookfictionGenre">
+      {{bookfictionGenre}}
+    </mat-option>
+  </mat-select>
+  <button class="gocreatebutton" mat-raised-button
+          color="accent" (click)="edit()">Create
+  </button>
+</div>
