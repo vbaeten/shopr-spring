@@ -57,8 +57,8 @@ public class UserController
     public User edit(@PathVariable Long id, @RequestBody User user)
     {
         editUser = new User();
-        editUser = userServiceImpl.edit(user);
         editUser.setRole(user.getUserRoleEnum().toString());
+        editUser = userServiceImpl.edit(user);
         return editUser;
     }
 
