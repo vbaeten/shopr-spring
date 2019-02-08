@@ -17,4 +17,8 @@ export class BookfictionService {
   getBookfictionGenres(): Observable<string[]> {
     return this.httpClient.get<string[]>("/bookfiction/genres");
   }
+
+  updateBookfiction(bookfiction: Bookfiction): Observable<void> {
+    return this.httpClient.put<void>('bookfiction/edit', bookfiction);
+  }
 }

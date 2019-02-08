@@ -34,6 +34,7 @@ import {DetailComponent} from './components/detail/detail.component';
 import {RegisterComponent} from './components/register/register.component';
 import {UserService} from "./services/user.service";
 import {SigninComponent} from './components/signin/signin.component';
+import {EditbookfictionComponent} from './components/editbookfiction/editbookfiction.component';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import {SigninComponent} from './components/signin/signin.component';
     DetailComponent,
     RegisterComponent,
     SigninComponent,
+    EditbookfictionComponent,
   ],
   imports: [
     BrowserModule,

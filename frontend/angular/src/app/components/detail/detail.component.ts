@@ -28,9 +28,13 @@ export class DetailComponent implements OnInit {
     });
   }
 
-  deleteArticleById(articleId) {
-    this.articleService.deleteArticleById(articleId).subscribe();
+  deleteArticleById() {
+    this.articleService.deleteArticleById(this.articleId).subscribe();
     this.router.navigate(['/articles']);
+  }
+
+  goToEdit() {
+    this.router.navigate(['/editbookfiction', this.articleId])
   }
 
 }

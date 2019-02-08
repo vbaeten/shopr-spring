@@ -11,6 +11,7 @@ import {DetailComponent} from "./components/detail/detail.component";
 import {RegisterComponent} from "./components/register/register.component";
 import {SigninComponent} from "./components/signin/signin.component";
 import {AdminGuard} from "./guard/admin.guard";
+import {EditbookfictionComponent} from "./components/editbookfiction/editbookfiction.component";
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'creategame', component: CreategameComponent, canActivate: [AdminGuard]},
   {path: 'createbookfiction', component: CreatebookfictionComponent, canActivate: [AdminGuard]},
   {path: 'createbooknonfiction', component: CreatebooknonfictionComponent, canActivate: [AdminGuard]},
+  {path: 'editbookfiction/:articleId', component: EditbookfictionComponent /*, canActivate: [AdminGuard]*/},
   {path: 'articles', component: ArticlesOverviewComponent},
   {path: 'articles/detail/:articleId', component: DetailComponent},
   {path: 'create', component: CreateComponent, canActivate: [AdminGuard]},
