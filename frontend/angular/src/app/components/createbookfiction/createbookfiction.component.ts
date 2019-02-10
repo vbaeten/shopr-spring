@@ -34,11 +34,11 @@ export class CreatebookfictionComponent implements OnInit {
     this.service.createBookfiction(newBookfiction).subscribe(
       result => {
         this.articleservice.allArticles();
+        this.router.navigate(['/articles'])
       },
       error1 => {
         alert("create failed")
       },
     );
-    this.router.navigate(['/articles'])
   }
 }

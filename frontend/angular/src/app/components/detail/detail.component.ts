@@ -34,7 +34,7 @@ export class DetailComponent implements OnInit {
   }
 
   goToEdit() {
-    this.router.navigate(['/editbookfiction', this.articleId])
+    this.router.navigate(['/edit' + this.article.type, this.articleId])
   }
 
 }
