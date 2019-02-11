@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ArticleService} from "../../services/article.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {UserService} from "../../services/user.service";
-import {User} from "../../domain/User";
+import {User} from "../../domain/user";
 
 @Component({
   selector: 'app-detail',

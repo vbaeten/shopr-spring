@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {GameService} from "../../services/game.service";
-import {Game} from "../../domain/Game";
+import {Game} from "../../domain/game";
 import {Router} from "@angular/router";
 import {ArticleService} from "../../services/article.service";
 

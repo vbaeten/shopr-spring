@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {BooknonfictionService} from "../../services/booknonfiction.service";
 import {ArticleService} from "../../services/article.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Booknonfiction} from "../../domain/Booknonfiction";
+import {Booknonfiction} from "../../domain/booknonfiction";
 
 @Component({
   selector: 'app-editbooknonfiction',

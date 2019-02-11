@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {LpService} from "../../services/lp.service";
-import {Lp} from "../../domain/Lp";
+import {Lp} from "../../domain/lp";
 import {Router} from "@angular/router";
 import {ArticleService} from "../../services/article.service";
 

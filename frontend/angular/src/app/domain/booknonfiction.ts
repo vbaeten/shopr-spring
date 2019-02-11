@@ -1,4 +1,4 @@
-import {Book} from "./Book";
+import {Book} from "./book";
 
 export class Booknonfiction extends Book {
   constructor(public title: string,

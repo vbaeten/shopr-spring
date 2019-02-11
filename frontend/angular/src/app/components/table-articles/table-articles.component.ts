@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
-import {Article} from "../../domain/Article";
+import {Article} from "../../domain/article";
 import {ArticleService} from "../../services/article.service";
 import {Router} from "@angular/router";
 

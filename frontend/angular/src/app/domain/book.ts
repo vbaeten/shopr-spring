@@ -1,15 +1,14 @@
-import {Article} from "./Article";
+import {Article} from "./article";
 
-export class Lp extends Article{
+export class Book extends Article {
   constructor(public title: string,
               public type: string,
               public price: number,
               public supplierId: string,
-              public lpGenre:string,
-              public artist:string,
+              public author: string,
+              public isbn: string,
+              public numberOfPages: number,
               public articleId?: string,) {
     super(title, type, price, supplierId, articleId)
   }
 }
-
-

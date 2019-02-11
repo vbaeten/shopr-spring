@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {GameService} from "../../services/game.service";
 import {ArticleService} from "../../services/article.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Game} from "../../domain/Game";
+import {Game} from "../../domain/game";
 
 @Component({
   selector: 'app-editgame',
