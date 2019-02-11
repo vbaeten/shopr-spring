@@ -93,8 +93,11 @@ table {
   border-radius: 10px;
 }
 
-.mat-menu-content{
+
+
+.mat-menu-panel{
   background-color: rgba(35, 35, 35, 0.72);
+  border-radius: 10px;
 }
 
 .mat-menu-item{

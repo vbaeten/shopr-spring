@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, Subject} from "rxjs";
 import {User} from "../models/user";
+import {MatSnackBar} from "@angular/material";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class DataService {
 
 
 
-  constructor() {
+  constructor( private snackBar:MatSnackBar) {
   }
 
   changeId(id:number){
@@ -23,5 +24,8 @@ export class DataService {
   }
 
 
+  openSnackBar(message: string,action:string) {
+    this.snackBar.open(message,action,{duration:2000})
+  }
 
 }

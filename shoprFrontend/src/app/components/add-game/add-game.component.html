@@ -11,23 +11,23 @@
         <app-add-items (newPrice)="setPrice($event)" (newTitle)="setTitle($event)"></app-add-items>
       </div>
 
-      <div class="uno">
+      <div >
         <mat-form-field>
-          <input matInput placeholder="Minimum Age" ngModel name="minAge">
+          <input matInput required placeholder="Minimum Age" ngModel name="minAge" >
         </mat-form-field>
       </div>
 
-      <div class="dos">
+      <div >
         <mat-form-field>
-          <input matInput placeholder="publisher" ngModel name="publisher">
+          <input matInput required placeholder="publisher" ngModel name="publisher">
         </mat-form-field>
       </div>
-      <div class="tres">
+      <div >
         <mat-form-field>
-          <input matInput placeholder="Genre" ngModel name="genre">
+          <input matInput required placeholder="Genre" ngModel name="genre">
         </mat-form-field>
       </div>
-      <button mat-button>cReate!</button>
+      <button mat-button (click)="showSnackBar()">cReate!</button>
     </div>
   </form>
 

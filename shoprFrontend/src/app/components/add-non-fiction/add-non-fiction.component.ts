@@ -3,6 +3,7 @@ import {NgForm} from "@angular/forms";
 import {NonFictionService} from "../../services/non-fiction.service";
 import {NonFiction} from "../../models/nonFiction";
 import {Router} from "@angular/router";
+import {DataService} from "../../services/data.service";
 
 @Component({
   selector: 'app-add-non-fiction',
@@ -17,7 +18,7 @@ export class AddNonFictionComponent implements OnInit {
   price:number
 
 
-  constructor(private nonFictionService:NonFictionService, private router:Router) { }
+  constructor(private nonFictionService:NonFictionService, private router:Router,private dataService:DataService) { }
 
   ngOnInit() {
   }
@@ -48,6 +49,12 @@ export class AddNonFictionComponent implements OnInit {
 
   setPrice(value: number) {
     this.price = value;
+  }
+
+  showSnackBar(){
+    let message= 'succesfully added your item'
+    let action= ''
+    this.dataService.openSnackBar(message,action)
   }
 
 }

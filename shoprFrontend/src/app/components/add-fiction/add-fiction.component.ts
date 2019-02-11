@@ -3,6 +3,8 @@ import {Fiction} from "../../models/fiction";
 import {FictionService} from "../../services/fiction.service";
 import {NgForm} from "@angular/forms";
 import {Router} from "@angular/router";
+import {MatSnackBar} from "@angular/material";
+import {DataService} from "../../services/data.service";
 
 @Component({
   selector: 'app-add-fiction',
@@ -17,7 +19,7 @@ export class AddFictionComponent implements OnInit {
   price:number
 
 
-  constructor( private fictionService:FictionService, private router:Router) { }
+  constructor( private fictionService:FictionService, private router:Router, private dataService:DataService) { }
 
 
 
@@ -49,6 +51,12 @@ export class AddFictionComponent implements OnInit {
 
   setPrice(value: number) {
     this.price = value;
+  }
+
+  showSnackBar(){
+    let message= 'succesfully added your item'
+    let action= ''
+    this.dataService.openSnackBar(message,action)
   }
 
 }

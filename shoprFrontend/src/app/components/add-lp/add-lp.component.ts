@@ -3,6 +3,7 @@ import {NgForm} from "@angular/forms";
 import {LpService} from "../../services/lp.service";
 import {Lp} from "../../models/lp";
 import {Router} from "@angular/router";
+import {DataService} from "../../services/data.service";
 
 @Component({
   selector: 'app-add-lp',
@@ -17,7 +18,7 @@ export class AddLpComponent implements OnInit {
   price:number
 
 
-  constructor(private lpService:LpService, private router:Router) { }
+  constructor(private lpService:LpService, private router:Router,private dataService:DataService) { }
 
   ngOnInit() {
   }
@@ -43,5 +44,11 @@ export class AddLpComponent implements OnInit {
 
   setPrice(value: number) {
     this.price = value;
+  }
+
+  showSnackBar(){
+    let message= 'succesfully added your item'
+    let action= ''
+    this.dataService.openSnackBar(message,action)
   }
 }

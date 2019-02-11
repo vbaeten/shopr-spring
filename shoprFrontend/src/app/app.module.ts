@@ -9,7 +9,7 @@ import {
   MatCheckboxModule,
   MatFormFieldModule, MatGridListModule,
   MatIconModule, MatInputModule,
-  MatMenuModule, MatSelectModule, MatSortModule, MatTableModule,
+  MatMenuModule, MatSelectModule, MatSnackBarModule, MatSortModule, MatTableModule,
   MatToolbarModule
 } from "@angular/material";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -73,6 +73,7 @@ import {OrderLineService} from "./services/order-line.service";
     HeaderComponent,
     ShoppingCartComponent
   ],
+
   imports: [
     BrowserModule,
     FormsModule,
@@ -92,10 +93,10 @@ import {OrderLineService} from "./services/order-line.service";
     MatGridListModule,
     MatTableModule,
     MatSortModule,
-    MatCardModule
-
-
+    MatCardModule,
+    MatSnackBarModule
   ],
+
   providers: [UserService,GameService,LpService,FictionService,NonFictionService,DataService,OrderLineService],
   bootstrap: [AppComponent]
 })

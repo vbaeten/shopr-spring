@@ -5,6 +5,7 @@ import {NgForm} from "@angular/forms";
 import {Item} from "../../models/item";
 import {AddItemsComponent} from "../add-items/add-items.component";
 import {Router} from "@angular/router";
+import {DataService} from "../../services/data.service";
 
 
 @Component({
@@ -18,7 +19,7 @@ export class AddGameComponent implements OnInit {
   private _price: number;
   game: Game;
 
-  constructor(private gameService: GameService,private router:Router) {
+  constructor(private gameService: GameService,private router:Router, private dataService:DataService) {
   }
 
 
@@ -47,4 +48,13 @@ export class AddGameComponent implements OnInit {
   setPrice(value: number) {
     this._price = value;
   }
+
+
+  showSnackBar(){
+    let message= 'succesfully added your item'
+    let action= ''
+    this.dataService.openSnackBar(message,action)
+  }
+
+
 }

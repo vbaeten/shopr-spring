@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormsModule, NgForm} from "@angular/forms";
 import {User} from "../../models/user";
 import {UserService} from "../../services/user.service";
+import {DataService} from "../../services/data.service";
 
 @Component({
   selector: 'app-register-form',
@@ -12,7 +13,7 @@ export class RegisterFormComponent implements OnInit {
 
   user
 
-  constructor(private userService:UserService) { }
+  constructor(private userService:UserService, private dataService:DataService) { }
 
   ngOnInit() {
   }
@@ -25,6 +26,12 @@ export class RegisterFormComponent implements OnInit {
     this.userService.registerUser(this.user)
                     .subscribe(data =>this.user=data)
 
+  }
+
+  showSnackBar(){
+    let message= 'succesfully registered your account'
+    let action= ''
+    this.dataService.openSnackBar(message,action)
   }
 
 }

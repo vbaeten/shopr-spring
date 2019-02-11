@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import {DataService} from "../../services/data.service";
 
 @Component({
   selector: 'app-add-items',
@@ -15,7 +16,7 @@ export class AddItemsComponent implements OnInit {
   title:string;
 
 
-  constructor() { }
+  constructor(private dataService:DataService) { }
 
   ngOnInit() {
 
@@ -26,7 +27,11 @@ export class AddItemsComponent implements OnInit {
     this.newTitle.emit(this.title);
   }
 
-
+  showSnackBar(){
+    let message= 'succesfully added your item'
+    let action= ''
+    this.dataService.openSnackBar(message,action)
+  }
 
 
 
