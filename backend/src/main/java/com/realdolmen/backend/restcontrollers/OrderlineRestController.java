@@ -11,12 +11,12 @@ import java.util.List;
 public class OrderlineRestController {
     private OrderlineRepo orderlineRepo;
 
-    @GetMapping
+    @GetMapping(value = "/all")
     public List<Orderline> findAllOrderlines() {
         return orderlineRepo.findAll();
     }
 
-    @PostMapping
+    @PostMapping(value = "/add")
     public Orderline saveOrderLine(@RequestBody Orderline orderline) {
         return orderlineRepo.save(orderline);
     }

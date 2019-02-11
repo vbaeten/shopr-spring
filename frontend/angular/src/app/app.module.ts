@@ -38,6 +38,7 @@ import {EditbookfictionComponent} from './components/editbookfiction/editbookfic
 import {EditbooknonfictionComponent} from './components/editbooknonfiction/editbooknonfiction.component';
 import {EditlpComponent} from './components/editlp/editlp.component';
 import {EditgameComponent} from './components/editgame/editgame.component';
+import {ShoppingcartComponent} from './components/shoppingcart/shoppingcart.component';
 
 
 @NgModule({
@@ -60,6 +61,7 @@ import {EditgameComponent} from './components/editgame/editgame.component';
     EditbooknonfictionComponent,
     EditlpComponent,
     EditgameComponent,
+    ShoppingcartComponent,
   ],
   imports: [
     BrowserModule,
