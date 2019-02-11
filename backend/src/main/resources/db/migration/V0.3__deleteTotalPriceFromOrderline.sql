@@ -1,0 +1,1 @@
+ALTER TABLE shopr.orderline DROP COLUMN total_price;

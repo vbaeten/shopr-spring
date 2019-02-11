@@ -3,7 +3,8 @@
     <span><a routerLink="/home" id="home">Shopr</a>          </span>
   <br/>
     <button mat-stroked-button class="navbarbutton" routerLink="/articles">All articles</button>
-    <button *ngIf="currentUser && !currentUser.admin" mat-stroked-button class="navbarbutton" routerLink="/articles">
+    <button *ngIf="currentUser && !currentUser.admin" mat-stroked-button class="navbarbutton"
+            routerLink="/shoppingcart">
       Shopping Cart
     </button>
     <button *ngIf="currentUser && !currentUser.admin" mat-stroked-button class="navbarbutton" routerLink="/articles">My

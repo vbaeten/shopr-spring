@@ -34,7 +34,9 @@ export class UserService {
     this.userSubject.next(null);
   }
 
-  getCurrentUser(): User {
-    return JSON.parse(sessionStorage.getItem(this.userKey));
+  getCurrentUser(): Promise<User> {
+    return new Promise((resolve, reject) => {
+      resolve(JSON.parse(sessionStorage.getItem(this.userKey)));
+    });
   }
 }

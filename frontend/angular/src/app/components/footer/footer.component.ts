@@ -15,6 +15,7 @@ export class FooterComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.userService.getCurrentUser().then(user => this.currentUser = user);
     this.userService.userSubject.subscribe(sessionUser => {
       this.currentUser = sessionUser;
     });

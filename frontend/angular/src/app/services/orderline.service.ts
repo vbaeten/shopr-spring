@@ -15,7 +15,7 @@ export class OrderlineService {
     return this.httpClient.get<Orderline[]>("/orderlines/all")
   }
 
-  public createOrderLine(orderline: Orderline): Observable<Orderline> {
+  createOrderLine(orderline: Orderline): Observable<Orderline> {
     return this.httpClient.post<Orderline>("/orderlines/add", orderline)
   }
 }

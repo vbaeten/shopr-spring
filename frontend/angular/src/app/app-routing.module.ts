@@ -15,6 +15,7 @@ import {EditbookfictionComponent} from "./components/editbookfiction/editbookfic
 import {EditbooknonfictionComponent} from "./components/editbooknonfiction/editbooknonfiction.component";
 import {EditgameComponent} from "./components/editgame/editgame.component";
 import {EditlpComponent} from "./components/editlp/editlp.component";
+import {ShoppingcartComponent} from "./components/shoppingcart/shoppingcart.component";
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -31,6 +32,7 @@ const routes: Routes = [
   {path: 'create', component: CreateComponent, canActivate: [AdminGuard]},
   {path: 'register', component: RegisterComponent},
   {path: 'signin', component: SigninComponent},
+  {path: 'shoppingcart', component: ShoppingcartComponent},
   {path: '**', redirectTo: 'home'}
 ];
 

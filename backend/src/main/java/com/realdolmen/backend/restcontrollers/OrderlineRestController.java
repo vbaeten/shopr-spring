@@ -9,7 +9,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/orderlines")
 public class OrderlineRestController {
-    private OrderlineRepo orderlineRepo;
+    private final OrderlineRepo orderlineRepo;
+
+    public OrderlineRestController(OrderlineRepo orderlineRepo) {
+        this.orderlineRepo = orderlineRepo;
+    }
 
     @GetMapping(value = "/all")
     public List<Orderline> findAllOrderlines() {
@@ -17,7 +21,7 @@ public class OrderlineRestController {
     }
 
     @PostMapping(value = "/add")
-    public Orderline saveOrderLine(@RequestBody Orderline orderline) {
+    public Orderline createOrderLine(@RequestBody Orderline orderline) {
         return orderlineRepo.save(orderline);
     }
 

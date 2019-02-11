@@ -61,7 +61,12 @@
 
     </mat-card-content>
     <mat-card-actions>
-      <button *ngIf="currentUser && !currentUser.admin" mat-raised-button color="accent">Add to cart</button>
+      <div *ngIf="currentUser && !currentUser.admin">
+        <mat-form-field color="accent">
+          <input matInput placeholder="amount" [(ngModel)]="quantity">
+        </mat-form-field>
+        <button mat-raised-button color="accent" (click)="addArticle()">Add to cart</button>
+      </div>
       <button *ngIf="currentUser && currentUser.admin" mat-raised-button color="primary" (click)="goToEdit()">Edit
       </button>
       <button *ngIf="currentUser && currentUser.admin" (click)="deleteArticleById()" mat-raised-button
