@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Fiction} from '../../../../models/fiction';
+import {FictionService} from '../../../../services/fiction.service';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-fiction-detail',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FictionDetailComponent implements OnInit {
 
-  constructor() { }
+  fiction: Fiction;
+  id: number;
 
-  ngOnInit() {
+  constructor(private fictionService: FictionService, private route: ActivatedRoute) {
   }
 
+  ngOnInit() {
+    this.getFiction();
+  }
+
+  getFiction() {
+    this.route.params.subscribe(params => this.id = params['id']);
+    this.fictionService.getFiction(this.id).subscribe(fiction => this.fiction = fiction);
+  }
 }

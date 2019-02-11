@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {Fiction} from '../../../../models/fiction';
+import {FictionService} from "../../../../services/fiction.service";
 
 @Component({
   selector: 'app-add-fiction',
@@ -11,7 +12,7 @@ export class AddFictionComponent implements OnInit {
 
   fiction: Fiction;
 
-  constructor() { }
+  constructor(private fictionService: FictionService) { }
 
   ngOnInit() {
   }

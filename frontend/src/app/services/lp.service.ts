@@ -20,4 +20,8 @@ export class LpService {
     return this.apiService.doPost('/lp/add', lp);
   }
 
+  getLp(id: number): Observable<Lp> {
+    return this.apiService.doGet('/lp/' + id);
+  }
+
 }

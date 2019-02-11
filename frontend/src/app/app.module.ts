@@ -35,6 +35,9 @@ import { GameOverviewComponent } from './components/articles/overview/game-overv
 import { FictionOverviewComponent } from './components/articles/overview/fiction-overview/fiction-overview.component';
 import { NonFictionOverviewComponent } from './components/articles/overview/non-fiction-overview/non-fiction-overview.component';
 import {FormsModule} from '@angular/forms';
+import { OrderOverviewComponent } from './components/user/user-detail/order-overview/order-overview.component';
+import { LoginTestComponent } from './components/temp/login-test/login-test.component';
+import { UserEditComponent } from './components/user/user-detail/user-edit/user-edit.component';
 
 
 @NgModule({
@@ -67,6 +70,9 @@ import {FormsModule} from '@angular/forms';
     GameOverviewComponent,
     FictionOverviewComponent,
     NonFictionOverviewComponent,
+    OrderOverviewComponent,
+    LoginTestComponent,
+    UserEditComponent,
   ],
   imports: [
     BrowserModule,

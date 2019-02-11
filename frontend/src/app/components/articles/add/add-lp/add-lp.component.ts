@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {Lp} from "../../../../models/lp";
+import {LpService} from "../../../../services/lp.service";
 
 @Component({
   selector: 'app-add-lp',
@@ -11,7 +12,7 @@ export class AddLpComponent implements OnInit {
 
   lp: Lp;
 
-  constructor() { }
+  constructor(private lpService: LpService) { }
 
   ngOnInit() {
   }

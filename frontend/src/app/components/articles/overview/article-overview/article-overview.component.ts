@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 import {Article} from '../../../../models/article';
 import {ArticleService} from '../../../../services/article.service';
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-article-overview',
@@ -11,10 +12,14 @@ import {ArticleService} from '../../../../services/article.service';
 export class ArticleOverviewComponent implements OnInit {
 
   articles: Article[] = [];
+  article: Article;
   dataSource;
-  displayedColumns: string[] = ['id', 'title', 'price', 'type'];
+  displayedColumns: string[] = ['id', 'title', 'price', 'type', 'detail'];
 
-  constructor(private articleService: ArticleService) { }
+  constructor(private articleService: ArticleService,
+              private router: Router,
+              private route: ActivatedRoute) {
+  }
 
   ngOnInit() {
     this.articleService.getArticles().subscribe(data => {
@@ -23,11 +28,25 @@ export class ArticleOverviewComponent implements OnInit {
     });
   }
 
-  // ngOnInit() {
-  //   this.userService.getUsers().subscribe(data => {
-  //     this.users = data;
-  //     this.dataSource = this.users;
-  //   });
-  // }
-
+  goToDetails(article: Article) {
+    switch (article.type) {
+      case 'Game': {
+        this.router.navigate(['/game', article.id]);
+        break;
+      }
+      case 'Lp': {
+        this.router.navigate(['/lp', article.id]);
+        break;
+      }
+      case 'Fiction': {
+        this.router.navigate(['/fiction', article.id]);
+        break;
+      }
+      case 'Non-Fiction': {
+        this.router.navigate(['/nonfiction', article.id]);
+        break;
+      }
+    }
+    // this.router.navigate(['/detail', id]);
+  }
 }

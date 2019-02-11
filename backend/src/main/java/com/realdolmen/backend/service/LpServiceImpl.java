@@ -1,6 +1,7 @@
 package com.realdolmen.backend.service;
 
 import com.realdolmen.backend.domain.Lp;
+import com.realdolmen.backend.exception.NotFoundException;
 import com.realdolmen.backend.repository.LpRepository;
 import org.springframework.stereotype.Service;
 
@@ -15,19 +16,23 @@ public class LpServiceImpl implements LpService {
         this.lpRepository = lpRepository;
     }
 
+    //TODO choose a method to save
+
+
     @Override
-    public <S extends Lp> S save(S entity) {
-        return null;
+    public <S extends Lp> S save(S lp) {
+        return lpRepository.save(lp);
     }
 
     @Override
     public Lp create(Lp lp) {
-        return null;
+        return lpRepository.save(lp);
     }
 
     @Override
     public Lp findById(Long id) {
-        return null;
+        return lpRepository.findById(id)
+                .orElseThrow(NotFoundException::new);
     }
 
     @Override
@@ -36,7 +41,7 @@ public class LpServiceImpl implements LpService {
     }
 
     @Override
-    public void delete(Lp entity) {
-
+    public void delete(Lp lp) {
+        lpRepository.delete(lp);
     }
 }

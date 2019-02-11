@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {NonFiction} from '../../../../models/non-fiction';
+import {NonFictionService} from '../../../../services/non-fiction.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-non-fiction-detail',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NonFictionDetailComponent implements OnInit {
 
-  constructor() { }
+  nonFiction: NonFiction;
+  id: number;
 
-  ngOnInit() {
+  constructor(private nonFictionService: NonFictionService, private route: ActivatedRoute) {
   }
 
+  ngOnInit() {
+    this.getNonFiction();
+  }
+
+  getNonFiction() {
+    this.route.params.subscribe(params => this.id = params['id']);
+    this.nonFictionService.getNonFiction(this.id).subscribe(nonFiction => this.nonFiction = nonFiction);
+  }
 }

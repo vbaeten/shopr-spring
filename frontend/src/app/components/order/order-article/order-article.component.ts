@@ -12,4 +12,7 @@ export class OrderArticleComponent implements OnInit {
   ngOnInit() {
   }
 
+  addToCart() {
+
+  }
 }

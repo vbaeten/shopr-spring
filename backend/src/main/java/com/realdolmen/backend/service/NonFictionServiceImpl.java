@@ -1,6 +1,7 @@
 package com.realdolmen.backend.service;
 
 import com.realdolmen.backend.domain.NonFictionBook;
+import com.realdolmen.backend.exception.NotFoundException;
 import com.realdolmen.backend.repository.NonFictionBookRepository;
 import org.springframework.stereotype.Service;
 
@@ -15,19 +16,22 @@ public class NonFictionServiceImpl implements NonFictionService {
         this.nonFictionBookRepository = nonFictionBookRepository;
     }
 
+    //TODO choose a method to save
+
+
     @Override
     public <S extends NonFictionBook> S save(S entity) {
-        return null;
+        return nonFictionBookRepository.save(entity);
     }
 
     @Override
     public NonFictionBook create(NonFictionBook nonFictionBook) {
-        return null;
+        return nonFictionBookRepository.save(nonFictionBook);
     }
 
     @Override
     public NonFictionBook findById(Long id) {
-        return null;
+        return nonFictionBookRepository.findById(id).orElseThrow(NotFoundException::new);
     }
 
     @Override
@@ -36,7 +40,7 @@ public class NonFictionServiceImpl implements NonFictionService {
     }
 
     @Override
-    public void delete(NonFictionBook entity) {
-
+    public void delete(NonFictionBook nonFictionBook) {
+        nonFictionBookRepository.delete(nonFictionBook);
     }
 }

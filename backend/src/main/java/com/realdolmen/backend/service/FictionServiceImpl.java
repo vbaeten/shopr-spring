@@ -18,12 +18,12 @@ public class FictionServiceImpl implements FictionService {
 
     @Override
     public <S extends FictionBook> S save(S entity) {
-        return null;
+        return fictionBookRepository.save(entity);
     }
 
     @Override
     public FictionBook create(FictionBook fictionBook) {
-        return null;
+        return fictionBookRepository.save(fictionBook);
     }
 
     @Override
@@ -38,6 +38,6 @@ public class FictionServiceImpl implements FictionService {
 
     @Override
     public void delete(FictionBook entity) {
-
+        fictionBookRepository.delete(entity);
     }
 }

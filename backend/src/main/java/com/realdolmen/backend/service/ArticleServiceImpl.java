@@ -1,6 +1,7 @@
 package com.realdolmen.backend.service;
 
 import com.realdolmen.backend.domain.Article;
+import com.realdolmen.backend.exception.NotFoundException;
 import com.realdolmen.backend.repository.ArticleRepository;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +18,7 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public <S extends Article> S save(S entity) {
-        return null;
+        return null; //TODO fix this
     }
 
     @Override
@@ -27,12 +28,11 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public Article findById(Long id) {
-        return null;
+        return articleRepository.findById(id).orElseThrow(NotFoundException::new);
     }
 
     @Override
     public void deleteById(Long id) {
-        Article article = findById(id);
         articleRepository.deleteById(id);
     }
 

@@ -1,6 +1,7 @@
 package com.realdolmen.backend.controller;
 
 import com.realdolmen.backend.domain.User;
+import com.realdolmen.backend.service.UserService;
 import com.realdolmen.backend.service.UserServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -12,35 +13,35 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController {
 
-    private UserServiceImpl userServiceImpl;
+    private UserService userService;
 
     public UserController( UserServiceImpl userServiceImpl) {
-        this.userServiceImpl = userServiceImpl;
+        this.userService = userServiceImpl;
     }
 
     @GetMapping("/list")
     public List<User> getUsers() {
-        return userServiceImpl.findAll();
+        return userService.findAll();
     }
 
     @PostMapping("/register")
     public User registerUser(@RequestBody User user) {
-        userServiceImpl.create(user);
+        userService.create(user);
         return user;
     }
 
     @GetMapping("/{id}")
     public User findById(@PathVariable("id") Long id) {
-        return userServiceImpl.findById(id);
+        return userService.findById(id);
     }
 
     @DeleteMapping("/delete/{id}")
     public void deleteUserById(@PathVariable("id") Long id) {
-        userServiceImpl.deleteById(id);
+        userService.deleteById(id);
     }
 
     @DeleteMapping("/delete")
     public void deleteUser(User user) {
-        userServiceImpl.delete(user);
+        userService.delete(user);
     }
 }

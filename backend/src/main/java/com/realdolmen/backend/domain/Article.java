@@ -6,6 +6,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "article")
@@ -31,7 +32,7 @@ public class Article implements Serializable {
     @Column
     @NotNull
     @Size(max = 100)
-    private String Supplier;
+    private String supplier;
 
     @Column(name = "type", insertable = false, updatable = false)
     private String type;
@@ -43,6 +44,15 @@ public class Article implements Serializable {
     @OneToMany
     @JoinColumn(name="score")
     private List<Rating> ratings;
+
+    public Article() {
+    }
+
+    public Article(@NotNull @Size(max = 100) String title, @NotNull @Digits(integer = 6, fraction = 2) double price, @NotNull @Size(max = 100) String supplier) {
+        this.title = title;
+        this.price = price;
+        this.supplier = supplier;
+    }
 
     public Long getId() {
         return id;
@@ -69,11 +79,11 @@ public class Article implements Serializable {
     }
 
     public String getSupplier() {
-        return Supplier;
+        return supplier;
     }
 
     public void setSupplier(String supplier) {
-        Supplier = supplier;
+        this.supplier = supplier;
     }
 
     public String getType() {
@@ -98,5 +108,22 @@ public class Article implements Serializable {
 
     public void setRatings(List<Rating> ratings) {
         this.ratings = ratings;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Article article = (Article) o;
+        return Double.compare(article.price, price) == 0 &&
+                Objects.equals(id, article.id) &&
+                title.equals(article.title) &&
+                Objects.equals(supplier, article.supplier) &&
+                Objects.equals(type, article.type);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, price, supplier, type);
     }
 }

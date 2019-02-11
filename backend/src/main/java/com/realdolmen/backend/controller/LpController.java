@@ -1,6 +1,7 @@
 package com.realdolmen.backend.controller;
 
 import com.realdolmen.backend.domain.Lp;
+import com.realdolmen.backend.service.LpService;
 import com.realdolmen.backend.service.LpServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,19 +11,25 @@ import java.util.List;
 @RequestMapping("/lp")
 public class LpController {
 
-    private LpServiceImpl lpServiceImpl;
+    private LpService lpService;
 
-    public LpController(LpServiceImpl lpServiceImpl) {
-        this.lpServiceImpl = lpServiceImpl;
+    public LpController(LpServiceImpl lpService) {
+        this.lpService = lpService;
     }
 
     @GetMapping("/list")
     public List<Lp> getLps() {
-        return lpServiceImpl.findAll();
+        return lpService.findAll();
     }
 
     @PostMapping("/add")
     public Lp addLp(@RequestBody Lp lp) {
-        return lpServiceImpl.create(lp);
+        lpService.create(lp);
+        return lp;
+    }
+
+    @GetMapping("/{id}")
+    public Lp getLp(@PathVariable ("id")Long id) {
+        return lpService.findById(id);
     }
 }

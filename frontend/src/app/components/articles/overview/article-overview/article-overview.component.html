@@ -1,4 +1,5 @@
 <p>Articles in our shop.</p>
+<p class="todo">Style this table. </p>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z3" width="100%">
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef>Article ID</th>
@@ -15,6 +16,12 @@
   <ng-container matColumnDef="type">
     <th mat-header-cell *matHeaderCellDef>Type</th>
     <td mat-cell *matCellDef="let element"> {{element.type}}</td>
+  </ng-container>
+  <ng-container matColumnDef="detail">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-stroked-button color="accent"  (click)="goToDetails(element)">Details</button>
+    </td>
   </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

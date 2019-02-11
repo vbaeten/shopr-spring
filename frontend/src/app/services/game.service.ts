@@ -28,4 +28,8 @@ export class GameService {
     return this.apiService.doDelete('/game/delete/' + id);
   }
 
+  getGame(id: number): Observable<Game> {
+    return this.apiService.doGet('/game/' + id);
+  }
+
 }

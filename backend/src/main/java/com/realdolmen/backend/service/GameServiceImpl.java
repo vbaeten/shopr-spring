@@ -1,13 +1,14 @@
 package com.realdolmen.backend.service;
 
 import com.realdolmen.backend.domain.Game;
+import com.realdolmen.backend.exception.NotFoundException;
 import com.realdolmen.backend.repository.GameRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class GameServiceImpl implements  GameService {
+public class GameServiceImpl implements GameService {
 
     private final GameRepository gameRepository;
 
@@ -15,19 +16,21 @@ public class GameServiceImpl implements  GameService {
         this.gameRepository = gameRepository;
     }
 
+    //TODO choose a method to save
+
     @Override
-    public <S extends Game> S save(S entity) {
-        return null;
+    public <S extends Game> S save(S game) {
+        return gameRepository.save(game);
     }
 
     @Override
     public Game create(Game game) {
-        return null;
+        return gameRepository.save(game);
     }
 
     @Override
     public Game findById(Long id) {
-        return null;
+        return gameRepository.findById(id).orElseThrow(NotFoundException::new);
     }
 
     @Override
