@@ -25,7 +25,6 @@ public abstract class Book extends Article {
     @Size(max = 20)
     @NotBlank
     private String isbn;
-
     private Integer numberOfPages;
 
 }
