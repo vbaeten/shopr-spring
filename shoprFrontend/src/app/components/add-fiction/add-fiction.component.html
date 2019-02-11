@@ -1,53 +1,41 @@
-
-<div class="afterNavMessage">
-  <h3>cReate a  Fiction Book</h3>
+<div>
+       <h3> cReate a Fiction Book</h3>
 </div>
+    <form  #f="ngForm" (ngSubmit)="addFiction(f)">
+      <div >
+        <app-add-items (newPrice)="setPrice($event)" (newTitle)="setTitle($event)"></app-add-items>
+      </div>
+
+      <div >
+        <mat-form-field>
+          <input matInput placeholder="Author" ngModel name="author">
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="total pages" ngModel name="totalPages">
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="ISBN" ngModel name="isbn">
+        </mat-form-field>
+      </div>
 
 
+      <div>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Genre" name="genre">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="example-full-width">
+          <textarea matInput placeholder="preview" ngModel type="textarea" name="preview"></textarea>
+        </mat-form-field>
+      </div>
+      <button mat-button>cReate!</button>
+    </form>
 
-
-<div class="afterNav">
-
-  <form class="createFictionForm" #f="ngForm" (ngSubmit)="addFiction(f)">
-
-    <div class="addItems">
-      <app-add-items (newPrice)="setPrice($event)" (newTitle)="setTitle($event)" ></app-add-items>
-    </div>
-
-    <div>
-    <mat-form-field >
-      <input matInput placeholder="Author" ngModel name="author">
-    </mat-form-field>
-  </div>
-
-    <div>
-      <mat-form-field >
-        <input matInput placeholder="total pages" ngModel name="totalPages">
-      </mat-form-field>
-    </div>
-
-    <div>
-      <mat-form-field >
-        <input matInput placeholder="ISBN" ngModel name="isbn">
-      </mat-form-field>
-    </div>
-
-
-
-
-    <div>
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Genre" name="genre">
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field class="example-full-width">
-        <textarea matInput placeholder="preview" ngModel type="textarea" name="preview"></textarea>
-      </mat-form-field>
-    </div>
-
-    <button mat-button>cReate!</button>
-  </form>
-
-</div>
 

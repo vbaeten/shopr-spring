@@ -14,6 +14,7 @@ public class UserService implements CrudService<User,Long> {
     private final UserRepository userRepository;
 
 
+
     @Override
     public <S extends User> S save(S user) {
         return userRepository.save(user);

@@ -1,25 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
 
-html {
-  height: 100%;
+
+
+html{
+  height:100%;
 }
 
 body {
+
   min-height: 100vh;
-  margin: 0;
+  margin-left: 5%;
+  margin-right: 5%;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: rgba(35, 35, 35, 0.72);
 }
 
 table {
   width: 100%;
 }
 
+
 .table{
   margin-top:5% ;
   margin-left:10%;
   margin-right:10%;
-  margin-bottom:10%
+  margin-bottom:10%;
 }
+
 
 .banner{
   height: 200px;
@@ -41,5 +48,82 @@ table {
 }
 
 .navBar{
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.72);
+  color: #d8d8d8;
   margin-bottom: 2%;
+
+}
+
+
+
+.noob {
+  width: 80%;
+  margin: 2%;
+  padding: 2%;
+  border-style: none;
+  border-radius: 5px;
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.02);
+
+}
+
+
+.afterNavMessage{
+
+  margin-left:8%
+}
+
+.createForm{
+  width: 15%;
+  height: 300px;
+  float: left;
+  margin-left: 7%;
+  margin-right: 10%;
+
+}
+
+
+.afterNavDiv{
+  border-radius: 20px;
+  background-color: rgba(36, 36, 36, 0.2);
+}
+
+.navButton:hover{
+  background-color: #008e00;
+  border-radius: 10px;
+}
+
+.mat-menu-content{
+  background-color: rgba(35, 35, 35, 0.72);
+}
+
+.mat-menu-item{
+  color: #d8d8d8;
+}
+
+.mat-menu-content > .mat-menu-item:hover{
+  background-color: #008e00;
+  border-radius: 10px;
+
+}
+
+.content{
+  border-radius: 15px;
+  background-color: #f2f5f0;
+  padding: 2%;
+}
+
+.mat-button{
+  background-color: rgba(35, 35, 35, 0.72);
+  color: #d8d8d8;
+}
+
+.mat-button:hover{
+  background-color: #008e00;
+
+}
+
+.detailCard.mat-card{
+
+  background-color: #f1f5eb;
 }

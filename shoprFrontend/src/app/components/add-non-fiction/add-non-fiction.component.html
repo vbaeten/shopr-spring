@@ -7,9 +7,9 @@
 
 <div class="afterNav">
 
-  <form class="createNonFiction" #f="ngForm" (ngSubmit)="addNonFiction(f)">
+  <form  #f="ngForm" (ngSubmit)="addNonFiction(f)">
 
-    <div class="addItems">
+    <div >
       <app-add-items (newPrice)="setPrice($event)" (newTitle)="setTitle($event)" ></app-add-items>
     </div>
 
