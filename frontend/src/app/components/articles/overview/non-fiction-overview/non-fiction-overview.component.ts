@@ -14,7 +14,6 @@ export class NonFictionOverviewComponent implements OnInit {
   dataSource;
   displayedColumns: string[] = ['id', 'title', 'price', 'delete'];
 
-
   constructor(private nonFictionService: NonFictionService, private articleService: ArticleService) {
   }
 
@@ -28,5 +27,4 @@ export class NonFictionOverviewComponent implements OnInit {
   deleteArticle(id: number): void {
     this.articleService.deleteArticleById(id).subscribe();
   }
-
 }
