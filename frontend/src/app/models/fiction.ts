@@ -9,10 +9,11 @@ export class Fiction {
   public synopsis: string;
   public supplier: string;
   public price: number;
+  public type: string;
 
 
   constructor(id?: number, title?: string, author?: string, isbn?: number, pages?: number, genre?: string,
-              synopsis?: string, supplier?: string, price?: number) {
+              synopsis?: string, supplier?: string, price?: number, type?: string) {
     this.id = id;
     this.title = title;
     this.author = author;
@@ -22,5 +23,6 @@ export class Fiction {
     this.synopsis = synopsis;
     this.supplier = supplier;
     this.price = price;
+    this.type = type;
   }
 }

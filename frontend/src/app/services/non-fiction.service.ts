@@ -19,8 +19,8 @@ export class NonFictionService {
     return this.apiService.doGet('/nonfiction/list');
   }
 
-  addNonFiction(fiction: Fiction): Observable<NonFiction> {
-    return this.apiService.doPost('nonfiction/add', fiction);
+  addNonFiction(fiction: NonFiction): Observable<NonFiction> {
+    return this.apiService.doPost('/nonfiction/add', fiction);
   }
 
   getNonFiction(id: number): Observable<NonFiction> {

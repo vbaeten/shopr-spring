@@ -15,7 +15,7 @@ import java.util.Objects;
 public class Article implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id;
 

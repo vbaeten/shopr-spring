@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {Fiction} from '../../../../models/fiction';
-import {FictionService} from "../../../../services/fiction.service";
+import {FictionService} from '../../../../services/fiction.service';
 
 @Component({
   selector: 'app-add-fiction',
@@ -27,6 +27,8 @@ export class AddFictionComponent implements OnInit {
     this.fiction.synopsis = form.value.synopsis;
     this.fiction.price = form.value.price;
     this.fiction.supplier = form.value.supplier;
+    this.fiction.type = 'Fiction';
+    this.fictionService.addFiction(this.fiction).subscribe(data => this.fiction = data);
   }
 
 }

@@ -8,10 +8,10 @@ export class NonFiction {
   public subject: string;
   public supplier: string;
   public price: number;
-
+  public type: string;
 
   constructor(id?: number, title?: string, author?: string, isbn?: number, pages?: number, subject?: string,
-              supplier?: string, price?: number) {
+              supplier?: string, price?: number, type?: string) {
     this.id = id;
     this.title = title;
     this.author = author;
@@ -20,6 +20,7 @@ export class NonFiction {
     this.subject = subject;
     this.supplier = supplier;
     this.price = price;
+    this.type = type;
   }
 }
 

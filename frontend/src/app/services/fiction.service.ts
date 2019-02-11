@@ -17,7 +17,7 @@ export class FictionService {
   }
 
   addFiction(fiction: Fiction): Observable<Fiction> {
-    return this.apiService.doPost('fiction/add', fiction);
+    return this.apiService.doPost('/fiction/add', fiction);
   }
 
   getFiction(id: number): Observable<Fiction> {

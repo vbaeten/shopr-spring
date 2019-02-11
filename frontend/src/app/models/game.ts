@@ -7,9 +7,10 @@ export class Game {
   public minAge: number;
   public supplier: string;
   public price: number;
+  public type: string;
 
 
-  constructor(id?: number, title?: string, genre?: string, publisher?: string, minAge?: number, supplier?: string, price?: number) {
+  constructor(id?: number, title?: string, genre?: string, publisher?: string, minAge?: number, supplier?: string, price?: number, type?: string) {
     this.id = id;
     this.title = title;
     this.genre = genre;
@@ -17,6 +18,7 @@ export class Game {
     this.minAge = minAge;
     this.supplier = supplier;
     this.price = price;
+    this.type = type;
   }
 
 }

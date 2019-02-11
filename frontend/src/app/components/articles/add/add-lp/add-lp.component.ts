@@ -24,6 +24,7 @@ export class AddLpComponent implements OnInit {
     this.lp.genre = form.value.genre;
     this.lp.price = form.value.price;
     this.lp.supplier = form.value.supplier;
+    this.lp.type = 'Lp';
+    this.lpService.addLp(this.lp).subscribe(data => this.lp = data);
   }
-
 }

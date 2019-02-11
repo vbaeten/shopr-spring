@@ -26,6 +26,7 @@ export class AddNonFictionComponent implements OnInit {
     this.nonFiction.pages = form.value.pages;
     this.nonFiction.supplier = form.value.supplier;
     this.nonFiction.isbn = form.value.isbn;
+    this.nonFiction.type = 'Non-Fiction';
+    this.nonFictionService.addNonFiction(this.nonFiction).subscribe(data => this.nonFiction  = data);
   }
-
 }
