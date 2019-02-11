@@ -1,35 +1,54 @@
-<div class="mat-elevation-z8">
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z3" width="100%">
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef>Product ID</th>
-      <td mat-cell *matCellDef="let element"> {{element.id}}</td>
-    </ng-container>
-    <ng-container matColumnDef="title">
-      <th mat-header-cell *matHeaderCellDef>Title</th>
-      <td mat-cell *matCellDef="let element"> {{element.title}}</td>
-    </ng-container>
-    <ng-container matColumnDef="price">
-      <th mat-header-cell *matHeaderCellDef>Price</th>
-      <td mat-cell *matCellDef="let element"> {{element.price}}</td>
-    </ng-container>
-    <ng-container matColumnDef="type">
-      <th mat-header-cell *matHeaderCellDef>Category</th>
-      <td mat-cell *matCellDef="let element"> {{element.type}}</td>
-    </ng-container>
-    <ng-container matColumnDef="genre">
-      <th mat-header-cell *matHeaderCellDef>Genre</th>
-      <td mat-cell *matCellDef="let element"> {{element.genre}}</td>
-    </ng-container>
-    <ng-container matColumnDef="action">
-      <th mat-header-cell *matHeaderCellDef></th>
-      <td mat-cell *matCellDef="let element">
-        <a [routerLink]="['/products', element.id]" mat-mini-fab color="primary"><i class="fas fa-chevron-circle-right"></i></a>
-      </td>
-    </ng-container>
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input (keyup)="applyFilter($event.target.value)" type="search " placeholder="Search product" aria-label="Number" matInput [formControl]="searchField"
+           [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+<div>
+  <div class="shopping-cart">
+    <app-cart-content></app-cart-content>
+  </div>
+  <ul class="product-list">
+    <li *ngFor="let product of products" class="product-container">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image">
+            <a [routerLink]="['/products', product.id]" class="product-detail" mat-button><i class="fas fa-info-circle"></i></a>
+          </div>
+          <mat-card-title>{{product.title}}</mat-card-title>
+          <mat-card-subtitle>{{product.price | currency:'EUR': symbol}}</mat-card-subtitle>
+        </mat-card-header>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+        <img src="./assets/{{product.id}}.jpg"/>
+        <mat-card-subtitle>{{product.type.toUpperCase()}}</mat-card-subtitle>
+        <mat-card-subtitle>{{product.genre}}</mat-card-subtitle>
+        <mat-card-content>
+          <p>
+            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+            bred for hunting.
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <mat-form-field class="example-margin">
+            <input min="0" max="100" matInput type="number" placeholder="Quantity" [(ngModel)]="quantity" name="quantity">
+          </mat-form-field>
+          <button mat-button (click)="addToCart(product, quantity)">Add to cart</button>
+        </mat-card-actions>
+      </mat-card>
+          <!--<button type="button"-->
+          <!--class="button success large js-btn-add"-->
+          <!--(click)="addProductToCart(product, 1)">Add To Cart</button>-->
+          <!--<button type="button"-->
+          <!--class="button small js-btn-remove"-->
+          <!--*ngIf="productInCart(product) | async"-->
+          <!--(click)="removeProductFromCart(product, 1)">Remove item from cart</button>-->
+    </li>
+  </ul>
 </div>

@@ -2,7 +2,6 @@ package com.realdolmen.backend.controller;
 
 import com.realdolmen.backend.domain.Game;
 import com.realdolmen.backend.service.GameService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,8 +10,11 @@ import java.util.List;
 @RequestMapping("/games")
 public class GameController {
 
-    @Autowired
-    private GameService gameService;
+    private final GameService gameService;
+
+    public GameController(GameService gameService) {
+        this.gameService = gameService;
+    }
 
     @GetMapping(value = "/all", produces = "application/json")
     public List<Game> getGames() {

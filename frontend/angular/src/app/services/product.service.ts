@@ -9,7 +9,10 @@ import {Product} from "../models/products.model";
 })
 export class ProductService {
 
-  constructor(private http: HttpClient) { }
+
+
+  constructor(private http: HttpClient) {
+  }
 
   getProducts() : Observable<Product[]> {
     return this.http.get<Product[]>("/api/products/all");
@@ -18,5 +21,7 @@ export class ProductService {
   getProductById(id: number) : Observable<Product> {
     return this.http.get<Product>('/api/products/' + id);
   }
+
+
 
 }

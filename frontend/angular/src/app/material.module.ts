@@ -1,6 +1,7 @@
 import {NgModule} from "@angular/core";
 
 import {
+  MatAutocompleteModule,
   MatButtonModule,
   MatCardModule,
   MatCheckboxModule,
@@ -14,8 +15,9 @@ import {
   MatNativeDateModule,
   MatPaginatorModule,
   MatRadioModule,
+  MatSliderModule,
   MatTableModule,
-  MatToolbarModule
+  MatToolbarModule,
 } from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
@@ -38,7 +40,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatRadioModule,
     ReactiveFormsModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatAutocompleteModule,
+    MatSliderModule
   ],
   exports: [
     MatNativeDateModule,
@@ -57,7 +61,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatRadioModule,
     ReactiveFormsModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatAutocompleteModule,
+    MatSliderModule
   ],
 })
 

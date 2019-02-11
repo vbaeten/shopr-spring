@@ -3,6 +3,7 @@ import {AuthService} from "../../services/auth.service";
 import {UserService} from "../../services/user.service";
 import {Router} from "@angular/router";
 import {TokenStorage} from "../../services/token.storage";
+import {ProductService} from "../../services/product.service";
 
 @Component({
   selector: 'app-navbar',
@@ -14,7 +15,13 @@ export class NavbarComponent implements OnInit {
 
   isLoggedIn: boolean = false;
 
-  constructor(private tokenStorage: TokenStorage, private authService: AuthService, private userService: UserService, private router: Router) {
+  constructor(
+    private tokenStorage: TokenStorage,
+    private authService: AuthService,
+    private userService: UserService,
+    private router: Router,
+    public productService: ProductService
+  ) {
   }
 
   ngOnInit() {
@@ -32,7 +39,7 @@ export class NavbarComponent implements OnInit {
   logout() {
     this.authService.logout();
     this.isLoggedIn = false;
-    this.router.navigate(["/"]);
+    this.router.navigate(["/products"]);
   }
 
   isAdmin() {

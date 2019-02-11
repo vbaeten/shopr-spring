@@ -30,4 +30,7 @@ export class ProductDetailsComponent implements OnInit {
     this.productService.getProductById(id).subscribe(data => this.product = data);
   }
 
+  // addToCart(product: Product): void {
+  //   this.productService.addToCart(product);
+  // }
 }

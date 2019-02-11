@@ -1,24 +1,20 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {RegisterComponent} from "./components/auth/register/register.component";
-import {LoginComponent} from "./components/auth/login/login.component";
-import {ProductListComponent} from "./components/products/product-list/product-list.component";
-import {DashboardComponent} from "./components/dashboard/dashboard.component";
-import {AdminGuard} from "./services/admin.guard";
-import {ProductDetailsComponent} from "./components/products/product-details/product-details.component";
 
 const routes: Routes = [
-  {path: 'products', component: ProductListComponent},
-  {path: "products/:id", component: ProductDetailsComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'dashboard', component: DashboardComponent, canActivate: [AdminGuard]},
-  { path: '', redirectTo: '/products', pathMatch: 'full'}
-
+  {
+    path: '',
+    redirectTo: 'products/all', pathMatch: 'full'
+  },
+  {
+    path: 'dashboard',
+    redirectTo: 'dashboard', pathMatch: 'full'
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {useHash:true})],
+  imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

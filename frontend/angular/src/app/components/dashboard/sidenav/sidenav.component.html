@@ -1,0 +1,59 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="!(isHandset$ | async)">
+    <mat-toolbar>
+      <button
+        mat-icon-button
+        (click)="drawer.toggle()"><span>Menu</span>
+      </button>
+    </mat-toolbar>
+    <mat-nav-list>
+      <mat-nav-list>
+        <button mat-button [matMenuTriggerFor]="products">Manage products</button>
+
+        <mat-menu #products="matMenu">
+          <button mat-menu-item [matMenuTriggerFor]="fictions">Manage fictions</button>
+          <button mat-menu-item [matMenuTriggerFor]="nonFictions">Manage Non-fictions</button>
+          <button mat-menu-item [matMenuTriggerFor]="games">Manage games</button>
+          <button mat-menu-item [matMenuTriggerFor]="lp">Manage lp</button>
+        </mat-menu>
+
+        <mat-menu #fictions="matMenu">
+          <button mat-menu-item routerLink="['/fictions/add']">Add fiction</button>
+          <button mat-menu-item>Edit fiction</button>
+          <button mat-menu-item>Delete fiction</button>
+        </mat-menu>
+
+        <mat-menu #nonFictions="matMenu">
+          <button mat-menu-item>Add Non-fiction</button>
+          <button mat-menu-item>Edit Non-fiction</button>
+          <button mat-menu-item>Delete Non-fiction</button>
+        </mat-menu>
+
+        <mat-menu #games="matMenu">
+          <button mat-menu-item>Add Game</button>
+          <button mat-menu-item>Edit Game</button>
+          <button mat-menu-item>Delete Game</button>
+        </mat-menu>
+
+        <mat-menu #lp="matMenu">
+          <button mat-menu-item>Add Lp</button>
+          <button mat-menu-item>Edit Lp</button>
+          <button mat-menu-item>Delete Lp</button>
+        </mat-menu>
+
+      </mat-nav-list>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="secondary">
+      <button
+        mat-icon-button
+        (click)="drawer.toggle()"><span>Angular</span>
+      </button>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>
