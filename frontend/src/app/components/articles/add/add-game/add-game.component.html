@@ -1,29 +1,67 @@
 <mat-card>
   <form class="addForm" #f="ngForm" (ngSubmit)="onSubmit(f)">
-    <mat-form-field appearance="standard">
-      <mat-label>Title:</mat-label>
-      <input matInput type="text" name="title" ngModel>
-    </mat-form-field>
-    <mat-form-field appearance="standard">
-      <mat-label>Price:</mat-label>
-      <input matInput type="number" name="price" ngModel>
-    </mat-form-field>
-    <mat-form-field appearance="standard">
-      <mat-label>Genre:</mat-label>
-      <input matInput type="text" name="genre" ngModel>
-    </mat-form-field>
-    <mat-form-field appearance="standard">
-      <mat-label>Minimum Age:</mat-label>
-      <input matInput type="number" name="minAge" ngModel>
-    </mat-form-field>
-    <mat-form-field appearance="standard">
-      <mat-label>Supplier</mat-label>
-      <input matInput type="text" name="supplier" ngModel>
-    </mat-form-field>
-    <mat-form-field appearance="standard">
-      <mat-label>Publisher</mat-label>
-      <input matInput type="text" name="publisher" ngModel>
-    </mat-form-field>
+
+    <div fxLayout="row" fxLayoutGap="20px">
+      <div class="item item-1" fxFlex="50%">
+        <mat-form-field class="formField" appearance="standard">
+          <mat-label>Title:</mat-label>
+          <input matInput type="text" name="title" ngModel>
+          <mat-hint>Max 100</mat-hint>
+        </mat-form-field>
+      </div>
+
+      <div class="item item-2" fxFlex="25%">
+        <mat-form-field class="formField"  appearance="standard">
+          <mat-label>Price:</mat-label>
+          <input matInput type="number" name="price" ngModel>
+          <span matPrefix>€&nbsp;</span>
+        </mat-form-field>
+      </div>
+
+      <div class="item item-3" fxFlex="25%">
+        <mat-form-field class="formField"  appearance="standard">
+          <mat-label>Supplier:</mat-label>
+          <input matInput type="text" name="supplier" ngModel>
+          <mat-hint>Max 100</mat-hint>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div fxLayout="row" fxLayoutGap="20px">
+
+      <div class="item item-1" fxFlex="33%">
+        <mat-form-field class="formField"  appearance="standard">
+          <mat-label>Genre:</mat-label>
+          <input matInput type="number" name="genre" ngModel>
+        </mat-form-field>
+      </div>
+      <div class="item item-2" fxFlex="33%">
+        <mat-form-field class="formField"  appearance="standard">
+          <mat-label>Minimum Age:</mat-label>
+          <input matInput type="number" name="minAge" ngModel>
+        </mat-form-field>
+      </div>
+      <div class="item item-3" fxFlex="33%">
+        <mat-form-field class="formField"  appearance="standard">
+          <mat-label>Publisher:</mat-label>
+          <input matInput type="text" name="publisher" ngModel>
+        </mat-form-field>
+      </div>
+    </div>
+
+
+    <!--<mat-form-field appearance="standard">-->
+    <!--<mat-label>Genre:</mat-label>-->
+    <!--<mat-select name="genre" ngModel>-->
+    <!--<mat-option>&#45;&#45;</mat-option>-->
+    <!--<mat-option value="MMORPG">MMORPG</mat-option>-->
+    <!--<mat-option value="RPG">RPG</mat-option>-->
+    <!--<mat-option value="FPS">FPS</mat-option>-->
+    <!--<mat-option value="3">RTS</mat-option>-->
+    <!--<mat-option value="4">Race</mat-option>-->
+    <!--</mat-select>-->
+    <!--</mat-form-field>-->
+
     <button id="" mat-stroked-button color="accent">Add</button>
   </form>
 </mat-card>

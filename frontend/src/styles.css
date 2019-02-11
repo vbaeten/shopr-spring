@@ -3,7 +3,7 @@
 
 body {
   background-color: aliceblue;
-  font-family: "Source Code Pro";
+  font-family: "Source Code Pro", Helvetica;
   align-self: center;
   height: 100%;
   margin: 0px;
@@ -23,6 +23,8 @@ body {
   background: white;
   alignment: center;
   padding: 20px;
+  font-family: "Source Code Pro", Helvetica;
+
 }
 
 .shoprIndex {
@@ -75,13 +77,38 @@ body {
 }
 
 .addForm {
+  font-family: "Source Code Pro", Helvetica;
   display: flex;
   flex-direction: column;
   font-size: small;
+  width: 100%;
+  align-content: center;
+}
+
+.formField {
+  width: 100%;
 }
 
 .todo {
   background-color: yellow;
 }
 
+.addBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 16px;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.example-small-box {
+  height: 100px;
+  width: 100px;
+}
+
+.example-large-box {
+  height: 300px;
+  width: 300px;
+}
 

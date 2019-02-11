@@ -1,21 +1,47 @@
 <mat-card>
-<form class="addForm" #f="ngForm" (ngSubmit)="onSubmit(f)">
-  <mat-form-field appearance="standard">
-    <mat-label>Title:</mat-label>
-    <input matInput type="text" name="title" ngModel>
-  </mat-form-field>
-  <mat-form-field appearance="standard">
-    <mat-label>Artist:</mat-label>
-    <input matInput type="text" name="artist" ngModel>
-  </mat-form-field>
-  <mat-form-field appearance="standard">
-    <mat-label>Price:</mat-label>
-    <input matInput type="number" name="price" ngModel>
-  </mat-form-field>
-  <mat-form-field appearance="standard">
-    <mat-label>Supplier</mat-label>
-    <input matInput type="text" name="supplier" ngModel>
-  </mat-form-field>
-  <button id="" mat-stroked-button color="accent" >Add</button>
-</form>
+  <form class="addForm" #f="ngForm" (ngSubmit)="onSubmit(f)">
+
+    <div fxLayout="row" fxLayoutGap="20px">
+      <div class="item item-1" fxFlex="50%">
+        <mat-form-field class="formField" appearance="standard">
+          <mat-label>Title:</mat-label>
+          <input matInput type="text" name="title" ngModel>
+          <mat-hint>Max 100</mat-hint>
+        </mat-form-field>
+      </div>
+      <div class="item item-2" fxFlex="25%">
+        <mat-form-field class="formField" appearance="standard">
+          <mat-label>Price:</mat-label>
+          <input matInput type="number" name="price" ngModel>
+          <span matPrefix>€&nbsp;</span>
+        </mat-form-field>
+      </div>
+      <div class="item item-3" fxFlex="25%">
+        <mat-form-field class="formField" appearance="standard">
+          <mat-label>Supplier</mat-label>
+          <input matInput type="text" name="supplier" ngModel>
+          <mat-hint>Max 100</mat-hint>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div fxLayout="row" fxLayoutGap="20px">
+
+      <div class="item item-1" fxFlex="50%">
+        <mat-form-field class="formField" appearance="standard">
+          <mat-label>Artist:</mat-label>
+          <input matInput type="text" name="artist" ngModel>
+        </mat-form-field>
+      </div>
+
+      <div class="item item-2" fxFlex="50%">
+        <mat-form-field class="formField" appearance="standard">
+          <mat-label>Genre:</mat-label>
+          <input matInput type="text" name="genre" ngModel>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <button id="" mat-stroked-button color="accent">Add</button>
+  </form>
 </mat-card>
