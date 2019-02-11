@@ -6,12 +6,11 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
-import java.io.Serializable;
 
 @Entity
 @Getter
 @Setter
-public class Orderline implements Serializable {
+public class Orderline extends BaseObject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long orderlineId;

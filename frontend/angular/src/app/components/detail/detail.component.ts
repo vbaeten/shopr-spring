@@ -26,6 +26,7 @@ export class DetailComponent implements OnInit {
     this.articleId = this.route.snapshot.params['articleId'];
     // this.route.params.subscribe(params => this.articleId = params['articleId']);
     this.articleService.getArticleById(this.articleId).subscribe(article => this.article = article);
+    this.userService.getCurrentUser().then(user => this.currentUser = user);
     this.userService.userSubject.subscribe(sessionUser => {
       console.log(sessionUser);
       this.currentUser = sessionUser;

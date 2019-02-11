@@ -1,0 +1,1 @@
+ALTER TABLE shopr.orderline ADD COLUMN version_id bigint;

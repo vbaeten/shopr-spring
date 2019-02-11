@@ -16,8 +16,7 @@ public class ArticleRestController {
     }
 
     @GetMapping(path="/all")
-    public @ResponseBody
-    List<Article> getAllArticles(){
+    public List<Article> getAllArticles() {
         return articleRepository.findAll();
     }
 

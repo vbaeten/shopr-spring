@@ -9,14 +9,13 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.io.Serializable;
 
 @Entity
 @Data
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING, name = "type")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public abstract class Article extends BaseObject implements Serializable {
+public abstract class Article extends BaseObject {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

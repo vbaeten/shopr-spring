@@ -5,9 +5,10 @@ import lombok.Setter;
 
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Version;
+import java.io.Serializable;
 
 @MappedSuperclass
-public abstract class BaseObject {
+public abstract class BaseObject implements Serializable {
 
     @Version
     @Setter

@@ -4,11 +4,10 @@ import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
-import java.io.Serializable;
 
 @Data
 @Entity
-public class User extends BaseObject implements Serializable {
+public class User extends BaseObject {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
