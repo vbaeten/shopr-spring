@@ -1,7 +1,7 @@
 package com.realdolmen.backend.controller;
 
 import com.realdolmen.backend.domain.Game;
-import com.realdolmen.backend.service.GameServiceImpl;
+import com.realdolmen.backend.service.GameService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +12,7 @@ import java.util.List;
 @RequestMapping(path = "/game")
 public class GameController {
 
-    private final GameServiceImpl gameService;
+    private final GameService gameService;
 
     @PostMapping
     public Game save(@RequestBody Game game) {

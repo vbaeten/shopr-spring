@@ -1,8 +1,6 @@
 package com.realdolmen.backend.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -15,13 +13,15 @@ import javax.validation.constraints.Size;
 @Table
 @DiscriminatorValue("book")
 @Inheritance(strategy = InheritanceType.JOINED)
+@AllArgsConstructor
+@NoArgsConstructor
 abstract class Book extends Article{
 
     @Size(max = 100)
     @Column(name = "author")
     private String author;
     @NotNull
-    @Column(name = "isbn", unique = true, length = 13)
+    @Column(name = "isbn", unique = true, length = 17)
     @Pattern(regexp = "\\d{3}-\\d{2}-\\d{4}-\\d{3}-\\d{1}")
     private String isbn;
     @Column(name = "nr_of_pages")

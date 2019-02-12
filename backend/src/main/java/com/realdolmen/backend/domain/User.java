@@ -12,13 +12,15 @@ import javax.validation.constraints.NotNull;
 @Table(name = "user")
 @EqualsAndHashCode
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder(builderClassName = "Builder")
 public class User{
 
-    public User(String firstName, String name, boolean isAdmin){
+    public User(String firstName, String name){
         this.firstName = firstName;
         this.name = name;
-        this.isAdmin = isAdmin;
-        this.isLoggedIn = true;
+//        this.isAdmin = isAdmin;
+//        this.isLoggedIn = true;
     }
 
     @Id
@@ -30,9 +32,9 @@ public class User{
     @NotNull
     @Column(name = "first_name")
     private String firstName;
-    @Column(name = "is_admin")
-    private boolean isAdmin;
-    private boolean isLoggedIn;
+//    @Column(name = "is_admin")
+//    private boolean isAdmin;
+//    private boolean isLoggedIn;
 
 
 

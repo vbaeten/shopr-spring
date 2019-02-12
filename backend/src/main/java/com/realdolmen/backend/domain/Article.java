@@ -1,10 +1,7 @@
 package com.realdolmen.backend.domain;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
@@ -18,8 +15,8 @@ import java.math.BigDecimal;
 @Table
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING, name = "type")
-@AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode
 public abstract class Article {
 
     @Id
@@ -41,5 +38,10 @@ public abstract class Article {
     @Column(name = "type", insertable = false, updatable = false)
     private String type;
 
-
+    public Article(@NotNull @Size(max = 100) String title, @NotNull @Digits(integer = 6, fraction = 2) BigDecimal price, @NotNull @Size(max = 100) String supplierId, String type) {
+        this.title = title;
+        this.price = price;
+        this.supplierId = supplierId;
+        this.type = type;
+    }
 }

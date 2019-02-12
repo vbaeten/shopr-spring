@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Article} from "../models/article";
 import {ApiService} from "./api.service";
 import {MatSnackBar} from "@angular/material";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -28,10 +29,12 @@ export class ArticleSevice {
       })
   }
 
-  public getArticles(): Promise<Article[]> {
+  public getArticles(): Observable<Article[]> {
     return this.apiService.doGet("/article")
-      .toPromise()
-      .catch(error => ArticleSevice.handleError(error))
+  }
+
+  public deleteArticle(id: number) {
+    return this.apiService.doDelete("/id")
   }
 
   private static handleError(error: any): Promise<any> {

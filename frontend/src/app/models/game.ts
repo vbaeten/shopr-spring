@@ -1,12 +1,15 @@
 import {GameGenre} from "./game-genre"
+import {Article} from "./article";
 
-export class Game {
+export class Game extends Article {
 
-  constructor(
-    public publisher: String,
-    public minimumAge: number,
-    public gameGenre: GameGenre)
-  {
+  public publisher: string;
+  public minimumAge: number;
+  public gameGenre: GameGenre;
+
+
+  constructor(publisher?: string, minimumAge?: number, gameGenre?: GameGenre) {
+    super();
     this.publisher = publisher;
     this.minimumAge = minimumAge;
     this.gameGenre = gameGenre;

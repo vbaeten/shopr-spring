@@ -23,6 +23,7 @@
               "src/assets"
             ],
             "styles": [
+              "src/assets/materialIcons/material-icons.css",
               "src/styles.css"
             ],
             "scripts": []

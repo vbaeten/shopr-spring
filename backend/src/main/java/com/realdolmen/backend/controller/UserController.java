@@ -2,9 +2,7 @@ package com.realdolmen.backend.controller;
 
 import com.realdolmen.backend.domain.User;
 import com.realdolmen.backend.service.UserService;
-import com.realdolmen.backend.service.UserServiceImpl;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,7 +12,7 @@ import java.util.List;
 @RequestMapping(path = "/user")
 public class UserController {
 
-    private final UserServiceImpl userService;
+    private final UserService userService;
 
     @PostMapping
     public User save(@RequestBody User user) {
@@ -31,10 +29,10 @@ public class UserController {
         return userService.findAll();
     }
 
-    @PutMapping
-    public void update(@RequestBody User user){
-        userService.update(user);
-    }
+//    @PutMapping
+//    public void update(@RequestBody User user){
+//        userService.update(user);
+//    }
 
     @DeleteMapping("/{id}")
     public void deleteById(@PathVariable("id") Long id) {
