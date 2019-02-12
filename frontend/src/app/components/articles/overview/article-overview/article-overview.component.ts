@@ -47,6 +47,5 @@ export class ArticleOverviewComponent implements OnInit {
         break;
       }
     }
-    // this.router.navigate(['/detail', id]);
   }
 }

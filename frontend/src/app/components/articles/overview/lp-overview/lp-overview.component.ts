@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Lp} from '../../../../models/lp';
 import {LpService} from '../../../../services/lp.service';
 import {ArticleService} from "../../../../services/article.service";
@@ -18,13 +18,11 @@ export class LpOverviewComponent implements OnInit {
 
   @ViewChild(MatTable) table: MatTable<any>;
 
-  constructor(private lpService: LpService, private articleService: ArticleService) { }
+  constructor(private lpService: LpService, private articleService: ArticleService) {
+  }
 
   ngOnInit() {
-    this.lpService.getLps().subscribe(data => {
-      this.lps = data;
-      this.dataSource = this.lps;
-    });
+    this.refresh();
   }
 
   deleteArticle(id: number): void {
@@ -33,9 +31,9 @@ export class LpOverviewComponent implements OnInit {
   }
 
   refresh() {
-  this.lpService.getLps().subscribe(data => {
-    this.lps = data;
-    this.dataSource = this.lps;
-  });
+    this.lpService.getLps().subscribe(data => {
+      this.lps = data;
+      this.dataSource = this.lps;
+    });
   }
 }

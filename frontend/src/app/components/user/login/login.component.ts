@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit() {
-    this.refresh()
+    this.refresh();
   }
 
   onSubmit() {

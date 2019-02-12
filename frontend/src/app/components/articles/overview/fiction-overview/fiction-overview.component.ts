@@ -18,13 +18,17 @@ export class FictionOverviewComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.refresh();
+  }
+
+  deleteArticle(id: number): void {
+    this.articleService.deleteArticleById(id).subscribe(date => this.refresh());
+  }
+
+  refresh() {
     this.fictionService.getFictionBooks().subscribe(data => {
       this.fictionBooks = data;
       this.dataSource = this.fictionBooks;
     });
-  }
-
-  deleteArticle(id: number): void {
-    this.articleService.deleteArticleById(id).subscribe();
   }
 }
