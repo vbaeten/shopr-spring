@@ -1,33 +1,35 @@
-<mat-toolbar class="navBar">
-  <span routerLink="">shopr</span>
-  <button class="navButton" mat-button="Login/register" routerLink=""> Login/Register</button>
+<!--<mat-toolbar class="navBar">-->
+  <!--<span routerLink="">shopr</span>-->
+
+  <!--<button class="navButton" mat-button="Login/register" routerLink=""> Login/Register</button>-->
 
 
-  <button class="navButton" mat-button [matMenuTriggerFor]="appMenu">Add Items</button>
-  <mat-menu #appMenu="matMenu">
-    <button mat-menu-item routerLink="/addGame">Add Game</button>
-    <button mat-menu-item routerLink="/addLp" >Add Lp</button>
-    <button mat-menu-item routerLink="/addFiction" >Add Fiction Book</button>
-    <button mat-menu-item routerLink="/addNonFiction" >Add NonFiction Book</button>
-  </mat-menu>
+  <!--<button class="navButton" mat-button [matMenuTriggerFor]="appMenu">Add Items</button>-->
+  <!--<mat-menu #appMenu="matMenu">-->
+    <!--<button mat-menu-item routerLink="/addGame">Add Game</button>-->
+    <!--<button mat-menu-item routerLink="/addLp" >Add Lp</button>-->
+    <!--<button mat-menu-item routerLink="/addFiction" >Add Fiction Book</button>-->
+    <!--<button mat-menu-item routerLink="/addNonFiction" >Add NonFiction Book</button>-->
+  <!--</mat-menu>-->
 
 
-  <button class="navButton" mat-button [matMenuTriggerFor]="appMenuTwo">Overview</button>
-  <mat-menu #appMenuTwo="matMenu">
-    <button mat-menu-item routerLink="/itemsOverview">All items</button>
-    <button mat-menu-item routerLink="/gamesOverview">All games</button>
-    <button mat-menu-item routerLink="/lpsOverview" > All Lps</button>
-    <button mat-menu-item routerLink="/fictionsOverview" > All Fiction books</button>
-    <button mat-menu-item routerLink="/nonFictionsOverview" > All non-Fiction books</button>
+  <!--<button class="navButton" mat-button [matMenuTriggerFor]="appMenuTwo">Overview</button>-->
+  <!--<mat-menu #appMenuTwo="matMenu">-->
+    <!--<button mat-menu-item routerLink="/itemsOverview">All items</button>-->
+    <!--<button mat-menu-item routerLink="/gamesOverview">All games</button>-->
+    <!--<button mat-menu-item routerLink="/lpsOverview" > All Lps</button>-->
+    <!--<button mat-menu-item routerLink="/fictionsOverview" > All Fiction books</button>-->
+    <!--<button mat-menu-item routerLink="/nonFictionsOverview" > All non-Fiction books</button>-->
+  <!--</mat-menu>-->
 
-  </mat-menu>
+
+  <!--<button class="navButton" mat-button="ShoppingCart" routerLink="/shoppingCart"> Shopping Cart</button>-->
+  <!--<button class="navButton" mat-button="Search" routerLink="/search"> Search</button>-->
 
 
-  <button class="navButton" mat-button="ShoppingCart" routerLink="/shoppingCart"> Shopping Cart</button>
-  <button class="navButton" mat-button="Search" routerLink="/search"> Search</button>
-  <button class="navButton" mat-button="logout" (click)="logOut()"> LogOut</button>
- <span *ngIf="isLoggedIn">logged in as: {{currentUser.userName}}</span>
 
-</mat-toolbar>
+  <!--<button class="navButton" mat-button="logout" (click)="logOut()"> LogOut</button>-->
+
+<!--</mat-toolbar>-->
 
 

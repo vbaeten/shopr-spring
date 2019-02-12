@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UserService} from "../../services/user.service";
 import {User} from "../../models/user";
 import {DataService} from "../../services/data.service";
+import {NavBarService} from "../../services/nav-bar.service";
 
 @Component({
   selector: 'app-login-form',
@@ -14,8 +15,13 @@ export class LoginFormComponent implements OnInit {
 
   public users = []
   selectedUser:User
+  isLoggedIn=false
 
-  constructor(private userService:UserService, private dataService: DataService) { }
+
+
+  constructor(private userService:UserService, private navBarService:NavBarService) {
+    this.navBarService.getLoginStatus().subscribe(status=>this.isLoggedIn=status)
+  }
 
   ngOnInit() {
 
@@ -24,8 +30,18 @@ export class LoginFormComponent implements OnInit {
   }
 
   login(){
+
     this.userService.login(this.selectedUser)
   }
+
+
+  loginUser(){
+
+    this.userService.loginUser(this.selectedUser)
+
+  }
+
+
 
 
 }

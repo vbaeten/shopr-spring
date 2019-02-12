@@ -44,6 +44,8 @@ import { NonFictionsDetailComponent } from './components/detail-components/non-f
 import { HeaderComponent } from './components/header/header.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import {OrderLineService} from "./services/order-line.service";
+import { DynamicNavBarComponent } from './components/navbar/dynamic-nav-bar/dynamic-nav-bar.component';
+import {NavBarService} from "./services/nav-bar.service";
 
 @NgModule({
   declarations: [
@@ -71,7 +73,8 @@ import {OrderLineService} from "./services/order-line.service";
     FictionsDetailComponent,
     NonFictionsDetailComponent,
     HeaderComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    DynamicNavBarComponent
   ],
 
   imports: [
@@ -97,7 +100,7 @@ import {OrderLineService} from "./services/order-line.service";
     MatSnackBarModule
   ],
 
-  providers: [UserService,GameService,LpService,FictionService,NonFictionService,DataService,OrderLineService],
+  providers: [UserService,GameService,LpService,FictionService,NonFictionService,DataService,OrderLineService,NavBarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
