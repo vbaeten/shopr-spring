@@ -12,7 +12,7 @@ import {User} from "../../domain/user";
   styleUrls: ['./shoppingcart.component.css']
 })
 export class ShoppingcartComponent implements OnInit {
-  displayedColumns: string[] = ['title', 'type', 'price', 'quantity', 'subTotal'];
+  displayedColumns: string[] = ['title', 'type', 'price', 'quantity', 'subTotal', 'delete'];
   dataSource: MatTableDataSource<Orderline>;
   totalPrice: number = 0;
   orderlines = [];
@@ -23,11 +23,12 @@ export class ShoppingcartComponent implements OnInit {
 
   ngOnInit() {
     this.userService.getCurrentUser().then(user => this.currentUser = user);
-    this.orderlineservice.getOrderLines().subscribe(data => {
-      this.dataSource = new MatTableDataSource<Orderline>(data);
-      this.orderlines = this.dataSource.data;
-      this.calculateTotal()
-    });
+    this.fetchOrderlines();
+  }
+
+  delete(orderlineId: number) {
+    this.orderlineservice.deleteOrderlineById(orderlineId).subscribe();
+    this.fetchOrderlines();
   }
 
   calculateTotal(): number {
@@ -38,6 +39,15 @@ export class ShoppingcartComponent implements OnInit {
     return this.totalPrice
 
   }
+
+  private fetchOrderlines() {
+    this.orderlineservice.getOrderLines().subscribe(data => {
+      this.dataSource = new MatTableDataSource<Orderline>(data);
+      this.orderlines = this.dataSource.data;
+      this.calculateTotal()
+    });
+  }
+
 
 
 }

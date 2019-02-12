@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Orderline} from "../domain/orderline";
 import {Observable} from "rxjs";
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -17,5 +18,13 @@ export class OrderlineService {
 
   createOrderLine(orderline: Orderline): Observable<Orderline> {
     return this.httpClient.post<Orderline>("/orderlines/add", orderline)
+  }
+
+  deleteOrderlineById(orderlineId: number): Observable<Orderline> {
+    return this.httpClient.delete<Orderline>("/orderlines/" + orderlineId);
+  }
+
+  getOrderlineById(orderlineId: number): Observable<Orderline> {
+    return this.httpClient.get<Orderline>("/orderlines/" + orderlineId);
   }
 }

@@ -26,4 +26,15 @@ public class OrderlineRestController {
         return orderlineRepo.save(orderline);
     }
 
+    @GetMapping(value = "/{orderlineId}")
+    public Orderline getOrderline(@PathVariable Long orderlineId) {
+        return orderlineRepo.getOne(orderlineId);
+    }
+
+    @DeleteMapping("/{orderlineId}")
+    public void deleteById(@PathVariable("orderlineId") Long orderlineId) {
+        Orderline orderline = getOrderline(orderlineId);
+        orderlineRepo.delete(orderline);
+    }
+
 }
