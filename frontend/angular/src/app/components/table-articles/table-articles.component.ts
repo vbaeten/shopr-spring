@@ -3,6 +3,8 @@ import {MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
 import {Article} from "../../domain/article";
 import {ArticleService} from "../../services/article.service";
 import {Router} from "@angular/router";
+import {UserService} from "../../services/user.service";
+import {User} from "../../domain/user";
 
 @Component({
   selector: 'app-table-articles',
@@ -14,11 +16,13 @@ export class TableArticlesComponent implements OnInit {
   dataSource: MatTableDataSource<Article>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+  currentUser: User;
 
-  constructor(private service: ArticleService, public router: Router) {
+  constructor(private service: ArticleService, public router: Router, private userService: UserService) {
   }
 
   ngOnInit() {
+    this.userService.getCurrentUser().then(user => this.currentUser = user);
     this.service.allArticles().subscribe(data => {
       this.dataSource = new MatTableDataSource<Article>(data);
       this.dataSource.paginator = this.paginator;

@@ -1,3 +1,63 @@
-<div>
-  <h2 class="ellis">Shopping Cart</h2>
+<div id="outer">
+  <h2 class="ellis">Your shopping cart</h2>
+  <div id="inner" class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <!-- Title Column -->
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Title</th>
+        <td mat-cell *matCellDef="let orderline"> {{orderline.article.title}}</td>
+      </ng-container>
+
+      <!-- Type Column -->
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Type</th>
+        <td mat-cell *matCellDef="let orderline"> {{orderline.article.type}}</td>
+      </ng-container>
+
+      <!-- Price Column -->
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Price</th>
+        <td mat-cell *matCellDef="let orderline"> € {{orderline.article.price}}</td>
+      </ng-container>
+
+      <!-- Quantity Column -->
+      <ng-container matColumnDef="quantity">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantity</th>
+        <td mat-cell *matCellDef="let orderline"> {{orderline.quantity}}</td>
+      </ng-container>
+
+      <!-- SubTotal Column -->
+      <ng-container matColumnDef="subTotal">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> SubTotal</th>
+        <td mat-cell *matCellDef="let orderline"> € {{orderline.subTotal}}</td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+
+    </table>
+  </div>
 </div>
+<mat-card class="example-card">
+
+
+  <mat-card-content>
+
+    <!--general properties article-->
+    <p>
+      Total Price : € {{ totalPrice | number : '1.2-2'}}
+    </p>
+
+
+  </mat-card-content>
+  <mat-card-actions>
+    <div *ngIf="totalPrice>0.00">
+      <button mat-raised-button color="accent" (click)="sendOrder()">Order now</button>
+    </div>
+
+
+  </mat-card-actions>
+</mat-card>

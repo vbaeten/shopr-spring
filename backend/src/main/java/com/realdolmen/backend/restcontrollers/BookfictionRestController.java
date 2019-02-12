@@ -7,6 +7,7 @@ import com.realdolmen.backend.repositories.BookfictionRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,7 +23,7 @@ public class BookfictionRestController {
 
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public Bookfiction createBookfiction(@RequestBody Bookfiction bookfiction) {
+    public Bookfiction createBookfiction(@RequestBody @Valid Bookfiction bookfiction) {
         return bookfictionRepository.save(bookfiction);
     }
 
@@ -38,7 +39,7 @@ public class BookfictionRestController {
     }
 
     @PutMapping(path = "/edit")
-    public void updateById(@RequestBody Bookfiction bookfiction) {
+    public void updateById(@RequestBody @Valid Bookfiction bookfiction) {
         Bookfiction existingBookfiction = bookfictionRepository.findById(bookfiction.getArticleId())
                 .orElseThrow(NotFoundException::new);
         bookfiction.setVersionId(existingBookfiction.getVersionId());

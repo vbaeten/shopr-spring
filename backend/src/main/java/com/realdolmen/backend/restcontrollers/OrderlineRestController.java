@@ -4,6 +4,7 @@ import com.realdolmen.backend.Domain.Orderline;
 import com.realdolmen.backend.repositories.OrderlineRepo;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -21,7 +22,7 @@ public class OrderlineRestController {
     }
 
     @PostMapping(value = "/add")
-    public Orderline createOrderLine(@RequestBody Orderline orderline) {
+    public Orderline createOrderLine(@RequestBody @Valid Orderline orderline) {
         return orderlineRepo.save(orderline);
     }
 

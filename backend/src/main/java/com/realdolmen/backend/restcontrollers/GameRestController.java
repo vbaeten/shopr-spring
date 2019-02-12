@@ -7,6 +7,7 @@ import com.realdolmen.backend.repositories.GameRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,7 +23,7 @@ public class GameRestController {
 
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public Game createGame(@RequestBody /*@Valid*/ Game game){
+    public Game createGame(@RequestBody @Valid Game game) {
         return gameRepository.save(game);
     }
 
@@ -37,7 +38,7 @@ public class GameRestController {
     }
 
     @PutMapping(path = "/edit")
-    public void updateById(@RequestBody Game game) {
+    public void updateById(@RequestBody @Valid Game game) {
         Game existingGame = gameRepository.findById(game.getArticleId())
                 .orElseThrow(NotFoundException::new);
         game.setVersionId(existingGame.getVersionId());

@@ -7,6 +7,7 @@ import com.realdolmen.backend.repositories.LpRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,7 +23,7 @@ public class LpRestController {
 
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public Lp createLp(@RequestBody /*@Valid*/ Lp lp){
+    public Lp createLp(@RequestBody @Valid Lp lp) {
         return lpRepository.save(lp);
     }
 
@@ -37,7 +38,7 @@ public class LpRestController {
     }
 
     @PutMapping(path = "/edit")
-    public void updateById(@RequestBody Lp lp) {
+    public void updateById(@RequestBody @Valid Lp lp) {
         Lp existingLp = lpRepository.findById(lp.getArticleId())
                 .orElseThrow(NotFoundException::new);
         lp.setVersionId(existingLp.getVersionId());

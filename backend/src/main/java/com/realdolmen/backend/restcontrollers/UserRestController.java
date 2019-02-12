@@ -6,6 +6,7 @@ import com.realdolmen.backend.repositories.UserRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -19,7 +20,7 @@ public class UserRestController {
 
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public User save(@RequestBody User user) {
+    public User save(@RequestBody @Valid User user) {
         return userRepository.save(user);
     }
 
@@ -34,7 +35,7 @@ public class UserRestController {
     }
 
     @PutMapping
-    public void update(@RequestBody User user) {
+    public void update(@RequestBody @Valid User user) {
         userRepository.findById(user.getUserId());
         userRepository.save(user);
     }

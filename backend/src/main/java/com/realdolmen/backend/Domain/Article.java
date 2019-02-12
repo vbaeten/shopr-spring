@@ -15,7 +15,7 @@ import javax.validation.constraints.Size;
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING, name = "type")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public abstract class Article extends BaseObject {
+public class Article extends BaseObject {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
