@@ -13,3 +13,11 @@
     </mat-card-actions>
   </mat-card>
 </div>
+<div>
+  <form #f="ngForm" (ngSubmit)="addToCart(f)" >
+    <mat-form-field>
+      <input matInput type="number" name="quantity">
+    </mat-form-field>
+    <button mat-stroked-button="info">Order</button>
+  </form>
+</div>

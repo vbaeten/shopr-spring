@@ -10,20 +10,29 @@ import {FormBuilder, FormControl, FormGroup, NgForm, Validators} from '@angular/
 })
 export class RegisterComponent implements OnInit {
 
-
+  dataSource;
   user: User;
+  users: User[];
 
   constructor(private userService: UserService) {
   }
 
   ngOnInit() {
+    this.refresh();
   }
 
   onSubmit(form: NgForm) {
     this.user = new User();
     this.user.firstName = form.value.firstName;
     this.user.name = form.value.name;
-    this.userService.registerUser(this.user).subscribe(data => this.user  = data);
+    this.userService.registerUser(this.user).subscribe(data => this.refresh);
+  }
+
+  refresh() {
+    this.userService.getUsers().subscribe(data => {
+      this.users = data;
+      this.dataSource = this.users;
+    });
   }
 }
 

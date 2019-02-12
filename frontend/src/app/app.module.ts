@@ -38,6 +38,7 @@ import {FormsModule} from '@angular/forms';
 import { OrderOverviewComponent } from './components/user/user-detail/order-overview/order-overview.component';
 import { LoginTestComponent } from './components/temp/login-test/login-test.component';
 import { UserEditComponent } from './components/user/user-detail/user-edit/user-edit.component';
+import {LoginService} from "./services/login.service";
 
 
 @NgModule({
@@ -85,7 +86,8 @@ import { UserEditComponent } from './components/user/user-detail/user-edit/user-
     FormsModule
   ],
   providers: [
-    UserService
+    UserService,
+    LoginService
   ],
   bootstrap: [AppComponent]
 })

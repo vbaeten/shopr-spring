@@ -1,8 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {UserService} from '../../../services/user.service';
 import {User} from '../../../models/user';
-import {assertNumber} from '@angular/core/src/render3/assert';
-import {element} from 'protractor';
 
 @Component({
   selector: 'app-users',
@@ -19,17 +17,17 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.refresh();
+  }
+
+  deleteUserById(id: number): void {
+    this.userService.deleteUserById(id).subscribe( data => this.refresh());
+  }
+
+  refresh() {
     this.userService.getUsers().subscribe(data => {
       this.users = data;
       this.dataSource = this.users;
     });
-  }
-
-  deleteUserById(id: number): void {
-    this.userService.deleteUserById(id).subscribe();
-    // this.userService.getUsers().subscribe(data => {
-    //   this.users = data;
-    //   this.dataSource = this.users;
-    // });
   }
 }

@@ -15,8 +15,8 @@ public class UserController {
 
     private UserService userService;
 
-    public UserController( UserServiceImpl userServiceImpl) {
-        this.userService = userServiceImpl;
+    public UserController( UserService userService) {
+        this.userService = userService;
     }
 
     @GetMapping("/list")
@@ -26,7 +26,7 @@ public class UserController {
 
     @PostMapping("/register")
     public User registerUser(@RequestBody User user) {
-        userService.create(user);
+        userService.save(user);
         return user;
     }
 

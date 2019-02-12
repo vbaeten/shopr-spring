@@ -2,9 +2,11 @@
 <h4>
   List of Registered Users:
 </h4>
-  <p class="todo">update table when deleting users</p>
+<p *ngIf="users.length == 0">No Users</p>
+  <p *ngIf="users.length == 1">There is only 1 registered user.</p>
+  <p *ngIf="users.length > 1">There are {{users.length}} registered users. </p>
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z3" width="100%">
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z3" width="100%" >
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef> User ID</th>
     <td mat-cell *matCellDef="let element"> {{element.id}}</td>

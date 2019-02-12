@@ -1,19 +1,17 @@
 <div class="myContainer">
-
-  <p class="todo">Style this.</p>
-  <p class="todo">User can login --> Update Navbar</p>
-
   <p>
     login here!
   </p>
-  <mat-form-field appearance="outline">
-    <mat-select placeholder="Select User">
-      <mat-option *ngFor="let user of users" [value]="user.id" >
-        {{user.firstName}} {{user.name}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <button mat-stroked-button color="accent" (click)="onLogin(5)">Login</button>
+  <form>
+    <mat-form-field appearance="outline">
+      <mat-select placeholder="Select User" [(value)]="currentUser">
+        <mat-option *ngFor="let user of users" [value]="user">
+          {{user.firstName}} {{user.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-stroked-button color="accent" (click)="onSubmit()">Login</button>
+  </form>
   <p>
   </p>
 </div>

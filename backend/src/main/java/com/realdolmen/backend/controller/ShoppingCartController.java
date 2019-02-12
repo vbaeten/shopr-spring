@@ -17,7 +17,6 @@ public class ShoppingCartController {
         this.orderlineService = orderlineService;
     }
 
-    //TODO add to cart
     @PostMapping("/add")
     public OrderLine addToCart(@RequestBody OrderLine orderLine) {
         orderlineService.save(orderLine);
