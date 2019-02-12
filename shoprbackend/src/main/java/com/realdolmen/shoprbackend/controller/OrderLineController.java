@@ -27,6 +27,11 @@ public class OrderLineController {
         return orderLineService.findAll();
     }
 
+    @DeleteMapping(value ="/{id}")
+    public void deleteById(@PathVariable("id") Long id){
+        orderLineService.deleteById(id);
+    }
+
 
     public OrderLineController(OrderLineService orderLineService) {
         this.orderLineService = orderLineService;

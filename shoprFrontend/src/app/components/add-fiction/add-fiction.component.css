@@ -1,0 +1,10 @@
+.papi {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+#container > div {
+  width: 100px;
+  height: 100px;
+}

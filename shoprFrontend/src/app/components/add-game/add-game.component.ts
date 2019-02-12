@@ -51,7 +51,7 @@ export class AddGameComponent implements OnInit {
 
 
   showSnackBar(){
-    let message= 'succesfully added your item'
+    let message= 'Succesfully added your item'
     let action= ''
     this.dataService.openSnackBar(message,action)
   }

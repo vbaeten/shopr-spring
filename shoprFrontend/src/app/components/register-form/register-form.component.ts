@@ -26,6 +26,7 @@ export class RegisterFormComponent implements OnInit {
     this.userService.registerUser(this.user)
                     .subscribe(data =>this.user=data)
 
+
   }
 
   showSnackBar(){

@@ -2,6 +2,7 @@ package com.realdolmen.shoprbackend.services;
 
 
 import com.realdolmen.shoprbackend.domain.Order;
+import com.realdolmen.shoprbackend.exception.NotFoundException;
 import com.realdolmen.shoprbackend.repository.OrderRepository;
 import org.springframework.stereotype.Service;
 
@@ -19,8 +20,9 @@ public class OrderService implements CrudService<Order,Long> {
     }
 
     @Override
-    public Order findById(Long primaryKey) {
-        return null;
+    public Order findById(Long id) {
+        return orderRepository.findById(id)
+                .orElseThrow(NotFoundException::new);
     }
 
     @Override

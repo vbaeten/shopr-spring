@@ -9,8 +9,8 @@ html{
 body {
 
   min-height: 100vh;
-  margin-left: 5%;
-  margin-right: 5%;
+  margin-left: 12%;
+  margin-right: 12%;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: rgba(35, 35, 35, 0.72);
 }
@@ -96,7 +96,7 @@ table {
 
 
 .mat-menu-panel{
-  background-color: rgba(35, 35, 35, 0.72);
+  background-color: rgba(35, 35, 35, 0.85);
   border-radius: 10px;
 }
 

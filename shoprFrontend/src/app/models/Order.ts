@@ -9,7 +9,7 @@ export class Order{
 
   constructor(id?: number, totalPrice?: number) {
     this.id = id;
-    this.date = date;
+    // this.date = date;
     this.totalPrice = totalPrice;
   }
 }

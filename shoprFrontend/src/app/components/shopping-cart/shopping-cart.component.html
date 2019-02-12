@@ -1,5 +1,5 @@
 <div>
-<p>Shopping Cart</p>
+<h3> Shopping Cart</h3>
 </div>
 <table matSort class="cartTable">
   <tr>
@@ -16,10 +16,13 @@
     <td>{{orderLine.item.price}}</td>
     <td>{{orderLine.quantity}}</td>
     <td>{{orderLine.subTotal}}</td>
+    <td><button mat-button (click)="deleteById(orderLine.id)">Delete</button></td>
   </tr>
 </table>
-<div>
-<button mat-button="order" (click)="placeOrder()">Order!</button>
-<button mat-button="clearAll">Clear</button>
 
+
+<div style="margin-bottom:10px ">
+<button mat-button="order" (click)="placeOrder()">Order!</button>
 </div>
+
+

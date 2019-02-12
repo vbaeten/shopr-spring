@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, Subject} from "rxjs";
-import {User} from "../models/user";
 import {MatSnackBar} from "@angular/material";
 
 @Injectable({
@@ -11,6 +10,7 @@ export class DataService {
 
   private idSource = new BehaviorSubject<number>(0)
   detailId = this.idSource.asObservable()
+  private orderSource = new Subject()
 
 
 
@@ -18,6 +18,8 @@ export class DataService {
 
   constructor( private snackBar:MatSnackBar) {
   }
+
+
 
   changeId(id:number){
     this.idSource.next(id)

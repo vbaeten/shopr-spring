@@ -31,8 +31,10 @@ export class DynamicNavBarComponent implements OnInit {
 
 
   logOut(){
+
     this.navBarService.updateLoginStatus(false)
     this.router.navigate(['/itemsOverview'])
+    localStorage.clear()
   }
 
 }

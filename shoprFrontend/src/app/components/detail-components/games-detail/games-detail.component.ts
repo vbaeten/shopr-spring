@@ -16,6 +16,7 @@ export class GamesDetailComponent implements OnInit {
 
   passedId:number
   game
+  order
 
   orderLine
 
@@ -40,6 +41,7 @@ export class GamesDetailComponent implements OnInit {
     this.orderLine.quantity=form.value.quantity
     this.orderLine.subTotal = this.orderLine.quantity*this.game.price
     this.orderLineService.createOrderLine(this.orderLine).subscribe(data=>this.orderLine=data)
+
   }
 
 

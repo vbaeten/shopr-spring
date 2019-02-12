@@ -3,6 +3,7 @@ import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Order} from "../models/Order";
+import {Game} from "../models/game";
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,10 @@ export class OrderService {
     return this.http.post<Order>(this.classUrl,order)
   }
 
+
+  public getOrderById(id:number):Observable<Order>{
+    return this.http.get<Order>(this.classUrl+'/'+id)
+  }
 
 
 }

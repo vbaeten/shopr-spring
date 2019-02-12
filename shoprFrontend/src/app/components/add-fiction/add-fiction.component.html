@@ -1,6 +1,8 @@
 <div>
        <h3> cReate a Fiction Book</h3>
 </div>
+
+<div class="papi">
     <form  #f="ngForm" (ngSubmit)="addFiction(f)">
       <div >
         <app-add-items (newPrice)="setPrice($event)" (newTitle)="setTitle($event)"></app-add-items>
@@ -42,4 +44,4 @@
       <button mat-button (click)="showSnackBar()" >cReate!</button>
     </form>
 
-
+</div>

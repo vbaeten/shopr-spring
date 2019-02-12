@@ -17,6 +17,7 @@ import {FictionsDetailComponent} from "./components/detail-components/fictions-d
 import {NonFictionsDetailComponent} from "./components/detail-components/non-fictions-detail/non-fictions-detail.component";
 import {SearchComponent} from "./components/search/search.component";
 import {ShoppingCartComponent} from "./components/shopping-cart/shopping-cart.component";
+import {ThankYouComponent} from "./components/index/thank-you/thank-you.component";
 
 const routes: Routes = [
   {path: '', component: IndexComponent},
@@ -35,7 +36,8 @@ const routes: Routes = [
   {path: 'lpDetails', component: LpsDetailComponent},
   {path: 'fictionDetails', component: FictionsDetailComponent},
   {path: 'nonFictionDetails', component: NonFictionsDetailComponent},
-  {path: 'shoppingCart', component: ShoppingCartComponent}
+  {path: 'shoppingCart', component: ShoppingCartComponent},
+  {path: 'thankYou', component: ThankYouComponent}
 
 ];
 

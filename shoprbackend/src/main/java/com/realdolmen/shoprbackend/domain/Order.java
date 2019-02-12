@@ -14,6 +14,7 @@ public class Order {
     @GeneratedValue
     private Long Id;
 
+    @Transient
     private Timestamp date;
 
     @OneToMany(cascade = {MERGE, REMOVE},fetch = FetchType.EAGER)
