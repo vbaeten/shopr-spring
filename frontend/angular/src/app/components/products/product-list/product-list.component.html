@@ -1,6 +1,6 @@
 <form class="example-form">
   <mat-form-field class="example-full-width">
-    <input (keyup)="applyFilter($event.target.value)" type="search " placeholder="Search product" aria-label="Number" matInput [formControl]="searchField"
+    <input [(ngModel)]="searchText" type="text " placeholder="Search product" aria-label="Number" matInput [formControl]="searchField"
            [matAutocomplete]="auto">
     <mat-autocomplete #auto="matAutocomplete">
       <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
@@ -15,7 +15,7 @@
     <app-cart-content></app-cart-content>
   </div>
   <ul class="product-list">
-    <li *ngFor="let product of products" class="product-container">
+    <li *ngFor="let product of products | productFilter:searchText" class="product-container">
       <mat-card class="example-card">
         <mat-card-header>
           <div mat-card-avatar class="example-header-image">
@@ -37,7 +37,9 @@
         </mat-card-content>
         <mat-card-actions>
           <mat-form-field class="example-margin">
-            <input min="0" max="100" matInput type="number" placeholder="Quantity" [(ngModel)]="quantity" name="quantity">
+            <input min="0" step="1" matInput type="number"
+                   placeholder="Quantity" [(ngModel)]="quantity"
+                   name="quantity" oninput="validity.valid||(value='')">
           </mat-form-field>
           <button mat-button (click)="addToCart(product, quantity)">Add to cart</button>
         </mat-card-actions>

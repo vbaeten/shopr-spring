@@ -6,12 +6,14 @@ import {MaterialModule} from "../../material.module";
 import {RouterModule} from "@angular/router";
 import {ProductRoutingModule} from "./product-routing.module";
 import {CartContentComponent} from "./cart-content/cart-content.component";
+import {ProductFilterPipe} from './product-filter.pipe';
 
 @NgModule({
   declarations: [
     ProductListComponent,
     ProductDetailsComponent,
-    CartContentComponent
+    CartContentComponent,
+    ProductFilterPipe
   ],
   imports: [
     CommonModule,

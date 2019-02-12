@@ -20,7 +20,7 @@ import {ShoppingCartService} from "./services/shopping-cart.service";
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
