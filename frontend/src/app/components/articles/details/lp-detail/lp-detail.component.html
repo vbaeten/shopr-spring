@@ -11,16 +11,8 @@
         <p>Details here.</p>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-stroked-button="info">Order</button>
+        <app-order-article [article]="lp"></app-order-article>
       </mat-card-actions>
     </mat-card>
-  </div>
-  <div>
-    <form #f="ngForm" (ngSubmit)="addToCart(f)">
-      <mat-form-field>
-        <input matInput type="number" name="quantity">
-      </mat-form-field>
-      <button mat-stroked-button="info">Order</button>
-    </form>
   </div>
 </div>

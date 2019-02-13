@@ -1,8 +1,5 @@
-<div class="myContainer">
-
-<p>
-  User with ID {{currentUser.id}} loaded.
-</p>
+<div *ngIf="!currentUser">No User Logged In</div>
+<div *ngIf="currentUser" class="myContainer">
   <p>
     {{currentUser.firstName}} {{currentUser.name}}
   </p>

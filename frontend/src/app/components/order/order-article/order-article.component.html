@@ -1,7 +1,7 @@
-<div>
+<div *ngIf="currentUser">
   <form #f="ngForm" (ngSubmit)="addToCart(f)" >
     <mat-form-field>
-      <input matInput type="number" name="quantity" [defaultValue]="1">
+      <input matInput type="number" name="quantity" min="1" ngModel="1">
     </mat-form-field>
     <button mat-stroked-button="info">Order</button>
   </form>

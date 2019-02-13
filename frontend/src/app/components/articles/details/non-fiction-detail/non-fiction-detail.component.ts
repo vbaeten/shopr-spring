@@ -16,19 +16,14 @@ export class NonFictionDetailComponent implements OnInit {
 
   nonFiction: NonFiction;
   id: number;
-  orderLine: OrderLine;
-  currentUser: User;
-
 
   constructor(private nonFictionService: NonFictionService,
               private route: ActivatedRoute,
-              private shoppingCartService: ShoppingCartService,
-              private loginService: LoginService) {
+  ) {
   }
 
   ngOnInit() {
     this.getNonFiction();
-    this.loginService.getCurrentUser().then(user => this.currentUser = user);
   }
 
   getNonFiction() {

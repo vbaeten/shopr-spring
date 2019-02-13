@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {UserService} from '../../../services/user.service';
 import {User} from '../../../models/user';
 import {ActivatedRoute, Params} from '@angular/router';
@@ -10,10 +10,10 @@ import {LoginService} from "../../../services/login.service";
   templateUrl: './user-detail.component.html',
   styleUrls: ['./user-detail.component.css']
 })
-export class UserDetailComponent implements OnInit {
+export class UserDetailComponent implements OnInit, OnDestroy {
 
-  id: number;
   currentUser;
+  private userSubscription: Subscription;
 
   constructor(private userService: UserService,
               private route: ActivatedRoute,
@@ -21,12 +21,15 @@ export class UserDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getUser();
+    this.getCurrentUser();
+    this.userSubscription = this.loginService.userSubject.subscribe(() => this.getCurrentUser());
+  }
+
+  getCurrentUser() {
     this.loginService.getCurrentUser().then(user => this.currentUser = user);
   }
 
-  getUser() {
-    this.route.params.subscribe(params => this.id = params['id']);
-    this.userService.getUser(this.id).subscribe(user => this.currentUser = user);
+  ngOnDestroy(): void {
+    this.userSubscription.unsubscribe();
   }
 }

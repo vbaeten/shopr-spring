@@ -1,6 +1,7 @@
-import {ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, Input, OnInit, ViewChild} from '@angular/core';
 import {UserService} from '../../../services/user.service';
 import {User} from '../../../models/user';
+import {MatSort, Sort} from '@angular/material';
 
 @Component({
   selector: 'app-users',
@@ -13,6 +14,8 @@ export class UsersComponent implements OnInit {
   dataSource;
   displayedColumns: string[] = ['id', 'firstName', 'name', 'delete'];
 
+  @ViewChild(MatSort) sort: MatSort;
+
   constructor(private userService: UserService) {
   }
 
@@ -22,6 +25,7 @@ export class UsersComponent implements OnInit {
 
   deleteUserById(id: number): void {
     this.userService.deleteUserById(id).subscribe( data => this.refresh());
+    this.dataSource.sort = this.sort;
   }
 
   refresh() {
@@ -30,4 +34,8 @@ export class UsersComponent implements OnInit {
       this.dataSource = this.users;
     });
   }
+
+  // sortData(sort: Sort) {
+  //
+  // }
 }

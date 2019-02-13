@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
-import { UserDetailComponent } from './components/user/user-detail/user-detail.component';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
+import {HomeComponent} from './components/home/home.component';
+import {UserDetailComponent} from './components/user/user-detail/user-detail.component';
 import {UsersComponent} from './components/user/users/users.component';
 import {ShopComponent} from './components/shop/shop/shop.component';
 import {ExampleComponent} from './components/temp/example/example.component';
@@ -31,4 +31,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

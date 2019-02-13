@@ -5,22 +5,14 @@
       <mat-card-header>
         <!--<div mat-card-avatar=""></div>-->
         <mat-card-title>{{game.title}}</mat-card-title>
-        <mat-card-subtitle>Subtitle</mat-card-subtitle>
+        <mat-card-subtitle>Publisher: {{game.publisher}}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
         <p>Details here.</p>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-stroked-button="info">Order</button>
+        <app-order-article [article]="game"></app-order-article>
       </mat-card-actions>
     </mat-card>
-    <div>
-      <form #f="ngForm" (ngSubmit)="addToCart(f)">
-        <mat-form-field>
-          <input matInput type="number" name="quantity">
-        </mat-form-field>
-        <button mat-stroked-button="info">Order</button>
-      </form>
-    </div>
   </div>
 </div>

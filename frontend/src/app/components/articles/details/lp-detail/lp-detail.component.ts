@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Lp} from '../../../../models/lp';
 import {LpService} from '../../../../services/lp.service';
 import {ActivatedRoute} from "@angular/router";
@@ -17,17 +17,14 @@ export class LpDetailComponent implements OnInit {
 
   lp: Lp;
   id: number;
-  orderLine: OrderLine;
-  currentUser: User;
 
   constructor(private lpService: LpService,
               private route: ActivatedRoute,
-              private shoppingCartService: ShoppingCartService,
-              private loginService: LoginService) { }
+  ) {
+  }
 
   ngOnInit() {
     this.getLp();
-    this.loginService.getCurrentUser().then(user => this.currentUser = user);
   }
 
   getLp() {
@@ -35,11 +32,4 @@ export class LpDetailComponent implements OnInit {
     this.lpService.getLp(this.id).subscribe(lp => this.lp = lp);
   }
 
-  addToCart(form: NgForm) {
-    this.orderLine = new OrderLine();
-    this.orderLine.articleId = this.lp.id;
-    this.orderLine.quantity = form.value.quantity;
-    this.orderLine.userId = this.currentUser.id;
-    this.shoppingCartService.addToCart(this.orderLine);
-  }
 }

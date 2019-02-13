@@ -39,6 +39,7 @@ import { OrderOverviewComponent } from './components/user/user-detail/order-over
 import { LoginTestComponent } from './components/temp/login-test/login-test.component';
 import { UserEditComponent } from './components/user/user-detail/user-edit/user-edit.component';
 import {LoginService} from "./services/login.service";
+import { OrderLinesComponent } from './components/order/order-lines/order-lines.component';
 
 
 @NgModule({
@@ -74,6 +75,7 @@ import {LoginService} from "./services/login.service";
     OrderOverviewComponent,
     LoginTestComponent,
     UserEditComponent,
+    OrderLinesComponent,
   ],
   imports: [
     BrowserModule,

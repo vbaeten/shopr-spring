@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 
 import {Article} from '../../../../models/article';
 import {ArticleService} from '../../../../services/article.service';
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, Router} from '@angular/router';
+import {MatSort} from '@angular/material';
 
 @Component({
   selector: 'app-article-overview',
@@ -16,6 +17,8 @@ export class ArticleOverviewComponent implements OnInit {
   dataSource;
   displayedColumns: string[] = ['id', 'title', 'price', 'type', 'detail'];
 
+  @ViewChild(MatSort) sort: MatSort;
+
   constructor(private articleService: ArticleService,
               private router: Router,
               private route: ActivatedRoute) {
@@ -26,6 +29,7 @@ export class ArticleOverviewComponent implements OnInit {
       this.articles = data;
       this.dataSource = this.articles;
     });
+    this.dataSource.sort = this.sort;
   }
 
   goToDetails(article: Article) {

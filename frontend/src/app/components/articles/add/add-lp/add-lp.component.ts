@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {NgForm} from "@angular/forms";
-import {Lp} from "../../../../models/lp";
-import {LpService} from "../../../../services/lp.service";
+import {NgForm} from '@angular/forms';
+import {Lp} from '../../../../models/lp';
+import {LpService} from '../../../../services/lp.service';
 
 @Component({
   selector: 'app-add-lp',

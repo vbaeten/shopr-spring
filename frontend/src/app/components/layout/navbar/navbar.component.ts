@@ -2,7 +2,7 @@ import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {first} from 'rxjs/operators';
 import {User} from '../../../models/user';
 import {LoginService} from '../../../services/login.service';
-import {Subscription} from "rxjs";
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
