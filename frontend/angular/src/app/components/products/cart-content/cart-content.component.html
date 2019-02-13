@@ -6,6 +6,11 @@
 <mat-toolbar-row>
   <span>Items in basket:</span>
   <span class="example-spacer"></span>
-  <button mat-button>remove from cart</button>
+  <button [disabled]="itemCount === 0 ? true : false" mat-button (click)="emptyCart()">remove from cart</button>
 </mat-toolbar-row>
+</mat-toolbar>
 
+  <h4>
+    Sub total for {{itemCount}} item(s)
+    <span></span>
+  </h4>

@@ -1,3 +1,7 @@
+<mat-toolbar color="accent">
+  <span [routerLink]="['/products']">Back</span>
+</mat-toolbar>
+
 <mat-card class="example-card">
   <mat-card-header>
     <mat-card-title>{{product.title}}</mat-card-title>
@@ -6,16 +10,27 @@
     <mat-card-subtitle>{{product.price | currency:'EUR': symbol}}</mat-card-subtitle>
   </mat-card-header>
 
-  <img src="./assets/{{product.id}}.jpg"/>
+  <img *ngIf="product" src="./assets/{{product.id}}.jpg"/>
 
-  <div class="product-content">
+  <div class="product-content" *ngIf="product">
     <mat-card-subtitle>{{product.type.toUpperCase()}}</mat-card-subtitle>
     <mat-card-subtitle>{{product.genre}}</mat-card-subtitle>
+    <mat-card-subtitle *ngIf="product.author">{{product.author}}</mat-card-subtitle>
+    <mat-card-subtitle *ngIf="product.pages">{{product.isbn}}</mat-card-subtitle>
+    <mat-card-subtitle *ngIf="product.pages">{{product.pages}}</mat-card-subtitle>
+    <mat-card-subtitle *ngIf="product.performer">{{product.performer}}</mat-card-subtitle>
+    <mat-card-subtitle *ngIf="product.supplier">{{product.supplier}}</mat-card-subtitle>
+    <mat-card-subtitle *ngIf="product.editor">{{product.editor}}</mat-card-subtitle>
+    <mat-card-subtitle *ngIf="product.pegi">{{product.pegi}}</mat-card-subtitle>
+    <mat-card-subtitle *ngIf="product.summary">{{product.summary}}</mat-card-subtitle>
     <mat-card-content>
       <p>
-        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-        bred for hunting.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer viverra nulla non pellentesque tristique.
+        Duis nec mi porta, cursus risus molestie, varius est. Nunc non felis aliquet, dignissim est quis, placerat mauris.
+        Mauris dignissim mi ut eros ullamcorper facilisis. Maecenas at cursus ipsum, nec semper erat.
+        Phasellus facilisis rhoncus erat, eu dignissim ipsum. Nullam ligula odio, elementum non euismod id, hendrerit a dui.
+        Donec rutrum dapibus turpis, vel posuere turpis suscipit luctus. Pellentesque nunc purus, sollicitudin ac dignissim at, scelerisque vel ante.
+        In eget justo augue. Morbi viverra diam sit amet turpis sodales porttitor.
       </p>
     </mat-card-content>
   </div>

@@ -23,14 +23,12 @@ export class ProductDetailsComponent implements OnInit {
     this.route.params.subscribe(params => {
       const id = params['id'];
       this.getProductDetails(id);
-    })
+    },
+      error => console.log(error));
   }
 
   getProductDetails(id: number) {
     this.productService.getProductById(id).subscribe(data => this.product = data);
   }
 
-  // addToCart(product: Product): void {
-  //   this.productService.addToCart(product);
-  // }
 }

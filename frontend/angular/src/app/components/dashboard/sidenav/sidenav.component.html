@@ -14,16 +14,16 @@
         <button mat-button [matMenuTriggerFor]="products">Manage products</button>
 
         <mat-menu #products="matMenu">
-          <button mat-menu-item [matMenuTriggerFor]="fictions">Manage fictions</button>
-          <button mat-menu-item [matMenuTriggerFor]="nonFictions">Manage Non-fictions</button>
-          <button mat-menu-item [matMenuTriggerFor]="games">Manage games</button>
-          <button mat-menu-item [matMenuTriggerFor]="lp">Manage lp</button>
+          <button routerLink="/fiction" mat-menu-item [matMenuTriggerFor]="fictions">Manage fictions</button>
+          <button routerLink="/nonFiction" mat-menu-item [matMenuTriggerFor]="nonFictions">Manage Non-fictions</button>
+          <button routerLink="/game" mat-menu-item [matMenuTriggerFor]="games">Manage games</button>
+          <button routerLink="/lp" mat-menu-item [matMenuTriggerFor]="lp">Manage lp</button>
         </mat-menu>
 
         <mat-menu #fictions="matMenu">
-          <button mat-menu-item routerLink="['/fictions/add']">Add fiction</button>
-          <button mat-menu-item>Edit fiction</button>
-          <button mat-menu-item>Delete fiction</button>
+          <button mat-menu-item routerLink="/fiction/add">Add fiction</button>
+          <button mat-menu-item routerLink="/fiction/edit">Edit fiction</button>
+          <button mat-menu-item routerLink="/fiction/delete">Delete fiction</button>
         </mat-menu>
 
         <mat-menu #nonFictions="matMenu">

@@ -1,6 +1,6 @@
 <form class="example-form">
   <mat-form-field class="example-full-width">
-    <input [(ngModel)]="searchText" type="text " placeholder="Search product" aria-label="Number" matInput [formControl]="searchField"
+    <input [(ngModel)]="searchText" type="text " name="search" placeholder="Search product" aria-label="Number" matInput
            [matAutocomplete]="auto">
     <mat-autocomplete #auto="matAutocomplete">
       <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
@@ -37,20 +37,14 @@
         </mat-card-content>
         <mat-card-actions>
           <mat-form-field class="example-margin">
-            <input min="0" step="1" matInput type="number"
-                   placeholder="Quantity" [(ngModel)]="quantity"
-                   name="quantity" oninput="validity.valid||(value='')">
+            <input
+              min="0" max="100" matInput type="number"
+              placeholder="Quantity" [(ngModel)]="quantity"
+              name="quantity" oninput="validity.valid||(value='')">
           </mat-form-field>
-          <button mat-button (click)="addToCart(product, quantity)">Add to cart</button>
+          <button [disabled]="!quantity" mat-button (click)="addToCart(product, quantity)">Add to cart</button>
         </mat-card-actions>
       </mat-card>
-          <!--<button type="button"-->
-          <!--class="button success large js-btn-add"-->
-          <!--(click)="addProductToCart(product, 1)">Add To Cart</button>-->
-          <!--<button type="button"-->
-          <!--class="button small js-btn-remove"-->
-          <!--*ngIf="productInCart(product) | async"-->
-          <!--(click)="removeProductFromCart(product, 1)">Remove item from cart</button>-->
     </li>
   </ul>
 </div>

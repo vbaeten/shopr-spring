@@ -1,5 +1,4 @@
 mat-card {
-  border: 2px solid blue;
   width: 80%;
   max-width: 1200px;
   position: relative;
@@ -14,11 +13,9 @@ img {
   max-height: 250px;
   max-width: 200px;
   background-size: cover;
-  border: 2px solid red;
 }
 
 .product-content {
-  border: 2px solid fuchsia;
   position: absolute;
   top: 20px;
   right: 280px;

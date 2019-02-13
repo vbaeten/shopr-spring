@@ -3,13 +3,12 @@ import {Component, OnInit} from '@angular/core';
 import {ProductService} from "../../../services/product.service";
 import {Product} from "../../../models/products.model";
 import {MatTableDataSource} from "@angular/material";
-import {FormControl} from "@angular/forms";
 import {ShoppingCartService} from "../../../services/shopping-cart.service";
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css']
+  styleUrls: ['./product-list.component.css'],
 })
 export class ProductListComponent implements OnInit {
 
@@ -19,7 +18,6 @@ export class ProductListComponent implements OnInit {
   options: string[] = [];
 
   searchText: string;
-  searchField = new FormControl();
 
   constructor(private productService: ProductService, private shoppingService: ShoppingCartService) { }
 
@@ -40,4 +38,5 @@ export class ProductListComponent implements OnInit {
   addToCart(product: Product, quantity: number): void {
     this.shoppingService.addToCart(product, quantity);
   }
+
 }

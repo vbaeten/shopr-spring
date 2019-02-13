@@ -16,6 +16,7 @@ import {UserService} from "./services/user.service";
 import {ProductModule} from "./components/products/product.module";
 import {AuthModule} from "./components/auth/auth.module";
 import {ShoppingCartService} from "./services/shopping-cart.service";
+import {DashboardModule} from './components/dashboard/dashboard.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {ShoppingCartService} from "./services/shopping-cart.service";
     FormsModule,
     MaterialModule,
     ProductModule,
-    AuthModule
+    AuthModule,
+    DashboardModule
   ],
   providers: [
     AuthService,

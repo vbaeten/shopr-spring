@@ -3,6 +3,7 @@ import {Product} from "../models/products.model";
 import {ProductService} from "./product.service";
 import {ShoppingCart} from "../models/shoppingCart.model";
 import {CartItem} from "../models/cartItem.model";
+import {Observable, Observer} from "rxjs";
 
 const CART_KEY = "cart";
 
@@ -13,8 +14,24 @@ export class ShoppingCartService {
 
   products: Product[];
 
+  private shoppingCartObs: Observable<ShoppingCart>;
+  private subscribers: Observer[ShoppingCart] = [];
+
   constructor(private productService: ProductService) {
+
     this.productService.getProducts().subscribe((products) => this.products = products);
+
+    this.shoppingCartObs = new Observable<ShoppingCart>((observer: Observer<ShoppingCart>) => {
+      this.subscribers.push(observer);
+      observer.next(this.retrive());
+      return () => {
+        this.subscribers = this.subscribers.filter(obs => obs !== observer);
+      }
+    });
+  }
+
+  public get(): Observable<ShoppingCart> {
+    return this.shoppingCartObs;
   }
 
   public addToCart(product: Product, quantity: number): void {
@@ -29,14 +46,15 @@ export class ShoppingCartService {
     }
 
     item.quantity += quantity;
+    cart.totalItems += item.quantity;
 
-    this.save(cart);
     this.calculateCart(cart);
+    this.save(cart);
   }
 
   private retrive(): ShoppingCart {
     const cart = new ShoppingCart();
-    const storedCart = localStorage.getItem(CART_KEY);
+    const storedCart = localStorage.getItem("cart");
     if(storedCart) {
       cart.updateCart(JSON.parse(storedCart));
     }

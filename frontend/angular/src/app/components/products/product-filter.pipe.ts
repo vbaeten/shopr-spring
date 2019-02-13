@@ -10,7 +10,10 @@ export class ProductFilterPipe implements PipeTransform {
     if(text == null || text === "") {
       return products;
     }
-    return products.filter(p => p.title.toLowerCase().includes(text) || p.type.includes(text));
+    return products.filter(
+      p => p.title.toLowerCase().includes(text) ||
+        p.type.includes(text) ||
+        p.genre.toLowerCase().includes(text));
   }
 
 }
