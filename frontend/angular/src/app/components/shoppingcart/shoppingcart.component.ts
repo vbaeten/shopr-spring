@@ -29,6 +29,7 @@ export class ShoppingcartComponent implements OnInit {
   delete(orderlineId: number) {
     this.orderlineservice.deleteOrderlineById(orderlineId).subscribe();
     this.fetchOrderlines();
+    window.location.reload();
   }
 
   calculateTotal(): number {
@@ -36,7 +37,7 @@ export class ShoppingcartComponent implements OnInit {
       this.totalPrice = this.totalPrice + this.orderlines[j].subTotal;
       this.totalPrice.toFixed(2);
     }
-    return this.totalPrice
+    return this.totalPrice;
 
   }
 
@@ -44,7 +45,7 @@ export class ShoppingcartComponent implements OnInit {
     this.orderlineservice.getOrderLines().subscribe(data => {
       this.dataSource = new MatTableDataSource<Orderline>(data);
       this.orderlines = this.dataSource.data;
-      this.calculateTotal()
+      this.calculateTotal();
     });
   }
 
