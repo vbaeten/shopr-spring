@@ -1,15 +1,26 @@
-<div class="myContainer">
-  <mat-card class="mat-card">
-    <mat-card-header>
-      <!--<div mat-card-avatar=""></div>-->
-      <mat-card-title>{{game.title}}</mat-card-title>
-      <mat-card-subtitle>Subtitle</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <p>Details here.</p>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-stroked-button="info">Order</button>
-    </mat-card-actions>
-  </mat-card>
+<div *ngIf="!game">Loading</div>
+<div *ngIf="game">
+  <div class="myContainer">
+    <mat-card class="mat-card">
+      <mat-card-header>
+        <!--<div mat-card-avatar=""></div>-->
+        <mat-card-title>{{game.title}}</mat-card-title>
+        <mat-card-subtitle>Subtitle</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Details here.</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-stroked-button="info">Order</button>
+      </mat-card-actions>
+    </mat-card>
+    <div>
+      <form #f="ngForm" (ngSubmit)="addToCart(f)">
+        <mat-form-field>
+          <input matInput type="number" name="quantity">
+        </mat-form-field>
+        <button mat-stroked-button="info">Order</button>
+      </form>
+    </div>
+  </div>
 </div>

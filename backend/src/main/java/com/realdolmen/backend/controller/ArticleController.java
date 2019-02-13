@@ -21,6 +21,9 @@ public class ArticleController {
         return articleService.findAll();
     }
 
+    @GetMapping("/{id}")
+    public Article getArticle(@PathVariable("id") Long id) { return articleService.findById(id);}
+
     @DeleteMapping("/delete/{id}")
     public void deleteArticleById(@PathVariable("id") Long id) {
         articleService.deleteById(id);

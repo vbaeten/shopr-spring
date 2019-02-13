@@ -2,6 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {Fiction} from '../../../../models/fiction';
 import {FictionService} from '../../../../services/fiction.service';
 import {ActivatedRoute} from "@angular/router";
+import {OrderLine} from "../../../../models/order-line";
+import {User} from "../../../../models/user";
+import {ArticleService} from "../../../../services/article.service";
+import {Article} from "../../../../models/article";
 
 @Component({
   selector: 'app-fiction-detail',
@@ -11,13 +15,20 @@ import {ActivatedRoute} from "@angular/router";
 export class FictionDetailComponent implements OnInit {
 
   fiction: Fiction;
-  id: number;
+  article: Article;
 
-  constructor(private fictionService: FictionService, private route: ActivatedRoute) {
+  id: number;
+  orderLine: OrderLine;
+  currentUser: User;
+
+  constructor(private fictionService: FictionService,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit() {
     this.getFiction();
+    this.article = new Article();
+    this.article.id = this.fiction.id;
   }
 
   getFiction() {

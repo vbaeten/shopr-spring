@@ -2,6 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {NonFiction} from '../../../../models/non-fiction';
 import {NonFictionService} from '../../../../services/non-fiction.service';
 import {ActivatedRoute} from '@angular/router';
+import {LoginService} from "../../../../services/login.service";
+import {User} from "../../../../models/user";
+import {OrderLine} from "../../../../models/order-line";
+import {ShoppingCartService} from "../../../../services/shopping-cart.service";
 
 @Component({
   selector: 'app-non-fiction-detail',
@@ -12,12 +16,19 @@ export class NonFictionDetailComponent implements OnInit {
 
   nonFiction: NonFiction;
   id: number;
+  orderLine: OrderLine;
+  currentUser: User;
 
-  constructor(private nonFictionService: NonFictionService, private route: ActivatedRoute) {
+
+  constructor(private nonFictionService: NonFictionService,
+              private route: ActivatedRoute,
+              private shoppingCartService: ShoppingCartService,
+              private loginService: LoginService) {
   }
 
   ngOnInit() {
     this.getNonFiction();
+    this.loginService.getCurrentUser().then(user => this.currentUser = user);
   }
 
   getNonFiction() {

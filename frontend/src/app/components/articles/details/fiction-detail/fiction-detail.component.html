@@ -1,16 +1,20 @@
-<div class="myContainer">
-  <mat-card class="mat-card">
-    <mat-card-header>
-      <!--<div mat-card-avatar=""></div>-->
-      <mat-card-title>{{fiction.title}}</mat-card-title>
-      <mat-card-subtitle>Subtitle</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <p>Details here.</p>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-stroked-button="info">Order</button>
-      <app-order-article></app-order-article>
-    </mat-card-actions>
-  </mat-card>
+<div *ngIf="!fiction">Loading</div>
+<div *ngIf="fiction">
+  <div class="myContainer">
+    <mat-card class="mat-card">
+      <mat-card-header>
+        <!--<div mat-card-avatar=""></div>-->
+        <mat-card-title>{{fiction.title}}</mat-card-title>
+        <mat-card-subtitle>Subtitle</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Details here.</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-stroked-button="info">Order</button>
+        <app-order-article
+          [article]="article" [fiction]="fiction"></app-order-article>
+      </mat-card-actions>
+    </mat-card>
+  </div>
 </div>

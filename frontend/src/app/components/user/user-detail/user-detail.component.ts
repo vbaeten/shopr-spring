@@ -22,7 +22,7 @@ export class UserDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getUser();
-    this.loginService.getCurrentUser();
+    this.loginService.getCurrentUser().then(user => this.currentUser = user);
   }
 
   getUser() {

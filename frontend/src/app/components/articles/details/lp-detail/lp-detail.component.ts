@@ -20,13 +20,14 @@ export class LpDetailComponent implements OnInit {
   orderLine: OrderLine;
   currentUser: User;
 
-  constructor(private lpService: LpService, private route: ActivatedRoute,
+  constructor(private lpService: LpService,
+              private route: ActivatedRoute,
               private shoppingCartService: ShoppingCartService,
               private loginService: LoginService) { }
 
   ngOnInit() {
     this.getLp();
-    this.currentUser = this.loginService.getCurrentUser();
+    this.loginService.getCurrentUser().then(user => this.currentUser = user);
   }
 
   getLp() {
