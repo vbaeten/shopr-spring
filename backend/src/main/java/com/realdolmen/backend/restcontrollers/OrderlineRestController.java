@@ -1,7 +1,7 @@
 package com.realdolmen.backend.restcontrollers;
 
 import com.realdolmen.backend.Domain.Orderline;
-import com.realdolmen.backend.repositories.OrderlineRepo;
+import com.realdolmen.backend.repositories.OrderlineRepository;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -10,31 +10,31 @@ import java.util.List;
 @RestController
 @RequestMapping("/orderlines")
 public class OrderlineRestController {
-    private final OrderlineRepo orderlineRepo;
+    private final OrderlineRepository orderlineRepository;
 
-    public OrderlineRestController(OrderlineRepo orderlineRepo) {
-        this.orderlineRepo = orderlineRepo;
+    public OrderlineRestController(OrderlineRepository orderlineRepository) {
+        this.orderlineRepository = orderlineRepository;
     }
 
     @GetMapping(value = "/all")
     public List<Orderline> findAllOrderlines() {
-        return orderlineRepo.findAll();
+        return orderlineRepository.findAll();
     }
 
     @PostMapping(value = "/add")
     public Orderline createOrderLine(@RequestBody @Valid Orderline orderline) {
-        return orderlineRepo.save(orderline);
+        return orderlineRepository.save(orderline);
     }
 
     @GetMapping(value = "/{orderlineId}")
     public Orderline getOrderline(@PathVariable Long orderlineId) {
-        return orderlineRepo.getOne(orderlineId);
+        return orderlineRepository.getOne(orderlineId);
     }
 
     @DeleteMapping("/{orderlineId}")
     public void deleteById(@PathVariable("orderlineId") Long orderlineId) {
         Orderline orderline = getOrderline(orderlineId);
-        orderlineRepo.delete(orderline);
+        orderlineRepository.delete(orderline);
     }
 
 }

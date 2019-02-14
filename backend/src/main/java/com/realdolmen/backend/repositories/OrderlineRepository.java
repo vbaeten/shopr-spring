@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 @RepositoryRestResource(collectionResourceRel = "orderlines", path = "orderlines")
-public interface OrderlineRepo extends JpaRepository<Orderline, Long> {
+public interface OrderlineRepository extends JpaRepository<Orderline, Long> {
 }

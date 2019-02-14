@@ -11,7 +11,6 @@ import {User} from "../../domain/user";
 export class RegisterComponent implements OnInit {
   firstName: string;
   lastName: string;
-  loggedIn: boolean;
   admin: boolean;
   checked = false;
   indeterminate = false;
@@ -25,7 +24,7 @@ export class RegisterComponent implements OnInit {
   }
 
   submit() {
-    let newUser = new User(this.firstName, this.lastName, this.userName, this.loggedIn, this.admin);
+    let newUser = new User(this.firstName, this.lastName, this.userName, this.admin);
     this.service.register(newUser);
     this.router.navigate(['/signin']);
   }
