@@ -15,12 +15,19 @@ public class Orderline extends BaseObject {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long orderlineId;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
-    private Article article;
-
     @Digits(integer = 6, fraction = 2)
     private Double subTotal;
+
     @Digits(integer = 6, fraction = 0)
     @NotNull
     private Long quantity;
+
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "articleId")
+    private Article article;
+
+//    @ManyToOne(cascade = CascadeType.MERGE)
+//    private Order order;
+
+
 }

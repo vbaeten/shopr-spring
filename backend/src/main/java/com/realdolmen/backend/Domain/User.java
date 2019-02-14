@@ -2,7 +2,10 @@ package com.realdolmen.backend.Domain;
 
 import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.Size;
 
 @Data
@@ -10,7 +13,7 @@ import javax.validation.constraints.Size;
 public class User extends BaseObject {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long userId;
 
     private String lastName;
@@ -20,9 +23,8 @@ public class User extends BaseObject {
     @Size(max = 50)
     private String userName;
 
-    private boolean loggedOn;
-
     private boolean admin;
 
-
+//    @OneToMany(mappedBy = "")
+//    private List<Order> orderList;
 }

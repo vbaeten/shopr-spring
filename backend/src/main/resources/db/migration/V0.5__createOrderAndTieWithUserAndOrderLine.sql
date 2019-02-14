@@ -1,0 +1,40 @@
+-- CREATE TABLE `orders` (
+--   `order_id` bigint(20) NOT NULL,
+--   `version_id` bigint(20) DEFAULT NULL,
+--   `user_user_id` bigint(20) DEFAULT NULL,
+--   PRIMARY KEY (`order_id`),
+--   KEY `FKcooejujh32cpgw33d02snbufy` (`user_user_id`)
+-- ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+--
+-- ALTER TABLE shopr.user ADD COLUMN version_id bigint;
+-- ALTER TABLE shopr.orderline ADD COLUMN version_id bigint;
+-- ALTER TABLE shopr.orderline ADD COLUMN version_id bigint;
+--
+-- create table user
+-- (
+-- 	user_id bigint not null
+-- 		primary key,
+-- 	version_id bigint null,
+-- 	admin bit not null,
+-- 	first_name varchar(255) null,
+-- 	last_name varchar(255) null,
+-- 	user_name varchar(50) null,
+-- 	constraint UK_lqjrcobrh9jc8wpcar64q1bfh
+-- 		unique (user_name)
+-- )
+-- engine=MyISAM
+-- ;
+--
+-- CREATE TABLE `orderline` (
+--   `orderline_id` bigint(20) NOT NULL AUTO_INCREMENT,
+--   `version_id` bigint(20) DEFAULT NULL,
+--   `quantity` bigint(20) NOT NULL,
+--   `sub_total` double DEFAULT NULL,
+--   `article_article_id` bigint(20) DEFAULT NULL,
+--   `order_order_id` bigint(20) DEFAULT NULL,
+--   PRIMARY KEY (`orderline_id`),
+--   KEY `FKeikbraxeyrsjt5uaroi9wyhyi` (`article_article_id`),
+--   KEY `FKflsdng98yiswptb02m34ey1dv` (`order_order_id`)
+-- ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+--
+--

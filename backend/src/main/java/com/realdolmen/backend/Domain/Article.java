@@ -33,6 +33,7 @@ public class Article extends BaseObject {
     @NotBlank
     private String supplierId;
 
+    @NotNull
     @Column(insertable = false, updatable = false)
     private String type;
 
