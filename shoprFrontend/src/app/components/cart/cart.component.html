@@ -1,5 +1,5 @@
 <div>
-<h3> Shopping Cart</h3>
+  <h3> Shopping Cart</h3>
 </div>
 <table matSort class="cartTable">
   <tr>
@@ -10,24 +10,16 @@
     <th mat-sort-header="subTotal">Subtotal</th>
   </tr>
 
-  <tr *ngFor="let orderLine of orderLines">
+  <tr *ngFor="let orderLine of basketList">
     <td>{{orderLine.item.type}}</td>
     <td>{{orderLine.item.title}}</td>
     <td>{{orderLine.item.price}}</td>
     <td>{{orderLine.quantity}}</td>
     <td>{{orderLine.subTotal}}</td>
-    <td><button mat-button (click)="deleteById(orderLine.id)">Delete</button></td>
   </tr>
 </table>
 
 
-
-
-
-
-
 <div style="margin-bottom:10px ">
-<button mat-button="order" (click)="placeOrder()">Order!</button>
+  <button mat-button="order" (click)="placeOrder()">Order!</button>
 </div>
-
-

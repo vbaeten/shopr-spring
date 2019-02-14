@@ -26,7 +26,9 @@ export class LoginFormComponent implements OnInit {
   ngOnInit() {
 
     this.userService.getUsers()
-      .subscribe(data =>this.users=data)
+      .subscribe(data =>{
+        this.users=data;
+      })
   }
 
   loginUser(){

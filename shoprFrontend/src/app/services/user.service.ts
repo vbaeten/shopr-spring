@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {User} from "../models/user";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
-import {Observable, Subject} from "rxjs";
+import {Observable} from "rxjs";
 import {Router} from "@angular/router";
 import {NavBarService} from "./nav-bar.service";
 
@@ -25,7 +25,8 @@ export class UserService {
   }
 
   getUsers():Observable<User[]>{
-    return this.http.get<User[]>(this.classUrl);
+    let x = this.http.get<User[]>(this.classUrl);
+    return x;
   }
 
   loginUser(user:User){
@@ -37,7 +38,7 @@ export class UserService {
 
 
   getCurrentUser(): User{
-   return JSON.parse(localStorage.getItem(this.key))
+   return Object.assign(new User(),JSON.parse(localStorage.getItem(this.key)))
   }
 
 

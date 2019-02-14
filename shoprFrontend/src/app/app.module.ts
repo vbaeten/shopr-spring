@@ -41,7 +41,6 @@ import { LpsDetailComponent } from './components/detail-components/lps-detail/lp
 import { FictionsDetailComponent } from './components/detail-components/fictions-detail/fictions-detail.component';
 import { NonFictionsDetailComponent } from './components/detail-components/non-fictions-detail/non-fictions-detail.component';
 import { HeaderComponent } from './components/header/header.component';
-import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import {OrderLineService} from "./services/order-line.service";
 import { DynamicNavBarComponent } from './components/navbar/dynamic-nav-bar/dynamic-nav-bar.component';
 import {NavBarService} from "./services/nav-bar.service";
@@ -52,6 +51,7 @@ import { EditLpsComponent } from './components/edit components/edit-lps/edit-lps
 import { EditFictionComponent } from './components/edit components/edit-fiction/edit-fiction.component';
 import { EditNonFictionComponent } from './components/edit components/edit-non-fiction/edit-non-fiction.component';
 import {ItemsService} from "./services/items.service";
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -78,13 +78,13 @@ import {ItemsService} from "./services/items.service";
     FictionsDetailComponent,
     NonFictionsDetailComponent,
     HeaderComponent,
-    ShoppingCartComponent,
     DynamicNavBarComponent,
     ThankYouComponent,
     EditGamesComponent,
     EditLpsComponent,
     EditFictionComponent,
-    EditNonFictionComponent
+    EditNonFictionComponent,
+    CartComponent
   ],
 
   imports: [
