@@ -18,6 +18,10 @@ import {NonFictionsDetailComponent} from "./components/detail-components/non-fic
 import {SearchComponent} from "./components/search/search.component";
 import {ShoppingCartComponent} from "./components/shopping-cart/shopping-cart.component";
 import {ThankYouComponent} from "./components/index/thank-you/thank-you.component";
+import {EditGamesComponent} from "./components/edit components/edit-games/edit-games.component";
+import {EditLpsComponent} from "./components/edit components/edit-lps/edit-lps.component";
+import {EditFictionComponent} from "./components/edit components/edit-fiction/edit-fiction.component";
+import {EditNonFictionComponent} from "./components/edit components/edit-non-fiction/edit-non-fiction.component";
 
 const routes: Routes = [
   {path: '', component: IndexComponent},
@@ -37,7 +41,11 @@ const routes: Routes = [
   {path: 'fictionDetails', component: FictionsDetailComponent},
   {path: 'nonFictionDetails', component: NonFictionsDetailComponent},
   {path: 'shoppingCart', component: ShoppingCartComponent},
-  {path: 'thankYou', component: ThankYouComponent}
+  {path: 'thankYou', component: ThankYouComponent},
+  {path: 'editGame', component: EditGamesComponent},
+  {path: 'editLp', component: EditLpsComponent},
+  {path: 'editFiction', component: EditFictionComponent},
+  {path: 'editNonFiction', component: EditNonFictionComponent}
 
 ];
 

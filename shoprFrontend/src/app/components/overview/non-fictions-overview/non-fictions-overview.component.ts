@@ -12,7 +12,7 @@ export class NonFictionsOverviewComponent implements OnInit {
 
 
   nonFictions=[]
-  displayedColumns: string[] =['no', 'Title', 'price','author','totalPages','isbn','details']
+  displayedColumns: string[] =['no', 'Title','author','totalPages','isbn','details', 'price']
 
 
   constructor(private nonFictionService:NonFictionService,private dataService:DataService) { }

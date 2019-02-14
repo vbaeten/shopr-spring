@@ -19,6 +19,8 @@ export class ShoppingCartComponent implements OnInit {
   currentUser
   orderLine
 
+  userOrderLines=[]
+
 
   constructor(private orderLineService: OrderLineService,
               private orderService: OrderService,
@@ -31,6 +33,7 @@ export class ShoppingCartComponent implements OnInit {
   ngOnInit() {
     this.orderLineService.getOrderLines().subscribe(data => this.orderLines = data)
     this.currentUser = this.userService.getCurrentUser()
+    this.userOrderLines = this.currentUser.orderLines
   }
 
 

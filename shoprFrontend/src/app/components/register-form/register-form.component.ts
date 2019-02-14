@@ -30,7 +30,7 @@ export class RegisterFormComponent implements OnInit {
   }
 
   showSnackBar(){
-    let message= 'succesfully registered your account'
+    let message= 'successfully registered your account'
     let action= ''
     this.dataService.openSnackBar(message,action)
   }

@@ -11,7 +11,7 @@ export class GamesOverviewComponent implements OnInit{
 
 
   games = []
-  displayedColumns: string[] =['no', 'Title', 'Age','details'];
+  displayedColumns: string[] =['no', 'Title', 'Age','Price','details'];
   game
 
   constructor(private gameService: GameService, private dataService:DataService) {
@@ -24,7 +24,6 @@ export class GamesOverviewComponent implements OnInit{
       })
 
   }
-
 
 
   passId(toPassId){

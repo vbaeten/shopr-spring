@@ -19,6 +19,7 @@ export class GamesDetailComponent implements OnInit {
   order
 
   orderLine
+  quantity:number=0
 
   constructor(private dataService:DataService,private gameService:GameService,private orderLineService:OrderLineService) { }
 
@@ -42,6 +43,12 @@ export class GamesDetailComponent implements OnInit {
     this.orderLine.subTotal = this.orderLine.quantity*this.game.price
     this.orderLineService.createOrderLine(this.orderLine).subscribe(data=>this.orderLine=data)
 
+  }
+  showSnackBar(){
+    let message= 'game added to caRt!'
+    let action= ''
+    this.quantity = 0
+    this.dataService.openSnackBar(message,action)
   }
 
 

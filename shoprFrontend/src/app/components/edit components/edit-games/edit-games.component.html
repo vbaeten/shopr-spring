@@ -1,0 +1,42 @@
+<div >
+  <h3> Edit Game</h3>
+</div>
+
+
+<div >
+  <form  #f="ngForm" (ngSubmit)="edit(f)">
+    <div>
+
+      <div >
+        <mat-form-field>
+          <input matInput required placeholder="title" label="title" ngModel name="title" value="{{game.title}}" >
+        </mat-form-field>
+      </div>
+
+      <div >
+        <mat-form-field>
+          <input matInput required placeholder="price" ngModel name="price" value="{{game.price}}">
+        </mat-form-field>
+      </div>
+
+      <div >
+        <mat-form-field>
+          <input matInput required placeholder="minAge" ngModel name="minAge" value="{{game.minAge}}" >
+        </mat-form-field>
+      </div>
+
+      <div >
+        <mat-form-field>
+          <input matInput required placeholder="publisher" ngModel name="publisher" value="{{game.publisher}}">
+        </mat-form-field>
+      </div>
+      <div >
+        <mat-form-field>
+          <input matInput required placeholder="Genre" ngModel name="genre">
+        </mat-form-field>
+      </div>
+      <button mat-button (click)="showSnackBar()">Edit!</button>
+    </div>
+  </form>
+
+</div>

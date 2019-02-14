@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { AddGameComponent } from './components/add-game/add-game.component';
 import {
   MatButtonModule, MatCardModule,
@@ -48,11 +47,15 @@ import { DynamicNavBarComponent } from './components/navbar/dynamic-nav-bar/dyna
 import {NavBarService} from "./services/nav-bar.service";
 import { ThankYouComponent } from './components/index/thank-you/thank-you.component';
 import {OrderService} from "./services/order.service";
+import { EditGamesComponent } from './components/edit components/edit-games/edit-games.component';
+import { EditLpsComponent } from './components/edit components/edit-lps/edit-lps.component';
+import { EditFictionComponent } from './components/edit components/edit-fiction/edit-fiction.component';
+import { EditNonFictionComponent } from './components/edit components/edit-non-fiction/edit-non-fiction.component';
+import {ItemsService} from "./services/items.service";
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
     AddGameComponent,
     LoginRegisterComponent,
     FooterComponent,
@@ -77,7 +80,11 @@ import {OrderService} from "./services/order.service";
     HeaderComponent,
     ShoppingCartComponent,
     DynamicNavBarComponent,
-    ThankYouComponent
+    ThankYouComponent,
+    EditGamesComponent,
+    EditLpsComponent,
+    EditFictionComponent,
+    EditNonFictionComponent
   ],
 
   imports: [
@@ -112,7 +119,8 @@ import {OrderService} from "./services/order.service";
     DataService,
     OrderLineService,
     NavBarService,
-    OrderService
+    OrderService,
+    ItemsService
   ],
 
   bootstrap: [AppComponent]

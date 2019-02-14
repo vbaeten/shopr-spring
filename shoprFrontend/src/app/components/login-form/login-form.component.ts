@@ -29,12 +29,6 @@ export class LoginFormComponent implements OnInit {
       .subscribe(data =>this.users=data)
   }
 
-  login(){
-
-    this.userService.login(this.selectedUser)
-  }
-
-
   loginUser(){
 
     this.userService.loginUser(this.selectedUser)

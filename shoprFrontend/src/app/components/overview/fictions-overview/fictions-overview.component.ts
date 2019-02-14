@@ -13,7 +13,7 @@ export class FictionsOverviewComponent implements OnInit {
   constructor(private fictionService:FictionService,private dataService:DataService) { }
 
   fictions = []
-  displayedColumns: string[] =['no', 'Title', 'price','author','totalPages','isbn','preview','details']
+  displayedColumns: string[] =['no', 'Title','author','totalPages','isbn','preview','details', 'price']
 
 
   ngOnInit() {

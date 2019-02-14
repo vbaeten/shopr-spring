@@ -1,6 +1,3 @@
-import Timestamp = module
-import * as module from "module";
-
 export class Order{
 
   id:number

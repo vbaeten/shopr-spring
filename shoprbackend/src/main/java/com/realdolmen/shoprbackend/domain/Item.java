@@ -26,7 +26,6 @@ public class Item {
     private double price;
 
     @OneToMany(mappedBy = "item")
-    @Transient
     private List <Review> reviews;
 
 

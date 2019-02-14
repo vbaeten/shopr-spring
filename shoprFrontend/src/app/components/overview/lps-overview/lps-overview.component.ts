@@ -11,7 +11,7 @@ export class LpsOverviewComponent implements OnInit {
 
 
   lps = []
-  displayedColumns: string[] =['no', 'Title', 'price','publisher','details']
+  displayedColumns: string[] =['no', 'Title','publisher','details', 'price']
 
 
   constructor(private lpService:LpService,private dataService:DataService) { }
