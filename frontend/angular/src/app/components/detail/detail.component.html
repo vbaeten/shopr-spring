@@ -65,7 +65,7 @@
         <mat-form-field color="accent">
           <input matInput placeholder="amount" [(ngModel)]="quantity">
         </mat-form-field>
-        <button mat-raised-button color="accent" (click)="addArticle()">Add to cart</button>
+        <button mat-raised-button color="accent" (click)="addToOrder()">Add to cart</button>
       </div>
       <button *ngIf="currentUser && currentUser.admin" mat-raised-button color="primary" (click)="goToEdit()">Edit
       </button>

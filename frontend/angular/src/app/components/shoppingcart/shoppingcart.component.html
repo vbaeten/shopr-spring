@@ -31,7 +31,7 @@
       <ng-container matColumnDef="delete">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let orderline">
-          <span (click)="delete(orderline.orderlineId)" style="cursor: pointer">
+          <span (click)="delete(orderline)" style="cursor: pointer">
           <i color="accent" class="material-icons">
             delete_outline
           </i></span>

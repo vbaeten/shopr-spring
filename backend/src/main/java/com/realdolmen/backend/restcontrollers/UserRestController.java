@@ -54,7 +54,8 @@ public class UserRestController {
 
     @PostMapping(path = "/login/")
     public User login(@RequestBody String userName) {
-        return userRepository.findByUserName(userName).orElseThrow(() -> new NotFoundException());
+        return userRepository.findByUserName(userName)
+                .orElseThrow(NotFoundException::new);
     }
 
 

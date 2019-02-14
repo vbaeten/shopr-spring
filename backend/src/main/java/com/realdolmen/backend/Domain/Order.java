@@ -15,7 +15,7 @@ public class Order extends BaseObject {
     @GeneratedValue
     private Long orderId;
 
-    @OneToMany(cascade = CascadeType.MERGE)
+    @OneToMany
     @JoinColumn(name = "orderId")
     private List<Orderline> orderlineList;
 

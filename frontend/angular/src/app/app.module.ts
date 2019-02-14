@@ -39,6 +39,7 @@ import {EditbooknonfictionComponent} from './components/editbooknonfiction/editb
 import {EditlpComponent} from './components/editlp/editlp.component';
 import {EditgameComponent} from './components/editgame/editgame.component';
 import {ShoppingcartComponent} from './components/shoppingcart/shoppingcart.component';
+import {OrderService} from "./services/order.service";
 
 
 @NgModule({
@@ -84,7 +85,7 @@ import {ShoppingcartComponent} from './components/shoppingcart/shoppingcart.comp
 
   ],
 
-  providers: [ArticleService, UserService],
+  providers: [ArticleService, UserService, OrderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,8 +3,10 @@ import {ArticleService} from "../../services/article.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {UserService} from "../../services/user.service";
 import {User} from "../../domain/user";
-import {OrderlineService} from "../../services/orderline.service";
 import {Orderline} from "../../domain/orderline";
+import {OrderService} from "../../services/order.service";
+import {Order} from "../../domain/order";
+import {OrderStatus} from "../../domain/orderStatus";
 
 @Component({
   selector: 'app-detail',
@@ -19,7 +21,7 @@ export class DetailComponent implements OnInit {
   subTotal: number;
   quantity: number;
 
-  constructor(private orderlineservice: OrderlineService, private articleService: ArticleService, private userService: UserService, private route: ActivatedRoute, private router: Router) {
+  constructor(private orderService: OrderService, private articleService: ArticleService, private userService: UserService, private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
@@ -42,14 +44,27 @@ export class DetailComponent implements OnInit {
     this.router.navigate(['/edit' + this.article.type, this.articleId])
   }
 
-  addArticle() {
-    let neworderline = new Orderline(this.article, this.quantity);
-    this.orderlineservice.createOrderLine(neworderline).subscribe(orderlineresult => {
-        this.router.navigate(['/shoppingcart'])
-      },
-      error1 => {
-        alert("orderline failed")
-      });
+  addToOrder() {
+    this.orderService.findCurrentCartByUserId(this.currentUser.userId).subscribe(data => {
+      console.log('first time');
+      console.log(data);
+      let order: Order;
+      if (data) {
+        order = data;
+      } else {
+        order = new Order(OrderStatus.IN_CART, this.currentUser, []);
+      }
+      console.log(order);
+      let tempOrderline = new Orderline(this.article, this.quantity);
+      order.orderlineList.push(tempOrderline);
+
+      this.orderService.saveOrder(order).subscribe(data => {
+          this.router.navigate(['/shoppingcart'])
+        },
+        error1 => {
+          alert("orderline failed")
+        });
+    });
   }
 
 }

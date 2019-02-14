@@ -1,15 +1,17 @@
 import {Orderline} from "./orderline";
+import {User} from "./user";
+import {OrderStatus} from "./orderStatus";
 
 export class Order {
-  orderStatus: string;
-  userId: number;
-  orderlines: Orderline[];
+  orderStatus: OrderStatus;
+  user: User;
+  orderlineList?: Orderline[];
   orderId?: number;
 
-  constructor(orderStatus?: string, userId?: number, orderlines?: Orderline[], orderId?: number) {
+  constructor(orderStatus: OrderStatus, user: User, orderlineList?: Orderline[], orderId?: number) {
     this.orderStatus = orderStatus;
-    this.userId = userId;
-    this.orderlines = orderlines;
+    this.user = user;
+    this.orderlineList = orderlineList;
     this.orderId = orderId;
   }
 }

@@ -5,6 +5,7 @@ import {MatTableDataSource} from "@angular/material";
 import {Orderline} from "../../domain/orderline";
 import {ArticleService} from "../../services/article.service";
 import {User} from "../../domain/user";
+import {OrderService} from "../../services/order.service";
 
 @Component({
   selector: 'app-shoppingcart',
@@ -18,37 +19,43 @@ export class ShoppingcartComponent implements OnInit {
   orderlines = [];
   currentUser: User;
 
-  constructor(private orderlineservice: OrderlineService, private userService: UserService, private articleservice: ArticleService) {
+  constructor(private orderlineservice: OrderlineService, private userService: UserService, private articleservice: ArticleService, private orderService: OrderService) {
   }
 
   ngOnInit() {
-    this.userService.getCurrentUser().then(user => this.currentUser = user);
-    this.fetchOrderlines();
+    this.userService.getCurrentUser().then(user => {
+      this.currentUser = user;
+      this.fetchOrderlines();
+    });
   }
 
-  delete(orderlineId: number) {
-    this.orderlineservice.deleteOrderlineById(orderlineId).subscribe();
-    this.fetchOrderlines();
-    window.location.reload();
+  delete(orderline: Orderline) {
+    this.orderlineservice.deleteOrderlineById(orderline.orderlineId).subscribe(() => {
+      this.orderlines = this.orderlines.filter(ol => ol !== orderline);
+      this.dataSource = new MatTableDataSource<Orderline>(this.orderlines);
+      this.calculateTotal();
+      console.log(this.orderlines);
+    });
   }
 
   calculateTotal(): number {
+    this.totalPrice = 0;
     for (let j = 0; j < this.orderlines.length; j++) {
       this.totalPrice = this.totalPrice + this.orderlines[j].subTotal;
       this.totalPrice.toFixed(2);
     }
     return this.totalPrice;
-
   }
 
   private fetchOrderlines() {
-    this.orderlineservice.getOrderLines().subscribe(data => {
-      this.dataSource = new MatTableDataSource<Orderline>(data);
-      this.orderlines = this.dataSource.data;
-      this.calculateTotal();
+    this.orderService.findCurrentCartByUserId(this.currentUser.userId).subscribe(order => {
+      if (order) {
+        this.dataSource = new MatTableDataSource<Orderline>(order.orderlineList);
+        this.orderlines = this.dataSource.data;
+        this.calculateTotal();
+      }
     });
   }
-
 
 
 }

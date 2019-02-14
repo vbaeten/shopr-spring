@@ -1,5 +1,6 @@
 package com.realdolmen.backend.Domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,8 +27,7 @@ public class Orderline extends BaseObject {
     @JoinColumn(name = "articleId")
     private Article article;
 
-//    @ManyToOne(cascade = CascadeType.MERGE)
-//    private Order order;
-
-
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.MERGE)
+    private Order order;
 }
