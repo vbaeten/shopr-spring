@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Lp} from '../../../../models/lp';
 import {LpService} from '../../../../services/lp.service';
-import {ArticleService} from "../../../../services/article.service";
+import {ArticleService} from '../../../../services/article.service';
 import {MatTable} from "@angular/material";
 
 @Component({

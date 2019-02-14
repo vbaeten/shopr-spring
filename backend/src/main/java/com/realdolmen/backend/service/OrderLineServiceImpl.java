@@ -1,6 +1,7 @@
 package com.realdolmen.backend.service;
 
 import com.realdolmen.backend.domain.OrderLine;
+import com.realdolmen.backend.domain.User;
 import com.realdolmen.backend.exception.NotFoundException;
 import com.realdolmen.backend.repository.OrderLineRepository;
 import org.springframework.stereotype.Service;
@@ -8,11 +9,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class OrderlineServiceImpl implements OrderlineService {
+public class OrderLineServiceImpl implements OrderlineService {
 
     private final OrderLineRepository orderLineRepository;
 
-    public OrderlineServiceImpl(OrderLineRepository orderLineRepository) {
+    public OrderLineServiceImpl(OrderLineRepository orderLineRepository) {
         this.orderLineRepository = orderLineRepository;
     }
 
@@ -32,7 +33,16 @@ public class OrderlineServiceImpl implements OrderlineService {
     }
 
     @Override
+    public List<OrderLine> findByUser(User user) {
+        return orderLineRepository.findByUser(user);
+    }
+
+    @Override
+    public List<OrderLine> findByUserId(Long id) {return orderLineRepository.findByUserId(id);}
+
+    @Override
     public void delete(OrderLine entity) {
         orderLineRepository.delete(entity);
     }
+
 }

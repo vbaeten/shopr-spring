@@ -5,10 +5,12 @@
       <mat-card-header>
         <!--<div mat-card-avatar=""></div>-->
         <mat-card-title>{{fiction.title}}</mat-card-title>
-        <mat-card-subtitle>Subtitle</mat-card-subtitle>
+        <mat-card-subtitle>by {{fiction.author}}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
-        <p>Details here.</p>
+        <p>Synopsis</p>
+        <p>{{fiction.synopsis}}</p>
+        <p>Pages: {{fiction.pages}} </p>
       </mat-card-content>
       <mat-card-actions>
         <app-order-article [article]="fiction"></app-order-article>

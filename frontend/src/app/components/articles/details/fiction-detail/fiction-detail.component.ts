@@ -2,10 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {Fiction} from '../../../../models/fiction';
 import {FictionService} from '../../../../services/fiction.service';
 import {ActivatedRoute} from '@angular/router';
-import {OrderLine} from '../../../../models/order-line';
-import {User} from '../../../../models/user';
-import {ArticleService} from '../../../../services/article.service';
-import {Article} from '../../../../models/article';
 
 @Component({
   selector: 'app-fiction-detail',

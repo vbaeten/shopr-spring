@@ -18,10 +18,9 @@ import {UserService} from '../../../services/user.service';
   templateUrl: './order-article.component.html',
   styleUrls: ['./order-article.component.css']
 })
-export class OrderArticleComponent implements OnInit, OnDestroy {
+export class OrderArticleComponent implements OnInit {
 
   @Input() currentUser: User;
-  private userSubscription: Subscription;
 
   id: number;
   orderLine: OrderLine;
@@ -29,10 +28,6 @@ export class OrderArticleComponent implements OnInit, OnDestroy {
   quantity = [1, Validators.min(10)];
 
   @Input() article: Article;
-
-  @Input() game: Game;
-
-  @Input() fiction: Fiction;
 
   constructor(private shoppingCartService: ShoppingCartService,
               private route: ActivatedRoute,
@@ -43,7 +38,7 @@ export class OrderArticleComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.getArticle();
     this.getCurrentUser();
-    this.userSubscription = this.loginService.userSubject.subscribe(() => this.getCurrentUser());
+    // this.userSubscription = this.loginService.userSubject.subscribe(() => this.getCurrentUser());
   }
 
   getCurrentUser() {
@@ -61,9 +56,5 @@ export class OrderArticleComponent implements OnInit, OnDestroy {
     this.orderLine.quantity = form.value.quantity;
     this.orderLine.user = this.currentUser;
     this.shoppingCartService.addToCart(this.orderLine).subscribe(data => this.orderLine = data);
-  }
-
-  ngOnDestroy(): void {
-    this.userSubscription.unsubscribe();
   }
 }
