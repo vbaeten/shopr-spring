@@ -5,6 +5,7 @@ import {GameService} from "../../../services/game.service";
 import {Orderline} from "../../../models/Orderline";
 import {NgForm} from "@angular/forms";
 import {OrderLineService} from "../../../services/order-line.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-games-detail',
@@ -21,7 +22,7 @@ export class GamesDetailComponent implements OnInit {
   orderLine
   quantity:number=0
 
-  constructor(private dataService:DataService,private gameService:GameService,private orderLineService:OrderLineService) { }
+  constructor(private dataService:DataService,private gameService:GameService,private orderLineService:OrderLineService,private router:Router) { }
 
 
   ngOnInit() {
@@ -42,12 +43,12 @@ export class GamesDetailComponent implements OnInit {
     this.orderLine.quantity=form.value.quantity
     this.orderLine.subTotal = this.orderLine.quantity*this.game.price
     this.orderLineService.createOrderLine(this.orderLine).subscribe(data=>this.orderLine=data)
+    this.router.navigate(['/itemsOverview'])
 
   }
   showSnackBar(){
     let message= 'game added to caRt!'
     let action= ''
-    this.quantity = 0
     this.dataService.openSnackBar(message,action)
   }
 

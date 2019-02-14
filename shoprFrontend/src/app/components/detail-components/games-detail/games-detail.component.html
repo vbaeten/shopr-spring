@@ -3,6 +3,7 @@
   <mat-card-header>
     <mat-card-title> {{game.title}}</mat-card-title>
     <mat-card-subtitle> publisher: {{game.publisher}}</mat-card-subtitle>
+
     <button mat-button routerLink="/editGame">edit</button>
     <button mat-button color="warn" routerLink="/gamesOverview" (click)="delete()">delete</button>
   </mat-card-header>

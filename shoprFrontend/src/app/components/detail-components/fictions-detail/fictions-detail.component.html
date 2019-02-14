@@ -40,7 +40,7 @@
         <mat-form-field>
           <input matInput placeholder="amount" ngModel name="quantity">
         </mat-form-field>
-        <button mat-button >add to cart</button>
+        <button mat-button (click)="showSnackBar()">add to cart</button>
       </form>
     </div>
 

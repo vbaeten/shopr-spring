@@ -4,6 +4,7 @@ import {LpService} from "../../../services/lp.service";
 import {NgForm} from "@angular/forms";
 import {Orderline} from "../../../models/Orderline";
 import {OrderLineService} from "../../../services/order-line.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-lps-detail',
@@ -16,7 +17,7 @@ export class LpsDetailComponent implements OnInit {
   lp
   orderLine
 
-  constructor(private dataService:DataService,private lpService:LpService,private orderLineService:OrderLineService) { }
+  constructor(private dataService:DataService,private lpService:LpService,private orderLineService:OrderLineService,private router:Router) { }
 
 
   ngOnInit() {
@@ -37,6 +38,14 @@ export class LpsDetailComponent implements OnInit {
     this.orderLine.subTotal = this.lp.quantity*this.lp.price
 
     this.orderLineService.createOrderLine(this.orderLine).subscribe(data=>this.orderLine=data)
+    this.router.navigate(['/itemsOverview'])
+
+  }
+
+  showSnackBar(){
+    let message= 'Lp added to caRt!'
+    let action= ''
+    this.dataService.openSnackBar(message,action)
   }
 
 }

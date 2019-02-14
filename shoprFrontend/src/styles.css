@@ -146,5 +146,8 @@ table {
 
 .mat-card-subtitle{
   color: #d8d8d8;
+}
 
+.mat-elevation-z8{
+  border-radius: 15px;
 }

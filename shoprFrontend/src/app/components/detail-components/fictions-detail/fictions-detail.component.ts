@@ -4,6 +4,7 @@ import {FictionService} from "../../../services/fiction.service";
 import {NgForm} from "@angular/forms";
 import {Orderline} from "../../../models/Orderline";
 import {OrderLineService} from "../../../services/order-line.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-fictions-detail',
@@ -16,7 +17,10 @@ export class FictionsDetailComponent implements OnInit {
   fiction
   orderLine
 
-  constructor(private dataService:DataService,private fictionService:FictionService,private orderLineService:OrderLineService) { }
+  constructor(private dataService:DataService,
+              private fictionService:FictionService,
+              private orderLineService:OrderLineService,
+              private router:Router) { }
 
 
   ngOnInit() {
@@ -36,6 +40,13 @@ export class FictionsDetailComponent implements OnInit {
     this.orderLine.quantity=form.value.quantity
     this.orderLine.subTotal = this.orderLine.quantity*this.fiction.price
     this.orderLineService.createOrderLine(this.orderLine).subscribe(data=>this.orderLine=data)
+    this.router.navigate(['/itemsOverview'])
+  }
+
+  showSnackBar(){
+    let message= 'book added to caRt!'
+    let action= ''
+    this.dataService.openSnackBar(message,action)
   }
 
 }
