@@ -63,10 +63,25 @@ public class OrderRestController {
                 .orElse(null);
     }
 
+    @GetMapping("/all/{userId}")
+    public List<Order> findOrdersByUserId(@PathVariable Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(NotFoundException::new);
+        return orderRepository.findAllByUser(user);
+    }
+
     @PutMapping(path = "/ordernow")
     public void orderNow(@RequestBody @Valid Order order) {
         Order orderThis = findCurrentCartByUserId(order.getUser().getUserId());
         orderThis.setOrderStatus(OrderStatus.ORDERED);
         save(orderThis);
     }
+
+    @GetMapping(path = "/all/{userId}")
+    public List<Order> getAllOrdersfromUser(@PathVariable Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(NotFoundException::new);
+        return orderRepository.findAll();
+    }
+
 }

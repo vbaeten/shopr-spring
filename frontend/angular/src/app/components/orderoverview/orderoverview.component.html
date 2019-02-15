@@ -1,0 +1,28 @@
+<div id="outer">
+  <h2 class="ellis">Check out your orders!</h2>
+  <mat-form-field color="accent">
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+  </mat-form-field>
+  <div id="inner" class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <!-- OrderId Column -->
+      <ng-container matColumnDef="orderId">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Order Id</th>
+        <td mat-cell *matCellDef="let order"> {{order.orderId}}</td>
+      </ng-container>
+
+      <!-- totalPrice Column -->
+      <ng-container matColumnDef="totalPrice">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Total Price</th>
+        <td mat-cell *matCellDef="let order"> {{order.totalPrice}}</td>
+      </ng-container>
+
+      <!-- orderStatus Column -->
+      <ng-container matColumnDef="orderStatus">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Order Status</th>
+        <td mat-cell *matCellDef="let order"> {{order.orderStatus}}</td>
+      </ng-container>
+    </table>
+  </div>
+</div>
