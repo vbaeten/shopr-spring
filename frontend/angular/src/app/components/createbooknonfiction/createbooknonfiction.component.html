@@ -12,7 +12,7 @@
     <input matInput placeholder="Supplier Id" [(ngModel)]="supplierId">
   </mat-form-field>
   <mat-form-field color="accent">
-    <input matInput placeholder="Isbn" [(ngModel)]="isbn">
+    <input matInput type="text" mask="000-00-0000-000-0" placeholder="Isbn" [(ngModel)]="isbn">
   </mat-form-field>
   <mat-form-field color="accent">
     <input matInput placeholder="Number Of Pages" [(ngModel)]="numberOfPages">
@@ -23,10 +23,10 @@
       {{booknonfictionGenre}}
     </mat-option>
   </mat-select>
-
+  <button class="gocreatebutton" mat-raised-button
+          color="accent" (click)="submit()">Go
+  </button>
 
 </div>
 
-<button class="gocreatebutton" mat-raised-button
-        color="accent" (click)="submit()">Go
-</button>
+

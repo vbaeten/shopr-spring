@@ -1,14 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 import {BooknonfictionService} from "../../services/booknonfiction.service";
-import {Booknonfiction} from "../../domain/booknonfiction";
-import {Router} from "@angular/router";
 import {ArticleService} from "../../services/article.service";
+import {Router} from "@angular/router";
+import {Booknonfiction} from "../../domain/booknonfiction";
 
 
 @Component({
   selector: 'app-createbooknonfiction',
   templateUrl: './createbooknonfiction.component.html',
-  styleUrls: ['./createbooknonfiction.component.css']
+  styleUrls: ['./createbooknonfiction.component.css'],
+
 })
 export class CreatebooknonfictionComponent implements OnInit {
   price: number;

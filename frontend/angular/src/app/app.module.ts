@@ -41,6 +41,7 @@ import {EditgameComponent} from './components/editgame/editgame.component';
 import {ShoppingcartComponent} from './components/shoppingcart/shoppingcart.component';
 import {OrderService} from "./services/order.service";
 import {OrderoverviewComponent} from './components/orderoverview/orderoverview.component';
+import {NgxMaskModule} from "ngx-mask";
 
 
 @NgModule({
@@ -84,6 +85,7 @@ import {OrderoverviewComponent} from './components/orderoverview/orderoverview.c
     MatCardModule,
     MatCheckboxModule,
     MatRadioModule,
+    NgxMaskModule.forRoot()
 
   ],
 
