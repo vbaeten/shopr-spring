@@ -4,11 +4,21 @@
   padding-bottom: auto;
 }
 
+body {
+  min-height: 100vh;
+  background-image: url(/assets/img/cobblestone-554610_1280.jpg);
+  /*background-repeat: repeat;*/
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .ellis {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   color: #ff4081;
   margin: 0.2em;
   margin-top: 1.2em;
+  text-align: center;
+  padding-top: 1em;
 }
 
 .create-container {

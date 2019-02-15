@@ -40,6 +40,7 @@ import {EditlpComponent} from './components/editlp/editlp.component';
 import {EditgameComponent} from './components/editgame/editgame.component';
 import {ShoppingcartComponent} from './components/shoppingcart/shoppingcart.component';
 import {OrderService} from "./services/order.service";
+import {OrderoverviewComponent} from './components/orderoverview/orderoverview.component';
 
 
 @NgModule({
@@ -63,6 +64,7 @@ import {OrderService} from "./services/order.service";
     EditlpComponent,
     EditgameComponent,
     ShoppingcartComponent,
+    OrderoverviewComponent,
   ],
   imports: [
     BrowserModule,

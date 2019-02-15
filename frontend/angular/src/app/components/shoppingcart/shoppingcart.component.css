@@ -7,6 +7,8 @@ table {
   width: 80%;
   margin: 0 auto;
   margin-bottom: 50px;
+  background-color: white;
+  /*padding-top: 1em;*/
 }
 
 .price {

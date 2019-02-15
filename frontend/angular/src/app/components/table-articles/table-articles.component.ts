@@ -18,12 +18,12 @@ export class TableArticlesComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   currentUser: User;
 
-  constructor(private service: ArticleService, public router: Router, private userService: UserService) {
+  constructor(private articleService: ArticleService, public router: Router, private userService: UserService) {
   }
 
   ngOnInit() {
     this.userService.getCurrentUser().then(user => this.currentUser = user);
-    this.service.allArticles().subscribe(data => {
+    this.articleService.allArticles().subscribe(data => {
       this.dataSource = new MatTableDataSource<Article>(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;

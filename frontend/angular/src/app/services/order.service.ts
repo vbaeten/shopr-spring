@@ -11,6 +11,8 @@ export class OrderService {
   constructor(private httpClient: HttpClient) {
   }
 
+  private orderList: Order[];
+
   saveOrder(order: Order): Observable<Order> {
     return this.httpClient.put<Order>("/orders/save", order)
   }
@@ -21,6 +23,14 @@ export class OrderService {
 
   orderNow(order: Order): Observable<Order> {
     return this.httpClient.put<Order>("/orders/ordernow", order);
+  }
+
+  allOrders(userId: number): Observable<Order[]> {
+    let ordersObservable = this.httpClient.get<Order[]>("/orders/all/{userId}");
+    ordersObservable.subscribe(response => {
+      this.orderList = response;
+    });
+    return ordersObservable;
   }
 
 }
