@@ -26,6 +26,7 @@ public class Item {
     private double price;
 
     @OneToMany(mappedBy = "item")
+    @Column(name="item_review")
     private List <Review> reviews;
 
 
