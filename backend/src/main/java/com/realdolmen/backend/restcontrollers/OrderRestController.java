@@ -62,4 +62,11 @@ public class OrderRestController {
         return orderRepository.findByUserAndOrderStatus(user, OrderStatus.IN_CART)
                 .orElse(null);
     }
+
+    @PutMapping(path = "/ordernow")
+    public void orderNow(@RequestBody @Valid Order order) {
+        Order orderThis = findCurrentCartByUserId(order.getUser().getUserId());
+        orderThis.setOrderStatus(OrderStatus.ORDERED);
+        save(orderThis);
+    }
 }

@@ -6,6 +6,7 @@ import {Orderline} from "../../domain/orderline";
 import {ArticleService} from "../../services/article.service";
 import {User} from "../../domain/user";
 import {OrderService} from "../../services/order.service";
+import {Order} from "../../domain/order";
 
 @Component({
   selector: 'app-shoppingcart',
@@ -18,6 +19,7 @@ export class ShoppingcartComponent implements OnInit {
   totalPrice: number = 0;
   orderlines = [];
   currentUser: User;
+  order: Order;
 
   constructor(private orderlineservice: OrderlineService, private userService: UserService, private articleservice: ArticleService, private orderService: OrderService) {
   }
@@ -47,9 +49,17 @@ export class ShoppingcartComponent implements OnInit {
     return this.totalPrice;
   }
 
+  orderThisOrder(order: Order) {
+    this.orderService.orderNow(order).subscribe();
+    console.log("Order: " + order)
+
+
+  }
+
   private fetchOrderlines() {
     this.orderService.findCurrentCartByUserId(this.currentUser.userId).subscribe(order => {
       if (order) {
+        this.order = order;
         this.dataSource = new MatTableDataSource<Orderline>(order.orderlineList);
         this.orderlines = this.dataSource.data;
         this.calculateTotal();

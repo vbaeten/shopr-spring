@@ -18,4 +18,9 @@ export class OrderService {
   findCurrentCartByUserId(userId: number): Observable<Order> {
     return this.httpClient.get<Order>(`/orders/findCurrentCartByUserId/${userId}`)
   }
+
+  orderNow(order: Order): Observable<Order> {
+    return this.httpClient.put<Order>("/orders/ordernow", order);
+  }
+
 }
