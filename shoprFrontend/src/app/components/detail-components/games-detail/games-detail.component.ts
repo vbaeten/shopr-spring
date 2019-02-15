@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
 import {GamesOverviewComponent} from "../../overview/games-overview/games-overview.component";
 import {DataService} from "../../../services/data.service";
 import {GameService} from "../../../services/game.service";
@@ -6,6 +6,7 @@ import {Orderline} from "../../../models/Orderline";
 import {NgForm} from "@angular/forms";
 import {OrderLineService} from "../../../services/order-line.service";
 import {Router} from "@angular/router";
+import {Game} from "../../../models/game";
 
 @Component({
   selector: 'app-games-detail',
@@ -27,11 +28,11 @@ export class GamesDetailComponent implements OnInit {
 
   ngOnInit() {
     this.dataService.detailId.subscribe(id=>this.passedId=id)
-    this.game= this.gameService.getGameById(this.passedId).subscribe(game=>this.game=game)
+    this.gameService.getGameById(this.passedId).subscribe(game=>this.game=game)
+
   }
 
   delete(){
-    console.log(this.passedId)
     this.gameService.deleteById(this.passedId).subscribe(game=>this.game=game)
   }
 

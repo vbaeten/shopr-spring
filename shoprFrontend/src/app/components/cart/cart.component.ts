@@ -5,7 +5,6 @@ import {Order} from "../../models/Order";
 import {Router} from "@angular/router";
 import {DataService} from "../../services/data.service";
 import {OrderService} from "../../services/order.service";
-import {OrderLineService} from "../../services/order-line.service";
 
 @Component({
   selector: 'app-cart',
@@ -13,7 +12,6 @@ import {OrderLineService} from "../../services/order-line.service";
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-
 
   currentUser:User
   basketList=[]
@@ -25,15 +23,10 @@ export class CartComponent implements OnInit {
               private orderService:OrderService,
   ) { }
 
-
-
-
   ngOnInit() {
    this.currentUser= this.userService.getCurrentUser()
     this.basketList=this.currentUser.orderLines
-
   }
-
 
   placeOrder() {
     if(this.currentUser === null){
@@ -48,8 +41,6 @@ export class CartComponent implements OnInit {
       localStorage.setItem("1",JSON.stringify(this.currentUser))
       this.dataService.openSnackBar('your order has been placed','')
       this.router.navigate(['/thankYou'])
-
-
     }
   }
 
@@ -58,7 +49,6 @@ export class CartComponent implements OnInit {
     for (let i = 0; i < this.basketList.length; i++) {
       total = total + this.basketList[i].subTotal
     }
-
     return total
   }
 

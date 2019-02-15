@@ -23,4 +23,6 @@ export class ItemsService {
   public getItemById(id:number):Observable<Item>{
     return this.http.get<Item>(this.classUrl+'/'+id)
   }
+
+
 }

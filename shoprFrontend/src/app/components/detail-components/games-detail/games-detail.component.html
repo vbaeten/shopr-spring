@@ -1,5 +1,5 @@
 
-<mat-card class="detailCard">
+<mat-card class="detailCard" *ngIf="game">
   <mat-card-header>
     <mat-card-title> {{game.title}}</mat-card-title>
     <mat-card-subtitle> publisher: {{game.publisher}}</mat-card-subtitle>
@@ -40,5 +40,8 @@
   </mat-card-actions>
 
 </mat-card>
+
+<app-review *ngIf="game" class="reviewComponent" [item]="game"></app-review>
+
 
 

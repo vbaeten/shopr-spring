@@ -1,0 +1,44 @@
+<div>
+<div>
+  <h3>Reviews</h3>
+</div>
+
+<div>
+  <h4>Write a review:</h4>
+</div>
+
+<form  #f="ngForm" (ngSubmit)="addReview(f)">
+  <mat-form-field>
+    <textarea matInput name="description" placeholder="Write your review here" id="" cols="30" rows="10" ngModel [value]="description"></textarea>
+  </mat-form-field>
+  <div>
+  <mat-form-field>
+    <input matInput name="score" placeholder="score" ngModel [value]="score">
+  </mat-form-field>
+  </div>
+  <div>
+  <button mat-button="submit">Submit</button>
+  </div>
+</form>
+
+</div>
+
+
+<div>
+  <div>
+    <h3> current reviews</h3>
+  </div>
+  <table matSort class="reviewTable">
+    <tr>
+      <th mat-sort-header="name">review</th>
+      <th mat-sort-header="title">score</th>
+    </tr>
+
+    <tr *ngFor="let review of reviews">
+      <td>{{review.description}}</td>
+      <td>{{review.score}}</td>
+    </tr>
+  </table>
+
+
+</div>

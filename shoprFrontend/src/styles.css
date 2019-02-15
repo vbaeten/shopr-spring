@@ -151,3 +151,7 @@ table {
 .mat-elevation-z8{
   border-radius: 15px;
 }
+
+.reviewComponent{
+  margin-top: 2%;
+}

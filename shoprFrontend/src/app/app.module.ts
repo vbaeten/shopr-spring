@@ -52,6 +52,8 @@ import { EditFictionComponent } from './components/edit components/edit-fiction/
 import { EditNonFictionComponent } from './components/edit components/edit-non-fiction/edit-non-fiction.component';
 import {ItemsService} from "./services/items.service";
 import { CartComponent } from './components/cart/cart.component';
+import { ReviewComponent } from './components/review/review.component';
+import {ReviewService} from "./services/review.service";
 
 @NgModule({
   declarations: [
@@ -84,7 +86,8 @@ import { CartComponent } from './components/cart/cart.component';
     EditLpsComponent,
     EditFictionComponent,
     EditNonFictionComponent,
-    CartComponent
+    CartComponent,
+    ReviewComponent
   ],
 
   imports: [
@@ -120,7 +123,8 @@ import { CartComponent } from './components/cart/cart.component';
     OrderLineService,
     NavBarService,
     OrderService,
-    ItemsService
+    ItemsService,
+    ReviewService
   ],
 
   bootstrap: [AppComponent]
