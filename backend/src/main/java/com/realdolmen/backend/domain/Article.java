@@ -41,9 +41,9 @@ public class Article implements Serializable {
     @JoinColumn(name="order_id")
     private List<OrderLine> orderLines;
 
-    @OneToMany
-    @JoinColumn(name="score")
-    private List<Rating> ratings;
+//    @OneToMany
+//    @JoinColumn(name="score")
+//    private List<Rating> ratings;
 
     public Article() {
     }
@@ -101,14 +101,14 @@ public class Article implements Serializable {
     public void setOrderLines(List<OrderLine> orderLines) {
         this.orderLines = orderLines;
     }
-
-    public List<Rating> getRatings() {
-        return ratings;
-    }
-
-    public void setRatings(List<Rating> ratings) {
-        this.ratings = ratings;
-    }
+//
+//    public List<Rating> getRatings() {
+//        return ratings;
+//    }
+//
+//    public void setRatings(List<Rating> ratings) {
+//        this.ratings = ratings;
+//    }
 
     @Override
     public boolean equals(Object o) {

@@ -10,4 +10,6 @@ public interface CrudService<T, ID> {
     List<T> findAll();
 
     void delete(T entity);
+
+
 }

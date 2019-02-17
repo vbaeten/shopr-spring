@@ -13,13 +13,12 @@ public interface OrderlineService extends CrudService<OrderLine, Long> {
     @Override
     OrderLine findById(Long aLong);
 
-    @Override
-    List<OrderLine> findAll();
-
     List<OrderLine> findByUser(User user);
 
     List<OrderLine> findByUserId(Long id);
 
     @Override
     void delete(OrderLine entity);
+
+    void deleteById(Long id);
 }

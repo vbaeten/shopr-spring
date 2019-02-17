@@ -13,9 +13,12 @@ import java.util.List;
 public interface OrderLineRepository extends JpaRepository<OrderLine, Long> {
 
     @Query(value= "SELECT o FROM OrderLine o WHERE o.user = :user ")
-    List<OrderLine> findByUser(User user);
+    List<OrderLine> findByUser(@Param("user") User user);
 
     @Query(value= "SELECT o FROM OrderLine o WHERE o.user.id = :id ")
     List<OrderLine> findByUserId(@Param("id") Long id);
+
+//    List<OrderLine> findByUser(Long userId);
+
 
 }

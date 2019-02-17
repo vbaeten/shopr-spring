@@ -28,6 +28,10 @@ export class UserService {
     return this.apiService.doDelete('/user/delete/' + id);
   }
 
+  updateUser(user: User): Observable<User> {
+    return this.apiService.doPut('user/edit', user);
+  }
+
   deleteUser(user: User | number): Observable<User> {
     return this.apiService.doDelete('/user/delete');
   }

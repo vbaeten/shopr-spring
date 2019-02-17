@@ -4,6 +4,7 @@ import com.realdolmen.backend.domain.OrderLine;
 import com.realdolmen.backend.domain.User;
 import com.realdolmen.backend.service.OrderlineService;
 import com.realdolmen.backend.service.UserService;
+import org.aspectj.weaver.ast.Or;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,5 +34,17 @@ public class ShoppingCartController {
     @GetMapping("/list/{id}")
     public List<OrderLine> getOrderLinesByUserId(@PathVariable("id") Long id) {
         return orderlineService.findByUserId(id);
+    }
+
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteOrderLineById(@PathVariable("id") Long id) {
+        orderlineService.deleteById(id);
+    }
+
+    @PutMapping("/line")
+    public OrderLine sendToOrder(@RequestBody OrderLine orderLine) {
+        orderlineService.save(orderLine);
+        return orderLine;
     }
 }

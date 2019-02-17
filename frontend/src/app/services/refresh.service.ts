@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {UserService} from "./user.service";
-import {User} from "../models/user";
-import {ArticleService} from "./article.service";
+import {UserService} from './user.service';
+import {User} from '../models/user';
+import {ArticleService} from './article.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +19,5 @@ export class RefreshService {
       this.users = data;
       this.dataSource = this.users;
     });
-
-
-
   }
 }

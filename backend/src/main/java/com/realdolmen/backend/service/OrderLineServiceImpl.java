@@ -45,4 +45,10 @@ public class OrderLineServiceImpl implements OrderlineService {
         orderLineRepository.delete(entity);
     }
 
+    @Override
+    public void deleteById(Long id) {
+        OrderLine orderLine = findById(id);
+        orderLineRepository.delete(orderLine);
+    }
+
 }

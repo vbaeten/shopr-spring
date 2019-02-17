@@ -1,15 +1,32 @@
 package com.realdolmen.backend.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.realdolmen.backend.domain.Order;
+import com.realdolmen.backend.service.OrderService;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/order")
 public class OrderController {
 
+    private OrderService orderService;
 
-    //TODO: orders by user for profile page
+    public OrderController(OrderService orderService) {
+        this.orderService = orderService;
+    }
+
+    @PostMapping("/send")
+    public Order sendToOrder(@RequestBody Order order) {
+        orderService.save(order);
+        return order;
+    }
+
+    @GetMapping("/list/{id}")
+    public List<Order> findByUserId(@PathVariable("id") Long id) {
+        return orderService.findByUserId(id);
+    }
+
 
 
 }

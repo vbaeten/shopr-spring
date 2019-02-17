@@ -1,4 +1,23 @@
-<p>
-  user-edit works!
-</p>
+<div class="myContainer">
 
+  <mat-accordion>
+    <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <p>Click here to edit your details.</p>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <form class="inesForm" #f="ngForm" (ngSubmit)="onSubmit(f)">
+      <div fxLayout="row" fxLayoutGap="20px"  fxFlexAlign="end">
+        <mat-form-field appearance="standard">
+          <input matInput id="firstName" placeholder="{{currentUser.firstName}}" type="text" name="firstName" ngModel>
+        </mat-form-field>
+        <mat-form-field appearance="standard">
+          <input matInput id="name" placeholder="{{currentUser.name}}" type="text" name="name" ngModel>
+        </mat-form-field>
+        <button id="register-button" mat-stroked-button color="accent">Edit</button>
+      </div>
+    </form>
+  </mat-expansion-panel>
+  </mat-accordion>
+</div>
