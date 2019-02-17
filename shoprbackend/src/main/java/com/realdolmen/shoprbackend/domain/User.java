@@ -2,6 +2,7 @@ package com.realdolmen.shoprbackend.domain;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="users")
@@ -14,6 +15,10 @@ public class User {
     private String userName;
     private String firstName;
     private String lastName;
+
+    @Column(name="user_favourites")
+    @OneToMany
+    private List<Item> favourites;
 
 
 
@@ -47,6 +52,14 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public List<Item> getFavourites() {
+        return favourites;
+    }
+
+    public void setFavourites(List<Item> favourites) {
+        this.favourites = favourites;
     }
 
     @Override

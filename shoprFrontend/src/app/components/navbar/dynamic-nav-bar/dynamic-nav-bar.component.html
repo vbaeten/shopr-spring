@@ -4,7 +4,7 @@
 
 
 <mat-toolbar class="navBar">
-  <span routerLink="/itemsOverview">shopr</span>
+  <span routerLink="/itemsOverview">ShopR</span>
 
 
   <button class="navButton" mat-button [matMenuTriggerFor]="appMenu">Add Items</button>
@@ -26,8 +26,8 @@
   </mat-menu>
 
 
-  <button class="navButton" mat-button="ShoppingCart" routerLink="/cart"> Shopping Cart</button>
-  <button class="navButton" mat-button="Search" routerLink="/search"> Search</button>
+  <button class="navButton" mat-button="ShoppingCart" routerLink="/cart"> Shopping caRt</button>
+  <button class="navButton" mat-button="Search" routerLink="/search"> SeaRch</button>
 
   <button mat-button class="navButton" *ngFor="let link of links">
     <button mat-button class="navButton" [routerLink]="link.path">{{link.text}}</button>

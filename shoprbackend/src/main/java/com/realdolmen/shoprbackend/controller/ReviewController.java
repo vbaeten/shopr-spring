@@ -20,7 +20,7 @@ public class ReviewController {
         return reviewService.findByItemId(id);
     }
 
-    @GetMapping(path="")
+    @PostMapping
     public void addReview(@RequestBody Review review){
         this.reviewService.save(review);
     }

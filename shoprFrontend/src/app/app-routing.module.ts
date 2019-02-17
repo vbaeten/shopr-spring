@@ -22,6 +22,8 @@ import {EditLpsComponent} from "./components/edit components/edit-lps/edit-lps.c
 import {EditFictionComponent} from "./components/edit components/edit-fiction/edit-fiction.component";
 import {EditNonFictionComponent} from "./components/edit components/edit-non-fiction/edit-non-fiction.component";
 import {CartComponent} from "./components/cart/cart.component";
+import {FavouritesComponent} from "./components/detail-components/favourites/favourites.component";
+import {FavouritesPageComponent} from "./components/index/favourites-page/favourites-page.component";
 
 const routes: Routes = [
   {path: '', component: IndexComponent},
@@ -45,7 +47,8 @@ const routes: Routes = [
   {path: 'editLp', component: EditLpsComponent},
   {path: 'editFiction', component: EditFictionComponent},
   {path: 'editNonFiction', component: EditNonFictionComponent},
-  {path: 'cart', component: CartComponent}
+  {path: 'cart', component: CartComponent},
+  {path: 'favouritesPage', component: FavouritesPageComponent}
 
 ];
 

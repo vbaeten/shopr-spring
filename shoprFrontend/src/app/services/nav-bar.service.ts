@@ -38,7 +38,7 @@ export class NavBarService {
   updateNavAfterAuth():void{
     this.currentUser=JSON.parse(localStorage.getItem('1'))
     this.removeItem({text:'login'})
-    this.addItem({text:'logged in as: '+this.currentUser.userName,path:'itemsOverview'})
+    this.addItem({text:'logged in as: '+this.currentUser.userName,path:'favouritesPage'})
   }
 
   addItem({text,path}){

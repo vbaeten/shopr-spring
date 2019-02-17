@@ -54,6 +54,8 @@ import {ItemsService} from "./services/items.service";
 import { CartComponent } from './components/cart/cart.component';
 import { ReviewComponent } from './components/review/review.component';
 import {ReviewService} from "./services/review.service";
+import { FavouritesComponent } from './components/detail-components/favourites/favourites.component';
+import { FavouritesPageComponent } from './components/index/favourites-page/favourites-page.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +89,9 @@ import {ReviewService} from "./services/review.service";
     EditFictionComponent,
     EditNonFictionComponent,
     CartComponent,
-    ReviewComponent
+    ReviewComponent,
+    FavouritesComponent,
+    FavouritesPageComponent,
   ],
 
   imports: [
@@ -110,7 +114,8 @@ import {ReviewService} from "./services/review.service";
     MatTableModule,
     MatSortModule,
     MatCardModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatIconModule
   ],
 
   providers: [

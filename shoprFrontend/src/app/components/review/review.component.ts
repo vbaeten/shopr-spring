@@ -1,7 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {NgForm} from "@angular/forms";
-import {GameService} from "../../services/game.service";
-import {ItemsService} from "../../services/items.service";
 import {Review} from "../../models/review";
 import {ReviewService} from "../../services/review.service";
 
@@ -28,8 +26,10 @@ export class ReviewComponent implements OnInit {
 
   }
 
-  addReview(form: NgForm) {
+  addToReviews(form: NgForm) {
     this.review=new Review()
+    this.review.item=this.item
+    console.log(this.review.itemId)
     this.review.description=form.value.description
     this.review.score=form.value.score
     this.reviews.push(this.review)

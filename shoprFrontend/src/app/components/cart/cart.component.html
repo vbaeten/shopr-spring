@@ -1,7 +1,14 @@
 <div>
   <h3> Shopping Cart</h3>
 </div>
-<table matSort class="cartTable">
+<div *ngIf="!isEmpty()">
+
+  CaRt is empty, please oRder some items to fill this void :)
+
+</div>
+<div *ngIf="isEmpty()">
+
+<table  matSort class="cartTable">
   <tr>
     <th mat-sort-header="name">Item</th>
     <th mat-sort-header="title">Title</th>
@@ -22,4 +29,5 @@
 
 <div style="margin-bottom:10px ">
   <button mat-button="order" (click)="placeOrder()">Order!</button>
+</div>
 </div>

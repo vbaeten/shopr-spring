@@ -7,7 +7,7 @@
   <h4>Write a review:</h4>
 </div>
 
-<form  #f="ngForm" (ngSubmit)="addReview(f)">
+<form  #f="ngForm" (ngSubmit)="addToReviews(f)">
   <mat-form-field>
     <textarea matInput name="description" placeholder="Write your review here" id="" cols="30" rows="10" ngModel [value]="description"></textarea>
   </mat-form-field>

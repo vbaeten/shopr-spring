@@ -53,6 +53,11 @@ export class CartComponent implements OnInit {
   }
 
 
+isEmpty():boolean{
 
+    if (this.basketList.length =0)
+
+    return true
+}
 
 }
