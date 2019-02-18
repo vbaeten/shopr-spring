@@ -1,5 +1,7 @@
 package com.realdolmen.shoprbackend.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
@@ -19,10 +21,11 @@ public class Order {
 
     @OneToMany(cascade = {MERGE, REMOVE},fetch = FetchType.EAGER)
     @JoinColumn
+    @JsonIgnore
     private List<OrderLine> orderLines;
 
 
-    @ManyToOne(cascade = {MERGE})
+    @ManyToOne(cascade =ALL)
     @JoinColumn
     private User user;
 

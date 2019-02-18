@@ -1,3 +1,4 @@
+import {Orderline} from "./Orderline";
 
 
 export class User{
@@ -5,7 +6,7 @@ export class User{
   firstName: string;
   lastName: string;
   userName: string;
-  orderLines:any[]
+  orderLines:Orderline[]= []
   // favourites:any[]
 
   constructor(firstName?: string, lastName?:string, userName?:string,orderLines?:any[]) {

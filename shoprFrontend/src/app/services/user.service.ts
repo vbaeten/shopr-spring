@@ -38,8 +38,10 @@ export class UserService {
 
 
   getCurrentUser(): User{
+
    return Object.assign(new User(),JSON.parse(localStorage.getItem(this.key)))
   }
+
 
 
 

@@ -16,6 +16,7 @@ export class NonFictionsDetailComponent implements OnInit {
   passedId:number
   nonFiction
   orderLine
+  basketList
 
   constructor(private dataService:DataService,private nonFictionService:NonFictionService, private orderLineService:OrderLineService, private router:Router) { }
 
@@ -23,6 +24,9 @@ export class NonFictionsDetailComponent implements OnInit {
   ngOnInit() {
     this.dataService.detailId.subscribe(id=>this.passedId=id)
     this.nonFiction= this.nonFictionService.getById(this.passedId).subscribe(nonFiction=>this.nonFiction=nonFiction)
+    if (this.basketList == undefined) {
+      this.basketList = new Array()
+    }
   }
 
   delete(){
@@ -30,15 +34,21 @@ export class NonFictionsDetailComponent implements OnInit {
     this.nonFictionService.deleteById(this.passedId).subscribe(nonFiction=>this.nonFiction=nonFiction)
   }
 
-  addToCart(form:NgForm){
 
-    this.orderLine=new Orderline()
-    this.orderLine.item=this.nonFiction
-    this.orderLine.quantity=form.value.quantity
-    this.orderLine.subTotal = this.nonFiction.quantity*this.nonFiction.price
-    this.orderLineService.createOrderLine(this.orderLine).subscribe(data=>this.orderLine=data)
-    this.router.navigate(['/itemsOverview'])
+  addToCart(form: NgForm) {
 
+    this.orderLine = new Orderline()
+    this.orderLine.item = this.nonFiction
+    this.orderLine.quantity = form.value.quantity
+    this.orderLine.subTotal = this.orderLine.quantity * this.nonFiction.price
+    this.basketList.push(this.orderLine)
+
+    this.orderLineService.createOrderLine(this.orderLine).subscribe((data) => {
+      this.orderLine = data
+    })
+
+    console.log(this.basketList)
+    localStorage.setItem("2",JSON.stringify(this.basketList))
   }
 
   showSnackBar(){

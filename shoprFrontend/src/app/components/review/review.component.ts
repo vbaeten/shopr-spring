@@ -22,7 +22,6 @@ export class ReviewComponent implements OnInit {
   ngOnInit() {
 
       this.reviewService.getReviewsByItemId(this.item.id).subscribe(data=>this.reviews=data)
-    console.log(this.reviews)
 
 
   }

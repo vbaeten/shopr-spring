@@ -56,6 +56,7 @@ import { ReviewComponent } from './components/review/review.component';
 import {ReviewService} from "./services/review.service";
 import { FavouritesComponent } from './components/detail-components/favourites/favourites.component';
 import { FavouritesPageComponent } from './components/index/favourites-page/favourites-page.component';
+import {ShoppingCartService} from "./services/shopping-cart.service";
 
 @NgModule({
   declarations: [
@@ -129,7 +130,8 @@ import { FavouritesPageComponent } from './components/index/favourites-page/favo
     NavBarService,
     OrderService,
     ItemsService,
-    ReviewService
+    ReviewService,
+    ShoppingCartService
   ],
 
   bootstrap: [AppComponent]

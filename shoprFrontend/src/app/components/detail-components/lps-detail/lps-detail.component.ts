@@ -16,6 +16,7 @@ export class LpsDetailComponent implements OnInit {
   passedId:number
   lp
   orderLine
+  basketList
 
   constructor(private dataService:DataService,private lpService:LpService,private orderLineService:OrderLineService,private router:Router) { }
 
@@ -23,6 +24,9 @@ export class LpsDetailComponent implements OnInit {
   ngOnInit() {
     this.dataService.detailId.subscribe(id=>this.passedId=id)
     this.lp= this.lpService.getById(this.passedId).subscribe(lp=>this.lp=lp)
+    if (this.basketList == undefined) {
+      this.basketList = new Array()
+    }
   }
 
   delete(){
@@ -30,16 +34,21 @@ export class LpsDetailComponent implements OnInit {
     this.lpService.deleteById(this.passedId).subscribe(lp=>this.lp=lp)
   }
 
-  addToCart(form:NgForm){
 
-    this.orderLine=new Orderline()
-    this.orderLine.item=this.lp
-    this.orderLine.quantity=form.value.quantity
-    this.orderLine.subTotal = this.lp.quantity*this.lp.price
+  addToCart(form: NgForm) {
 
-    this.orderLineService.createOrderLine(this.orderLine).subscribe(data=>this.orderLine=data)
-    this.router.navigate(['/itemsOverview'])
+    this.orderLine = new Orderline()
+    this.orderLine.item = this.lp
+    this.orderLine.quantity = form.value.quantity
+    this.orderLine.subTotal = this.orderLine.quantity * this.lp.price
+    this.basketList.push(this.orderLine)
 
+    this.orderLineService.createOrderLine(this.orderLine).subscribe((data) => {
+      this.orderLine = data
+    })
+
+    console.log(this.basketList)
+    localStorage.setItem("2",JSON.stringify(this.basketList))
   }
 
   showSnackBar(){

@@ -18,6 +18,7 @@ export class FictionsDetailComponent implements OnInit {
   fiction
   orderLine
   currentUser
+  basketList
 
   constructor(private dataService: DataService,
               private fictionService: FictionService,
@@ -28,14 +29,16 @@ export class FictionsDetailComponent implements OnInit {
 
 
   ngOnInit() {
+
     this.dataService.detailId.subscribe(id => this.passedId = id)
-    this.fictionService.getById(this.passedId).subscribe((fiction) => {
-      this.fiction = fiction
-      this.currentUser = this.userService.getCurrentUser()
-      if(this.currentUser.orderLines==undefined){
-        this.currentUser.orderLines=new Array()
-      }
-    })
+    this.fictionService.getById(this.passedId).subscribe(fiction => this.fiction = fiction)
+    this.currentUser = this.userService.getCurrentUser()
+    if (this.currentUser.orderLines == undefined) {
+      this.currentUser.orderLines = new Array()
+    }
+    if (this.basketList == undefined) {
+      this.basketList = new Array()
+    }
 
   }
 
@@ -51,15 +54,14 @@ export class FictionsDetailComponent implements OnInit {
     this.orderLine.item = this.fiction
     this.orderLine.quantity = form.value.quantity
     this.orderLine.subTotal = this.orderLine.quantity * this.fiction.price
+    this.basketList.push(this.orderLine)
 
-    this.currentUser.orderLines.push(this.orderLine)
-    localStorage.setItem("1", JSON.stringify(this.currentUser))
+    this.orderLineService.createOrderLine(this.orderLine).subscribe((data) => {
+      this.orderLine = data
+    })
 
-    this.orderLineService.createOrderLine(this.orderLine).subscribe(data => this.orderLine = data)
-    this.router.navigate(['/itemsOverview'])
-    console.log(this.currentUser)
-
-
+    console.log(this.basketList)
+    localStorage.setItem("2",JSON.stringify(this.basketList))
   }
 
   showSnackBar() {
