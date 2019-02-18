@@ -25,8 +25,10 @@ export class OrderLinesComponent implements OnInit {
   }
 
   getCurrentUser() {
-    this.loginService.getCurrentUser().then(user => this.currentUser = user);
-    this.getOrderLines();
+    this.loginService.getCurrentUser().then(user => {
+      this.currentUser = user;
+      this.getOrderLines();
+    });
   }
 
   getOrderLines() {
