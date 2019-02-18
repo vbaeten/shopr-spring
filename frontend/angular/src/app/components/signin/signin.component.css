@@ -9,9 +9,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 250px;
 }
 
 #account {
   font-size: x-small;
   padding-top: 10px;
+}
+
+#loginbutton {
+  margin-left: 75px;
+}
+
+#logintext {
+  margin-left: -3px;
 }

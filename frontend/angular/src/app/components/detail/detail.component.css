@@ -1,9 +1,10 @@
 .example-card {
   max-width: 400px;
+  padding: 50px;
 }
 
 .outer {
-  width: 80%;
+  width: 20em;
   margin: 0 auto;
   height: 60vh;
   display: flex;
@@ -12,13 +13,23 @@
 }
 
 #deletebutton {
-  background-color: #DA39D6;
+  background-color: #fb3e4a;
   color: white;
 }
 
 #editbutton {
-  background-color: #3141C6;
+  background-color: #4ab6c6;
   color: white;
+}
+
+#backarrow {
+  max-width: 18px;
+  object-fit: contain;
+}
+
+#backspan {
+  display: flex;
+  justify-content: right;
 }
 
 

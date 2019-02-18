@@ -30,16 +30,25 @@ export class CreatebooknonfictionComponent implements OnInit {
     this.service.getBooknonfictionGenres().subscribe(booknonfictionGenres => this.booknonfictionGenres = booknonfictionGenres);
   }
 
+  viewSnackBar() {
+    let message = 'Your lp had been successfully added to Shopr.';
+    let action = '';
+    this.articleservice.getSnackBar(message, action)
+  }
   submit() {
     let newBooknonfiction = new Booknonfiction(this.title, 'booknonfiction', this.price, this.supplierId, this.author, this.isbn, this.numberOfPages, this.booknonfictionGenre);
     this.service.createBooknonfiction(newBooknonfiction).subscribe(
       result => {
         this.articleservice.allArticles();
+        this.viewSnackBar();
+        this.router.navigate(['/articles'])
       },
       error1 => {
         alert("create failed")
       },
     );
-    this.router.navigate(['/articles'])
+
   }
+
+
 }

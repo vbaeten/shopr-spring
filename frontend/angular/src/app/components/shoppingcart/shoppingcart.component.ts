@@ -7,6 +7,7 @@ import {ArticleService} from "../../services/article.service";
 import {User} from "../../domain/user";
 import {OrderService} from "../../services/order.service";
 import {Order} from "../../domain/order";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-shoppingcart',
@@ -21,7 +22,7 @@ export class ShoppingcartComponent implements OnInit {
   currentUser: User;
   order: Order;
 
-  constructor(private orderlineservice: OrderlineService, private userService: UserService, private articleservice: ArticleService, private orderService: OrderService) {
+  constructor(private router: Router, private orderlineservice: OrderlineService, private userService: UserService, private articleservice: ArticleService, private orderService: OrderService) {
   }
 
   ngOnInit() {
@@ -51,9 +52,7 @@ export class ShoppingcartComponent implements OnInit {
 
   orderThisOrder(order: Order) {
     this.orderService.orderNow(order).subscribe();
-    console.log("Order: " + order)
-
-
+    this.router.navigate(["/orders/", this.currentUser.userId]);
   }
 
   private fetchOrderlines() {

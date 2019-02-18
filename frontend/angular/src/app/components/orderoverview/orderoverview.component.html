@@ -1,11 +1,11 @@
 <div id="outer" *ngIf="currentUser">
-  <h2 class="ellis">Check out your orders, {{this.currentUser.userName}}!</h2>
-  <mat-form-field color="accent">
-    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
-  </mat-form-field>
+
+  <!--<mat-form-field color="accent">-->
+  <!--<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">-->
+  <!--</mat-form-field>-->
   <div id="inner" class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" matSort>
-
+      <h2 class="ellis">Check out your orders, {{this.currentUser.userName}}!</h2>
       <!--OrderId Column-->
       <ng-container matColumnDef="orderId">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Order Id</th>
@@ -15,7 +15,7 @@
       <!--totalPrice Column-->
       <ng-container matColumnDef="totalPrice">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Total Price</th>
-        <td mat-cell *matCellDef="let order"> {{order.totalPrice}}</td>
+        <td mat-cell *matCellDef="let order"> € {{order.price | number: '1.2-2' }}</td>
       </ng-container>
 
       <!--orderStatus Column-->

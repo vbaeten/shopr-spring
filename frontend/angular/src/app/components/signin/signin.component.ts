@@ -15,8 +15,9 @@ export class SigninComponent implements OnInit {
   }
 
   login() {
-    this.userService.login(this.userName);
-    this.router.navigate(['/articles']);
+    this.userService.login(this.userName)
+      .then(() => this.router.navigate(['/articles']))
+      .catch(error => console.log(error));
   }
   ngOnInit() {
   }

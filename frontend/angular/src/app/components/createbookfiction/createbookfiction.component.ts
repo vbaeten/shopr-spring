@@ -3,6 +3,7 @@ import {BookfictionService} from "../../services/bookfiction.service";
 import {Bookfiction} from "../../domain/bookfiction";
 import {Router} from "@angular/router";
 import {ArticleService} from "../../services/article.service";
+import {MatSnackBar} from "@angular/material";
 
 
 @Component({
@@ -21,8 +22,14 @@ export class CreatebookfictionComponent implements OnInit {
   bookfictionGenres: string[];
   summary: string;
 
-  constructor(private service: BookfictionService, private articleservice: ArticleService, public router: Router) {
+  constructor(private snackBar: MatSnackBar, private service: BookfictionService, private articleservice: ArticleService, public router: Router) {
 
+  }
+
+  viewSnackBar() {
+    let message = 'Your fiction book had been successfully added to Shopr.';
+    let action = '';
+    this.articleservice.getSnackBar(message, action)
   }
 
   ngOnInit() {
@@ -34,6 +41,7 @@ export class CreatebookfictionComponent implements OnInit {
     this.service.createBookfiction(newBookfiction).subscribe(
       result => {
         this.articleservice.allArticles();
+        this.viewSnackBar();
         this.router.navigate(['/articles'])
       },
       error1 => {
@@ -41,4 +49,5 @@ export class CreatebookfictionComponent implements OnInit {
       },
     );
   }
+
 }

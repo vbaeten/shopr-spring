@@ -26,17 +26,25 @@ export class CreategameComponent implements OnInit {
     this.gameservice.getGameGenres().subscribe(gameGenres => this.gameGenres = gameGenres);
   }
 
+  viewSnackBar() {
+    let message = 'Your lp had been successfully added to Shopr.';
+    let action = '';
+    this.articleservice.getSnackBar(message, action)
+  }
   submit() {
     let newGame = new Game(this.title, 'game', this.price, this.supplierId, this.gameGenre, this.minimumAge, this.publisher);
     this.gameservice.createGame(newGame).subscribe(
       result => {
         this.articleservice.allArticles();
-
+        this.viewSnackBar();
+        this.router.navigate(['/articles']);
       },
       error1 => {
         alert("create failed")
       },
     )
-    this.router.navigate(['/articles']);
+
   }
+
+
 }

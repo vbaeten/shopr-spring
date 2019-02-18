@@ -18,6 +18,7 @@ export class OrderoverviewComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   currentUser: User;
+  totalPriceOfOrder: number = 0;
 
   constructor(private articleService: ArticleService, public router: Router, private userService: UserService, private orderService: OrderService) {
   }
@@ -26,16 +27,28 @@ export class OrderoverviewComponent implements OnInit {
     this.userService.getCurrentUser().then(user => {
       this.currentUser = user
       this.getAllOrders();
+      // this.getTotalPrice();
     });
   }
 
   private getAllOrders() {
     this.orderService.allOrders(this.currentUser.userId).subscribe(data => {
+      for (let p = 0; p < data.length; p++) {
+        let price: number = 0;
+        for (let o = 0; o < data[p].orderlineList.length; o++) {
+          price += data[p].orderlineList[o].subTotal;
+        }
+        data[p].price = price;
+      }
       this.dataSource = new MatTableDataSource<Order>(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      console.log(this.currentUser.userName);
     });
   }
+
+  // private getTotalPrice(){
+  //   this.totalPriceOfOrder = this.shoppingCartComponent.calculateTotal();
+  // }
+
 }
 

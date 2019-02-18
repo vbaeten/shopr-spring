@@ -3,6 +3,7 @@ import {BooknonfictionService} from "../../services/booknonfiction.service";
 import {ArticleService} from "../../services/article.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Booknonfiction} from "../../domain/booknonfiction";
+import {MatSnackBar} from "@angular/material";
 
 @Component({
   selector: 'app-editbooknonfiction',
@@ -13,9 +14,14 @@ export class EditbooknonfictionComponent implements OnInit {
   booknonfictionGenres: string[];
   booknonfiction: Booknonfiction;
 
-  constructor(private booknonfictionservice: BooknonfictionService, private articleservice: ArticleService, public router: Router, private route: ActivatedRoute) {
+  constructor(private snackBar: MatSnackBar, private booknonfictionservice: BooknonfictionService, private articleservice: ArticleService, public router: Router, private route: ActivatedRoute) {
   }
 
+  viewSnackBar() {
+    let message = 'Your non-fiction book has been successfully updated in Shopr.';
+    let action = '';
+    this.articleservice.getSnackBar(message, action)
+  }
   ngOnInit() {
     this.booknonfictionservice.getBooknonfictionGenres().subscribe(booknonfictionGenres => this.booknonfictionGenres = booknonfictionGenres)
     this.route.params.subscribe((params) => {
@@ -26,6 +32,7 @@ export class EditbooknonfictionComponent implements OnInit {
   edit() {
     this.booknonfictionservice.updateBooknonfiction(this.booknonfiction).subscribe(
       () => {
+        this.viewSnackBar();
         this.router.navigate(['/articles'])
       },
       error1 => {

@@ -2,9 +2,17 @@
   <br/>
   <br/>
   <mat-card class="example-card">
+    <span id="backspan" style="float:left; margin-left: -20px;">
+        <a routerLink="/articles">
+          <img id="backarrow" src="assets/img/backarrow.png" alt="Avatar" class="image" style="width:100%">
+        </a>
+      </span>
     <mat-card-header>
+
+      <br/>
       <mat-card-title>{{article.title}}</mat-card-title>
       <mat-card-subtitle>{{article.type}}</mat-card-subtitle>
+
     </mat-card-header>
 
     <mat-card-content>
@@ -75,7 +83,6 @@
       <button *ngIf="!currentUser" class="ellis" routerLink="/signin" mat-raised-button color="accent">Please login to
         perform actions
       </button>
-      <button mat-raised-button color="accent" routerLink="/articles">Back</button>
 
     </mat-card-actions>
   </mat-card>

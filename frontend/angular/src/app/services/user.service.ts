@@ -21,11 +21,13 @@ export class UserService {
 
   }
 
-  login(userName: string): void {
-    this.httpClient.post<User>('/user/login/', userName).subscribe(userObject => {
-      sessionStorage.setItem(this.userKey, JSON.stringify(userObject));
-      this.userSubject.next(userObject);
-
+  login(userName: string): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.httpClient.post<User>('/user/login/', userName).subscribe(userObject => {
+        sessionStorage.setItem(this.userKey, JSON.stringify(userObject));
+        this.userSubject.next(userObject);
+        resolve();
+      }, error => reject(error))
     });
   }
 

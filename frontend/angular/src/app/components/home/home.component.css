@@ -1,11 +1,11 @@
-/*img {*/
-/*max-height: 300px;*/
-/*display:block;*/
-/*margin-left:auto;*/
-/*margin-right:auto;*/
-/*vertical-align:middle;*/
+img {
+  max-height: 300px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  vertical-align: middle;
 
-/*}*/
+}
 
 .container {
   position: relative;
@@ -15,11 +15,12 @@
 .image {
   opacity: 1;
   display: block;
-  max-heigt: 788px;
+
   width: 100%;
-  /*margin-left: auto;*/
-  /*margin-right: auto;*/
-  /*display: flex;*/
+  margin-left: auto;
+  margin-right: auto;
+
+  vertical-align: center;
   align-items: center;
   justify-content: center;
   background-repeat: no-repeat;

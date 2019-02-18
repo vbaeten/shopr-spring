@@ -17,6 +17,7 @@ import {
   MatPaginatorModule,
   MatRadioModule,
   MatSelectModule,
+  MatSnackBarModule,
   MatSortModule,
   MatTableModule,
   MatToolbarModule
@@ -85,6 +86,7 @@ import {NgxMaskModule} from "ngx-mask";
     MatCardModule,
     MatCheckboxModule,
     MatRadioModule,
+    MatSnackBarModule,
     NgxMaskModule.forRoot()
 
   ],

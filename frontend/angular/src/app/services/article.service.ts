@@ -2,13 +2,14 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable, Subject} from "rxjs";
 import {Article} from "../domain/article";
+import {MatSnackBar} from "@angular/material";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArticleService {
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, private snackBar: MatSnackBar) {
   }
 
   private articleList: Article[];
@@ -40,7 +41,10 @@ export class ArticleService {
       }
     });
     return subject.asObservable();
+  }
 
+  getSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {duration: 1500})
   }
 }
 

@@ -7,6 +7,7 @@ export class Order {
   user: User;
   orderlineList?: Orderline[];
   orderId?: number;
+  price?: number;
 
   constructor(orderStatus: OrderStatus, user: User, orderlineList?: Orderline[], orderId?: number) {
     this.orderStatus = orderStatus;
