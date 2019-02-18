@@ -77,11 +77,11 @@ public class OrderRestController {
         save(orderThis);
     }
 
-    @GetMapping(path = "/all/{userId}")
-    public List<Order> getAllOrdersfromUser(@PathVariable Long userId) {
-        User user = userRepository.findById(userId)
-                .orElseThrow(NotFoundException::new);
-        return orderRepository.findAll();
-    }
+//    @GetMapping(path = "/all/{userId}")
+//    public List<Order> getAllOrdersfromUser(@PathVariable Long userId) {
+//        User user = userRepository.findById(userId)
+//                .orElseThrow(NotFoundException::new);
+//        return orderRepository.findAll();
+//    }
 
 }

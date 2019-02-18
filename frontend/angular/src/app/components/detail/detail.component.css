@@ -11,4 +11,14 @@
   align-items: center;
 }
 
+#deletebutton {
+  background-color: #DA39D6;
+  color: white;
+}
+
+#editbutton {
+  background-color: #3141C6;
+  color: white;
+}
+
 

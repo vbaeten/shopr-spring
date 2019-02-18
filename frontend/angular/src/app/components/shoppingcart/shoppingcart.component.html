@@ -52,6 +52,7 @@
         <mat-card-actions>
           <div class="order-button" *ngIf="totalPrice>0.00">
             <button mat-raised-button color="accent" (click)="orderThisOrder(order)">Order now</button>
+            <button mat-raised-button color="accent" routerLink="/articles">Back</button>
           </div>
         </mat-card-actions>
       </mat-card>

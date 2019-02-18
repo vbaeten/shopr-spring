@@ -26,11 +26,12 @@ export class OrderService {
   }
 
   allOrders(userId: number): Observable<Order[]> {
-    let ordersObservable = this.httpClient.get<Order[]>("/orders/all/{userId}");
+    let ordersObservable = this.httpClient.get<Order[]>(`/orders/all/${userId}`);
     ordersObservable.subscribe(response => {
       this.orderList = response;
     });
     return ordersObservable;
   }
+
 
 }

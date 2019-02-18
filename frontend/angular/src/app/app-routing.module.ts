@@ -16,6 +16,7 @@ import {EditbooknonfictionComponent} from "./components/editbooknonfiction/editb
 import {EditgameComponent} from "./components/editgame/editgame.component";
 import {EditlpComponent} from "./components/editlp/editlp.component";
 import {ShoppingcartComponent} from "./components/shoppingcart/shoppingcart.component";
+import {OrderoverviewComponent} from "./components/orderoverview/orderoverview.component";
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path: 'editlp/:articleId', component: EditlpComponent /*, canActivate: [AdminGuard]*/},
   {path: 'articles', component: ArticlesOverviewComponent},
   {path: 'articles/detail/:articleId', component: DetailComponent},
+  {path: 'orders/:userId', component: OrderoverviewComponent},
   {path: 'create', component: CreateComponent, canActivate: [AdminGuard]},
   {path: 'register', component: RegisterComponent},
   {path: 'signin', component: SigninComponent},

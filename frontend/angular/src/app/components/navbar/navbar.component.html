@@ -7,7 +7,7 @@
             routerLink="/shoppingcart">
       Shopping Cart
     </button>
-    <button *ngIf="currentUser && !currentUser.admin" mat-stroked-button class="navbarbutton" routerLink="/articles">My
+    <button *ngIf="currentUser && !currentUser.admin" mat-stroked-button class="navbarbutton" (click)="goToOrders()">My
       Orders
     </button>
     <button *ngIf="currentUser && currentUser.admin" mat-stroked-button class="navbarbutton" routerLink="/create">
