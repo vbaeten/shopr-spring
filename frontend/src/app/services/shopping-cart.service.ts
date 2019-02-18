@@ -34,6 +34,10 @@ export class ShoppingCartService {
     return this.apiService.doPost('/cart/create', cart);
   }
 
+  loadCart(userId: number): Observable<Cart> {
+    return this.apiService.doGet('/cart/' + userId);
+  }
+
   deleteOrderLineById(id: number): Observable<OrderLine> {
     return this.apiService.doDelete('/cart/delete/' + id);
   }

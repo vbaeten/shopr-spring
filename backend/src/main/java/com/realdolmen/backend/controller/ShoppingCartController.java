@@ -41,6 +41,12 @@ public class ShoppingCartController {
         return orderlineService.findByUser(user);
     }
 
+    @GetMapping("/cart/{id}")
+    public ShoppingCart getCartByUserId(@PathVariable("id") Long id) {
+        return shoppingCartService.findByUserId(id);
+    }
+
+
     @GetMapping("/list/{id}")
     public List<OrderLine> getOrderLinesByUserId(@PathVariable("id") Long id) {
         return orderlineService.findByUserId(id);

@@ -9,7 +9,7 @@ import {LoginService} from '../../../services/login.service';
 })
 export class ShoppingCartComponent implements OnInit {
 
-  currentUser: User;
+  currentUser: User = new User();
 
   constructor(private loginService: LoginService) { }
 
