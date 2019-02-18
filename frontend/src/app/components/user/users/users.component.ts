@@ -1,18 +1,20 @@
-import {ChangeDetectorRef, Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {UserService} from '../../../services/user.service';
 import {User} from '../../../models/user';
-import {MatSort, Sort} from '@angular/material';
+import {MatSort, MatTableDataSource} from '@angular/material';
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css']
 })
-export class UsersComponent implements OnInit {
+export class UsersComponent implements OnInit, OnDestroy {
 
   users: User[] = [];
   dataSource;
   displayedColumns: string[] = ['id', 'firstName', 'name', 'delete'];
+  userAddedSubscription: Subscription;
 
   @ViewChild(MatSort) sort: MatSort;
 
@@ -21,6 +23,10 @@ export class UsersComponent implements OnInit {
 
   ngOnInit() {
     this.refresh();
+    this.userAddedSubscription = this.userService.userAddedSubject.subscribe(user => {
+      this.users.push(user);
+      this.dataSource = new MatTableDataSource<User>(this.users);
+    });
   }
 
   deleteUserById(id: number): void {
@@ -35,7 +41,8 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  // sortData(sort: Sort) {
-  //
-  // }
+  ngOnDestroy(): void {
+    this.userAddedSubscription.unsubscribe();
+  }
+
 }

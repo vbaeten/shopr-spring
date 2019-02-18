@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import {User} from '../models/user';
 import {ApiService} from './api.service';
 
@@ -7,6 +7,7 @@ import {ApiService} from './api.service';
   providedIn: 'root'
 })
 export class UserService {
+  userAddedSubject = new Subject<User>();
 
   constructor(
     private apiService: ApiService) {
@@ -20,8 +21,10 @@ export class UserService {
     return this.apiService.doGet('/user/' + id);
   }
 
-  registerUser(user: User): Observable<User> {
-    return this.apiService.doPost('/user/register', user);
+  registerUser(user: User) {
+    this.apiService.doPost('/user/register', user).subscribe(data => {
+      this.userAddedSubject.next(data);
+    });
   }
 
   deleteUserById(id: number): Observable<User> {
@@ -29,7 +32,7 @@ export class UserService {
   }
 
   updateUser(user: User): Observable<User> {
-    return this.apiService.doPut('user/edit', user);
+    return this.apiService.doPost('/user/register', user);
   }
 
   deleteUser(user: User | number): Observable<User> {

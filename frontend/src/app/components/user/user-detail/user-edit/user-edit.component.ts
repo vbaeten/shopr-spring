@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from "../../../../models/user";
 import {LoginService} from "../../../../services/login.service";
 import {NgForm} from "@angular/forms";
@@ -31,7 +31,7 @@ export class UserEditComponent implements OnInit {
   onSubmit(form: NgForm) {
     this.currentUser.firstName = form.value.firstName;
     this.currentUser.name = form.value.name;
-    this.userService.registerUser(this.currentUser).subscribe(data => this.getCurrentUser());
+    this.userService.updateUser(this.currentUser).subscribe(data => this.getCurrentUser());
     this.loginService.login(this.currentUser);
   }
 }
