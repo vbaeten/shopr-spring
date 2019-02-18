@@ -3,6 +3,7 @@ import {LoginService} from '../../../services/login.service';
 import {ShoppingCartService} from '../../../services/shopping-cart.service';
 import {OrderLine} from '../../../models/order-line';
 import {User} from '../../../models/user';
+import {Order} from "../../../models/order";
 
 @Component({
   selector: 'app-order-lines',
@@ -12,9 +13,10 @@ import {User} from '../../../models/user';
 export class OrderLinesComponent implements OnInit {
 
   currentUser: User = new User();
+  order: Order;
   orderLines: OrderLine[];
 
-  displayedColumns: string[] = ['title', 'quantity', 'price'];
+  displayedColumns: string[] = ['number', 'title', 'quantity', 'price', 'subtotal', 'delete'];
   dataSource;
 
   constructor(private loginService: LoginService,
@@ -38,5 +40,12 @@ export class OrderLinesComponent implements OnInit {
         this.dataSource = this.orderLines;
       }
     );
+  }
+
+  sendToOrder() {
+    this.order = new Order();
+    this.order.user = this.currentUser;
+    this.order.orderDate = new Date();
+    this.cartService.sendToOrder(this.order);
   }
 }

@@ -19,9 +19,8 @@ public class ShoppingCart {
     @Column
     private int userId;
 
-
-//    @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
-//    private List<OrderLine> orderLines = new ArrayList<>();
+    @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
+    private List<OrderLine> orderLines = new ArrayList<>();
 
     public Long getId() {
         return id;

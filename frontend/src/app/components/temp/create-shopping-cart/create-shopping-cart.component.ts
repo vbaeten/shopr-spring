@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {Cart} from "../../../models/cart";
-import {ShoppingCartService} from "../../../services/shopping-cart.service";
-import {User} from "../../../models/user";
-import {LoginService} from "../../../services/login.service";
+import {Component, OnInit} from '@angular/core';
+import {Cart} from '../../../models/cart';
+import {ShoppingCartService} from '../../../services/shopping-cart.service';
+import {User} from '../../../models/user';
+import {LoginService} from '../../../services/login.service';
 
 @Component({
   selector: 'app-create-shopping-cart',
@@ -11,7 +11,7 @@ import {LoginService} from "../../../services/login.service";
 })
 export class CreateShoppingCartComponent implements OnInit {
 
-  cart: Cart;
+  cart: Cart= new Cart();
   currentUser: User = new User();
 
   constructor(private cartService: ShoppingCartService,
@@ -27,10 +27,13 @@ export class CreateShoppingCartComponent implements OnInit {
     this.loginService.getCurrentUser().then(user => this.currentUser = user);
   }
 
+  // loadCart() {
+  //   this.cart = this.cartService.loadCart(this.currentUser.id);
+  // }
+
   createCart() {
-    this.cart = new Cart();
-    this.cart.userId = 5;
-    this.cart.user = null;
-    this.cartService.createCart(this.cart).subscribe();
+      this.cart = new Cart();
+      this.cart.userId = this.currentUser.id;
+      this.cartService.createCart(this.cart).subscribe(data => this.cart = data);
   }
 }

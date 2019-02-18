@@ -1,5 +1,4 @@
-<p *ngIf="currentUser">order-lines works! {{currentUser.name}}</p>
-<div *ngIf="currentUser">
+<div *ngIf="currentUser" class="myContainer">
   <p>{{currentUser.firstName}} {{currentUser.name}}</p>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z3" width="100%">
     <ng-container matColumnDef="number">
@@ -37,4 +36,3 @@
     <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
   </table>
 </div>
-
