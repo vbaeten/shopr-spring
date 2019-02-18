@@ -22,6 +22,7 @@ export class ReviewComponent implements OnInit {
   ngOnInit() {
 
       this.reviewService.getReviewsByItemId(this.item.id).subscribe(data=>this.reviews=data)
+    console.log(this.reviews)
 
 
   }
@@ -29,7 +30,6 @@ export class ReviewComponent implements OnInit {
   addToReviews(form: NgForm) {
     this.review=new Review()
     this.review.item=this.item
-    console.log(this.review.itemId)
     this.review.description=form.value.description
     this.review.score=form.value.score
     this.reviews.push(this.review)

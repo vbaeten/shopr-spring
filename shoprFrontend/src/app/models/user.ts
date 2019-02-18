@@ -6,16 +6,18 @@ export class User{
   lastName: string;
   userName: string;
   orderLines:any[]
-  favourites:any[]
+  // favourites:any[]
 
-  constructor(firstName?: string, lastName?:string, userName?:string,orderLines?:any[],favourites?:any[]) {
+  constructor(firstName?: string, lastName?:string, userName?:string,orderLines?:any[]) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.userName = userName;
-    if (orderLines) {
+
       this.orderLines = orderLines;
-    }
-    this.favourites=favourites
+
+    // if(favourites){
+    //   this.favourites=favourites
+    // }
   }
 
 }

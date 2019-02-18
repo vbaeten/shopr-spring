@@ -27,20 +27,14 @@
          placeholder="amount"
          ngModel
          name="quantity"
-         value="{{quantity}}"
-
-  >
+         value="{{quantity}}">
     </mat-form-field>
     <button mat-button (click)="showSnackBar()">add to cart</button>
-
   </form>
-
 </div>
-
-
   </mat-card-actions>
-
 </mat-card>
+
 
 <app-review *ngIf="game" class="reviewComponent" [item]="game"></app-review>
 

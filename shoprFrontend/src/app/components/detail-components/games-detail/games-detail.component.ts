@@ -1,12 +1,10 @@
 import {Component, Input, OnInit, Output} from '@angular/core';
-import {GamesOverviewComponent} from "../../overview/games-overview/games-overview.component";
 import {DataService} from "../../../services/data.service";
 import {GameService} from "../../../services/game.service";
 import {Orderline} from "../../../models/Orderline";
 import {NgForm} from "@angular/forms";
 import {OrderLineService} from "../../../services/order-line.service";
 import {Router} from "@angular/router";
-import {Game} from "../../../models/game";
 
 @Component({
   selector: 'app-games-detail',

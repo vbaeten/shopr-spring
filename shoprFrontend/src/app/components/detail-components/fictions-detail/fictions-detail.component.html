@@ -1,5 +1,5 @@
 
-<mat-card class="detailCard">
+<mat-card class="detailCard" *ngIf="fiction">
   <mat-card-header>
     <mat-card-title> {{fiction.title}}</mat-card-title>
     <mat-card-subtitle> publisher: {{fiction.publisher}}</mat-card-subtitle>

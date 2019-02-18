@@ -5,6 +5,7 @@ import {Order} from "../../models/Order";
 import {Router} from "@angular/router";
 import {DataService} from "../../services/data.service";
 import {OrderService} from "../../services/order.service";
+import {OrderLineService} from "../../services/order-line.service";
 
 @Component({
   selector: 'app-cart',
@@ -14,7 +15,7 @@ import {OrderService} from "../../services/order.service";
 export class CartComponent implements OnInit {
 
   currentUser:User
-  basketList=[]
+  basketList=new Array()
   order
 
   constructor(private userService:UserService,
@@ -26,6 +27,10 @@ export class CartComponent implements OnInit {
   ngOnInit() {
    this.currentUser= this.userService.getCurrentUser()
     this.basketList=this.currentUser.orderLines
+    console.log(this.currentUser)
+    console.log(this.currentUser.orderLines)
+    console.log(this.basketList)
+
   }
 
   placeOrder() {
