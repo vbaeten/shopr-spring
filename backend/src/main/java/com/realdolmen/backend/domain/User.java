@@ -24,6 +24,9 @@ public class User implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Rating> ratings;
 
+    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
+    private ShoppingCart shoppingCart;
+
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 //    private List<Order> orders;
 
@@ -58,7 +61,16 @@ public class User implements Serializable {
     public void setRatings(List<Rating> ratings) {
         this.ratings = ratings;
     }
-//
+
+    public ShoppingCart getShoppingCart() {
+        return shoppingCart;
+    }
+
+    public void setShoppingCart(ShoppingCart shoppingCart) {
+        this.shoppingCart = shoppingCart;
+    }
+
+    //
 //    public List<Order> getOrders() {
 //        return orders;
 //    }

@@ -3,6 +3,7 @@ package com.realdolmen.backend.controller;
 import com.realdolmen.backend.domain.OrderLine;
 import com.realdolmen.backend.domain.User;
 import com.realdolmen.backend.service.OrderLineService;
+import com.realdolmen.backend.service.ShoppingCartService;
 import com.realdolmen.backend.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +15,7 @@ public class ShoppingCartController {
 
     private OrderLineService orderlineService;
     private UserService userService;
+    private ShoppingCartService shoppingCartService;
 
     public ShoppingCartController(OrderLineService orderlineService) {
         this.orderlineService = orderlineService;

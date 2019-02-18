@@ -4,6 +4,7 @@ import {OrderLine} from '../models/order-line';
 import {Observable} from 'rxjs';
 import {User} from '../models/user';
 import {Order} from "../models/order";
+import {Cart} from "../models/cart";
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,10 @@ export class ShoppingCartService {
 
   findByOrderLinesByUserId(id: number): Observable<OrderLine[]> {
     return this.apiService.doGet('/cart/list/' + id);
+  }
+
+  createCart(cart: Cart): Observable<Cart> {
+    return this.apiService.doPost('/user/register', cart);
   }
 
   deleteOrderLineById(id: number): Observable<OrderLine> {
