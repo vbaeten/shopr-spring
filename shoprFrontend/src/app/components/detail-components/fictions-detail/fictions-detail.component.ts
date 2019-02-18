@@ -29,16 +29,13 @@ export class FictionsDetailComponent implements OnInit {
 
 
   ngOnInit() {
-
+    this.basketList=JSON.parse(localStorage.getItem("2"))
+    if (this.basketList==null){
+      this.basketList=new Array()
+    }
     this.dataService.detailId.subscribe(id => this.passedId = id)
     this.fictionService.getById(this.passedId).subscribe(fiction => this.fiction = fiction)
     this.currentUser = this.userService.getCurrentUser()
-    if (this.currentUser.orderLines == undefined) {
-      this.currentUser.orderLines = new Array()
-    }
-    if (this.basketList == undefined) {
-      this.basketList = new Array()
-    }
 
   }
 

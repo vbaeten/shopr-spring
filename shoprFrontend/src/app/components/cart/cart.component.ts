@@ -28,7 +28,6 @@ export class CartComponent implements OnInit {
 
 
     this.currentUser = this.userService.getCurrentUser()
-
     let stored = localStorage.getItem("2")
     this.basketList = JSON.parse(stored)
 
@@ -48,8 +47,7 @@ export class CartComponent implements OnInit {
       this.orderService.createOrder(this.order).subscribe(data => this.order = data)
       this.dataService.openSnackBar('your order has been placed', '')
       this.router.navigate(['/thankYou'])
-      this.basketList = new Array()
-      localStorage.setItem("2", this.basketList)
+      localStorage.removeItem("2")
     }
   }
 

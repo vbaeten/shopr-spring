@@ -22,15 +22,16 @@ export class NonFictionsDetailComponent implements OnInit {
 
 
   ngOnInit() {
+    this.basketList=JSON.parse(localStorage.getItem("2"))
+    if (this.basketList==null){
+      this.basketList=new Array()
+    }
     this.dataService.detailId.subscribe(id=>this.passedId=id)
     this.nonFiction= this.nonFictionService.getById(this.passedId).subscribe(nonFiction=>this.nonFiction=nonFiction)
-    if (this.basketList == undefined) {
-      this.basketList = new Array()
-    }
+
   }
 
   delete(){
-    console.log(this.passedId)
     this.nonFictionService.deleteById(this.passedId).subscribe(nonFiction=>this.nonFiction=nonFiction)
   }
 
@@ -47,7 +48,6 @@ export class NonFictionsDetailComponent implements OnInit {
       this.orderLine = data
     })
 
-    console.log(this.basketList)
     localStorage.setItem("2",JSON.stringify(this.basketList))
   }
 

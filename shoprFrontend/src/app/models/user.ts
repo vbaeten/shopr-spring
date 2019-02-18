@@ -1,5 +1,4 @@
 import {Orderline} from "./Orderline";
-import {Item} from "./item";
 
 
 export class User {
@@ -8,14 +7,14 @@ export class User {
   lastName: string;
   userName: string;
   orderLines: Orderline[] = []
-  favourites: Item[]=[]
+  // favourites: Item[]=[]
 
-  constructor(firstName?: string, lastName?: string, userName?: string, orderLines?: any[], favourites?: any[]) {
+  constructor(firstName?: string, lastName?: string, userName?: string, orderLines?: any[]) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.userName = userName;
     this.orderLines = orderLines;
-    this.favourites = favourites
+    // this.favourites = favourites
   }
 
 }

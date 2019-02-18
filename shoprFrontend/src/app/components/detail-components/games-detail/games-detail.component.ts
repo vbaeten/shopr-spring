@@ -17,7 +17,7 @@ export class GamesDetailComponent implements OnInit {
   passedId:number
   game
   order
-  basketList
+  basketList=[]
 
   orderLine
   quantity:number=0
@@ -26,12 +26,18 @@ export class GamesDetailComponent implements OnInit {
 
 
   ngOnInit() {
+
+    this.basketList=JSON.parse(localStorage.getItem("2"))
+    if (this.basketList==null){
+      this.basketList=new Array()
+    }
     this.dataService.detailId.subscribe(id=>this.passedId=id)
     this.gameService.getGameById(this.passedId).subscribe(game=>this.game=game)
-    if (this.basketList == undefined) {
-      this.basketList = new Array()
-    }
+
+
   }
+
+
 
   delete(){
     this.gameService.deleteById(this.passedId).subscribe(game=>this.game=game)
@@ -39,7 +45,6 @@ export class GamesDetailComponent implements OnInit {
 
 
   addToCart(form: NgForm) {
-
     this.orderLine = new Orderline()
     this.orderLine.item = this.game
     this.orderLine.quantity = form.value.quantity
@@ -49,8 +54,6 @@ export class GamesDetailComponent implements OnInit {
     this.orderLineService.createOrderLine(this.orderLine).subscribe((data) => {
       this.orderLine = data
     })
-
-    console.log(this.basketList)
     localStorage.setItem("2",JSON.stringify(this.basketList))
   }
 
