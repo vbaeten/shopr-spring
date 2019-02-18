@@ -25,7 +25,7 @@ public class Order {
     private List<OrderLine> orderLines;
 
 
-    @ManyToOne(cascade =ALL)
+    @ManyToOne
     @JoinColumn
     private User user;
 

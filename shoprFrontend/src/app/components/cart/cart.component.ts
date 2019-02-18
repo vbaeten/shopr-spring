@@ -1,11 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from "../../models/user";
 import {UserService} from "../../services/user.service";
 import {Order} from "../../models/Order";
 import {Router} from "@angular/router";
 import {DataService} from "../../services/data.service";
 import {OrderService} from "../../services/order.service";
-import {type} from "os";
+
 
 @Component({
   selector: 'app-cart',
@@ -28,29 +27,34 @@ export class CartComponent implements OnInit {
   ngOnInit() {
 
 
-    this.currentUser=this.userService.getCurrentUser()
+    this.currentUser = this.userService.getCurrentUser()
 
     let stored = localStorage.getItem("2")
-    this.basketList= JSON.parse(stored)
+    this.basketList = JSON.parse(stored)
+    console.log(this.currentUser)
 
 
   }
 
   placeOrder() {
-    if (this.currentUser === null) {
+
+    if (this.currentUser.firstName==undefined){
       this.router.navigate(['/'])
       this.dataService.openSnackBar('please log in first', '')
-    } else {
+    }else {
+
       this.order = new Order();
       this.order.user = this.currentUser
       this.order.totalPrice = this.getTotal()
       this.orderService.createOrder(this.order).subscribe(data => this.order = data)
       this.dataService.openSnackBar('your order has been placed', '')
       this.router.navigate(['/thankYou'])
-      this.basketList=new Array()
-      localStorage.setItem("2",this.basketList)
+      this.basketList = new Array()
+      localStorage.setItem("2", this.basketList)
     }
   }
+
+
 
   getTotal(): number {
     let total = 0
@@ -61,12 +65,11 @@ export class CartComponent implements OnInit {
   }
 
 
-  isEmpty():boolean{
-    if (this.basketList==null) {
+  isEmpty(): boolean {
+    if (this.basketList == null) {
       return true
     }
-}
-
+  }
 
 
 }

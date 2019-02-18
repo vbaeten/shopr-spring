@@ -1,0 +1,13 @@
+.homeButton:hover{
+  cursor: grab;
+}
+
+.homeButton:focus{
+  outline: none;
+}
+
+.homeButton{
+  margin-right: 1%;
+  border-style: none;
+
+}
