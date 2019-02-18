@@ -11,7 +11,7 @@ import {LoginService} from '../../../services/login.service';
 })
 export class CreateShoppingCartComponent implements OnInit {
 
-  cart: Cart= new Cart();
+  cart: Cart = new Cart();
   currentUser: User = new User();
 
   constructor(private cartService: ShoppingCartService,

@@ -36,14 +36,12 @@ export class RegisterComponent implements OnInit {
       this.user = data;
     });
     this.cart = new Cart();
-    this.cart.user = this.user;
     this.cart.userId = this.user.id;
     this.cartService.createCart(this.cart).subscribe(data => this.cart = data);
   }
 
   createCart(id: number) {
     this.cart = new Cart();
-    this.cart.user = this.user;
     this.cart.userId = id;
     this.cartService.createCart(this.cart).subscribe(data => this.cart = data);
   }
