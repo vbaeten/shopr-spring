@@ -1,6 +1,7 @@
 package com.realdolmen.backend.controller;
 
 import com.realdolmen.backend.domain.OrderLine;
+import com.realdolmen.backend.domain.ShoppingCart;
 import com.realdolmen.backend.domain.User;
 import com.realdolmen.backend.service.OrderLineService;
 import com.realdolmen.backend.service.ShoppingCartService;
@@ -17,14 +18,22 @@ public class ShoppingCartController {
     private UserService userService;
     private ShoppingCartService shoppingCartService;
 
-    public ShoppingCartController(OrderLineService orderlineService) {
+    public ShoppingCartController(OrderLineService orderlineService,
+                                  ShoppingCartService shoppingCartService) {
         this.orderlineService = orderlineService;
+        this.shoppingCartService = shoppingCartService;
     }
 
     @PostMapping("/add")
     public OrderLine addToCart(@RequestBody OrderLine orderLine) {
         orderlineService.save(orderLine);
         return orderLine;
+    }
+
+    @PostMapping("/create")
+    public ShoppingCart createCart(@RequestBody ShoppingCart shoppingCart) {
+        shoppingCartService.save(shoppingCart);
+        return shoppingCart;
     }
 
     @GetMapping("/{user}")

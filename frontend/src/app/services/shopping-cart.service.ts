@@ -31,7 +31,7 @@ export class ShoppingCartService {
   }
 
   createCart(cart: Cart): Observable<Cart> {
-    return this.apiService.doPost('/user/register', cart);
+    return this.apiService.doPost('/cart/create', cart);
   }
 
   deleteOrderLineById(id: number): Observable<OrderLine> {

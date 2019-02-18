@@ -17,7 +17,6 @@ export class ArticleOverviewComponent implements OnInit {
   dataSource;
   displayedColumns: string[] = ['id', 'title', 'price', 'type', 'detail'];
 
-  // @ViewChild(MatSort) sort: MatSort;
 
   constructor(private articleService: ArticleService,
               private router: Router,
@@ -29,7 +28,6 @@ export class ArticleOverviewComponent implements OnInit {
       this.articles = data;
       this.dataSource = this.articles;
     });
-    // this.dataSource.sort = this.sort;
   }
 
   goToDetails(article: Article) {

@@ -1,21 +1,33 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import { MatPaginator, MatSort } from '@angular/material';
 import { TesttableDataSource } from './testtable-datasource';
+import {Subscription} from "rxjs";
+import {LoginService} from "../../../services/login.service";
 
 @Component({
   selector: 'app-testtable',
   templateUrl: './testtable.component.html',
   styleUrls: ['./testtable.component.css']
 })
-export class TesttableComponent implements OnInit {
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
-  dataSource: TesttableDataSource;
+export class TesttableComponent implements OnInit, OnDestroy {
 
-  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name'];
+  currentUser;
+  private userSubscription: Subscription;
+
+  constructor(private loginService: LoginService) {
+  }
 
   ngOnInit() {
-    this.dataSource = new TesttableDataSource(this.paginator, this.sort);
+    this.getCurrentUser();
+    this.userSubscription = this.loginService.userSubject.subscribe(() => this.getCurrentUser());
   }
+
+  getCurrentUser() {
+    this.loginService.getCurrentUser().then(user => this.currentUser = user);
+  }
+
+  ngOnDestroy(): void {
+    this.userSubscription.unsubscribe();
+  }
+
 }
