@@ -12,7 +12,7 @@ import {OrderLine} from "../../../../models/order-line";
 })
 export class OrderOverviewComponent implements OnInit {
 
-  currentUser: User;
+  currentUser: User = new User();
   orders: Order[];
   orderLine = '';
   orderLines: OrderLine[];

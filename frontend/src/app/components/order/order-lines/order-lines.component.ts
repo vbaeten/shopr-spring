@@ -2,8 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {LoginService} from '../../../services/login.service';
 import {ShoppingCartService} from '../../../services/shopping-cart.service';
 import {OrderLine} from '../../../models/order-line';
-import {User} from "../../../models/user";
-import {Subscription} from "rxjs";
+import {User} from '../../../models/user';
 
 @Component({
   selector: 'app-order-lines',
@@ -12,7 +11,7 @@ import {Subscription} from "rxjs";
 })
 export class OrderLinesComponent implements OnInit {
 
-  currentUser: User;
+  currentUser: User = new User();
   orderLines: OrderLine[];
 
   displayedColumns: string[] = ['title', 'quantity', 'price'];

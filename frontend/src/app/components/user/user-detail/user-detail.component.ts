@@ -12,7 +12,7 @@ import {LoginService} from "../../../services/login.service";
 })
 export class UserDetailComponent implements OnInit, OnDestroy {
 
-  currentUser;
+  currentUser: User = new User();
   private userSubscription: Subscription;
 
   constructor(private userService: UserService,

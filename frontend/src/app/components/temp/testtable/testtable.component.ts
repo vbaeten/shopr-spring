@@ -3,6 +3,7 @@ import { MatPaginator, MatSort } from '@angular/material';
 import { TesttableDataSource } from './testtable-datasource';
 import {Subscription} from "rxjs";
 import {LoginService} from "../../../services/login.service";
+import {User} from "../../../models/user";
 
 @Component({
   selector: 'app-testtable',
@@ -11,7 +12,7 @@ import {LoginService} from "../../../services/login.service";
 })
 export class TesttableComponent implements OnInit, OnDestroy {
 
-  currentUser;
+  currentUser: User = new User();
   private userSubscription: Subscription;
 
   constructor(private loginService: LoginService) {

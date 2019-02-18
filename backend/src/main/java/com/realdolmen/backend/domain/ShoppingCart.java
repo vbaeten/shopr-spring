@@ -12,14 +12,16 @@ public class ShoppingCart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user")
     private User user;
 
+    @Column
     private int userId;
 
-    @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
-    private List<OrderLine> orderLines = new ArrayList<>();
+
+//    @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
+//    private List<OrderLine> orderLines = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -44,12 +46,12 @@ public class ShoppingCart {
     public void setUserId(int userId) {
         this.userId = userId;
     }
-
-    public List<OrderLine> getOrderLines() {
-        return orderLines;
-    }
-
-    public void setOrderLines(List<OrderLine> orderLines) {
-        this.orderLines = orderLines;
-    }
+//
+//    public List<OrderLine> getOrderLines() {
+//        return orderLines;
+//    }
+//
+//    public void setOrderLines(List<OrderLine> orderLines) {
+//        this.orderLines = orderLines;
+//    }
 }

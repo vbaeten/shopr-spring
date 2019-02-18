@@ -9,7 +9,7 @@ import {UserService} from './user.service';
 })
 export class LoginService {
 
-  // public currentUser = 'user';
+  public currentUser = 'user';
   private userKey = '1';
   userSubject = new Subject();
 
@@ -21,7 +21,7 @@ export class LoginService {
   }
 
   getUser(): User {
-    return Object.assign(new User(), JSON.parse(localStorage.getItem(this.userKey)));
+    return Object.assign(new User(), JSON.parse(localStorage.getItem(this.currentUser)));
   }
 
   getUserId(): number {

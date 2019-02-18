@@ -12,7 +12,7 @@ import {UserService} from "../../../../services/user.service";
 export class UserEditComponent implements OnInit {
 
   dataSource;
-  currentUser: User;
+  currentUser: User = new User();
   user: User;
 
   constructor(private loginService: LoginService,

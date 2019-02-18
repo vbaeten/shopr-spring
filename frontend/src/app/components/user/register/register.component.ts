@@ -16,6 +16,8 @@ export class RegisterComponent implements OnInit {
   user: User;
   users: User[];
   cart: Cart;
+  newUser: User;
+  newId;
 
   constructor(private userService: UserService,
               private cartService: ShoppingCartService) {
@@ -29,14 +31,21 @@ export class RegisterComponent implements OnInit {
     this.user = new User();
     this.user.firstName = form.value.firstName;
     this.user.name = form.value.name;
-    this.userService.registerUser(this.user).subscribe(data => this.refresh);
+    this.userService.registerUser(this.user).subscribe(data => {
+      this.refresh();
+      this.user = data;
+    });
+    this.cart = new Cart();
+    this.cart.user = this.user;
+    this.cart.userId = this.user.id;
+    this.cartService.createCart(this.cart).subscribe(data => this.cart = data);
   }
 
-  createCart() {
+  createCart(id: number) {
     this.cart = new Cart();
-    this.cart.userId = this.user.id;
     this.cart.user = this.user;
-    this.cartService.createCart(this.cart);
+    this.cart.userId = id;
+    this.cartService.createCart(this.cart).subscribe(data => this.cart = data);
   }
 
   refresh() {

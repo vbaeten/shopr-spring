@@ -40,6 +40,7 @@ import { LoginTestComponent } from './components/temp/login-test/login-test.comp
 import { UserEditComponent } from './components/user/user-detail/user-edit/user-edit.component';
 import {LoginService} from "./services/login.service";
 import { OrderLinesComponent } from './components/order/order-lines/order-lines.component';
+import { CreateShoppingCartComponent } from './components/temp/create-shopping-cart/create-shopping-cart.component';
 
 
 @NgModule({
@@ -76,6 +77,7 @@ import { OrderLinesComponent } from './components/order/order-lines/order-lines.
     LoginTestComponent,
     UserEditComponent,
     OrderLinesComponent,
+    CreateShoppingCartComponent,
   ],
   imports: [
     BrowserModule,
