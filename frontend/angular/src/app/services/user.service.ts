@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {BehaviorSubject} from "rxjs";
 import {User} from "../domain/user";
+import {MatSnackBar} from "@angular/material";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class UserService {
   userSubject: BehaviorSubject<User> = new BehaviorSubject<User>(null);
   private userKey: string = 'user';
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, private snackBar: MatSnackBar) {
   }
 
   register(user: User): void {
@@ -40,5 +41,9 @@ export class UserService {
     return new Promise((resolve, reject) => {
       resolve(JSON.parse(sessionStorage.getItem(this.userKey)));
     });
+  }
+
+  getSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {duration: 1500})
   }
 }
