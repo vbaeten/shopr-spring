@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {UserService} from "../../../services/user.service";
+import {Orderline} from "../../../models/Orderline";
 
 @Component({
   selector: 'app-favourites',
@@ -11,21 +12,31 @@ export class FavouritesComponent implements OnInit {
 
   @Input() item
   user
+  favourites
 
   constructor(private userService: UserService) {
   }
 
   ngOnInit() {
+
     this.user = this.userService.getCurrentUser()
     console.log(this.user)
+    this.favourites=   JSON.parse( sessionStorage.getItem('favourites'))
   }
 
 
   addToFavourites() {
-    this.user.favourites= new Array()
-    this.user.favourites.push(this.item)
-    this.userService.registerUser(this.user).subscribe(data=>this.user=data)
+    //TODO: check for duplicate favourite item in list
 
+    if (this.favourites==null){
+      this.favourites=new Array()
+    }
+    this.favourites.push(this.item)
+    this.user.favourites=this.favourites
+    sessionStorage.setItem('favourites',JSON.stringify( this.favourites))
+    console.log(this.favourites)
+    console.log(this.user.favourites)
+    this.userService.registerUser(this.user).subscribe(data=>this.user=data)
   }
 
 }

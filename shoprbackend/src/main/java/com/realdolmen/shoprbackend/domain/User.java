@@ -16,9 +16,9 @@ public class User {
     private String firstName;
     private String lastName;
 
-//    @Column(name="user_favourites")
-//    @OneToMany
-//    private List<Item> favourites;
+    @Column(name="user_favourites")
+    @OneToMany
+    private List<Item> favourites;
 
 
 
@@ -54,13 +54,13 @@ public class User {
         this.lastName = lastName;
     }
 
-//    public List<Item> getFavourites() {
-//        return favourites;
-//    }
-//
-//    public void setFavourites(List<Item> favourites) {
-//        this.favourites = favourites;
-//    }
+    public List<Item> getFavourites() {
+        return favourites;
+    }
+
+    public void setFavourites(List<Item> favourites) {
+        this.favourites = favourites;
+    }
 
     @Override
     public String toString() {

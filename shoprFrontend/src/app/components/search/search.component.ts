@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {UserService} from "../../services/user.service";
+import {Item} from "../../models/item";
 
 @Component({
   selector: 'app-search',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
-  constructor() { }
+  currentUser
+  favourites:Item[]=[]
+
+  constructor(private userService:UserService) { }
 
   ngOnInit() {
+    this.currentUser=this.userService.getCurrentUser()
+    this.favourites=   Object.assign(new Array<Item>(),JSON.parse( sessionStorage.getItem('favourites')))
+
+    console.log( this.favourites[0])
   }
+
+
 
 }

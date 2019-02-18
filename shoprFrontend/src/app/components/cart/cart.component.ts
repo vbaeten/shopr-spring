@@ -31,7 +31,6 @@ export class CartComponent implements OnInit {
 
     let stored = localStorage.getItem("2")
     this.basketList = JSON.parse(stored)
-    console.log(this.currentUser)
 
 
   }
