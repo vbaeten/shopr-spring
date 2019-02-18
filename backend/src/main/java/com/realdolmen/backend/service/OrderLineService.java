@@ -5,7 +5,7 @@ import com.realdolmen.backend.domain.User;
 
 import java.util.List;
 
-public interface OrderlineService extends CrudService<OrderLine, Long> {
+public interface OrderLineService extends CrudService<OrderLine, Long> {
 
     @Override
     <S extends OrderLine> S save(S entity);

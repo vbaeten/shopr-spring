@@ -20,6 +20,14 @@ export class LoginService {
     return new Promise((resolve, reject) => resolve(JSON.parse(localStorage.getItem(this.userKey))) );
   }
 
+  getUser(): User {
+    return Object.assign(new User(), JSON.parse(localStorage.getItem(this.userKey)));
+  }
+
+  getUserId(): number {
+    return Object.assign(new User(), JSON.parse(localStorage.getItem(this.userKey)));
+  }
+
   login(user: User) {
    localStorage.setItem(this.userKey, JSON.stringify(user));
    this.userSubject.next();

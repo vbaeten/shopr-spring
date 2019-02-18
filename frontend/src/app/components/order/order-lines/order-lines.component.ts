@@ -12,9 +12,8 @@ import {Subscription} from "rxjs";
 })
 export class OrderLinesComponent implements OnInit {
 
-  currentUser;
+  currentUser: User;
   orderLines: OrderLine[];
-
 
   displayedColumns: string[] = ['title', 'quantity', 'price'];
   dataSource;
@@ -23,16 +22,16 @@ export class OrderLinesComponent implements OnInit {
               private cartService: ShoppingCartService) { }
 
   ngOnInit() {
-    // this.getOrderLines();
     this.getCurrentUser();
   }
 
   getCurrentUser() {
     this.loginService.getCurrentUser().then(user => this.currentUser = user);
+    this.getOrderLines();
   }
 
   getOrderLines() {
-    this.cartService.findByUserId(this.currentUser.id).subscribe(
+    this.cartService.findByOrderLinesByUserId(this.currentUser.id).subscribe(
       data => {
         this.orderLines = data;
         this.dataSource = this.orderLines;

@@ -7,11 +7,6 @@ import {ActivatedRoute} from '@angular/router';
 import {ArticleService} from '../../../services/article.service';
 import {User} from '../../../models/user';
 import {LoginService} from '../../../services/login.service';
-import {Game} from '../../../models/game';
-import {Fiction} from '../../../models/fiction';
-import {FictionService} from '../../../services/fiction.service';
-import {Subscription} from 'rxjs';
-import {UserService} from '../../../services/user.service';
 
 @Component({
   selector: 'app-order-article',

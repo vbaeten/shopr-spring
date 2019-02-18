@@ -2,9 +2,8 @@ package com.realdolmen.backend.controller;
 
 import com.realdolmen.backend.domain.OrderLine;
 import com.realdolmen.backend.domain.User;
-import com.realdolmen.backend.service.OrderlineService;
+import com.realdolmen.backend.service.OrderLineService;
 import com.realdolmen.backend.service.UserService;
-import org.aspectj.weaver.ast.Or;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,10 +12,10 @@ import java.util.List;
 @RequestMapping("/cart")
 public class ShoppingCartController {
 
-    private OrderlineService orderlineService;
+    private OrderLineService orderlineService;
     private UserService userService;
 
-    public ShoppingCartController(OrderlineService orderlineService) {
+    public ShoppingCartController(OrderLineService orderlineService) {
         this.orderlineService = orderlineService;
     }
 

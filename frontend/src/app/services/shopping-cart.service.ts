@@ -25,7 +25,7 @@ export class ShoppingCartService {
     return this.apiService.doGet('/cart/' + user);
   }
 
-  findByUserId(id: number): Observable<OrderLine[]> {
+  findByOrderLinesByUserId(id: number): Observable<OrderLine[]> {
     return this.apiService.doGet('/cart/list/' + id);
   }
 
