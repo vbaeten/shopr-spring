@@ -44,8 +44,8 @@ export class OrderLinesComponent implements OnInit {
 
   sendToOrder() {
     this.order = new Order();
-    this.order.user = this.currentUser;
+    this.order.userId = this.currentUser.id;
     this.order.orderDate = new Date();
-    this.cartService.sendToOrder(this.order);
+    this.cartService.sendToOrder(this.order).subscribe();
   }
 }

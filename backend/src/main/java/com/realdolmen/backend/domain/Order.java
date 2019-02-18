@@ -17,9 +17,12 @@ public class Order implements Serializable {
     @Column(name = "order_date")
     private Timestamp orderDate;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+//    @ManyToOne
+//    @JoinColumn(name = "user_id")
+//    private User user;
+
+    @Column(name = "user_id")
+    private Long userId;
 
     @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
     private List<OrderLine> orderLines = new ArrayList<>();
@@ -40,13 +43,13 @@ public class Order implements Serializable {
         this.orderDate = orderDate;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 
     public List<OrderLine> getOrderLines() {
         return orderLines;
@@ -54,5 +57,13 @@ public class Order implements Serializable {
 
     public void setOrderLines(List<OrderLine> orderLines) {
         this.orderLines = orderLines;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }
