@@ -12,7 +12,7 @@ import {
   MatInputModule,
   MatSortModule,
   MatSnackBarModule,
-  MatExpansionModule, MatTabsModule
+  MatExpansionModule, MatTabsModule, MatBadgeModule
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -39,7 +39,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     MatSortModule,
     MatSnackBarModule,
     MatExpansionModule,
-    MatTabsModule
+    MatTabsModule,
+    MatBadgeModule
   ],
   exports: [
     MatCardModule,
@@ -58,7 +59,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     MatSortModule,
     MatSnackBarModule,
     MatExpansionModule,
-    MatTabsModule
+    MatTabsModule,
+    MatBadgeModule
   ]
 })
 

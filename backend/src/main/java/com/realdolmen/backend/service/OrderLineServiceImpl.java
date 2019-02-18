@@ -51,4 +51,9 @@ public class OrderLineServiceImpl implements OrderLineService {
         orderLineRepository.delete(orderLine);
     }
 
+    @Override
+    public List<OrderLine> findCurrentCartByUserId(Long id) {
+        return orderLineRepository.findCurrentCartByUserId(id);
+    }
+
 }

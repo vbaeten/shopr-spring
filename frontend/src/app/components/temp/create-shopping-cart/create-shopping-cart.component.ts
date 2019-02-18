@@ -33,7 +33,7 @@ export class CreateShoppingCartComponent implements OnInit {
 
   createCart() {
       this.cart = new Cart();
-      this.cart.userId = this.currentUser.id;
+      this.cart.user = this.currentUser;
       this.cartService.createCart(this.cart).subscribe(data => this.cart = data);
   }
 }

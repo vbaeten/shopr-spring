@@ -18,8 +18,7 @@ public class OrderController {
 
     @PostMapping("/send")
     public Order sendToOrder(@RequestBody Order order) {
-        orderService.save(order);
-        return order;
+        return orderService.save(order);
     }
 
     @GetMapping("/list/{id}")

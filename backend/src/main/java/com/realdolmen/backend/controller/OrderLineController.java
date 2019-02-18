@@ -24,4 +24,10 @@ public class OrderLineController {
         return orderLineService.findByUserId(id);
     }
 
+    @GetMapping("/current/{id}")
+    public List<OrderLine> findCurrentCartByUserId(@PathVariable("id") Long id) {
+        return orderLineService.findCurrentCartByUserId(id);
+    }
+
+
 }

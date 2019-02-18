@@ -18,6 +18,7 @@ public class OrderServiceImpl implements OrderService{
 
     @Override
     public <S extends Order> S save(S entity) {
+        entity.getOrderLines().forEach(orderLine -> orderLine.setOrder(entity));
         return orderRepository.save(entity);
     }
 

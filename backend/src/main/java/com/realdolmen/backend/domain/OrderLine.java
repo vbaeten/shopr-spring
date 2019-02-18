@@ -1,5 +1,7 @@
 package com.realdolmen.backend.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -19,8 +21,8 @@ public class OrderLine {
     @JoinColumn(name = "article_id")
     private Article article;
 
+    @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "order_id")
     private Order order;
 
     @ManyToOne

@@ -1,8 +1,9 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {first} from 'rxjs/operators';
 import {User} from '../../../models/user';
 import {LoginService} from '../../../services/login.service';
 import {Subscription} from 'rxjs';
+import {ShoppingCartService} from '../../../services/shopping-cart.service';
+import {OrderLine} from '../../../models/order-line';
 
 @Component({
   selector: 'app-navbar',
@@ -11,10 +12,13 @@ import {Subscription} from 'rxjs';
 })
 export class NavbarComponent implements OnInit, OnDestroy {
 
-  currentUser;
+  currentUser: User = new User();
+  orderLines: OrderLine[];
   private userSubscription: Subscription;
+  dataSource;
 
-  constructor(private loginService: LoginService) {
+  constructor(private loginService: LoginService,
+              private cartService: ShoppingCartService) {
   }
 
   ngOnInit() {
@@ -23,7 +27,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   getCurrentUser() {
-    this.loginService.getCurrentUser().then(user => this.currentUser = user);
+    this.loginService.getCurrentUser().then(user => {
+      this.currentUser = user;
+      this.getOrderLines();
+    });
   }
 
   logout() {
@@ -32,5 +39,15 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.userSubscription.unsubscribe();
+  }
+
+
+  getOrderLines() {
+    this.cartService.findCurrentCartByOrderLinesByUserId(this.currentUser.id).subscribe(
+      data => {
+        this.orderLines = data;
+        this.dataSource = this.orderLines;
+      }
+    );
   }
 }

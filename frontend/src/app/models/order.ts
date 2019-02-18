@@ -4,13 +4,15 @@ import {User} from './user';
 
 export class Order {
   public id: number;
-  public userId: number;
+  public user: User;
   public orderDate: Date;
+  public orderLines: OrderLine[];
 
 
-  constructor(id?: number, userId?: number, orderDate?: Date) {
+  constructor(id?: number, user?: User, orderDate?: Date, orderLines?: OrderLine[]) {
     this.id = id;
-    this.userId = userId;
+    this.user = user;
     this.orderDate = orderDate;
+    this.orderLines = orderLines;
   }
 }

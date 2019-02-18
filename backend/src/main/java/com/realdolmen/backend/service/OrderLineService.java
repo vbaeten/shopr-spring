@@ -21,4 +21,6 @@ public interface OrderLineService extends CrudService<OrderLine, Long> {
     void delete(OrderLine entity);
 
     void deleteById(Long id);
+
+    List<OrderLine> findCurrentCartByUserId(Long id);
 }

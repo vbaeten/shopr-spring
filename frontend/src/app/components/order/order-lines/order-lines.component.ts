@@ -3,7 +3,7 @@ import {LoginService} from '../../../services/login.service';
 import {ShoppingCartService} from '../../../services/shopping-cart.service';
 import {OrderLine} from '../../../models/order-line';
 import {User} from '../../../models/user';
-import {Order} from "../../../models/order";
+import {Order} from '../../../models/order';
 
 @Component({
   selector: 'app-order-lines',
@@ -11,7 +11,7 @@ import {Order} from "../../../models/order";
   styleUrls: ['./order-lines.component.css']
 })
 export class OrderLinesComponent implements OnInit {
-
+  private total = 0;
   currentUser: User = new User();
   order: Order;
   orderLines: OrderLine[];
@@ -20,7 +20,8 @@ export class OrderLinesComponent implements OnInit {
   dataSource;
 
   constructor(private loginService: LoginService,
-              private cartService: ShoppingCartService) { }
+              private cartService: ShoppingCartService) {
+  }
 
   ngOnInit() {
     this.getCurrentUser();
@@ -34,7 +35,7 @@ export class OrderLinesComponent implements OnInit {
   }
 
   getOrderLines() {
-    this.cartService.findByOrderLinesByUserId(this.currentUser.id).subscribe(
+    this.cartService.findCurrentCartByOrderLinesByUserId(this.currentUser.id).subscribe(
       data => {
         this.orderLines = data;
         this.dataSource = this.orderLines;
@@ -44,8 +45,18 @@ export class OrderLinesComponent implements OnInit {
 
   sendToOrder() {
     this.order = new Order();
-    this.order.userId = this.currentUser.id;
+    this.order.user = this.currentUser;
+    this.order.orderLines = this.orderLines;
     this.order.orderDate = new Date();
-    this.cartService.sendToOrder(this.order).subscribe();
+    this.cartService.sendToOrder(this.order).subscribe(() => this.getOrderLines());
+  }
+
+  deleteOrderLine(id: number) {
+    this.cartService.deleteOrderLineById(id).subscribe(data => this.getOrderLines());
+  }
+
+  getTotal(subtotal: number): number {
+    // console.log(subtotal);
+    return subtotal + this.total;
   }
 }
