@@ -20,8 +20,8 @@ public class UserController {
     }
 
 //    @GetMapping("//{id}")
-//    public User findById(@PathVariable("id") Long id) {
-//        return userService.findById(id);
+//    public User findByOrderId(@PathVariable("id") Long id) {
+//        return userService.findByOrderId(id);
 //    }
 
     @GetMapping("/{userName}")

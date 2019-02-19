@@ -71,10 +71,10 @@ public class UserControllerTest {
 
     @Test
     public void findById() throws Exception {
-        User expectedUser = buildUserKarel().build();
-        when(userService.findById(expectedUser.getId())).thenReturn(expectedUser);
+        User expectedUser = buildUserKarel().userName("karelDb").build();
+        when(userService.findByUserName(expectedUser.getUserName())).thenReturn(expectedUser);
 
-        String contentAsString = mockMvc.perform(get("/user/" + expectedUser.getId()))
+        String contentAsString = mockMvc.perform(get("/user/" + expectedUser.getUserName()))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andReturn()
@@ -88,7 +88,7 @@ public class UserControllerTest {
                 hasProperty("name", equalTo(expectedUser.getName())),
                 hasProperty("firstName", equalTo(expectedUser.getFirstName()))
         ));
-        verify(userService, times(1)).findById(expectedUser.getId());
+        verify(userService, times(1)).findByUserName(expectedUser.getUserName());
 
     }
 
