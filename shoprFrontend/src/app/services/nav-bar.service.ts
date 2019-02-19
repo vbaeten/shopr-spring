@@ -11,8 +11,7 @@ export class NavBarService {
   currentUser
 
   constructor() {
-
-    this.addItem({text:'login',path:''})
+    this.addItem({text:'Login',path:''})
     this.isLoggedIn.next(false)
   }
 

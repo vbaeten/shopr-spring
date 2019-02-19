@@ -22,11 +22,30 @@
           <input matInput required placeholder="publisher" ngModel name="publisher">
         </mat-form-field>
       </div>
-      <div >
-        <mat-form-field>
-          <input matInput required placeholder="Genre" ngModel name="genre">
-        </mat-form-field>
-      </div>
+
+
+
+
+      <!--<div >-->
+        <!--<mat-form-field>-->
+          <!--<input matInput required placeholder="Genre" ngModel name="genre">-->
+        <!--</mat-form-field>-->
+      <!--</div>-->
+
+<div>
+      <mat-form-field class="displayText">
+        <mat-select placeholder="Select genre" [(value)]="genre">
+          <mat-option *ngFor="let genre of genres" [value]="genre">
+            {{genre}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+</div>
+
+
+
+
+
       <button mat-button (click)="showSnackBar()">cReate!</button>
     </div>
   </form>

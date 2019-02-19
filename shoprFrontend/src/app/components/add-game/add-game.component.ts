@@ -18,6 +18,9 @@ export class AddGameComponent implements OnInit {
   private _title: string;
   private _price: number;
   game: Game;
+  genres=['RPG','FPS','MMORPG','RTS','Strategy']
+
+
 
   constructor(private gameService: GameService,private router:Router, private dataService:DataService) {
   }
@@ -35,6 +38,8 @@ export class AddGameComponent implements OnInit {
     this.game.price = this._price;
     this.game.title = this._title;
     this.game.publisher = form.value.publisher
+
+
     this.gameService.createGame(this.game)
       .subscribe(data => this.game = data)
     this.router.navigate(['/gamesOverview'])

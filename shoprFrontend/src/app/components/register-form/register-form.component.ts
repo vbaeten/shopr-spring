@@ -25,14 +25,20 @@ export class RegisterFormComponent implements OnInit {
     this.user.userName = form.value.userName
     this.userService.registerUser(this.user)
                     .subscribe(data =>this.user=data)
-
-
+    this.loginUser()
   }
 
   showSnackBar(){
     let message= 'successfully registered your account'
     let action= ''
     this.dataService.openSnackBar(message,action)
+  }
+
+
+  loginUser(){
+
+    this.userService.loginUser(this.user)
+
   }
 
 }
