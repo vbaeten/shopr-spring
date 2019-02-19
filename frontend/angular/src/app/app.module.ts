@@ -43,6 +43,11 @@ import {ShoppingcartComponent} from './components/shoppingcart/shoppingcart.comp
 import {OrderService} from "./services/order.service";
 import {OrderoverviewComponent} from './components/orderoverview/orderoverview.component';
 import {NgxMaskModule} from "ngx-mask";
+import {BookfictionService} from "./services/bookfiction.service";
+import {BooknonfictionService} from "./services/booknonfiction.service";
+import {GameService} from "./services/game.service";
+import {LpService} from "./services/lp.service";
+import {OrderlineService} from "./services/orderline.service";
 
 
 @NgModule({
@@ -91,7 +96,7 @@ import {NgxMaskModule} from "ngx-mask";
 
   ],
 
-  providers: [ArticleService, UserService, OrderService],
+  providers: [ArticleService, UserService, OrderService, BookfictionService, BooknonfictionService, GameService, LpService, OrderlineService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
