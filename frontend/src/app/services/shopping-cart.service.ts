@@ -15,7 +15,7 @@ export class ShoppingCartService {
 
   constructor(private apiService: ApiService) { }
 
-  addToCart(orderLine: OrderLine){
+  addToCart(orderLine: OrderLine) {
     console.log(orderLine);
     this.apiService.doPost('/cart/add', orderLine).subscribe(data => {
       this.orderLineAddedSubject.next(data);
@@ -38,12 +38,14 @@ export class ShoppingCartService {
     return this.apiService.doPost('/cart/create', cart);
   }
 
-  loadCart(userId: number): Observable<Cart> {
-    return this.apiService.doGet('/cart/' + userId);
-  }
-
   deleteOrderLineById(id: number): Observable<OrderLine> {
     return this.apiService.doDelete('/cart/delete/' + id);
+  }
+
+  deleteOrderLine(id: number) {
+    this.apiService.doDelete('/cart/delete/' + id).subscribe(data => {
+      this.orderLineAddedSubject.next(data);
+    });
   }
 
   setOrderLinesToOrder(orderLine: OrderLine): Observable<OrderLine> {

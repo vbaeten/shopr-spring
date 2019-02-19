@@ -27,10 +27,6 @@ export class CreateShoppingCartComponent implements OnInit {
     this.loginService.getCurrentUser().then(user => this.currentUser = user);
   }
 
-  // loadCart() {
-  //   this.cart = this.cartService.loadCart(this.currentUser.id);
-  // }
-
   createCart() {
       this.cart = new Cart();
       this.cart.user = this.currentUser;
