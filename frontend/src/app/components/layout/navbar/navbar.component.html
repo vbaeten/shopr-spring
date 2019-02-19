@@ -4,7 +4,6 @@
     <span><button mat-button routerLink="/home">Home</button></span>
     <span><button mat-button routerLink="/shop">Shop</button></span>
     <span><button mat-button routerLink="/add">Add Articles</button></span>
-    <span><button mat-button routerLink="/o">Test</button></span>
     <span class="mySpacer"></span>
     <span *ngIf="currentUser"><button mat-button routerLink="/user">{{currentUser.firstName}} {{currentUser.name}}<mat-icon>account_circle</mat-icon></button></span>
     <span *ngIf="currentUser"><p *ngIf="orderLines" matBadge="{{orderLines.length}}" matBadgeColor="accent"><button mat-icon-button routerLink="/cart"><mat-icon align="right">shopping_cart</mat-icon></button></p></span>
