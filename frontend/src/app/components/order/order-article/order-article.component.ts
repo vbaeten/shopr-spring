@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {NgForm, Validators} from '@angular/forms';
 import {OrderLine} from '../../../models/order-line';
 import {ShoppingCartService} from '../../../services/shopping-cart.service';
@@ -51,6 +51,7 @@ export class OrderArticleComponent implements OnInit {
     this.orderLine = new OrderLine();
     this.orderLine.article = this.article;
     this.orderLine.quantity = form.value.quantity;
+    this.orderLine.subTotal = form.value.quantity * this.article.price;
     this.orderLine.user = this.currentUser;
     this.shoppingCartService.addToCart(this.orderLine).subscribe(data => this.orderLine = data);
   }

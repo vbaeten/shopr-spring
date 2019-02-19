@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {LoginService} from '../../../services/login.service';
 import {ShoppingCartService} from '../../../services/shopping-cart.service';
 import {OrderLine} from '../../../models/order-line';
@@ -54,9 +54,10 @@ export class OrderLinesComponent implements OnInit {
   deleteOrderLine(id: number) {
     this.cartService.deleteOrderLineById(id).subscribe(data => this.getOrderLines());
   }
-
-  getTotal(subtotal: number): number {
-    // console.log(subtotal);
-    return subtotal + this.total;
-  }
+  //
+  // getTotal(subtotal: number): number {
+  //   for (const orderLine of this.orderLines) {
+  //     return this.total = this.total + orderLine.subTotal;
+  //   }
+  // }
 }

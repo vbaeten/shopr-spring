@@ -9,17 +9,17 @@ export class OrderLine {
   public quantity: number;
   public order: Order;
   public user: User;
-  public subtotal: number;
+  public subTotal: number;
   public cart: Cart;
 
 
-  constructor(id?: number, article?: Article, quantity?: number, order?: Order, user?: User, subtotal?: number, cart?: Cart) {
+  constructor(id?: number, article?: Article, quantity?: number, order?: Order, user?: User, subTotal?: number, cart?: Cart) {
     this.id = id;
     this.article = article;
     this.quantity = quantity;
     this.order = order;
     this.user = user;
-    this.subtotal = subtotal;
+    this.subTotal = subTotal;
     this.cart = cart;
   }
 }
