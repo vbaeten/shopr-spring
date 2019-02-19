@@ -1,0 +1,24 @@
+<div style="align-content: center">
+  <mat-card *ngIf="selectedArticle">
+
+    <mat-list>
+      <mat-list-item> Article id: {{selectedArticle.articleId}}</mat-list-item>
+      <mat-list-item> Title: {{selectedArticle.title}} </mat-list-item>
+      <mat-list-item> Supplier id: {{selectedArticle.supplierId}} </mat-list-item>
+      <mat-list-item> Price: {{selectedArticle.price}} </mat-list-item>
+      <mat-list-item> Publisher: {{selectedArticle.publisher}} </mat-list-item>
+      <mat-list-item> Genre: {{selectedArticle.lpGenre}} </mat-list-item>
+    </mat-list>
+
+    <form [formGroup]="submitQuantityForm" (ngSubmit)="submitQuantity()">
+      <mat-form-field class="submit-quantity">
+        <input matInput placeholder="Quantity" formControlName="quantity">
+      </mat-form-field>
+
+      <button mat-button class="submit-button" type=submit>
+        Add to shoppingCart
+      </button>
+    </form>
+
+  </mat-card>
+</div>

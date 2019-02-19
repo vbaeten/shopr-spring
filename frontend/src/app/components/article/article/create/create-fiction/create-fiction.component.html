@@ -1,0 +1,88 @@
+
+<div style="align-content: center">
+  <mat-card>
+
+    <form [formGroup]="createFictionForm" (ngSubmit)="createFiction()">
+
+      <table class="create-fiction" cellspacing="20">
+        <tr>
+          <td>
+            <mat-form-field class="create-fiction-read-only">
+              <input matInput placeholder="Article type" formControlName="type">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="create-fiction-read-only">
+              <input matInput [readonly]="type" placeholder="Book type" formControlName="bookType">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="create-fiction">
+              <input matInput placeholder="Title" formControlName="title">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="create-fiction">
+              <input matInput placeholder="Author" formControlName="author">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="create-fiction">
+              <input matInput placeholder="Price" formControlName="price"
+                     [dropSpecialCharacters]="false" mask="999999.00">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="create-fiction">
+              <mat-select placeholder="Fiction genre" formControlName="fictionGenre">
+                <mat-option *ngFor="let genre of fictionGenres()" [value]="genre">
+                  {{genre}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="create-fiction">
+              <input type="text" matInput placeholder="Isbn" formControlName="isbn"
+                     [dropSpecialCharacters]="false" mask="000-00-0000-000-0">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="create-fiction">
+              <input matInput placeholder="nr of pages" formControlName="nrOfPages"
+                     mask="9999">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="create-fiction">
+              <input matInput placeholder="Short summary" formControlName="shortSummary">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="create-fiction">
+              <input matInput placeholder="Supplier ID" formControlName="supplierId">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+
+        </tr>
+        <tr>
+          <button mat-button class="submit-button" type=submit>
+            Submit
+          </button>
+        </tr>
+      </table>
+
+    </form>
+
+  </mat-card>
+</div>

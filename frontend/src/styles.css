@@ -2,6 +2,8 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 body{
   background-color: whitesmoke;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 .green-button{

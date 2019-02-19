@@ -1,0 +1,68 @@
+
+<div style="align-content: center">
+  <mat-card>
+
+    <form [formGroup]="createGameForm" (ngSubmit)="createGame()">
+
+      <table class="create-game" cellspacing="20">
+        <tr>
+          <td>
+            <mat-form-field class="create-game-read-only">
+              <input matInput [readonly]="type" placeholder="Article type" formControlName="type">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="create-game">
+              <input matInput placeholder="Publisher" formControlName="publisher">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="create-game">
+              <input matInput placeholder="Title" formControlName="title">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="create-game">
+              <input matInput placeholder="Minimum age" formControlName="minimumAge">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="create-game">
+              <input matInput placeholder="Price" formControlName="price">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="create-game">
+              <mat-select placeholder="Game genre" formControlName="gameGenre">
+                <mat-option *ngFor="let genre of gameGenres()" [value]="genre">
+                  {{genre}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="create-game">
+              <input matInput placeholder="Supplier ID" formControlName="supplierId">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+
+        </tr>
+        <tr>
+          <button mat-button class="submit-button" type=submit>
+            Submit
+          </button>
+        </tr>
+      </table>
+
+    </form>
+
+  </mat-card>
+</div>
