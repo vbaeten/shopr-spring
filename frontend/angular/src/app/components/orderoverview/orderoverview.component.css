@@ -6,7 +6,7 @@ table {
 #outer {
   width: 80%;
   margin: 0 auto;
-  margin-bottom: 50px;
+  /*margin-bottom: 50px;*/
   padding-top: 1em;
   height: 60vh;
   display: flex;
