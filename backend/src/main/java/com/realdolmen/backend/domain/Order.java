@@ -25,6 +25,17 @@ public class Order implements Serializable {
     @JoinColumn(name = "order_id")
     private List<OrderLine> orderLines = new ArrayList<>();
 
+    @Column
+    private double total;
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
     public Long getId() {
         return id;
     }
