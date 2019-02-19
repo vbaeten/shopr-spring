@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {User} from '../../../models/user';
 import {LoginService} from '../../../services/login.service';
 import {Subscription} from 'rxjs';
@@ -15,6 +15,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   currentUser: User = new User();
   orderLines: OrderLine[];
   private userSubscription: Subscription;
+  private orderLineAddedSubscription: Subscription;
   dataSource;
 
   constructor(private loginService: LoginService,
@@ -24,6 +25,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.getCurrentUser();
     this.userSubscription = this.loginService.userSubject.subscribe(() => this.getCurrentUser());
+    this.orderLineAddedSubscription = this.cartService.orderLineAddedSubject.subscribe( data => {
+      this.orderLines.push(data);
+      this.orderLines = this.orderLines;
+    });
   }
 
   getCurrentUser() {

@@ -53,7 +53,7 @@ export class OrderArticleComponent implements OnInit {
     this.orderLine.quantity = form.value.quantity;
     this.orderLine.subTotal = form.value.quantity * this.article.price;
     this.orderLine.user = this.currentUser;
-    this.shoppingCartService.addToCart(this.orderLine).subscribe(data => this.orderLine = data);
+    this.shoppingCartService.addToCart(this.orderLine);
   }
 
   addToCarto(form: NgForm) {
@@ -61,6 +61,6 @@ export class OrderArticleComponent implements OnInit {
     this.orderLine.article = this.article;
     this.orderLine.quantity = form.value.quantity;
     this.orderLine.cart = this.cart;
-    this.shoppingCartService.addToCart(this.orderLine).subscribe(data => this.orderLine = data);
+    this.shoppingCartService.addToCart(this.orderLine);
   }
 }

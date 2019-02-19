@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Order} from '../../../../models/order';
 import {User} from '../../../../models/user';
 import {LoginService} from '../../../../services/login.service';
@@ -17,7 +17,7 @@ export class OrderOverviewComponent implements OnInit {
   orderLine = '';
   orderLines: OrderLine[];
 
-  displayedColumns: string[] = ['orderid', 'orderdate', 'total', 'detail'];
+  displayedColumns: string[] = ['orderid', 'orderdate', 'total'];
   dataSource;
 
   constructor(private loginService: LoginService,

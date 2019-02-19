@@ -1,21 +1,25 @@
 import {Injectable} from '@angular/core';
 import {ApiService} from './api.service';
 import {OrderLine} from '../models/order-line';
-import {Observable} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import {User} from '../models/user';
-import {Order} from "../models/order";
-import {Cart} from "../models/cart";
+import {Order} from '../models/order';
+import {Cart} from '../models/cart';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShoppingCartService {
 
+  orderLineAddedSubject = new Subject<OrderLine>();
+
   constructor(private apiService: ApiService) { }
 
-  addToCart(orderLine: OrderLine): Observable<OrderLine> {
+  addToCart(orderLine: OrderLine){
     console.log(orderLine);
-    return this.apiService.doPost('/cart/add', orderLine);
+    this.apiService.doPost('/cart/add', orderLine).subscribe(data => {
+      this.orderLineAddedSubject.next(data);
+    });
   }
 
   sendToOrder(order: Order): Observable<Order> {
