@@ -15,7 +15,7 @@ import javax.validation.constraints.Size;
 @Inheritance(strategy = InheritanceType.JOINED)
 @AllArgsConstructor
 @NoArgsConstructor
-abstract class Book extends Article{
+public abstract class Book extends Article{
 
     @Size(max = 100)
     @Column(name = "author")
@@ -24,6 +24,7 @@ abstract class Book extends Article{
     @Column(name = "isbn", unique = true, length = 17)
     @Pattern(regexp = "\\d{3}-\\d{2}-\\d{4}-\\d{3}-\\d{1}")
     private String isbn;
+    @Size(max = 4)
     @Column(name = "nr_of_pages")
     private int nrOfPages;
     @Column(insertable = false, updatable = false)

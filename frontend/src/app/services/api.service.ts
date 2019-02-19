@@ -15,7 +15,7 @@ export class ApiService {
   }
 
   public doPost(uri: string, body: Object, parameters?: Map<string, string>) {
-    return this.httpClient.post(uri, body, {params: this.appendParameters(parameters)});
+    return this.httpClient.post<any>(uri, body, {params: this.appendParameters(parameters)});
   }
 
   public doPut(uri: string, body: Object, parameters?: Map<string, string>) {

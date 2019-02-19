@@ -29,15 +29,18 @@ export class ArticleSevice {
       })
   }
 
+  public getArticleById(id:number) :Observable<Article>{
+      return this.apiService.doGet("/article/" + id);
+  }
+
   public getArticles(): Observable<Article[]> {
     return this.apiService.doGet("/article")
   }
 
   public deleteArticle(id: number) {
-    return this.apiService.doDelete("/id")
+    return this.apiService.doDelete("/article/" + id)
   }
 
-  private static handleError(error: any): Promise<any> {
-    return Promise.reject(error.message | error);
-  }
+
+
 }

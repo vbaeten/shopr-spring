@@ -57,7 +57,7 @@ public class UserServiceTests {
     @Test
     public void testSaveCustomArgsUser() {
         //Create test data
-        User expectedUser = new User("no", "id");
+        User expectedUser = new User(100L,"no", "id", "expectedUser",false,true);
 
         //Mocking of Repository
         when(userRepository.save(any())).thenReturn(expectedUser);

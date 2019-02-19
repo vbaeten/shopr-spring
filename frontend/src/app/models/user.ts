@@ -1,15 +1,18 @@
 export class User {
 
-  constructor(public firstName: string,
-              public name: string,
-              // public isAdmin?: boolean,
-              // public isLoggedIn?: boolean,
-              public id?: number) {
+  constructor(public userName?: string,
+              public firstName?: string,
+              public name?: string,
+              public admin?: boolean,
+              public loggedin?: boolean,
+              public id?: number,
+  ) {
+    this.userName = userName;
     this.firstName = firstName;
     this.name = name;
-    // this.isAdmin = isAdmin;
-    // this.isLoggedIn = true;
-    this.id=id;
+    this.admin = admin;
+    this.loggedin = loggedin;
+    this.id = id;
   }
 
 }

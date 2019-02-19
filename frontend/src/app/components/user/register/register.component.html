@@ -7,6 +7,11 @@
         <tr>
           <td>
             <mat-form-field class="register-user">
+              <input matInput placeholder="userName" formControlName="userName">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="register-user">
               <input matInput placeholder="First name" formControlName="firstName">
             </mat-form-field>
           </td>
@@ -15,16 +20,14 @@
               <input matInput placeholder="Name" formControlName="name">
             </mat-form-field>
           </td>
-          <!--
                   <td>
-                    <mat-checkbox [formGroup]="registerUserForm" [formControlName]="checked">
+                    <mat-checkbox formControlName="admin">
                       Admin
                     </mat-checkbox>
                   </td>
-          -->
         </tr>
         <tr>
-          <button mat-button class="register-button" type=submit>
+          <button mat-raised-button class="green-button" type=submit>
             Register
           </button>
         </tr>
@@ -34,6 +37,4 @@
 
 </mat-card>
 </div>
-<p>
-  Register works!
-</p>
+s

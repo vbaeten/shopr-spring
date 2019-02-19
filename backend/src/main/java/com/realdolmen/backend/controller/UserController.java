@@ -19,9 +19,14 @@ public class UserController {
         return userService.save(user);
     }
 
-    @GetMapping("/{id}")
-    public User findById(@PathVariable("id") Long id) {
-        return userService.findById(id);
+//    @GetMapping("//{id}")
+//    public User findById(@PathVariable("id") Long id) {
+//        return userService.findById(id);
+//    }
+
+    @GetMapping("/{userName}")
+    public User findByUserName(@PathVariable("userName") String userName) {
+        return userService.findByUserName(userName);
     }
 
     @GetMapping
@@ -36,8 +41,7 @@ public class UserController {
 
     @DeleteMapping("/{id}")
     public void deleteById(@PathVariable("id") Long id) {
-        User user = findById(id);
-        userService.delete(user);
+        userService.deleteById(id);
     }
 
 

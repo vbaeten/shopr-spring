@@ -5,6 +5,7 @@ export class Article {
   public title: string;
   public price: number;
   public supplierId: string;
+  public articleId: number;
 
   constructor(type?: string, title?: string, price?: number, supplierId?: string) {
     this.type = type;

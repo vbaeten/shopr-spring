@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {MatSnackBar} from "@angular/material";
 import {ApiService} from "./api.service";
 import {Fiction} from "../models/fiction";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -28,13 +29,19 @@ export class FictionService {
       })
   }
 
-  public getFictions(): Promise<Fiction[]> {
+  public getFictions(): Observable<Fiction[]> {
     return this.apiService.doGet("/fiction")
-      .toPromise()
-      .catch(error => FictionService.handleError(error))
   }
 
   private static handleError(error: any): Promise<any> {
     return Promise.reject(error.message | error);
+  }
+
+  public deleteFiction(id: number) {
+    return this.apiService.doDelete("/fiction/" + id)
+  }
+
+  public getFictionById(id: number): Observable<Fiction> {
+    return this.apiService.doGet("/fiction/" + id);
   }
 }

@@ -64,6 +64,38 @@ create table shopr.user
 	id bigint auto_increment
 		primary key,
 	first_name varchar(255) not null,
-	name varchar(255) not null
+	admin   bit          null,
+	logged_in   bit          null,
+	name varchar(255) not null,
+	user_name  varchar(255) not null
 )
 engine=MyISAM;
+
+create table order_line
+(
+  id bigint auto_increment
+    primary key,
+  quantity   decimal(19, 2) null,
+  article_id bigint null,
+  order_id   bigint null
+)
+  engine = MyISAM;
+
+create index FKgyaq7gsm6vugjkw4smqwxsn4b
+  on order_line (article_id);
+
+create index FKk9f9t1tmkbq5w27u8rrjbxxg6
+  on order_line (order_id);
+
+create table orders
+(
+  order_id bigint auto_increment
+    primary key,
+  confirmed bit not null,
+  date_of_order datetime null,
+  user_id bigint
+)
+  engine = MyISAM;
+
+create index FKel9kyl84ego2otj2accfd8mr7
+  on orders (user_id);

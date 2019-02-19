@@ -1,12 +1,16 @@
 package com.realdolmen.backend.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Getter
@@ -17,10 +21,21 @@ import java.math.BigDecimal;
 @DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING, name = "type")
 @NoArgsConstructor
 @EqualsAndHashCode
-public abstract class Article {
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        include = JsonTypeInfo.As.PROPERTY,
+        property = "type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Game.class, name = "game"),
+        @JsonSubTypes.Type(value = Lp.class, name = "lp"),
+        @JsonSubTypes.Type(value = Fiction.class, name = "fiction"),
+        @JsonSubTypes.Type(value = NonFiction.class, name = "nonFiction"),
+})
+public abstract class Article implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "article_id")
     private Long articleId;
 
     @NotNull

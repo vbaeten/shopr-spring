@@ -14,7 +14,7 @@ public class ArticleController {
 
     private final ArticleService articleService;
 
-    @GetMapping("/{id")
+    @GetMapping("/{id}")
     public Article findById(@PathVariable("id") Long id) {
         return articleService.findById(id);
     }

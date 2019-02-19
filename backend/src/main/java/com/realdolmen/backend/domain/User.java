@@ -6,8 +6,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 
-@Getter
 @Setter
+@Getter
 @Entity
 @Table(name = "user")
 @EqualsAndHashCode
@@ -15,13 +15,6 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 @Builder(builderClassName = "Builder")
 public class User{
-
-    public User(String firstName, String name){
-        this.firstName = firstName;
-        this.name = name;
-//        this.isAdmin = isAdmin;
-//        this.isLoggedIn = true;
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,10 +25,11 @@ public class User{
     @NotNull
     @Column(name = "first_name")
     private String firstName;
-//    @Column(name = "is_admin")
-//    private boolean isAdmin;
-//    private boolean isLoggedIn;
+    @NotNull
+    @Column(name = "user_name", unique = true, length = 100)
+    private String userName;
 
-
+    private boolean admin;
+    private boolean loggedIn;
 
 }
