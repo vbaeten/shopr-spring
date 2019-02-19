@@ -16,6 +16,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   orderLines: OrderLine[];
   private userSubscription: Subscription;
   private orderLineAddedSubscription: Subscription;
+  private orderLineDeletedSubscription: Subscription;
   dataSource;
 
   constructor(private loginService: LoginService,
@@ -27,6 +28,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.userSubscription = this.loginService.userSubject.subscribe(() => this.getCurrentUser());
     this.orderLineAddedSubscription = this.cartService.orderLineAddedSubject.subscribe( data => {
       this.orderLines.push(data);
+      this.orderLines = this.orderLines;
+    });
+    this.orderLineAddedSubscription = this.cartService.orderLineDeletedSubject.subscribe( d => {
+      this.orderLines.reverse();
       this.orderLines = this.orderLines;
     });
   }
@@ -44,6 +49,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.userSubscription.unsubscribe();
+    this.orderLineAddedSubscription.unsubscribe();
   }
 
 

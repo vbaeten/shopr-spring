@@ -12,6 +12,7 @@ import {Cart} from '../models/cart';
 export class ShoppingCartService {
 
   orderLineAddedSubject = new Subject<OrderLine>();
+  orderLineDeletedSubject = new Subject<OrderLine>();
 
   constructor(private apiService: ApiService) { }
 
@@ -44,7 +45,7 @@ export class ShoppingCartService {
 
   deleteOrderLine(id: number) {
     this.apiService.doDelete('/cart/delete/' + id).subscribe(data => {
-      this.orderLineAddedSubject.next(data);
+      this.orderLineDeletedSubject.next(data);
     });
   }
 
