@@ -7,7 +7,7 @@ import {ActivatedRoute} from '@angular/router';
 import {ArticleService} from '../../../services/article.service';
 import {User} from '../../../models/user';
 import {LoginService} from '../../../services/login.service';
-import {Cart} from "../../../models/cart";
+import {Cart} from '../../../models/cart';
 
 @Component({
   selector: 'app-order-article',
@@ -35,7 +35,6 @@ export class OrderArticleComponent implements OnInit {
   ngOnInit() {
     this.getArticle();
     this.getCurrentUser();
-    // this.userSubscription = this.loginService.userSubject.subscribe(() => this.getCurrentUser());
   }
 
   getCurrentUser() {
@@ -56,11 +55,4 @@ export class OrderArticleComponent implements OnInit {
     this.shoppingCartService.addToCart(this.orderLine);
   }
 
-  addToCarto(form: NgForm) {
-    this.orderLine = new OrderLine();
-    this.orderLine.article = this.article;
-    this.orderLine.quantity = form.value.quantity;
-    this.orderLine.cart = this.cart;
-    this.shoppingCartService.addToCart(this.orderLine);
-  }
 }

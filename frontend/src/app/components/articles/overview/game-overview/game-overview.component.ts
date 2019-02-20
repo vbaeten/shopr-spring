@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Game} from '../../../../models/game';
-import {GameService} from "../../../../services/game.service";
-import {ArticleService} from "../../../../services/article.service";
-import {DataService} from "../../../../services/data.service";
+import {GameService} from '../../../../services/game.service';
+import {ArticleService} from '../../../../services/article.service';
 
 @Component({
   selector: 'app-game-overview',
@@ -16,7 +15,7 @@ export class GameOverviewComponent implements OnInit {
   displayedColumns: string[] = ['id', 'title', 'price', 'delete'];
 
 
-  constructor(private gameService: GameService, private articleService: ArticleService, private dataService: DataService) {
+  constructor(private gameService: GameService, private articleService: ArticleService) {
   }
 
   ngOnInit() {

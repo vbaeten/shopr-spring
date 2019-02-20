@@ -1,5 +1,4 @@
-import {User} from "./user";
-import {OrderLine} from "./order-line";
+import {User} from './user';
 
 export class Cart {
 

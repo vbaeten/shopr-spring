@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {UserService} from "../../services/user.service";
-import {MatCard} from "@angular/material";
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +8,7 @@ import {MatCard} from "@angular/material";
 
 export class HomeComponent implements OnInit {
 
-  constructor(private userService: UserService) { }
+  constructor() { }
 
   ngOnInit() {
   }

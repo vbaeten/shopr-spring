@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {ApiService} from './api.service';
 import {OrderLine} from '../models/order-line';
 import {Observable, Subject} from 'rxjs';
-import {User} from '../models/user';
 import {Order} from '../models/order';
 import {Cart} from '../models/cart';
 
@@ -27,10 +26,6 @@ export class ShoppingCartService {
     return this.apiService.doPost('/order/send', order);
   }
 
-  findByUser(user: User): Observable<OrderLine[]> {
-    return this.apiService.doGet('/cart/' + user);
-  }
-
   findCurrentCartByOrderLinesByUserId(id: number): Observable<OrderLine[]> {
     return this.apiService.doGet('/orderline/current/' + id);
   }
@@ -41,15 +36,5 @@ export class ShoppingCartService {
 
   deleteOrderLineById(id: number): Observable<OrderLine> {
     return this.apiService.doDelete('/cart/delete/' + id);
-  }
-
-  deleteOrderLine(id: number) {
-    this.apiService.doDelete('/cart/delete/' + id).subscribe(data => {
-      this.orderLineDeletedSubject.next(data);
-    });
-  }
-
-  setOrderLinesToOrder(orderLine: OrderLine): Observable<OrderLine> {
-    return this.apiService.doPut('/cart/line', orderLine);
   }
 }

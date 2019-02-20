@@ -34,8 +34,4 @@ export class UserService {
   updateUser(user: User): Observable<User> {
     return this.apiService.doPost('/user/register', user);
   }
-
-  deleteUser(user: User | number): Observable<User> {
-    return this.apiService.doDelete('/user/delete');
-  }
 }

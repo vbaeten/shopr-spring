@@ -2,10 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {NonFiction} from '../../../../models/non-fiction';
 import {NonFictionService} from '../../../../services/non-fiction.service';
 import {ActivatedRoute} from '@angular/router';
-import {LoginService} from "../../../../services/login.service";
-import {User} from "../../../../models/user";
-import {OrderLine} from "../../../../models/order-line";
-import {ShoppingCartService} from "../../../../services/shopping-cart.service";
+
 
 @Component({
   selector: 'app-non-fiction-detail',

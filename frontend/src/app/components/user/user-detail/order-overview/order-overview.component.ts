@@ -3,7 +3,7 @@ import {Order} from '../../../../models/order';
 import {User} from '../../../../models/user';
 import {LoginService} from '../../../../services/login.service';
 import {OrderService} from '../../../../services/order.service';
-import {OrderLine} from "../../../../models/order-line";
+import {OrderLine} from '../../../../models/order-line';
 
 @Component({
   selector: 'app-order-overview',

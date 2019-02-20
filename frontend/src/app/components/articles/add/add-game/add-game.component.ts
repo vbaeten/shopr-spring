@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {Game} from '../../../../models/game';
-import {GameService} from "../../../../services/game.service";
+import {GameService} from '../../../../services/game.service';
 
 @Component({
   selector: 'app-add-game',

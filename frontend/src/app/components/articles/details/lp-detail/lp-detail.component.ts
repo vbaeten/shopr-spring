@@ -1,12 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Lp} from '../../../../models/lp';
 import {LpService} from '../../../../services/lp.service';
-import {ActivatedRoute} from "@angular/router";
-import {ShoppingCartService} from "../../../../services/shopping-cart.service";
-import {OrderLine} from "../../../../models/order-line";
-import {NgForm} from "@angular/forms";
-import {LoginService} from "../../../../services/login.service";
-import {User} from "../../../../models/user";
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-lp-detail',

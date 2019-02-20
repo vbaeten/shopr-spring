@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {UserService} from '../../../services/user.service';
 import {User} from '../../../models/user';
 import {MatSort, MatTableDataSource} from '@angular/material';
-import {Subscription} from "rxjs";
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-users',

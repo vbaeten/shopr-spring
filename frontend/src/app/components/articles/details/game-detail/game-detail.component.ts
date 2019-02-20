@@ -2,12 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Game} from '../../../../models/game';
 import {GameService} from '../../../../services/game.service';
 import {ActivatedRoute} from '@angular/router';
-import {ShoppingCartService} from '../../../../services/shopping-cart.service';
-import {NgForm} from '@angular/forms';
-import {OrderLine} from '../../../../models/order-line';
-import {Subscription} from "rxjs";
-import {LoginService} from "../../../../services/login.service";
-import {User} from "../../../../models/user";
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-game-detail',

@@ -56,10 +56,6 @@ export class OrderLinesComponent implements OnInit {
     this.cartService.deleteOrderLineById(id).subscribe(data => this.getOrderLines());
   }
 
-  deleteOrderLine(id: number) {
-    this.cartService.deleteOrderLine(id);
-  }
-
   getTotal() {
     return this.orderLines.map(total => total.subTotal).reduce((acc, value) => acc + value, 0);
   }
