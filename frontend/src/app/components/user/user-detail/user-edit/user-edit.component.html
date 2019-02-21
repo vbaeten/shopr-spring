@@ -1,5 +1,4 @@
 <div class="myContainer">
-
   <mat-accordion>
     <mat-expansion-panel>
     <mat-expansion-panel-header>
@@ -10,12 +9,14 @@
     <form class="inesForm" #f="ngForm" (ngSubmit)="onSubmit(f)">
       <div fxLayout="row" fxLayoutGap="20px"  fxFlexAlign="end">
         <mat-form-field appearance="standard">
-          <input matInput id="firstName" placeholder="{{currentUser.firstName}}"  type="text" name="firstName" ngModel>
+          <input matInput id="firstName" placeholder="{{currentUser.firstName}}"  type="text" name="firstName" ngModel
+          #firstName>
         </mat-form-field>
         <mat-form-field appearance="standard">
-          <input id="name" matInput name="name" ngModel placeholder="{{currentUser.name}}" type="text">
+          <input id="name" matInput name="name" ngModel placeholder="{{currentUser.name}}" type="text"
+          #name>
         </mat-form-field>
-        <button id="register-button" mat-stroked-button color="accent">Edit</button>
+        <button id="register-button" mat-stroked-button color="accent" [disabled]="firstName.value == '' && name.value ==''">Edit</button>
       </div>
     </form>
   </mat-expansion-panel>

@@ -29,16 +29,11 @@ export class UserEditComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    if (form.value.firstName.length === 0) {
-      this.currentUser.firstName = this.currentUser.firstName;
-    } else {
+    if (form.value.firstName.length !== 0) {
       this.currentUser.firstName = form.value.firstName;
     }
-    if (form.value.name.length === 0) {
-      this.currentUser.name = this.currentUser.name;
-    } else {
+    if (form.value.name.length !== 0) {
       this.currentUser.name = form.value.name;
-
     }
     this.userService.updateUser(this.currentUser).subscribe(data => this.getCurrentUser());
     this.loginService.login(this.currentUser);
