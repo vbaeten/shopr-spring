@@ -26,7 +26,7 @@ import {TableArticlesComponent} from "./components/table-articles/table-articles
 import {FooterComponent} from './components/footer/footer.component';
 import {HomeComponent} from './components/home/home.component';
 import {CreateComponent} from './components/create/create.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CreatelpComponent} from './components/createlp/createlp.component';
 import {CreategameComponent} from './components/creategame/creategame.component';
 import {CreatebookfictionComponent} from './components/createbookfiction/createbookfiction.component';
@@ -48,6 +48,8 @@ import {BooknonfictionService} from "./services/booknonfiction.service";
 import {GameService} from "./services/game.service";
 import {LpService} from "./services/lp.service";
 import {OrderlineService} from "./services/orderline.service";
+import {ReactiveformComponent} from './components/reactiveform/reactiveform.component';
+import {ReactiveformeditorComponent} from './components/reactiveformeditor/reactiveformeditor.component';
 
 
 @NgModule({
@@ -72,6 +74,8 @@ import {OrderlineService} from "./services/orderline.service";
     EditgameComponent,
     ShoppingcartComponent,
     OrderoverviewComponent,
+    ReactiveformComponent,
+    ReactiveformeditorComponent,
   ],
   imports: [
     BrowserModule,
@@ -88,6 +92,7 @@ import {OrderlineService} from "./services/orderline.service";
     MatOptionModule,
     MatSelectModule,
     FormsModule,
+    ReactiveFormsModule,
     MatCardModule,
     MatCheckboxModule,
     MatRadioModule,
