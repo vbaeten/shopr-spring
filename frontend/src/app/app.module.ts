@@ -41,6 +41,7 @@ import {UserEditComponent} from './components/user/user-detail/user-edit/user-ed
 import {LoginService} from './services/login.service';
 import {OrderLinesComponent} from './components/order/order-lines/order-lines.component';
 import {CreateShoppingCartComponent} from './components/temp/create-shopping-cart/create-shopping-cart.component';
+import {StyleComponent} from './components/temp/style/style.component';
 
 
 @NgModule({
@@ -78,6 +79,7 @@ import {CreateShoppingCartComponent} from './components/temp/create-shopping-car
     UserEditComponent,
     OrderLinesComponent,
     CreateShoppingCartComponent,
+    StyleComponent,
   ],
   imports: [
     BrowserModule,

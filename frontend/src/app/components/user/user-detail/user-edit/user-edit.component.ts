@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from "../../../../models/user";
-import {LoginService} from "../../../../services/login.service";
-import {NgForm} from "@angular/forms";
-import {UserService} from "../../../../services/user.service";
+import {User} from '../../../../models/user';
+import {LoginService} from '../../../../services/login.service';
+import {NgForm} from '@angular/forms';
+import {UserService} from '../../../../services/user.service';
 
 @Component({
   selector: 'app-user-edit',
@@ -34,4 +34,5 @@ export class UserEditComponent implements OnInit {
     this.userService.updateUser(this.currentUser).subscribe(data => this.getCurrentUser());
     this.loginService.login(this.currentUser);
   }
+
 }
