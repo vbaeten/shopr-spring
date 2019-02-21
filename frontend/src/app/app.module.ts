@@ -42,6 +42,7 @@ import {LoginService} from './services/login.service';
 import {OrderLinesComponent} from './components/order/order-lines/order-lines.component';
 import {CreateShoppingCartComponent} from './components/temp/create-shopping-cart/create-shopping-cart.component';
 import {StyleComponent} from './components/temp/style/style.component';
+import {ValidationModule} from './modules/validation/validation.module';
 
 
 @NgModule({
@@ -89,7 +90,8 @@ import {StyleComponent} from './components/temp/style/style.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    FormsModule
+    FormsModule,
+    ValidationModule
   ],
   providers: [
     UserService,

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../../services/user.service';
 import {User} from '../../../models/user';
 import {NgForm} from '@angular/forms';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-register',
@@ -10,10 +11,17 @@ import {NgForm} from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService,
+              private snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
   }
 
   onSubmit(form: NgForm) {

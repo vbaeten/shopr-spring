@@ -4,12 +4,13 @@
       <div fxLayout="row" fxLayoutGap="20px"  fxFlexAlign="end">
           <mat-form-field appearance="standard">
             <input matInput id="firstName" placeholder="First Name" type="text" name="firstName" ngModel
-            required >
+            required #firstName>
           </mat-form-field>
           <mat-form-field appearance="standard">
-            <input matInput id="name" placeholder="Last Name" type="text" name="name" ngModel required>
+            <input matInput id="name" placeholder="Last Name" type="text" name="name" ngModel required
+            #name>
           </mat-form-field>
-        <button id="register-button" mat-stroked-button color="accent" [disabled]="!f.valid">Register</button>
+        <button id="register-button" mat-stroked-button color="accent" [disabled]="!f.valid" (click)="openSnackBar(firstName.value, name.value)">Register</button>
       </div>
     </form>
 </div>

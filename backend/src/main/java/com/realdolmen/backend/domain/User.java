@@ -3,6 +3,7 @@ package com.realdolmen.backend.domain;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.List;
 
@@ -16,9 +17,11 @@ public class User implements Serializable {
     private Long id;
 
     @Column
+    @NotBlank
     private String name;
 
     @Column(name = "first_name")
+    @NotBlank
     private String firstName;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
