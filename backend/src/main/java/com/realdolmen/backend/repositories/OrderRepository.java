@@ -1,8 +1,8 @@
 package com.realdolmen.backend.repositories;
 
-import com.realdolmen.backend.Domain.Order;
-import com.realdolmen.backend.Domain.User;
-import com.realdolmen.backend.Domain.enums.OrderStatus;
+import com.realdolmen.backend.domain.Order;
+import com.realdolmen.backend.domain.User;
+import com.realdolmen.backend.domain.enums.OrderStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

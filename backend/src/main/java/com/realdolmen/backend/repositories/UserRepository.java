@@ -1,6 +1,6 @@
 package com.realdolmen.backend.repositories;
 
-import com.realdolmen.backend.Domain.User;
+import com.realdolmen.backend.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

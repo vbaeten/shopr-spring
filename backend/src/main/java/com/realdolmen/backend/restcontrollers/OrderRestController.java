@@ -1,13 +1,11 @@
 package com.realdolmen.backend.restcontrollers;
 
-import com.realdolmen.backend.Domain.Order;
-import com.realdolmen.backend.Domain.Orderline;
-import com.realdolmen.backend.Domain.User;
-import com.realdolmen.backend.Domain.enums.OrderStatus;
-import com.realdolmen.backend.exception.NotFoundException;
-import com.realdolmen.backend.repositories.OrderRepository;
-import com.realdolmen.backend.repositories.OrderlineRepository;
-import com.realdolmen.backend.repositories.UserRepository;
+import com.realdolmen.backend.domain.Order;
+import com.realdolmen.backend.domain.Orderline;
+import com.realdolmen.backend.domain.enums.OrderStatus;
+import com.realdolmen.backend.service.OrderService;
+import com.realdolmen.backend.service.OrderlineService;
+import com.realdolmen.backend.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
@@ -15,59 +13,38 @@ import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.util.Objects.nonNull;
-
 @RestController
 @RequestMapping(path = "/orders")
 public class OrderRestController {
-    private final OrderRepository orderRepository;
-    private final OrderlineRepository orderlineRepository;
-    private final UserRepository userRepository;
+    private final OrderService orderService;
+    private final OrderlineService orderlineService;
+    private final UserService userService;
 
-    public OrderRestController(OrderRepository orderRepository, OrderlineRepository orderlineRepository, UserRepository userRepository) {
-        this.orderRepository = orderRepository;
-        this.orderlineRepository = orderlineRepository;
-        this.userRepository = userRepository;
+    public OrderRestController(OrderService orderService, OrderlineService orderlineService, UserService userService) {
+        this.orderService = orderService;
+        this.orderlineService = orderlineService;
+        this.userService = userService;
     }
 
     @PutMapping("/save")
     @Transactional
     public Order save(@RequestBody @Valid Order order) {
-        Order savedOrder = orderRepository.save(order);
+        Order savedOrder = orderService.save(order);
         List<Orderline> persistedOrderlines = new ArrayList<>();
-        order.getOrderlineList().forEach(orderline -> saveOrderline(savedOrder, persistedOrderlines, orderline));
+        order.getOrderlineList().forEach(orderline -> orderService.saveOrderline(savedOrder, persistedOrderlines, orderline));
         savedOrder.setOrderlineList(persistedOrderlines);
         return savedOrder;
     }
 
-    private void saveOrderline(Order savedOrder, List<Orderline> persistedOrderlines, Orderline orderline) {
-        if (nonNull(orderline.getOrderlineId())) {
-            Orderline tempOrderline = orderlineRepository.findById(orderline.getOrderlineId())
-                    .orElseThrow(RuntimeException::new);
-            tempOrderline.setQuantity(orderline.getQuantity());
-            tempOrderline.setSubTotal(orderline.getSubTotal());
-            tempOrderline = orderlineRepository.save(tempOrderline);
-            persistedOrderlines.add(tempOrderline);
-        } else {
-            orderline.setOrder(savedOrder);
-            Orderline savedOrderline = orderlineRepository.save(orderline);
-            persistedOrderlines.add(savedOrderline);
-        }
-    }
-
     @GetMapping("/findCurrentCartByUserId/{userId}")
     public Order findCurrentCartByUserId(@PathVariable Long userId) {
-        User user = userRepository.findById(userId)
-                .orElseThrow(NotFoundException::new);
-        return orderRepository.findByUserAndOrderStatus(user, OrderStatus.IN_CART)
+        return orderService.findByUserAndOrderStatus(userService.findById(userId), OrderStatus.IN_CART)
                 .orElse(null);
     }
 
     @GetMapping("/all/{userId}")
     public List<Order> findOrdersByUserId(@PathVariable Long userId) {
-        User user = userRepository.findById(userId)
-                .orElseThrow(NotFoundException::new);
-        return orderRepository.findAllByUser(user);
+        return orderService.findAllByUser(userService.findById(userId));
     }
 
     @PutMapping(path = "/ordernow")
@@ -76,12 +53,5 @@ public class OrderRestController {
         orderThis.setOrderStatus(OrderStatus.ORDERED);
         save(orderThis);
     }
-
-//    @GetMapping(path = "/all/{userId}")
-//    public List<Order> getAllOrdersfromUser(@PathVariable Long userId) {
-//        User user = userRepository.findById(userId)
-//                .orElseThrow(NotFoundException::new);
-//        return orderRepository.findAll();
-//    }
 
 }

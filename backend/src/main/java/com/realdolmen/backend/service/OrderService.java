@@ -1,35 +1,27 @@
+
 package com.realdolmen.backend.service;
 
-
+import com.realdolmen.backend.domain.Order;
 import com.realdolmen.backend.domain.Orderline;
+import com.realdolmen.backend.domain.User;
+import com.realdolmen.backend.domain.enums.OrderStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
-public inteface OrderService implements CrudService<Order, Long> {
+public interface OrderService extends CrudService<Order, Long> {
 
-private final OrderRepository orderRepository;
+    Order findById(Long id);
 
-public OrderService(OrderRepository orderRepository){
-        this.orderRepository=orderRepository;
-        }
+    void deleteById(Long id);
 
-@Override
-public<S extends Orderline> S save(S entity){
-        return null;
-        }
+    List<Order> findAll();
 
-@Override
-public Orderline findById(Long primaryKey){
-        return null;
-        }
+    void saveOrderline(Order savedOrder, List<Orderline> persistedOrderlines, Orderline orderline);
 
-@Override
-public List<Orderline> findAll(){
-        return null;
-        }
+    List<Order> findAllByUser(User user);
 
-@Override
-public void delete(Orderline entity){
-
-        }
-        }
+    Optional<Order> findByUserAndOrderStatus(User user, OrderStatus orderStatus);
+}

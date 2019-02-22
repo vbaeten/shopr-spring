@@ -1,36 +1,24 @@
 package com.realdolmen.backend.service;
 
 import com.realdolmen.backend.domain.User;
-import com.realdolmen.backend.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
-public interface UserService implements CrudService<User, Long> {
-    private final UserRepository userRepository;
+public interface UserService extends CrudService<User, Long> {
 
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    User findById(Long id);
 
-    @Override
-    public <S extends User> S save(S entity) {
-        return null;
-    }
+    List<User> findAll();
 
-    @Override
-    public User findById(Long primaryKey) {
-        return null;
-    }
+    User create(User user);
 
-    @Override
-    public List<User> findAll() {
-        return null;
-    }
+    void deleteById(Long id);
 
-    @Override
-    public void delete(User entity) {
+    Optional<User> findByUserName(String userName);
 
-    }
+
 }
+

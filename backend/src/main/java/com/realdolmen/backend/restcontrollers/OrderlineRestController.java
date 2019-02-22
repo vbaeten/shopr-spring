@@ -1,6 +1,6 @@
 package com.realdolmen.backend.restcontrollers;
 
-import com.realdolmen.backend.Domain.Orderline;
+import com.realdolmen.backend.domain.Orderline;
 import com.realdolmen.backend.repositories.OrderlineRepository;
 import org.springframework.web.bind.annotation.*;
 
