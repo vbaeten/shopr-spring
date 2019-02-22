@@ -37,7 +37,6 @@ public class OrderlineServiceImpl implements OrderlineService {
         orderlineRepository.deleteById(id);
     }
 
-    @Override
     public <S extends Orderline> S save(S entity) {
         return orderlineRepository.save(entity);
     }

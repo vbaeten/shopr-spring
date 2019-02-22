@@ -10,6 +10,8 @@ import com.realdolmen.backend.repositories.OrderlineRepository;
 import com.realdolmen.backend.service.OrderService;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,11 +44,6 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public <S extends Order> S save(S entity) {
-        return orderRepository.save(entity);
-    }
-
-    @Override
     public void saveOrderline(Order savedOrder, List<Orderline> persistedOrderlines, Orderline orderline) {
         if (nonNull(orderline.getOrderlineId())) {
             Orderline tempOrderline = orderlineRepository.findById(orderline.getOrderlineId())
@@ -75,5 +72,14 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Order create(Order order) {
         return orderRepository.save(order);
+    }
+
+    @Transactional
+    public Order save(Order order) {
+        Order savedOrder = orderRepository.save(order);
+        List<Orderline> persistedOrderlines = new ArrayList<>();
+        order.getOrderlineList().forEach(orderline -> saveOrderline(savedOrder, persistedOrderlines, orderline));
+        savedOrder.setOrderlineList(persistedOrderlines);
+        return savedOrder;
     }
 }

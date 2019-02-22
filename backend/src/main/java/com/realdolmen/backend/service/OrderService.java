@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public interface OrderService extends CrudService<Order, Long> {
+public interface OrderService {
 
     Order findById(Long id);
 
@@ -25,4 +25,7 @@ public interface OrderService extends CrudService<Order, Long> {
     Optional<Order> findByUserAndOrderStatus(User user, OrderStatus orderStatus);
 
     Order create(Order order);
+
+    Order save(Order order);
+
 }
