@@ -31,11 +31,13 @@ public class UserServiceImplTest {
         user.setName("Sanz");
     }
 
-    @Test public void userCanByFoundById() {
+    @Test
+    public void userCanByFoundById() {
         User user2 = userService.findById(1L);
         assertEquals(1L, user.getId().longValue());
     }
 }
+
 
 
 

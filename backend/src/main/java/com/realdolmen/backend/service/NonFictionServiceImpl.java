@@ -16,9 +16,6 @@ public class NonFictionServiceImpl implements NonFictionService {
         this.nonFictionBookRepository = nonFictionBookRepository;
     }
 
-    //TODO choose a method to save
-
-
     @Override
     public <S extends NonFictionBook> S save(S entity) {
         return nonFictionBookRepository.save(entity);

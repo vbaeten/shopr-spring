@@ -32,5 +32,4 @@ public class FictionController {
         return fictionService.findById(id);
     }
 
-
 }

@@ -18,7 +18,7 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public <S extends Article> S save(S entity) {
-        return null; //TODO fix this
+        return articleRepository.save(entity);
     }
 
     @Override

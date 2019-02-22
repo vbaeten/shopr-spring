@@ -1,11 +1,14 @@
 package com.realdolmen.backend.domain;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "shoppingcart")
+@Data
 public class ShoppingCart {
 
     @Id
@@ -22,35 +25,4 @@ public class ShoppingCart {
     @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
     private List<OrderLine> orderLines = new ArrayList<>();
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-//
-//    public List<OrderLine> getOrderLines() {
-//        return orderLines;
-//    }
-//
-//    public void setOrderLines(List<OrderLine> orderLines) {
-//        this.orderLines = orderLines;
-//    }
 }

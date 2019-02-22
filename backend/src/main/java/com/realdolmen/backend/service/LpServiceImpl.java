@@ -16,9 +16,6 @@ public class LpServiceImpl implements LpService {
         this.lpRepository = lpRepository;
     }
 
-    //TODO choose a method to save
-
-
     @Override
     public <S extends Lp> S save(S lp) {
         return lpRepository.save(lp);

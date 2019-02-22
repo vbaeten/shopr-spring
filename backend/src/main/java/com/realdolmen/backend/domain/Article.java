@@ -1,5 +1,8 @@
 package com.realdolmen.backend.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
@@ -11,6 +14,8 @@ import java.util.Objects;
 @Table(name = "article")
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "type")
+@Getter
+@Setter
 public class Article implements Serializable {
 
     @Id
@@ -36,14 +41,6 @@ public class Article implements Serializable {
     @Column(name = "type", insertable = false, updatable = false)
     private String type;
 
-//    @OneToMany
-//    @JoinColumn(name="order_id")
-//    private List<OrderLine> orderLines;
-
-//    @OneToMany
-//    @JoinColumn(name="score")
-//    private List<Rating> ratings;
-
     public Article() {
     }
 
@@ -52,62 +49,6 @@ public class Article implements Serializable {
         this.price = price;
         this.supplier = supplier;
     }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public String getSupplier() {
-        return supplier;
-    }
-
-    public void setSupplier(String supplier) {
-        this.supplier = supplier;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-//
-//    public List<OrderLine> getOrderLines() {
-//        return orderLines;
-//    }
-//
-//    public void setOrderLines(List<OrderLine> orderLines) {
-//        this.orderLines = orderLines;
-//    }
-//
-//    public List<Rating> getRatings() {
-//        return ratings;
-//    }
-//
-//    public void setRatings(List<Rating> ratings) {
-//        this.ratings = ratings;
-//    }
 
     @Override
     public boolean equals(Object o) {

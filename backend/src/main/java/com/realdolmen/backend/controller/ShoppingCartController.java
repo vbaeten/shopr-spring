@@ -50,7 +50,6 @@ public class ShoppingCartController {
         return orderlineService.findByUserId(id);
     }
 
-
     @DeleteMapping("/delete/{id}")
     public void deleteOrderLineById(@PathVariable("id") Long id) {
         orderlineService.deleteById(id);

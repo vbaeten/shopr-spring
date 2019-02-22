@@ -13,12 +13,4 @@ public class NonFictionBook extends Book implements Serializable {
 
     @Column
     private Subject subject;
-
-    public Subject getSubject() {
-        return subject;
-    }
-
-    public void setSubject(Subject subject) {
-        this.subject = subject;
-    }
 }

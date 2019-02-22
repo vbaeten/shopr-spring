@@ -1,5 +1,8 @@
 package com.realdolmen.backend.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
@@ -8,6 +11,8 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
+@Getter
+@Setter
 public class Book extends Article implements Serializable {
 
     @Column
@@ -21,28 +26,4 @@ public class Book extends Article implements Serializable {
 
     @Column
     private int pages;
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public long getIsbn() {
-        return isbn;
-    }
-
-    public void setIsbn(long isbn) {
-        this.isbn = isbn;
-    }
-
-    public int getPages() {
-        return pages;
-    }
-
-    public void setPages(int pages) {
-        this.pages = pages;
-    }
 }
