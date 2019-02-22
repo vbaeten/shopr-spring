@@ -2,7 +2,6 @@ package com.realdolmen.backend.controller;
 
 import com.realdolmen.backend.domain.FictionBook;
 import com.realdolmen.backend.service.FictionService;
-import com.realdolmen.backend.service.FictionServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

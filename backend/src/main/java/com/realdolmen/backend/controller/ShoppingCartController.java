@@ -5,7 +5,6 @@ import com.realdolmen.backend.domain.ShoppingCart;
 import com.realdolmen.backend.domain.User;
 import com.realdolmen.backend.service.OrderLineService;
 import com.realdolmen.backend.service.ShoppingCartService;
-import com.realdolmen.backend.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,7 +14,6 @@ import java.util.List;
 public class ShoppingCartController {
 
     private OrderLineService orderlineService;
-    private UserService userService;
     private ShoppingCartService shoppingCartService;
 
     public ShoppingCartController(OrderLineService orderlineService,
@@ -56,11 +54,5 @@ public class ShoppingCartController {
     @DeleteMapping("/delete/{id}")
     public void deleteOrderLineById(@PathVariable("id") Long id) {
         orderlineService.deleteById(id);
-    }
-
-    @PutMapping("/line")
-    public OrderLine sendToOrder(@RequestBody OrderLine orderLine) {
-        orderlineService.save(orderLine);
-        return orderLine;
     }
 }

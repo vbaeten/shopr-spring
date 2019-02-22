@@ -16,7 +16,7 @@ public class Book extends Article implements Serializable {
 
     @Column
     @NotNull
-//    @Pattern(regexp="\\d{3}-\\d{2}-\\d{4}-\\d{3}-\\d")
+    @Pattern(regexp="\\d{3}-\\d{2}-\\d{4}-\\d{3}-\\d")
     private long isbn;
 
     @Column
