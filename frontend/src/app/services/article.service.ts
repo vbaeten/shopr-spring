@@ -20,10 +20,6 @@ export class ArticleService {
     return this.apiService.doGet('/article/' + id);
   }
 
-  deleteArticle(article: Article): Observable<Article> {
-    return this.apiService.doDelete('/article/delete');
-  }
-
   deleteArticleById(id: number): Observable<Article> {
     return this.apiService.doDelete('/article/delete/' + id);
   }

@@ -1,8 +1,11 @@
 package com.realdolmen.backend.controller;
 
 import com.realdolmen.backend.domain.User;
+import com.realdolmen.backend.dto.UserDto;
+import com.realdolmen.backend.facade.UserFacade;
 import com.realdolmen.backend.service.UserService;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,16 +14,18 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController {
 
+    private final UserFacade userFacade;
     private UserService userService;
 
-    public UserController( UserService userService) {
+    public UserController(UserFacade userFacade, UserService userService) {
+        this.userFacade = userFacade;
         this.userService = userService;
     }
 
-    @GetMapping("/list")
-    public List<User> getUsers() {
-        return userService.findAll();
-    }
+//    @GetMapping("/list")
+//    public List<User> getUsers() {
+//        return userService.findAll();
+//    }
 
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.OK)
@@ -28,9 +33,21 @@ public class UserController {
         return userService.save(user);
     }
 
+//    @GetMapping("/{id}")
+//    public User findById(@PathVariable("id") Long id) {
+//        return userService.findById(id);
+//    }
+//
+
+
     @GetMapping("/{id}")
-    public User findById(@PathVariable("id") Long id) {
-        return userService.findById(id);
+    public ResponseEntity<UserDto> getUserById(@PathVariable Long id){
+        return new ResponseEntity<UserDto>(userService.findByUserId(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/list")
+    public List<UserDto> findAllUsers() {
+        return userFacade.findUsers();
     }
 
     @DeleteMapping("/delete/{id}")

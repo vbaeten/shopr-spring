@@ -1,6 +1,9 @@
 package com.realdolmen.backend.service;
 
 import com.realdolmen.backend.domain.User;
+import com.realdolmen.backend.dto.UserDto;
+
+import java.util.List;
 
 public interface UserService extends CrudService<User, Long> {
 
@@ -10,8 +13,11 @@ public interface UserService extends CrudService<User, Long> {
 
     User findById(Long id);
 
+    UserDto findByUserId(Long id);
+
+    List<UserDto> getAllUsers();
+
     void deleteById(Long id);
 
     void delete(User user);
-
 }
