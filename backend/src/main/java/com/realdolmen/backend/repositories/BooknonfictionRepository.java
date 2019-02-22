@@ -1,6 +1,6 @@
 package com.realdolmen.backend.repositories;
 
-import com.realdolmen.backend.Domain.Booknonfiction;
+import com.realdolmen.backend.domain.Booknonfiction;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 

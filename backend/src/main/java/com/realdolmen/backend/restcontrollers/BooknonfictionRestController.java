@@ -1,9 +1,8 @@
 package com.realdolmen.backend.restcontrollers;
 
-import com.realdolmen.backend.Domain.Booknonfiction;
-import com.realdolmen.backend.Domain.enums.BooknonfictionGenre;
-import com.realdolmen.backend.exception.NotFoundException;
-import com.realdolmen.backend.repositories.BooknonfictionRepository;
+import com.realdolmen.backend.domain.Booknonfiction;
+import com.realdolmen.backend.domain.enums.BooknonfictionGenre;
+import com.realdolmen.backend.service.BooknonfictionService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,16 +14,16 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping(path = "/booknonfiction")
 public class BooknonfictionRestController {
-    private final BooknonfictionRepository booknonfictionRepository;
+    private final BooknonfictionService booknonfictionService;
 
-    public BooknonfictionRestController(BooknonfictionRepository booknonfictionRepository) {
-        this.booknonfictionRepository = booknonfictionRepository;
+    public BooknonfictionRestController(BooknonfictionService booknonfictionService) {
+        this.booknonfictionService = booknonfictionService;
     }
 
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     public Booknonfiction createBooknonfiction(@RequestBody @Valid Booknonfiction booknonfiction) {
-        return booknonfictionRepository.save(booknonfiction);
+        return booknonfictionService.save(booknonfiction);
     }
 
     @GetMapping("/genres")
@@ -32,18 +31,15 @@ public class BooknonfictionRestController {
         return Arrays.stream(BooknonfictionGenre.values()).collect(Collectors.toList());
     }
 
-
     @GetMapping(value = "/{articleId}")
     public Booknonfiction getBookFiction(@PathVariable Long articleId) {
-        return booknonfictionRepository.findById(articleId)
-                .orElseThrow(NotFoundException::new);
+        return booknonfictionService.findById(articleId);
     }
 
     @PutMapping(path = "/edit")
     public void updateById(@RequestBody @Valid Booknonfiction booknonfiction) {
-        Booknonfiction existingBooknonfiction = booknonfictionRepository.findById(booknonfiction.getArticleId())
-                .orElseThrow(NotFoundException::new);
+        Booknonfiction existingBooknonfiction = booknonfictionService.findById(booknonfiction.getArticleId());
         booknonfiction.setVersionId(existingBooknonfiction.getVersionId());
-        booknonfictionRepository.save(booknonfiction);
+        booknonfictionService.save(booknonfiction);
     }
 }

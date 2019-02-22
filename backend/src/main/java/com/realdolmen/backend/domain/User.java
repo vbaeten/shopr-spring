@@ -1,4 +1,4 @@
-package com.realdolmen.backend.Domain;
+package com.realdolmen.backend.domain;
 
 import lombok.Data;
 

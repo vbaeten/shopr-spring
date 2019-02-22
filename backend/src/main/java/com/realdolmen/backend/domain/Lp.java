@@ -1,6 +1,6 @@
-package com.realdolmen.backend.Domain;
+package com.realdolmen.backend.domain;
 
-import com.realdolmen.backend.Domain.enums.LpGenre;
+import com.realdolmen.backend.domain.enums.LpGenre;
 import lombok.Getter;
 import lombok.Setter;
 

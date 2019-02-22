@@ -1,6 +1,6 @@
-package com.realdolmen.backend.Domain;
+package com.realdolmen.backend.domain;
 
-import com.realdolmen.backend.Domain.enums.BooknonfictionGenre;
+import com.realdolmen.backend.domain.enums.BooknonfictionGenre;
 import lombok.Getter;
 import lombok.Setter;
 

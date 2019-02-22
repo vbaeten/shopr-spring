@@ -1,9 +1,8 @@
 package com.realdolmen.backend.restcontrollers;
 
-import com.realdolmen.backend.Domain.Game;
-import com.realdolmen.backend.Domain.enums.GameGenre;
-import com.realdolmen.backend.exception.NotFoundException;
-import com.realdolmen.backend.repositories.GameRepository;
+import com.realdolmen.backend.domain.Game;
+import com.realdolmen.backend.domain.enums.GameGenre;
+import com.realdolmen.backend.service.GameService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,35 +12,34 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping(path="/game")
+@RequestMapping(path = "/game")
 public class GameRestController {
-    private final GameRepository gameRepository;
+    private final GameService gameService;
 
-    public GameRestController(GameRepository gameRepository) {
-        this.gameRepository = gameRepository;
+    public GameRestController(GameService gameService) {
+        this.gameService = gameService;
     }
 
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     public Game createGame(@RequestBody @Valid Game game) {
-        return gameRepository.save(game);
+        return gameService.save(game);
     }
 
     @GetMapping("/genres")
-    public List<GameGenre> getGameGenres(){return Arrays.stream(GameGenre.values()).collect(Collectors.toList());}
-
+    public List<GameGenre> getGameGenres() {
+        return Arrays.stream(GameGenre.values()).collect(Collectors.toList());
+    }
 
     @GetMapping(value = "/{articleId}")
     public Game getBookFiction(@PathVariable Long articleId) {
-        return gameRepository.findById(articleId)
-                .orElseThrow(NotFoundException::new);
+        return gameService.findById(articleId);
     }
 
     @PutMapping(path = "/edit")
     public void updateById(@RequestBody @Valid Game game) {
-        Game existingGame = gameRepository.findById(game.getArticleId())
-                .orElseThrow(NotFoundException::new);
+        Game existingGame = gameService.findById(game.getArticleId());
         game.setVersionId(existingGame.getVersionId());
-        gameRepository.save(game);
+        gameService.save(game);
     }
 }

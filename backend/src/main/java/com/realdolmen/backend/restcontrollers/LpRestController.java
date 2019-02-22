@@ -1,7 +1,7 @@
 package com.realdolmen.backend.restcontrollers;
 
-import com.realdolmen.backend.Domain.Lp;
-import com.realdolmen.backend.Domain.enums.LpGenre;
+import com.realdolmen.backend.domain.Lp;
+import com.realdolmen.backend.domain.enums.LpGenre;
 import com.realdolmen.backend.exception.NotFoundException;
 import com.realdolmen.backend.repositories.LpRepository;
 import org.springframework.http.HttpStatus;

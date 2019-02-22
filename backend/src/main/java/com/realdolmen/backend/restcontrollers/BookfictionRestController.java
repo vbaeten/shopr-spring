@@ -1,9 +1,8 @@
 package com.realdolmen.backend.restcontrollers;
 
-import com.realdolmen.backend.Domain.Bookfiction;
-import com.realdolmen.backend.Domain.enums.BookfictionGenre;
-import com.realdolmen.backend.exception.NotFoundException;
-import com.realdolmen.backend.repositories.BookfictionRepository;
+import com.realdolmen.backend.domain.Bookfiction;
+import com.realdolmen.backend.domain.enums.BookfictionGenre;
+import com.realdolmen.backend.service.BookfictionService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,16 +14,16 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping(path = "/bookfiction")
 public class BookfictionRestController {
-    private final BookfictionRepository bookfictionRepository;
+    private final BookfictionService bookfictionService;
 
-    public BookfictionRestController(BookfictionRepository bookfictionRepository) {
-        this.bookfictionRepository = bookfictionRepository;
+    public BookfictionRestController(BookfictionService bookfictionService) {
+        this.bookfictionService = bookfictionService;
     }
 
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     public Bookfiction createBookfiction(@RequestBody @Valid Bookfiction bookfiction) {
-        return bookfictionRepository.save(bookfiction);
+        return bookfictionService.save(bookfiction);
     }
 
     @GetMapping("/genres")
@@ -34,15 +33,13 @@ public class BookfictionRestController {
 
     @GetMapping(value = "/{articleId}")
     public Bookfiction getBookFiction(@PathVariable Long articleId) {
-        return bookfictionRepository.findById(articleId)
-                .orElseThrow(NotFoundException::new);
+        return bookfictionService.findById(articleId);
     }
 
     @PutMapping(path = "/edit")
     public void updateById(@RequestBody @Valid Bookfiction bookfiction) {
-        Bookfiction existingBookfiction = bookfictionRepository.findById(bookfiction.getArticleId())
-                .orElseThrow(NotFoundException::new);
+        Bookfiction existingBookfiction = bookfictionService.findById(bookfiction.getArticleId());
         bookfiction.setVersionId(existingBookfiction.getVersionId());
-        bookfictionRepository.save(bookfiction);
+        bookfictionService.save(bookfiction);
     }
 }

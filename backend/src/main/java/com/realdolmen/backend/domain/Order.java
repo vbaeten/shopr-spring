@@ -1,6 +1,6 @@
-package com.realdolmen.backend.Domain;
+package com.realdolmen.backend.domain;
 
-import com.realdolmen.backend.Domain.enums.OrderStatus;
+import com.realdolmen.backend.domain.enums.OrderStatus;
 import lombok.Data;
 
 import javax.persistence.*;

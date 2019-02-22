@@ -1,4 +1,4 @@
-package com.realdolmen.backend.Domain;
+package com.realdolmen.backend.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
