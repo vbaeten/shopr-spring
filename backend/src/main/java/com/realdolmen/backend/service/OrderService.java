@@ -1,4 +1,3 @@
-
 package com.realdolmen.backend.service;
 
 import com.realdolmen.backend.domain.Order;
@@ -24,4 +23,6 @@ public interface OrderService extends CrudService<Order, Long> {
     List<Order> findAllByUser(User user);
 
     Optional<Order> findByUserAndOrderStatus(User user, OrderStatus orderStatus);
+
+    Order create(Order order);
 }

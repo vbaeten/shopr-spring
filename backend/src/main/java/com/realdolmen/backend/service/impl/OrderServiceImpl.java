@@ -7,7 +7,6 @@ import com.realdolmen.backend.domain.enums.OrderStatus;
 import com.realdolmen.backend.exception.NotFoundException;
 import com.realdolmen.backend.repositories.OrderRepository;
 import com.realdolmen.backend.repositories.OrderlineRepository;
-import com.realdolmen.backend.repositories.UserRepository;
 import com.realdolmen.backend.service.OrderService;
 import org.springframework.stereotype.Service;
 
@@ -21,12 +20,10 @@ public class OrderServiceImpl implements OrderService {
 
     private final OrderRepository orderRepository;
     private final OrderlineRepository orderlineRepository;
-    private final UserRepository userRepository;
 
-    public OrderServiceImpl(OrderRepository orderRepository, OrderlineRepository orderlineRepository, UserRepository userRepository) {
+    public OrderServiceImpl(OrderRepository orderRepository, OrderlineRepository orderlineRepository) {
         this.orderRepository = orderRepository;
         this.orderlineRepository = orderlineRepository;
-        this.userRepository = userRepository;
     }
 
     @Override
@@ -73,5 +70,10 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Optional<Order> findByUserAndOrderStatus(User user, OrderStatus orderStatus) {
         return orderRepository.findByUserAndOrderStatus(user, OrderStatus.IN_CART);
+    }
+
+    @Override
+    public Order create(Order order) {
+        return orderRepository.save(order);
     }
 }
