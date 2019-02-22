@@ -46,7 +46,14 @@ body {
   flex-direction: column;
   margin-left: 10em;
   display: flex;
-  max-width: 100px;
+  max-width: 25px;
+}
+
+.goeditbutton {
+  flex-direction: column;
+  margin-left: 10em;
+  display: flex;
+  max-width: 125px;
 }
 
 .selectcreate {
