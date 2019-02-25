@@ -8,6 +8,7 @@ import java.util.Set;
 
 @Entity
 @Data
+//@JsonInclude(value = JsonInclude.Include.NON_EMPTY, content=JsonInclude.Include.NON_EMPTY)
 public class User {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +33,7 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "cart_id", nullable = true)
     private Cart cart;
 

@@ -1,6 +1,7 @@
 package com.realdolmen.backend.domain;
 
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.List;
@@ -8,14 +9,22 @@ import java.util.List;
 @Entity
 @Data
 @Table(name = "cart")
+//@JsonInclude(value = JsonInclude.Include.NON_EMPTY, content=JsonInclude.Include.NON_EMPTY)
 public class Cart {
 
-    @Id @GeneratedValue
-    private Long id;
+    @Id
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator"
+    )
+    private String  id;
 
-    @OneToOne
-    @JoinColumn(name = "userId")
-    private User user;
+//    @OneToOne @MapsId
+//    private User user;
+
+    @Column(name = "cart_user_id")
+    private Long userId;
 
     @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<CartItem> cartItems;

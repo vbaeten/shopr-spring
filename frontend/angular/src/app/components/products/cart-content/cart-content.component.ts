@@ -3,7 +3,6 @@ import {ProductService} from "../../../services/product.service";
 import {ShoppingCartService} from "../../../services/shopping-cart.service";
 import {Product} from "../../../models/products.model";
 import {Observable, Subscription} from "rxjs";
-import {ShoppingCart} from "../../../models/shoppingCart.model";
 
 @Component({
   selector: 'app-cart-content',
@@ -13,8 +12,8 @@ import {ShoppingCart} from "../../../models/shoppingCart.model";
 export class CartContentComponent implements OnInit, OnDestroy {
 
   products: Observable<Product[]>;
-  cart: Observable<ShoppingCart>;
   itemCount: number;
+  totalPrice: number;
 
   private cartSubscription: Subscription;
 
@@ -23,9 +22,10 @@ export class CartContentComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.products = this.productService.getProducts();
-    this.cart = this.shoppingCartService.get();
-    this.cartSubscription = this.cart.subscribe((cart) => {
+    this.cartSubscription = this.shoppingCartService.get().subscribe((cart) => {
+      console.log(cart);
       this.itemCount = cart.items.map(product => product.quantity).reduce((previous, current) => previous + current, 0);
+      this.totalPrice = cart.totalPrice;
     });
   }
 

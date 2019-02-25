@@ -7,6 +7,7 @@ import com.realdolmen.backend.domain.User;
 import com.realdolmen.backend.service.CartItemService;
 import com.realdolmen.backend.service.CartService;
 import com.realdolmen.backend.service.ProductService;
+import javassist.NotFoundException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -55,7 +56,7 @@ public class CartItemController {
     }
 
     @RequestMapping("cart/removeAll/{cartId}")
-    public void removeAllItems(@PathVariable(value = "cartId") Long cartId) {
+    public void removeAllItems(@PathVariable(value = "cartId") String cartId) throws NotFoundException {
         Cart cart = cartService.getCartById(cartId);
         cartItemService.removeAll(cart);
     }

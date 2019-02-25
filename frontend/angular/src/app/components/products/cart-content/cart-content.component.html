@@ -10,7 +10,12 @@
 </mat-toolbar-row>
 </mat-toolbar>
 
+<div>
   <h4>
     Sub total for {{itemCount}} item(s)
-    <span></span>
+    <span>Total price: {{totalPrice | currency: 'EUR': 'symbol'}} </span>
   </h4>
+  <button mat-button color="primary"
+          [disabled]="itemCount === 0 ? true : null"
+          routerLink="/checkout">Order</button>
+</div>

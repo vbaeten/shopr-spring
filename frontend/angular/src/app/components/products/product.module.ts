@@ -7,13 +7,15 @@ import {RouterModule} from "@angular/router";
 import {ProductRoutingModule} from "./product-routing.module";
 import {CartContentComponent} from "./cart-content/cart-content.component";
 import {ProductFilterPipe} from './product-filter.pipe';
+import {CheckoutComponent} from './checkout/checkout.component';
 
 @NgModule({
   declarations: [
     ProductListComponent,
     ProductDetailsComponent,
     CartContentComponent,
-    ProductFilterPipe
+    ProductFilterPipe,
+    CheckoutComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +26,8 @@ import {ProductFilterPipe} from './product-filter.pipe';
   exports: [
     ProductListComponent,
     ProductDetailsComponent,
-    CartContentComponent
+    CartContentComponent,
+    CheckoutComponent
   ],
 })
 export class ProductModule { }

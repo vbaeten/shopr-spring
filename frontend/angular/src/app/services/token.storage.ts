@@ -3,6 +3,7 @@ import {BehaviorSubject} from "rxjs";
 
 const TOKEN_KEY = 'AuthToken';
 const CURRENT_USER = 'CurrentUser';
+const CURRENT_USER_ID = "CurrentUsersId";
 
 @Injectable()
 export class TokenStorage{
@@ -34,5 +35,12 @@ export class TokenStorage{
     this.currentUserSubject.next(user);
   }
 
+  setCurrentUserId(id: string) {
+    sessionStorage.setItem(CURRENT_USER_ID, id);
+  }
+
+  public getUserId(): number {
+    return parseInt(sessionStorage.getItem(CURRENT_USER_ID));
+  }
 
 }

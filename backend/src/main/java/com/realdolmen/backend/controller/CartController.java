@@ -1,26 +1,30 @@
 package com.realdolmen.backend.controller;
 
 import com.realdolmen.backend.domain.Cart;
+import com.realdolmen.backend.service.CartItemService;
 import com.realdolmen.backend.service.CartService;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.context.annotation.SessionScope;
+import javassist.NotFoundException;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@SessionScope
 public class CartController {
 
     private final CartService cartService;
+    private final CartItemService cartItemService;
 
-    public CartController(CartService cartService) {
+    public CartController(CartService cartService, CartItemService cartItemService) {
         this.cartService = cartService;
+        this.cartItemService = cartItemService;
     }
 
     @RequestMapping(value = "/cart/{cartId}")
-    @ResponseBody
-    public Cart getCartItems(@PathVariable(value = "cartId") Long cartId) {
+    public Cart getCartItems(@PathVariable(value = "cartId") String cartId) throws NotFoundException {
         return cartService.getCartById(cartId);
+    }
+
+    @PostMapping(value = "/cart")
+    public Cart saveCart(@RequestBody Cart cart) throws NotFoundException {
+
+        return cartService.saveCart(cart);
     }
 }

@@ -17,12 +17,8 @@ export class UserService {
     return this.tokenStorage.currentUserSubject;
   }
 
-  getById(id: number) {
-    return this.http.get(`/user/` + id);
-  }
-
-  delete(id: number) {
-    return this.http.delete('/api/users/' + id);
+  getById() : number{
+    return this.tokenStorage.getUserId();
   }
 
   registerUser(user: User): boolean {
@@ -40,7 +36,7 @@ export class UserService {
     let currentUserObservable: Subject<boolean> = new Subject<boolean>();
     this.http.get('/api/user/currentuser').subscribe(response => {
       let isAdmin = false;
-      response['authorities'].forEach(item => {
+      response['roles'].forEach(item => {
         if (item.authority === 'ADMIN') {
           isAdmin = true;
         }

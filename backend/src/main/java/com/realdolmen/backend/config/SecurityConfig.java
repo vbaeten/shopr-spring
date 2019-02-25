@@ -3,6 +3,7 @@ package com.realdolmen.backend.config;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -16,6 +17,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
+@Profile("local")
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final DataSource dataSource;
@@ -41,12 +43,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable().httpBasic().and()
                 .authorizeRequests()
                 .antMatchers("/dashboard").hasAuthority("ADMIN")
-                .antMatchers("/", "/user/register", "/login", "/products/", "/products/**").permitAll()
+                .antMatchers("/", "/user/register", "/login", "/cart", "/products/", "/products/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
     }
+
+
 
     @Override
     public void configure(WebSecurity web) throws Exception {

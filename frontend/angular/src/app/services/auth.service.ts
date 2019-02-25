@@ -12,7 +12,7 @@ export class AuthService {
 
   constructor(
     private tokenStorage: TokenStorage,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
   ) {
   }
 
@@ -29,13 +29,15 @@ export class AuthService {
     headers = headers.set("Authorization", token);
 
     this.httpClient.get('/api/user/currentuser', {headers: headers}).subscribe(response => {
+      console.log(response);
       if (response['name']) {
         this.tokenStorage.setCurrentUser(response['name']);
+        this.tokenStorage.setCurrentUserId(response['id']);
         this._authenticated.next(true);
       } else {
         this._authenticated.next(false);
+        return callback && callback();
       }
-      return callback && callback();
     });
   }
 

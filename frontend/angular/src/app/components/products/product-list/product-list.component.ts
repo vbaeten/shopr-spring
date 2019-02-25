@@ -39,4 +39,8 @@ export class ProductListComponent implements OnInit {
     this.shoppingService.addToCart(product, quantity);
   }
 
+  // diagnostic() {
+  //   console.log(JSON.stringify(this.products));
+  // }
+
 }
