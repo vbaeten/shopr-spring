@@ -2,7 +2,6 @@ package com.realdolmen.backend.controller;
 
 import com.realdolmen.backend.domain.Lp;
 import com.realdolmen.backend.service.LpService;
-import com.realdolmen.backend.service.LpServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,7 +12,7 @@ public class LpController {
 
     private LpService lpService;
 
-    public LpController(LpServiceImpl lpService) {
+    public LpController(LpService lpService) {
         this.lpService = lpService;
     }
 

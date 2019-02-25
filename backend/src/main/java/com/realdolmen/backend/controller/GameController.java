@@ -2,7 +2,6 @@ package com.realdolmen.backend.controller;
 
 import com.realdolmen.backend.domain.Game;
 import com.realdolmen.backend.service.GameService;
-import com.realdolmen.backend.service.GameServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,8 +12,8 @@ public class GameController {
 
     private GameService gameService;
 
-    public GameController(GameServiceImpl gameServiceImpl) {
-        this.gameService = gameServiceImpl;
+    public GameController(GameService gameService) {
+        this.gameService = gameService;
     }
 
     @GetMapping("/list")

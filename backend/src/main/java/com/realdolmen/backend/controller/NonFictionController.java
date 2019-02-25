@@ -2,7 +2,6 @@ package com.realdolmen.backend.controller;
 
 import com.realdolmen.backend.domain.NonFiction;
 import com.realdolmen.backend.service.NonFictionService;
-import com.realdolmen.backend.service.NonFictionServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,7 +12,7 @@ public class NonFictionController {
 
     private NonFictionService nonFictionService;
 
-    public NonFictionController(NonFictionServiceImpl nonFictionService) {
+    public NonFictionController(NonFictionService nonFictionService) {
         this.nonFictionService = nonFictionService;
     }
 
