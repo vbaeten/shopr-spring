@@ -1,11 +1,11 @@
 package com.realdolmen.backend.service;
 
-import com.realdolmen.backend.domain.FictionBook;
+import com.realdolmen.backend.domain.Fiction;
 
-public interface FictionService extends CrudService<FictionBook, Long> {
+public interface FictionService extends CrudService<Fiction, Long> {
 
-    FictionBook create(FictionBook fictionBook);
+    Fiction create(Fiction fiction);
 
-    FictionBook findById(Long id);
+    Fiction findById(Long id);
 
 }

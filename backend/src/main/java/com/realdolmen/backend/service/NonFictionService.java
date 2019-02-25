@@ -1,11 +1,11 @@
 package com.realdolmen.backend.service;
 
-import com.realdolmen.backend.domain.NonFictionBook;
+import com.realdolmen.backend.domain.NonFiction;
 
-public interface NonFictionService extends CrudService<NonFictionBook, Long> {
+public interface NonFictionService extends CrudService<NonFiction, Long> {
 
-    NonFictionBook create(NonFictionBook nonFictionBook);
+    NonFiction create(NonFiction nonFiction);
 
-    NonFictionBook findById(Long id);
+    NonFiction findById(Long id);
 
 }

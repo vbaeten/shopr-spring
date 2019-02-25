@@ -14,6 +14,4 @@ public class ArticleFacade {
         this.articleService = articleService;
         this.articleMapper = articleMapper;
     }
-
-
 }

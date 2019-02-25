@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "non_fiction")
 @DiscriminatorValue("Non-Fiction")
-public class NonFictionBook extends Book implements Serializable {
+public class NonFiction extends Book implements Serializable {
 
     @Column
     private Subject subject;

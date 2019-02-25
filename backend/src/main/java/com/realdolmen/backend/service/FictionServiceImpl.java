@@ -1,6 +1,6 @@
 package com.realdolmen.backend.service;
 
-import com.realdolmen.backend.domain.FictionBook;
+import com.realdolmen.backend.domain.Fiction;
 import com.realdolmen.backend.exception.NotFoundException;
 import com.realdolmen.backend.repository.FictionBookRepository;
 import org.springframework.stereotype.Service;
@@ -17,27 +17,27 @@ public class FictionServiceImpl implements FictionService {
     }
 
     @Override
-    public <S extends FictionBook> S save(S entity) {
+    public <S extends Fiction> S save(S entity) {
         return fictionBookRepository.save(entity);
     }
 
     @Override
-    public FictionBook create(FictionBook fictionBook) {
-        return fictionBookRepository.save(fictionBook);
+    public Fiction create(Fiction fiction) {
+        return fictionBookRepository.save(fiction);
     }
 
     @Override
-    public FictionBook findById(Long id) {
+    public Fiction findById(Long id) {
         return fictionBookRepository.findById(id).orElseThrow(NotFoundException::new);
     }
 
     @Override
-    public List<FictionBook> findAll() {
+    public List<Fiction> findAll() {
         return fictionBookRepository.findAll();
     }
 
     @Override
-    public void delete(FictionBook entity) {
+    public void delete(Fiction entity) {
         fictionBookRepository.delete(entity);
     }
 }

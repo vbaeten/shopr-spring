@@ -1,4 +1,4 @@
 package com.realdolmen.backend.dto;
 
-public class LpDto {
+public class LpDto extends ArticleDto {
 }

@@ -12,7 +12,7 @@ import java.io.Serializable;
 @Table(name = "fiction")
 @Getter
 @Setter
-public class FictionBook extends Book implements Serializable {
+public class Fiction extends Book implements Serializable {
 
     @Column(name = "genre")
     @Enumerated

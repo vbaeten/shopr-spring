@@ -1,6 +1,6 @@
 package com.realdolmen.backend.controller;
 
-import com.realdolmen.backend.domain.FictionBook;
+import com.realdolmen.backend.domain.Fiction;
 import com.realdolmen.backend.service.FictionService;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,18 +17,18 @@ public class FictionController {
     }
 
     @GetMapping("/list")
-    public List<FictionBook> getFictionBooks() {
+    public List<Fiction> getFictionBooks() {
         return fictionService.findAll();
     }
 
     @PostMapping("/add")
-    public FictionBook addFiction(@RequestBody FictionBook fiction) {
+    public Fiction addFiction(@RequestBody Fiction fiction) {
         fictionService.create(fiction);
         return fiction;
     }
 
     @GetMapping("/{id}")
-    public FictionBook getFiction(@PathVariable("id") Long id) {
+    public Fiction getFiction(@PathVariable("id") Long id) {
         return fictionService.findById(id);
     }
 

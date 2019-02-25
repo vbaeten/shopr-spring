@@ -1,7 +1,7 @@
 package com.realdolmen.backend.dto;
 
-public class GameDto {
+public class GameDto extends ArticleDto {
 
-    private Long id;
+
 
 }
