@@ -9,5 +9,5 @@ public interface FictionMapper {
 
     FictionDto fictionToFictionDto(Fiction fiction);
 
-    Fiction FictionDtoToFiction(FictionDto fictionDto);
+    Fiction fictionDtoToFiction(FictionDto fictionDto);
 }

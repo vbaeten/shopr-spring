@@ -28,11 +28,6 @@ public class GameController {
         return game;
     }
 
-    @DeleteMapping("/delete")
-    public void deleteGame(Game game) {
-        gameService.delete(game);
-    }
-
     @GetMapping("/{id}")
     public Game getGame(@PathVariable("id") Long id) {
         return gameService.findById(id);

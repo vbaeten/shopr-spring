@@ -16,8 +16,6 @@ public class GameServiceImpl implements GameService {
         this.gameRepository = gameRepository;
     }
 
-    //TODO choose a method to save
-
     @Override
     public <S extends Game> S save(S game) {
         return gameRepository.save(game);

@@ -30,12 +30,12 @@ public class UserController {
 
     @PostMapping("/register")
     public ResponseEntity<UserDto> registerUserByDto(@RequestBody UserDto userDto) {
-        return new ResponseEntity<UserDto>(userService.createUser(userDto), HttpStatus.CREATED);
+        return new ResponseEntity<>(userService.createUser(userDto), HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<UserDto> getUserById(@PathVariable Long id){
-        return new ResponseEntity<UserDto>(userService.findByUserId(id), HttpStatus.OK);
+        return new ResponseEntity<>(userService.findByUserId(id), HttpStatus.OK);
     }
 
     @GetMapping("/list")

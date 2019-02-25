@@ -35,6 +35,8 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public void delete(Order entity) {
 
+        orderRepository.delete(entity);
+
     }
 
     @Override

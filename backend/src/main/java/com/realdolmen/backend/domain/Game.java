@@ -6,6 +6,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 @Table(name = "game")
@@ -24,4 +25,20 @@ public class Game extends Article implements Serializable {
     @Column(name= "genre")
     @Enumerated
     private GameGenre gameGenre;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Game game = (Game) o;
+        return minAge == game.minAge &&
+                publisher.equals(game.publisher) &&
+                gameGenre == game.gameGenre;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), publisher, minAge, gameGenre);
+    }
 }

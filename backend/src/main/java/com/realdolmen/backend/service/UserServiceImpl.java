@@ -50,9 +50,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserDto> getAllUsers() {
         return userRepository.findAll().stream().map(user -> {
-            UserDto userDto = userMapper.userToUserDto(user);
-    //TODO see udemy section 24, lecture 390 userDto.setUserUrl("api/user/" + user.getId());
-            return userDto;
+            return userMapper.userToUserDto(user);
         }).collect(Collectors.toList());
     }
 
