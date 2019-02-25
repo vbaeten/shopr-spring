@@ -22,23 +22,16 @@ public class UserController {
         this.userService = userService;
     }
 
-//    @GetMapping("/list")
-//    public List<User> getUsers() {
-//        return userService.findAll();
-//    }
-
-    @PostMapping("/register")
+    @PostMapping("/reg")
     @ResponseStatus(HttpStatus.OK)
     public User registerUser(@RequestBody User user) {
         return userService.save(user);
     }
 
-//    @GetMapping("/{id}")
-//    public User findById(@PathVariable("id") Long id) {
-//        return userService.findById(id);
-//    }
-//
-
+    @PostMapping("/register")
+    public ResponseEntity<UserDto> registerUserByDto(@RequestBody UserDto userDto) {
+        return new ResponseEntity<UserDto>(userService.createUser(userDto), HttpStatus.CREATED);
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<UserDto> getUserById(@PathVariable Long id){

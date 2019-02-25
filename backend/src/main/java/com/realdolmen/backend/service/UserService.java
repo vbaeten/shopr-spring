@@ -2,6 +2,7 @@ package com.realdolmen.backend.service;
 
 import com.realdolmen.backend.domain.User;
 import com.realdolmen.backend.dto.UserDto;
+import org.springframework.http.HttpStatus;
 
 import java.util.List;
 
@@ -15,9 +16,13 @@ public interface UserService extends CrudService<User, Long> {
 
     UserDto findByUserId(Long id);
 
+    UserDto deleteUserById(Long id);
+
     List<UserDto> getAllUsers();
 
     void deleteById(Long id);
 
     void delete(User user);
+
+    UserDto createUser(UserDto userDto);
 }

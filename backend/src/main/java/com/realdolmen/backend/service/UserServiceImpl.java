@@ -71,6 +71,18 @@ public class UserServiceImpl implements UserService {
     public void delete(User user) {
         userRepository.delete(user);
     }
+
+    @Override
+    public UserDto createUser(UserDto userDto) {
+        User user = userMapper.userDtoToUser(userDto);
+        User savedUser = userRepository.save(user);
+        return userMapper.userToUserDto(savedUser);
+    }
+
+    @Override
+    public UserDto deleteUserById(Long id) {
+        return null;
+    }
 }
 
 
