@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Article} from "../../models/article";
 import {MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Router} from "@angular/router";
 import {OrderLine} from "../../models/orderLine";
 import {OrderLineService} from "../../services/order-line.service";
 import {Order} from "../../models/order";
@@ -21,7 +21,7 @@ export class ShoppingCartComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private orderService: OrderService, private orderLineService: OrderLineService, private router: Router, private route: ActivatedRoute) {
+  constructor(private orderService: OrderService, private orderLineService: OrderLineService, private router: Router) {
   }
 
   ngOnInit() {
@@ -48,7 +48,7 @@ export class ShoppingCartComponent implements OnInit {
     order.confirmed = true;
     this.orderService.edit(order);
     let newOrder = new Order();
-    localStorage.setItem('currentOrder', JSON.stringify(new Order()))
+    localStorage.setItem('currentOrder', JSON.stringify(newOrder))
   }
 
   calculateSubtotal(quantity: number, price: number): number {

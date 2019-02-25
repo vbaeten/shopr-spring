@@ -2,7 +2,7 @@ import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {ArticleService} from "../../../../../services/article.service";
 import {Article} from "../../../../../models/article";
 import {MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-article',
@@ -18,7 +18,7 @@ export class ArticleOverviewComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private articleService: ArticleService, private router: Router, private route: ActivatedRoute) {
+  constructor(private articleService: ArticleService, private router: Router) {
   }
 
   ngOnInit() {
