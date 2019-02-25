@@ -40,11 +40,20 @@ export class OrderService {
     return this.apiService.doDelete("/order/" + id)
   }
 
-  getOrderById(id: number): Observable<Order> {
+  public getOrderById(id: number): Observable<Order> {
     return this.apiService.doGet("/order/" + id)
   }
 
   getCurrentOrderFromStorage(): Order {
     return JSON.parse(localStorage.getItem("currentOrder"));
   }
+
+  setCurrentOrderToStorage(order: Order) {
+    if (this.getCurrentOrderFromStorage() === null) {
+      this.createOrder(order).subscribe(newOrder => {
+        localStorage.setItem('currentOrder', JSON.stringify(newOrder));
+      });
+    }
+  }
+
 }

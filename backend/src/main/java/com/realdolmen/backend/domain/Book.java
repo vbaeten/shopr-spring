@@ -15,7 +15,8 @@ import javax.validation.constraints.Size;
 @Inheritance(strategy = InheritanceType.JOINED)
 @AllArgsConstructor
 @NoArgsConstructor
-public abstract class Book extends Article{
+@EqualsAndHashCode
+public abstract class Book extends Article {
 
     @Size(max = 100)
     @Column(name = "author")

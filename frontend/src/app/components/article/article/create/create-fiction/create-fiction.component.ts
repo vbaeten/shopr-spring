@@ -10,6 +10,7 @@ import {FictionService} from "../../../../../services/fiction.service";
   styleUrls: ['./create-fiction.component.css']
 })
 export class CreateFictionComponent implements OnInit {
+
   @Input() type: string;
   fiction: Fiction;
   createFictionForm: FormGroup = this.formBuilder.group(
@@ -26,15 +27,14 @@ export class CreateFictionComponent implements OnInit {
       fictionGenre: ['', Validators.required],
     });
 
+  constructor(private fictionService: FictionService,
+              private formBuilder: FormBuilder) {
+  }
 
   fictionGenres(): Array<string> {
     return Object.keys(FictionGenre).filter(
       (type) => isNaN(<any>type) && type !== 'values'
     );
-  }
-
-  constructor(private fictionService: FictionService,
-              private formBuilder: FormBuilder) {
   }
 
   ngOnInit() {

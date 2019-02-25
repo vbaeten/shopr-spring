@@ -1,12 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-body{
+
+body {
   background-color: whitesmoke;
   margin-left: 10%;
   margin-right: 10%;
 }
 
-.green-button{
+.green-button {
   background-color: limegreen;
   color: white;
 }

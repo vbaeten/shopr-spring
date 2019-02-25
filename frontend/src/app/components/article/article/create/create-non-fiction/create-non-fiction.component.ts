@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Fiction} from "../../../../../models/fiction";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {NonFiction} from "../../../../../models/nonFiction";
 import {NonFictionSubject} from "../../../../../models/non-fiction-subject";
@@ -11,6 +10,7 @@ import {NonFictionService} from '../../../../../services/non-fiction.service';
   styleUrls: ['./create-non-fiction.component.css']
 })
 export class CreateNonFictionComponent implements OnInit {
+
   @Input() type: string;
   nonFiction: NonFiction;
   createNonFictionForm: FormGroup = this.formBuilder.group(
@@ -26,15 +26,14 @@ export class CreateNonFictionComponent implements OnInit {
       nonFictionSubject: ['', Validators.required],
     });
 
+  constructor(private nonFictionService: NonFictionService,
+              private formBuilder: FormBuilder) {
+  }
 
   nonFictionSubjects(): Array<string> {
     return Object.keys(NonFictionSubject).filter(
       (type) => isNaN(<any>type) && type !== 'values'
     );
-  }
-
-  constructor(private nonFictionService: NonFictionService,
-              private formBuilder: FormBuilder) {
   }
 
   ngOnInit() {

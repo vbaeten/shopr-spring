@@ -1,33 +1,33 @@
 <div style="align-content: center">
-<mat-card>
+  <mat-card>
 
-    <form [formGroup]="registerUserForm" (ngSubmit)="registerUser()">
+    <form (ngSubmit)="registerUser()" [formGroup]="registerUserForm">
 
-      <table class="register-user" cellspacing="0">
+      <table cellspacing="0" class="register-user">
         <tr>
           <td>
             <mat-form-field class="register-user">
-              <input matInput placeholder="userName" formControlName="userName">
+              <input formControlName="userName" matInput placeholder="userName">
             </mat-form-field>
           </td>
           <td>
             <mat-form-field class="register-user">
-              <input matInput placeholder="First name" formControlName="firstName">
+              <input formControlName="firstName" matInput placeholder="First name">
             </mat-form-field>
           </td>
           <td>
             <mat-form-field class="register-user">
-              <input matInput placeholder="Name" formControlName="name">
+              <input formControlName="name" matInput placeholder="Name">
             </mat-form-field>
           </td>
-                  <td>
-                    <mat-checkbox formControlName="admin">
-                      Admin
-                    </mat-checkbox>
-                  </td>
+          <td>
+            <mat-checkbox formControlName="admin">
+              Admin
+            </mat-checkbox>
+          </td>
         </tr>
         <tr>
-          <button mat-raised-button class="green-button" type=submit>
+          <button class="green-button" mat-raised-button type=submit>
             Register
           </button>
         </tr>
@@ -35,6 +35,6 @@
 
     </form>
 
-</mat-card>
+  </mat-card>
 </div>
 s

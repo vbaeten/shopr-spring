@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class FictionServiceImpl implements FictionService{
+public class FictionServiceImpl implements FictionService {
 
     private FictionRepository fictionRepository;
 

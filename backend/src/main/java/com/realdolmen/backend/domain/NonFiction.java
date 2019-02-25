@@ -1,9 +1,6 @@
 package com.realdolmen.backend.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -14,7 +11,8 @@ import javax.persistence.*;
 @DiscriminatorValue("nonFiction")
 @AllArgsConstructor
 @NoArgsConstructor
-public class NonFiction extends Book{
+@EqualsAndHashCode
+public class NonFiction extends Book {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "non_fiction_subject")

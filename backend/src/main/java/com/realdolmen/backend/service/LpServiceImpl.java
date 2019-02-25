@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class LpServiceImpl implements LpService{
+public class LpServiceImpl implements LpService {
 
     private LpRepository lpRepository;
 

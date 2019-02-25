@@ -1,9 +1,7 @@
 package com.realdolmen.backend.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-@AllArgsConstructor
 @Getter
 public enum NonFictionSubject {
 
@@ -13,10 +11,10 @@ public enum NonFictionSubject {
     SPORTS("sports");
 
 
-    private String nonFictionSubject;
+    private String nonFictionSubjectName;
 
-    public void setNonFictionSubject(String nonFictionSubject) {
-        this.nonFictionSubject = nonFictionSubject;
+    NonFictionSubject(String nonFictionSubjectName) {
+        this.nonFictionSubjectName = nonFictionSubjectName;
     }
 
 }

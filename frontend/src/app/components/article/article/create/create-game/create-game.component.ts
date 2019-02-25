@@ -24,6 +24,9 @@ export class CreateGameComponent implements OnInit {
       gameGenre: ['', Validators.required],
     });
 
+  constructor(private gameService: GameService,
+              private formBuilder: FormBuilder) {
+  }
 
   gameGenres(): Array<string> {
     return Object.keys(GameGenre).filter(
@@ -31,14 +34,9 @@ export class CreateGameComponent implements OnInit {
     );
   }
 
-  constructor(private gameService: GameService,
-              private formBuilder: FormBuilder) {
-  }
-
   ngOnInit() {
     this.createGameForm.patchValue({type: this.type});
   }
-
 
   createGame = () => {
     this.game = new Game();

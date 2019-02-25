@@ -1,6 +1,6 @@
 package com.realdolmen.backend.domain;
 
-import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,7 +17,8 @@ import java.math.BigDecimal;
 @Table
 @DiscriminatorValue("lp")
 @NoArgsConstructor
-public class Lp extends Article{
+@EqualsAndHashCode
+public class Lp extends Article {
 
     @Size(max = 100)
     @Column(name = "publisher")

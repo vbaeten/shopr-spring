@@ -1,7 +1,6 @@
-
 <form>
   <mat-form-field>
-    <mat-select placeholder="Article type" [(ngModel)]="selectedValue" name="articleType">
+    <mat-select [(ngModel)]="selectedValue" name="articleType" placeholder="Article type">
       <mat-option *ngFor="let articleType of articleTypes" [value]="articleType">
         {{articleType}}
       </mat-option>

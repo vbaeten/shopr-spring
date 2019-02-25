@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class GameServiceImpl implements GameService{
+public class GameServiceImpl implements GameService {
 
     private GameReopsitory gameReopsitory;
 

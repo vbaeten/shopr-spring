@@ -1,12 +1,12 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Article} from "../../../../../models/article";
+import {Component, OnInit} from '@angular/core';
 import {Fiction} from "../../../../../models/fiction";
 import {OrderLine} from "../../../../../models/orderLine";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
-import {ArticleSevice} from "../../../../../services/article.sevice";
+import {ArticleService} from "../../../../../services/article.service";
 import {OrderLineService} from "../../../../../services/order-line.service";
 import {Order} from "../../../../../models/order";
+import {OrderService} from "../../../../../services/order.service";
 
 @Component({
   selector: 'app-fiction-details',
@@ -24,7 +24,8 @@ export class FictionDetailsComponent implements OnInit {
       quantity: ['', Validators.required]
     });
 
-  constructor(private route: ActivatedRoute, private articleService: ArticleSevice, private orderLineService: OrderLineService, private formBuilder: FormBuilder) { }
+  constructor(private route: ActivatedRoute, private articleService: ArticleService, private orderLineService: OrderLineService, private orderService: OrderService, private formBuilder: FormBuilder) {
+  }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -35,11 +36,11 @@ export class FictionDetailsComponent implements OnInit {
     })
   }
 
-  submitQuantity(){
+  submitQuantity() {
     this.orderLine = new OrderLine();
     this.orderLine.quantity = this.submitQuantityForm.value.quantity;
-    let order:Order = JSON.parse(localStorage.getItem('currentOrder'));
-    if(order.orderId != null ){
+    let order: Order = this.orderService.getCurrentOrderFromStorage();
+    if (order.orderId != undefined) {
       this.orderLine.order = order;
     }
 
@@ -47,11 +48,10 @@ export class FictionDetailsComponent implements OnInit {
     this.orderLine.subtotal = this.submitQuantityForm.value.quantity * this.selectedArticle.price;
     this.orderLineService.createOrderLine(this.orderLine)
       .subscribe(newOrderLine => {
-        localStorage.setItem('currentOrderLine', JSON.stringify(newOrderLine));
+        this.orderLineService.setCurrentOrderLineToStorage(newOrderLine);
         order.orderLines.push(newOrderLine);
-        localStorage.setItem('currentOrder', JSON.stringify(order));
+        this.orderService.setCurrentOrderToStorage(order);
       });
-
   }
 
 }

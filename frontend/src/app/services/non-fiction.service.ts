@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {MatSnackBar} from "@angular/material";
 import {ApiService} from "./api.service";
 import {NonFiction} from "../models/nonFiction";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -28,13 +29,15 @@ export class NonFictionService {
       })
   }
 
-  public getNonFictions(): Promise<NonFiction[]> {
+  public getNonFictions() {
     return this.apiService.doGet("/nonFiction")
-      .toPromise()
-      .catch(error => NonFictionService.handleError(error))
   }
 
-  private static handleError(error: any): Promise<any> {
-    return Promise.reject(error.message | error);
+  public deleteNonFiction(id: number) {
+    return this.apiService.doDelete("/nonFiction/" + id)
+  }
+
+  public getNonFictionById(id: number): Observable<NonFiction> {
+    return this.apiService.doGet("/nonFiction/" + id);
   }
 }

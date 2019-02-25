@@ -12,12 +12,12 @@
       <mat-list-item> Subject: {{selectedArticle.nonFictionSubject}} </mat-list-item>
     </mat-list>
 
-    <form [formGroup]="submitQuantityForm" (ngSubmit)="submitQuantity()">
+    <form (ngSubmit)="submitQuantity()" [formGroup]="submitQuantityForm">
       <mat-form-field class="submit-quantity">
-        <input matInput placeholder="Quantity" formControlName="quantity">
+        <input formControlName="quantity" matInput placeholder="Quantity">
       </mat-form-field>
 
-      <button mat-button class="submit-button" type=submit>
+      <button class="submit-button" mat-button type=submit>
         Add to shoppingCart
       </button>
     </form>

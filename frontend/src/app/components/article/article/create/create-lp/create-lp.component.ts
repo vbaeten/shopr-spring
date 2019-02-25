@@ -23,15 +23,14 @@ export class CreateLpComponent implements OnInit {
       lpGenre: ['', Validators.required],
     });
 
+  constructor(private lpService: LpService,
+              private formBuilder: FormBuilder) {
+  }
 
   lpGenres(): Array<string> {
     return Object.keys(LpGenre).filter(
       (type) => isNaN(<any>type) && type !== 'values'
     );
-  }
-
-  constructor(private lpService: LpService,
-              private formBuilder: FormBuilder) {
   }
 
   ngOnInit() {

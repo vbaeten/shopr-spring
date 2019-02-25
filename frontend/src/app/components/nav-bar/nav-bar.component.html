@@ -1,19 +1,18 @@
-
 <mat-toolbar>
   <a routerLink="/">
     <span class="orange"><span class="green">Shop</span>R</span>
   </a>
   <div>
-    <button mat-button [matMenuTriggerFor]="user">User</button>
+    <button [matMenuTriggerFor]="user" mat-button>User</button>
     <mat-menu #user="matMenu">
       <button mat-menu-item routerLink="/login">Register/Login</button>
-      <button mat-button (click)="userService.removeCurrentUser(userService.getCurrentUser())">Logout</button>
+      <button (click)="userService.removeCurrentUser(userService.getCurrentUser())" mat-button>Logout</button>
       <button mat-menu-item routerLink="/users">User overview</button>
     </mat-menu>
-    <button mat-button [matMenuTriggerFor]="article">Articles</button>
+    <button [matMenuTriggerFor]="article" mat-button>Articles</button>
     <mat-menu #article="matMenu">
-    <button mat-menu-item routerLink="/articles">Article overview</button>
-    <button mat-menu-item routerLink="/article/create-article">Create Article</button>
+      <button mat-menu-item routerLink="/articles">Article overview</button>
+      <button mat-menu-item routerLink="/article/create-article">Create Article</button>
     </mat-menu>
     <!--<span *ngIf="currentUser">{{currentUser.firstName}} {{currentUser.name}}</span>-->
     <button mat-button routerLink="/shoppingCart">ShoppingCart</button>
@@ -21,19 +20,19 @@
 </mat-toolbar>
 
 <!--<mat-toolbar>-->
-  <!--<a routerLink="/">-->
-    <!--<span class="orange"><span class="green">Shop</span>R</span>-->
-  <!--</a>-->
-  <!--<div>-->
-    <!--<button mat-button [matMenuTriggerFor]="menu">Menu</button>-->
-    <!--<mat-menu #menu="matMenu">-->
-      <!--<button mat-menu-item routerLink="/register">Register/Login</button>-->
-      <!--<button mat-menu-item *ngIf="currentUser.admin === false" routerLink="/articles">Article overview</button>-->
-      <!--<button mat-menu-item *ngIf="currentUser.admin === true" routerLink="/article/create-article">Create Article</button>-->
-      <!--<button mat-menu-item *ngIf="currentUser.admin === true" routerLink="/users">User overview</button>-->
-    <!--</mat-menu>-->
-    <!--<button mat-button *ngIf="currentUser!" routerLink="/login" >Register/Login</button>-->
-    <!--<span>{{currentUser.firstName}} {{currentUser.name}}</span>-->
-    <!--<button mat-button *ngIf="userService.getCurrentUser()" (click)="userService.removeCurrentUser(userService.getCurrentUser())">Logout</button>-->
-  <!--</div>-->
+<!--<a routerLink="/">-->
+<!--<span class="orange"><span class="green">Shop</span>R</span>-->
+<!--</a>-->
+<!--<div>-->
+<!--<button mat-button [matMenuTriggerFor]="menu">Menu</button>-->
+<!--<mat-menu #menu="matMenu">-->
+<!--<button mat-menu-item routerLink="/register">Register/Login</button>-->
+<!--<button mat-menu-item *ngIf="currentUser.admin === false" routerLink="/articles">Article overview</button>-->
+<!--<button mat-menu-item *ngIf="currentUser.admin === true" routerLink="/article/create-article">Create Article</button>-->
+<!--<button mat-menu-item *ngIf="currentUser.admin === true" routerLink="/users">User overview</button>-->
+<!--</mat-menu>-->
+<!--<button mat-button *ngIf="currentUser!" routerLink="/login" >Register/Login</button>-->
+<!--<span>{{currentUser.firstName}} {{currentUser.name}}</span>-->
+<!--<button mat-button *ngIf="userService.getCurrentUser()" (click)="userService.removeCurrentUser(userService.getCurrentUser())">Logout</button>-->
+<!--</div>-->
 <!--</mat-toolbar>-->

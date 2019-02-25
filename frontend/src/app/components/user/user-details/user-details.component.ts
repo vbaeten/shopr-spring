@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import { User} from "../../../models/user";
+import {User} from "../../../models/user";
 
 @Component({
   selector: 'app-user-details',
@@ -9,7 +9,8 @@ import { User} from "../../../models/user";
 export class UserDetailsComponent implements OnInit {
   @Input() user: User;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

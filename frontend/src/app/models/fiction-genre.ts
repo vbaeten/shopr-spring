@@ -1,4 +1,4 @@
-export enum FictionGenre{
+export enum FictionGenre {
   THRILLER,
   FANTASY,
   DETECTIVE,

@@ -9,9 +9,6 @@ import {Observable} from "rxjs";
 })
 export class OrderLineService {
 
-  currentOrderLines: OrderLine[];
-
-
   constructor(private notification: MatSnackBar, private apiService: ApiService) {
   }
 
@@ -46,4 +43,17 @@ export class OrderLineService {
   public getOrderLinesByOrderId(id: number): Observable<OrderLine[]> {
     return this.apiService.doGet(`/orderLine/order/${id}`);
   }
+
+  getCurrentOrderLineFromStorage(): OrderLine {
+    return JSON.parse(localStorage.getItem("currentOrder"));
+  }
+
+  setCurrentOrderLineToStorage(orderLine: OrderLine) {
+    if (this.getCurrentOrderLineFromStorage() === null) {
+      this.createOrderLine(orderLine).subscribe(newOrder => {
+        localStorage.setItem('currentOrder', JSON.stringify(newOrder));
+      });
+    }
+  }
+
 }

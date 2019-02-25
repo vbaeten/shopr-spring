@@ -7,7 +7,7 @@ import {Observable} from "rxjs";
 @Injectable({
   providedIn: 'root'
 })
-export class ArticleSevice {
+export class ArticleService {
   constructor(private notification: MatSnackBar, private apiService: ApiService) {
   }
 
@@ -20,7 +20,7 @@ export class ArticleSevice {
       })
   };
 
-  public edit(article: Article){
+  public edit(article: Article) {
     this.apiService.doPut("/article", article).subscribe(response => {
         this.notification.open("article has been updated", "👍", {duration: 3000});
       },
@@ -29,8 +29,8 @@ export class ArticleSevice {
       })
   }
 
-  public getArticleById(id:number) :Observable<Article>{
-      return this.apiService.doGet("/article/" + id);
+  public getArticleById(id: number): Observable<Article> {
+    return this.apiService.doGet("/article/" + id);
   }
 
   public getArticles(): Observable<Article[]> {
@@ -41,6 +41,8 @@ export class ArticleSevice {
     return this.apiService.doDelete("/article/" + id)
   }
 
-
+  public setArticleToStorage(article: Article){
+    sessionStorage.setItem('selectedArticle', JSON.stringify(article))
+  }
 
 }

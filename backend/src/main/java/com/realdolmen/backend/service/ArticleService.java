@@ -4,7 +4,7 @@ import com.realdolmen.backend.domain.Article;
 
 import java.util.List;
 
-public interface ArticleService{
+public interface ArticleService {
 
     Article findById(Long id);
 

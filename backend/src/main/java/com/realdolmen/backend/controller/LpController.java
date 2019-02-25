@@ -25,7 +25,7 @@ public class LpController {
     }
 
     @GetMapping
-    public List<Lp> findAll(){
+    public List<Lp> findAll() {
         return lpService.findAll();
     }
 

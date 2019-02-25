@@ -1,4 +1,4 @@
-export enum GameGenre{
+export enum GameGenre {
   MMORPG,
   RPG,
   FPS,

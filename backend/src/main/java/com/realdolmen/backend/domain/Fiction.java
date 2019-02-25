@@ -1,9 +1,6 @@
 package com.realdolmen.backend.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -15,7 +12,8 @@ import javax.validation.constraints.Size;
 @DiscriminatorValue("fiction")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Fiction extends Book{
+@EqualsAndHashCode
+public class Fiction extends Book {
 
     @Size(max = 255)
     @Column(name = "short_summary")

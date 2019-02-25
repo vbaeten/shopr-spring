@@ -1,44 +1,43 @@
-
 <div style="align-content: center">
   <mat-card>
 
-    <form [formGroup]="createFictionForm" (ngSubmit)="createFiction()">
+    <form (ngSubmit)="createFiction()" [formGroup]="createFictionForm">
 
-      <table class="create-fiction" cellspacing="20">
+      <table cellspacing="20" class="create-fiction">
         <tr>
           <td>
             <mat-form-field class="create-fiction-read-only">
-              <input matInput placeholder="Article type" formControlName="type">
+              <input formControlName="type" matInput placeholder="Article type">
             </mat-form-field>
           </td>
           <td>
             <mat-form-field class="create-fiction-read-only">
-              <input matInput [readonly]="type" placeholder="Book type" formControlName="bookType">
+              <input [readonly]="type" formControlName="bookType" matInput placeholder="Book type">
             </mat-form-field>
           </td>
         </tr>
         <tr>
           <td>
             <mat-form-field class="create-fiction">
-              <input matInput placeholder="Title" formControlName="title">
+              <input formControlName="title" matInput placeholder="Title">
             </mat-form-field>
           </td>
           <td>
             <mat-form-field class="create-fiction">
-              <input matInput placeholder="Author" formControlName="author">
+              <input formControlName="author" matInput placeholder="Author">
             </mat-form-field>
           </td>
         </tr>
         <tr>
           <td>
             <mat-form-field class="create-fiction">
-              <input matInput placeholder="Price" formControlName="price"
-                     [dropSpecialCharacters]="false" mask="999999.00">
+              <input [dropSpecialCharacters]="false" formControlName="price" mask="999999.00"
+                     matInput placeholder="Price">
             </mat-form-field>
           </td>
           <td>
             <mat-form-field class="create-fiction">
-              <mat-select placeholder="Fiction genre" formControlName="fictionGenre">
+              <mat-select formControlName="fictionGenre" placeholder="Fiction genre">
                 <mat-option *ngFor="let genre of fictionGenres()" [value]="genre">
                   {{genre}}
                 </mat-option>
@@ -49,26 +48,26 @@
         <tr>
           <td>
             <mat-form-field class="create-fiction">
-              <input type="text" matInput placeholder="Isbn" formControlName="isbn"
-                     [dropSpecialCharacters]="false" mask="000-00-0000-000-0">
+              <input [dropSpecialCharacters]="false" formControlName="isbn" mask="000-00-0000-000-0" matInput
+                     placeholder="Isbn" type="text">
             </mat-form-field>
           </td>
           <td>
             <mat-form-field class="create-fiction">
-              <input matInput placeholder="nr of pages" formControlName="nrOfPages"
-                     mask="9999">
+              <input formControlName="nrOfPages" mask="9999" matInput
+                     placeholder="nr of pages">
             </mat-form-field>
           </td>
         </tr>
         <tr>
           <td>
             <mat-form-field class="create-fiction">
-              <input matInput placeholder="Short summary" formControlName="shortSummary">
+              <input formControlName="shortSummary" matInput placeholder="Short summary">
             </mat-form-field>
           </td>
           <td>
             <mat-form-field class="create-fiction">
-              <input matInput placeholder="Supplier ID" formControlName="supplierId">
+              <input formControlName="supplierId" matInput placeholder="Supplier ID">
             </mat-form-field>
           </td>
         </tr>
@@ -76,7 +75,7 @@
 
         </tr>
         <tr>
-          <button mat-button class="submit-button" type=submit>
+          <button class="submit-button" mat-button type=submit>
             Submit
           </button>
         </tr>

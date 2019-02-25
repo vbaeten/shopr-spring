@@ -33,10 +33,6 @@ export class FictionService {
     return this.apiService.doGet("/fiction")
   }
 
-  private static handleError(error: any): Promise<any> {
-    return Promise.reject(error.message | error);
-  }
-
   public deleteFiction(id: number) {
     return this.apiService.doDelete("/fiction/" + id)
   }

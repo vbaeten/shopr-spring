@@ -1,9 +1,9 @@
-.orange{
+.orange {
   color: #f39200;
   padding-right: 20px;
 }
 
-.green{
+.green {
   color: #259040;
 }
 
@@ -11,7 +11,7 @@
   flex: 1 1 auto;
 }
 
-mat-toolbar{
+mat-toolbar {
   background-color: white;
 }
 

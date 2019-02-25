@@ -1,17 +1,17 @@
 <div>
   <mat-card class="loginCard">
-    <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <form (ngSubmit)="login()" [formGroup]="loginForm">
 
-      <table class="register-user" cellspacing="0">
+      <table cellspacing="0" class="register-user">
         <tr>
           <td>
             <mat-form-field class="login">
-              <input matInput placeholder="Username" formControlName="userName">
+              <input formControlName="userName" matInput placeholder="Username">
             </mat-form-field>
           </td>
         </tr>
         <tr>
-          <button mat-raised-button class="green-button" type=submit>
+          <button class="green-button" mat-raised-button type=submit>
             Login
           </button>
         </tr>

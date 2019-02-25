@@ -33,20 +33,19 @@ export class UserComponent implements OnInit, AfterViewInit {
     this.users.paginator = this.paginator;
   }
 
-  getAllUsers(){
+  getAllUsers() {
     this.userService.getUsers()
-      .subscribe( data => {
+      .subscribe(data => {
         this.users.data = data as User[];
       });
   }
 
   deleteUser(user: User): void {
     this.userService.deleteById(user.id)
-      .subscribe( data => {
+      .subscribe(data => {
         this.users.data = this.users.data.filter(u => u !== user);
       })
   };
-
 
 
   onSelect(user: User) {

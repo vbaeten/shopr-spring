@@ -1,9 +1,7 @@
 package com.realdolmen.backend.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-@AllArgsConstructor
 @Getter
 public enum FictionGenre {
 
@@ -13,10 +11,9 @@ public enum FictionGenre {
     ROMANCE("romance"),
     SCIFI("sci-fi");
 
-    private String fictionGenre;
+    private String fictionGenreName;
 
-    public void setFictionGenre(String fictionGenre) {
-        this.fictionGenre = fictionGenre;
+    FictionGenre(String fictionGenreName) {
+        this.fictionGenreName = fictionGenreName;
     }
-
 }

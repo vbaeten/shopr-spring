@@ -1,5 +1,4 @@
-
-export class Article {
+export abstract class Article {
 
   public type: string;
   public title: string;

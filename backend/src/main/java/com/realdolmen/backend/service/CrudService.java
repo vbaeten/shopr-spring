@@ -2,11 +2,11 @@ package com.realdolmen.backend.service;
 
 import java.util.List;
 
-public interface CrudService<E, ID> {
+public interface CrudService<E, I> {
 
     E save(E entity);
 
-    E findById(ID primaryKey);
+    E findById(I primaryKey);
 
     List<E> findAll();
 

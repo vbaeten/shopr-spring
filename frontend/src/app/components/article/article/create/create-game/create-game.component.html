@@ -1,43 +1,42 @@
-
 <div style="align-content: center">
   <mat-card>
 
-    <form [formGroup]="createGameForm" (ngSubmit)="createGame()">
+    <form (ngSubmit)="createGame()" [formGroup]="createGameForm">
 
-      <table class="create-game" cellspacing="20">
+      <table cellspacing="20" class="create-game">
         <tr>
           <td>
             <mat-form-field class="create-game-read-only">
-              <input matInput [readonly]="type" placeholder="Article type" formControlName="type">
+              <input [readonly]="type" formControlName="type" matInput placeholder="Article type">
             </mat-form-field>
           </td>
           <td>
             <mat-form-field class="create-game">
-              <input matInput placeholder="Publisher" formControlName="publisher">
-            </mat-form-field>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <mat-form-field class="create-game">
-              <input matInput placeholder="Title" formControlName="title">
-            </mat-form-field>
-          </td>
-          <td>
-            <mat-form-field class="create-game">
-              <input matInput placeholder="Minimum age" formControlName="minimumAge">
+              <input formControlName="publisher" matInput placeholder="Publisher">
             </mat-form-field>
           </td>
         </tr>
         <tr>
           <td>
             <mat-form-field class="create-game">
-              <input matInput placeholder="Price" formControlName="price">
+              <input formControlName="title" matInput placeholder="Title">
             </mat-form-field>
           </td>
           <td>
             <mat-form-field class="create-game">
-              <mat-select placeholder="Game genre" formControlName="gameGenre">
+              <input formControlName="minimumAge" matInput placeholder="Minimum age">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="create-game">
+              <input formControlName="price" matInput placeholder="Price">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="create-game">
+              <mat-select formControlName="gameGenre" placeholder="Game genre">
                 <mat-option *ngFor="let genre of gameGenres()" [value]="genre">
                   {{genre}}
                 </mat-option>
@@ -48,7 +47,7 @@
         <tr>
           <td>
             <mat-form-field class="create-game">
-              <input matInput placeholder="Supplier ID" formControlName="supplierId">
+              <input formControlName="supplierId" matInput placeholder="Supplier ID">
             </mat-form-field>
           </td>
         </tr>
@@ -56,7 +55,7 @@
 
         </tr>
         <tr>
-          <button mat-button class="submit-button" type=submit>
+          <button class="submit-button" mat-button type=submit>
             Submit
           </button>
         </tr>

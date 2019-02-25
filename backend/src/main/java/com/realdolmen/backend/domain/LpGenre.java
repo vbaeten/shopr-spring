@@ -1,9 +1,7 @@
 package com.realdolmen.backend.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-@AllArgsConstructor
 @Getter
 public enum LpGenre {
 
@@ -14,10 +12,10 @@ public enum LpGenre {
     RNB("r&b"),
     HIPHOP("hiphop");
 
-    private String lpGenre;
+    private String lpGenreName;
 
-    public void setLpGenre(String lpGenre) {
-        this.lpGenre = lpGenre;
+    LpGenre(String lpGenreName) {
+        this.lpGenreName = lpGenreName;
     }
 
 }

@@ -1,7 +1,7 @@
 package com.realdolmen.backend.domain;
 
 
-import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,7 +18,8 @@ import java.math.BigDecimal;
 @Table
 @DiscriminatorValue("game")
 @NoArgsConstructor
-public class Game extends Article{
+@EqualsAndHashCode
+public class Game extends Article {
 
     @Size(max = 100)
     @Column

@@ -32,16 +32,9 @@ export class ShoppingCartComponent implements OnInit {
     this.setSortAndPaginator();
   }
 
-
-  private setSortAndPaginator() {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
-  }
-
   deleteOrderLine = (id: number) => {
     this.orderLineService.deleteOrderLine(id).subscribe()
-    };
-
+  };
 
   getCurrentOrder() {
     let currentOrderFromStorage = this.orderService.getCurrentOrderFromStorage();
@@ -61,5 +54,10 @@ export class ShoppingCartComponent implements OnInit {
   calculateSubtotal(quantity: number, price: number): number {
     let subtotal = quantity * price;
     return parseFloat(subtotal.toFixed(2));
+  }
+
+  private setSortAndPaginator() {
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
   }
 }

@@ -1,6 +1,6 @@
 import {Article} from "./article";
 
-export class Book extends Article{
+export abstract class Book extends Article {
 
   public author: string;
   public isbn: string;

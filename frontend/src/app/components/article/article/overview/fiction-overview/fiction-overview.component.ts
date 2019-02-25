@@ -48,11 +48,9 @@ export class FictionOverviewComponent implements OnInit {
   }
 
   goToDetailsPage(fiction: Fiction) {
-        this.router.navigate(["/fiction/", fiction.articleId]);
-        sessionStorage.setItem('selectedArticle', JSON.stringify(fiction))
-    }
-
-
+    this.router.navigate(["/fiction/", fiction.articleId]);
+    sessionStorage.setItem('selectedArticle', JSON.stringify(fiction))
+  }
 
 
   applyFilter(filterValue: string) {

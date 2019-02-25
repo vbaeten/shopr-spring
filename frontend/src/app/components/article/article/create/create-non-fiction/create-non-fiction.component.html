@@ -1,42 +1,42 @@
 <div style="align-content: center">
   <mat-card>
 
-    <form [formGroup]="createNonFictionForm" (ngSubmit)="createNonFiction()">
+    <form (ngSubmit)="createNonFiction()" [formGroup]="createNonFictionForm">
 
-      <table class="create-non-fiction" cellspacing="20">
+      <table cellspacing="20" class="create-non-fiction">
         <tr>
           <td>
             <mat-form-field class="create-non-fiction-read-only">
-              <input matInput placeholder="Article type" formControlName="type">
+              <input formControlName="type" matInput placeholder="Article type">
             </mat-form-field>
           </td>
           <td>
             <mat-form-field class="create-non-fiction-read-only">
-              <input matInput [readonly]="type" placeholder="Book type" formControlName="bookType">
+              <input [readonly]="type" formControlName="bookType" matInput placeholder="Book type">
             </mat-form-field>
           </td>
         </tr>
         <tr>
           <td>
             <mat-form-field class="create-non-fiction">
-              <input matInput placeholder="Title" formControlName="title">
+              <input formControlName="title" matInput placeholder="Title">
             </mat-form-field>
           </td>
           <td>
             <mat-form-field class="create-non-fiction">
-              <input matInput placeholder="Author" formControlName="author">
+              <input formControlName="author" matInput placeholder="Author">
             </mat-form-field>
           </td>
         </tr>
         <tr>
           <td>
             <mat-form-field class="create-non-fiction">
-              <input matInput placeholder="Price" formControlName="price">
+              <input formControlName="price" matInput placeholder="Price">
             </mat-form-field>
           </td>
           <td>
             <mat-form-field class="create-non-fiction">
-              <mat-select placeholder="Non fiction subject" formControlName="nonFictionSubject">
+              <mat-select formControlName="nonFictionSubject" placeholder="Non fiction subject">
                 <mat-option *ngFor="let genre of nonFictionSubjects()" [value]="genre">
                   {{genre}}
                 </mat-option>
@@ -47,19 +47,19 @@
         <tr>
           <td>
             <mat-form-field class="create-non-fiction">
-              <input matInput placeholder="Isbn" formControlName="isbn">
+              <input formControlName="isbn" matInput placeholder="Isbn">
             </mat-form-field>
           </td>
           <td>
             <mat-form-field class="create-non-fiction">
-              <input matInput placeholder="nr of pages" formControlName="nrOfPages">
+              <input formControlName="nrOfPages" matInput placeholder="nr of pages">
             </mat-form-field>
           </td>
         </tr>
         <tr>
           <td>
             <mat-form-field class="create-non-fiction">
-              <input matInput placeholder="Supplier ID" formControlName="supplierId">
+              <input formControlName="supplierId" matInput placeholder="Supplier ID">
             </mat-form-field>
           </td>
         </tr>
@@ -67,7 +67,7 @@
 
         </tr>
         <tr>
-          <button mat-button class="submit-button" type=submit>
+          <button class="submit-button" mat-button type=submit>
             Submit
           </button>
         </tr>

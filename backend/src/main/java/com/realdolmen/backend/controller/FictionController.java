@@ -25,7 +25,7 @@ public class FictionController {
     }
 
     @GetMapping
-    public List<Fiction> findAll(){
+    public List<Fiction> findAll() {
         return fictionService.findAll();
     }
 

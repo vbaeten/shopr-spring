@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {MatSnackBar} from "@angular/material";
 import {ApiService} from "./api.service";
 import {Lp} from "../models/lp";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -28,13 +29,15 @@ export class LpService {
       })
   }
 
-  public getLps(): Promise<Lp[]> {
+  public getLps() {
     return this.apiService.doGet("/lp")
-      .toPromise()
-      .catch(error => LpService.handleError(error))
   }
 
-  private static handleError(error: any): Promise<any> {
-    return Promise.reject(error.message | error);
+  public deleteLp(id: number) {
+    return this.apiService.doDelete("/lp/" + id)
+  }
+
+  public getLpById(id: number): Observable<Lp> {
+    return this.apiService.doGet("/lp/" + id);
   }
 }

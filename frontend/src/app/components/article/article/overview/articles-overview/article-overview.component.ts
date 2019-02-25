@@ -1,15 +1,15 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {ArticleSevice} from "../../../services/article.sevice";
-import {Article} from "../../../models/article";
+import {ArticleService} from "../../../../../services/article.service";
+import {Article} from "../../../../../models/article";
 import {MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-article',
-  templateUrl: './article.component.html',
-  styleUrls: ['./article.component.css']
+  templateUrl: './article-overview.component.html',
+  styleUrls: ['./article-overview.component.css']
 })
-export class ArticleComponent implements OnInit, AfterViewInit {
+export class ArticleOverviewComponent implements OnInit, AfterViewInit {
 
   selectedArticle: Article;
   displayedColumns: string[] = ['articleId', 'title', 'price', 'supplierId', 'type', 'delete'];
@@ -18,7 +18,7 @@ export class ArticleComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private articleService: ArticleSevice, private router: Router, private route: ActivatedRoute) {
+  constructor(private articleService: ArticleService, private router: Router, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -38,36 +38,31 @@ export class ArticleComponent implements OnInit, AfterViewInit {
   };
 
   deleteArticle = (id: number) => {
-    this.articleService.deleteArticle(id).subscribe(()=> {
+    this.articleService.deleteArticle(id).subscribe(() => {
       this.getAllArticles();
     });
   };
 
-  getArticleById(id: number){
-    this.articleService.getArticleById(id)
-  }
-
-  goToDetailsPage(article:Article){
+  goToDetailsPage(article: Article) {
     switch (article.type) {
       case "game": {
-        this.router.navigate(["/article/game-details/", article.articleId],
-          { relativeTo: this.route })
-      } break;
+        this.router.navigate(["/article/game-details/", article.articleId])
+      }
+        break;
       case "lp": {
-        this.router.navigate(["/article/lp-details/", article.articleId],
-          { relativeTo: this.route })
-      } break;
+        this.router.navigate(["/article/lp-details/", article.articleId])
+      }
+        break;
       case "fiction": {
-        this.router.navigate(["/article/fiction-details/", article.articleId],
-          { relativeTo: this.route })
-      } break;
+        this.router.navigate(["/article/fiction-details/", article.articleId])
+      }
+        break;
       case "nonFiction": {
-        this.router.navigate(["/article/nonFiction-details/", article.articleId],
-          { relativeTo: this.route })
-      } break;
+        this.router.navigate(["/article/nonFiction-details/", article.articleId])
+      }
+        break;
     }
-
-      sessionStorage.setItem('selectedArticle', JSON.stringify(article))
+    this.articleService.setArticleToStorage(article);
   }
 
   applyFilter(filterValue: string) {

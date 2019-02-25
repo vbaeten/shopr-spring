@@ -25,7 +25,7 @@ public class NonFictionController {
     }
 
     @GetMapping
-    public List<NonFiction> findAll(){
+    public List<NonFiction> findAll() {
         return nonFictionService.findAll();
     }
 

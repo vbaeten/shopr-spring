@@ -1,9 +1,7 @@
 package com.realdolmen.backend.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-@AllArgsConstructor
 @Getter
 public enum GameGenre {
     MMORPG("MMO/RPG"),
@@ -12,10 +10,10 @@ public enum GameGenre {
     RTS("RTS"),
     RACE("Race");
 
-    private String gameGenre;
+    private String gameGenreName;
 
-    public void setGameGenre(String gameGenre) {
-        this.gameGenre = gameGenre;
+    GameGenre(String gameGenreName) {
+        this.gameGenreName = gameGenreName;
     }
 
 }

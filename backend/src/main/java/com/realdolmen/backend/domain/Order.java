@@ -1,9 +1,6 @@
 package com.realdolmen.backend.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -14,6 +11,7 @@ import java.util.Date;
 @Table(name = "orders")
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
 public class Order {
 
     @Id

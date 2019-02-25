@@ -20,7 +20,7 @@ public class ArticleController {
     }
 
     @GetMapping
-    public List<Article> findAll(){
+    public List<Article> findAll() {
         return articleService.findAll();
     }
 

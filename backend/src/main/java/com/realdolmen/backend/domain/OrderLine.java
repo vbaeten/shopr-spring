@@ -1,12 +1,8 @@
 package com.realdolmen.backend.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Getter
@@ -15,7 +11,8 @@ import java.math.BigDecimal;
 @Table(name = "order_line")
 @NoArgsConstructor
 @AllArgsConstructor
-public class OrderLine implements Serializable {
+@EqualsAndHashCode
+public class OrderLine {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
