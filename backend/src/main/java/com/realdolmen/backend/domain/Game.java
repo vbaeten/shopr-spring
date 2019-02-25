@@ -18,7 +18,7 @@ import java.math.BigDecimal;
 @Table
 @DiscriminatorValue("game")
 @NoArgsConstructor
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = true)
 public class Game extends Article {
 
     @Size(max = 100)

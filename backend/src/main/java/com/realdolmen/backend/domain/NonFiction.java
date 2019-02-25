@@ -11,7 +11,7 @@ import javax.persistence.*;
 @DiscriminatorValue("nonFiction")
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = true)
 public class NonFiction extends Book {
 
     @Enumerated(EnumType.STRING)

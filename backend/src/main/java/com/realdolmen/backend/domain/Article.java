@@ -45,7 +45,7 @@ public abstract class Article implements Serializable {
     @Column(name = "title")
     private String title;
     @NotNull
-    @Digits(integer = 6, fraction = 2)
+    @Digits(integer = 4, fraction = 2)
     @Column(name = "price")
     private BigDecimal price;
     @NotNull

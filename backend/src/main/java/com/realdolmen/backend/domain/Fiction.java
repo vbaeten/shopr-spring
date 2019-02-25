@@ -12,7 +12,7 @@ import javax.validation.constraints.Size;
 @DiscriminatorValue("fiction")
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = true)
 public class Fiction extends Book {
 
     @Size(max = 255)

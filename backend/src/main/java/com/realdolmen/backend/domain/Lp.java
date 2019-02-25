@@ -17,7 +17,7 @@ import java.math.BigDecimal;
 @Table
 @DiscriminatorValue("lp")
 @NoArgsConstructor
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = true)
 public class Lp extends Article {
 
     @Size(max = 100)

@@ -1,23 +1,25 @@
 <div>
   <mat-card class="loginCard">
-    <form (ngSubmit)="login()" [formGroup]="loginForm">
 
-      <table cellspacing="0" class="register-user">
-        <tr>
-          <td>
-            <mat-form-field class="login">
-              <input formControlName="userName" matInput placeholder="Username">
-            </mat-form-field>
-          </td>
-        </tr>
-        <tr>
-          <button class="green-button" mat-raised-button type=submit>
-            Login
-          </button>
-        </tr>
-      </table>
+    <table cellspacing="0" class="register-user">
+      <tr>
+        <td>
+          <mat-form-field class="login">
+            <mat-select [(ngModel)]="selectedUser" placeholder="Username">
+              <mat-option *ngFor="let user of users" [value]="user.userName">
+                {{user.userName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <button (click)="login()" class="green-button" mat-raised-button>
+          Login
+        </button>
+      </tr>
+    </table>
 
-    </form>
   </mat-card>
 </div>
 
