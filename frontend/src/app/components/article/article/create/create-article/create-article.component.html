@@ -6,10 +6,9 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-  <p> Selected article: {{selectedValue}} </p>
 </form>
 
-<app-create-game *ngIf="selectedValue === 'game'" [type]="selectedValue"></app-create-game>
-<app-create-fiction *ngIf="selectedValue === 'fiction'" [type]="selectedValue"></app-create-fiction>
-<app-create-non-fiction *ngIf="selectedValue === 'nonFiction'" [type]="selectedValue"></app-create-non-fiction>
-<app-create-lp *ngIf="selectedValue === 'lp'" [type]="selectedValue"></app-create-lp>
+<app-create-game *ngIf="selectedValue === 'Game'" [type]="selectedValue"></app-create-game>
+<app-create-fiction *ngIf="selectedValue === 'Fiction'" [type]="selectedValue"></app-create-fiction>
+<app-create-non-fiction *ngIf="selectedValue === 'Non fiction'" [type]="selectedValue"></app-create-non-fiction>
+<app-create-lp *ngIf="selectedValue === 'Lp'" [type]="selectedValue"></app-create-lp>

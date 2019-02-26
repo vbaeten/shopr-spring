@@ -11,6 +11,11 @@ import {LpDetailsComponent} from "./components/article/article/details/lp-detail
 import {FictionDetailsComponent} from "./components/article/article/details/fiction-details/fiction-details.component";
 import {NonFictionDetailsComponent} from "./components/article/article/details/non-fiction-details/non-fiction-details.component";
 import {ShoppingCartComponent} from "./components/shopping-cart/shopping-cart.component";
+import {GameOverviewComponent} from "./components/article/article/overview/game-overview/game-overview.component";
+import {LpOverviewComponent} from "./components/article/article/overview/lp-overview/lp-overview.component";
+import {FictionOverviewComponent} from "./components/article/article/overview/fiction-overview/fiction-overview.component";
+import {NonFictionOverviewComponent} from "./components/article/article/overview/non-fiction-overview/non-fiction-overview.component";
+import {OverviewComponent} from "./components/article/article/overview/overview.component";
 
 const routes: Routes = [
   // {path: '**', component: PageNotFoundComponent},
@@ -18,7 +23,12 @@ const routes: Routes = [
   {path: 'users', component: UserComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'shop', component: OverviewComponent},
   {path: 'articles', component: ArticleOverviewComponent},
+  {path: 'games', component: GameOverviewComponent},
+  {path: 'lps', component: LpOverviewComponent},
+  {path: 'fictions', component: FictionOverviewComponent},
+  {path: 'nonFictions', component: NonFictionOverviewComponent},
   {path: 'article/create-article', component: CreateArticleComponent},
   {path: 'article/game-details/:id', component: GameDetailsComponent},
   {path: 'article/lp-details/:id', component: LpDetailsComponent},

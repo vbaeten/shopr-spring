@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
 import {Router} from "@angular/router";
 import {Fiction} from "../../../../../models/fiction";
@@ -10,7 +10,7 @@ import {FictionService} from "../../../../../services/fiction.service";
   styleUrls: ['./fiction-overview.component.css']
 })
 export class FictionOverviewComponent implements OnInit {
-
+  @Input() type: string;
   selectedArticle: Fiction;
   displayedColumns: string[] = ['articleId', 'title', 'price', 'supplierId', 'type', 'delete'];
   dataSource = new MatTableDataSource<Fiction>();
@@ -48,7 +48,7 @@ export class FictionOverviewComponent implements OnInit {
   }
 
   goToDetailsPage(fiction: Fiction) {
-    this.router.navigate(["/fiction/", fiction.articleId]);
+    this.router.navigate(["/article/fiction-details/", fiction.articleId]);
     sessionStorage.setItem('selectedArticle', JSON.stringify(fiction))
   }
 

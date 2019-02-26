@@ -6,7 +6,7 @@ import {UserModule} from "./components/user/user.module";
 import {SharedModule} from "./modules/shared-module/shared.module";
 import {NavBarModule} from "./components/nav-bar/nav-bar.module";
 import {ArticleDetailsModule} from "./components/article/article/details/article-details.module";
-import {ArticleOverviewModule} from "./components/article/article/overview/article-overview.module";
+import {OverviewModule} from "./components/article/article/overview/overview.module";
 import {CreateArticleModule} from "./components/article/article/create/create-article.module";
 import {PageNotFoundModule} from "./components/page-not-found/page-not-found.module";
 import {ShoppingCartModule} from "./components/shopping-cart/shopping-cart.module";
@@ -20,7 +20,7 @@ import {ShoppingCartModule} from "./components/shopping-cart/shopping-cart.modul
     SharedModule,
     NavBarModule,
     ArticleDetailsModule,
-    ArticleOverviewModule,
+    OverviewModule,
     CreateArticleModule,
     PageNotFoundModule,
     ShoppingCartModule,

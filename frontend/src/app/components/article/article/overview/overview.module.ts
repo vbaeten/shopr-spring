@@ -12,6 +12,7 @@ import {FictionService} from "../../../../services/fiction.service";
 import {GameService} from "../../../../services/game.service";
 import {LpService} from "../../../../services/lp.service";
 import {NonFictionService} from "../../../../services/non-fiction.service";
+import {OverviewComponent} from './overview.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {NonFictionService} from "../../../../services/non-fiction.service";
     FictionOverviewComponent,
     GameOverviewComponent,
     LpOverviewComponent,
-    NonFictionOverviewComponent
+    NonFictionOverviewComponent,
+    OverviewComponent
   ],
   imports: [
     CommonModule,
@@ -41,5 +43,5 @@ import {NonFictionService} from "../../../../services/non-fiction.service";
     NonFictionService
   ]
 })
-export class ArticleOverviewModule {
+export class OverviewModule {
 }

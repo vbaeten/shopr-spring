@@ -5,11 +5,11 @@ import lombok.Getter;
 @Getter
 public enum FictionGenre {
 
-    THRILLER("thriller"),
-    FANTASY("fantasy"),
-    DETECTIVE("detective"),
-    ROMANCE("romance"),
-    SCIFI("sci-fi");
+    THRILLER("Thriller"),
+    FANTASY("Fantasy"),
+    DETECTIVE("Detective"),
+    ROMANCE("Romance"),
+    SCIFI("Sci-fi");
 
     private String fictionGenreName;
 

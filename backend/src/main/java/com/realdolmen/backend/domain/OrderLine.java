@@ -3,6 +3,7 @@ package com.realdolmen.backend.domain;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import java.math.BigDecimal;
 
 @Getter
@@ -18,6 +19,7 @@ public class OrderLine {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Min(1)
     @Column(name = "quantity")
     private BigDecimal quantity;
 

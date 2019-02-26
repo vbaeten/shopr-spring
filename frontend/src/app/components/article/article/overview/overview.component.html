@@ -1,0 +1,15 @@
+<form>
+  <mat-form-field>
+    <mat-select [(ngModel)]="selectedValue" name="articleType" placeholder="Article type">
+      <mat-option *ngFor="let articleType of articleTypes" [value]="articleType">
+        {{articleType}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>
+
+<app-article-overview *ngIf="selectedValue === 'all'" [type]="selectedValue"></app-article-overview>
+<app-game-overview *ngIf="selectedValue === 'game'" [type]="selectedValue"></app-game-overview>
+<app-fiction-overview *ngIf="selectedValue === 'fiction'" [type]="selectedValue"></app-fiction-overview>
+<app-non-fiction-overview *ngIf="selectedValue === 'nonFiction'" [type]="selectedValue"></app-non-fiction-overview>
+<app-lp-overview *ngIf="selectedValue === 'lp'" [type]="selectedValue"></app-lp-overview>

@@ -10,11 +10,6 @@
               <input formControlName="type" matInput placeholder="Article type">
             </mat-form-field>
           </td>
-          <td>
-            <mat-form-field class="create-fiction-read-only">
-              <input [readonly]="type" formControlName="bookType" matInput placeholder="Book type">
-            </mat-form-field>
-          </td>
         </tr>
         <tr>
           <td>
@@ -37,7 +32,7 @@
           </td>
           <td>
             <mat-form-field class="create-fiction">
-              <mat-select formControlName="fictionGenre" placeholder="Fiction genre">
+              <mat-select class="mat-select-menu" formControlName="fictionGenre" placeholder="Fiction genre">
                 <mat-option *ngFor="let genre of fictionGenres()" [value]="genre">
                   {{genre}}
                 </mat-option>

@@ -22,7 +22,6 @@ export class CreateFictionComponent implements OnInit {
       author: ['', Validators.required],
       isbn: ['', Validators.required],
       nrOfPages: ['', Validators.required],
-      bookType: ['', Validators.required],
       shortSummary: ['', Validators.required],
       fictionGenre: ['', Validators.required],
     });
@@ -45,14 +44,13 @@ export class CreateFictionComponent implements OnInit {
 
   createFiction = () => {
     this.fiction = new Fiction();
-    this.fiction.type = this.createFictionForm.value.type;
+    this.fiction.type = "fiction";
     this.fiction.title = this.createFictionForm.value.title;
     this.fiction.price = this.createFictionForm.value.price;
     this.fiction.supplierId = this.createFictionForm.value.supplierId;
     this.fiction.author = this.createFictionForm.value.author;
     this.fiction.isbn = this.createFictionForm.value.isbn;
     this.fiction.nrOfPages = this.createFictionForm.value.nrOfPages;
-    this.fiction.bookType = this.createFictionForm.value.bookType;
     this.fiction.shortSummary = this.createFictionForm.value.shortSummary;
     this.fiction.fictionGenre = this.createFictionForm.value.fictionGenre;
 

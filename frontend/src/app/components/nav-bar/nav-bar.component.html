@@ -11,10 +11,10 @@
     </mat-menu>
     <button [matMenuTriggerFor]="article" mat-button>Articles</button>
     <mat-menu #article="matMenu">
-      <button mat-menu-item routerLink="/articles">Article overview</button>
+      <button mat-menu-item routerLink="/shop">Shop</button>
       <button mat-menu-item routerLink="/article/create-article">Create Article</button>
     </mat-menu>
-    <!--<span *ngIf="currentUser">{{currentUser.firstName}} {{currentUser.name}}</span>-->
+    <span *ngIf="currentUser">{{currentUser.firstName}} {{currentUser.name}}</span>
     <button mat-button routerLink="/shoppingCart">ShoppingCart</button>
   </div>
 </mat-toolbar>

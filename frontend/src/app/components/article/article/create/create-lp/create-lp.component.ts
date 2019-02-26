@@ -40,7 +40,7 @@ export class CreateLpComponent implements OnInit {
 
   createLp = () => {
     this.lp = new Lp();
-    this.lp.type = this.createLpForm.value.type;
+    this.lp.type = "lp";
     this.lp.title = this.createLpForm.value.title;
     this.lp.price = this.createLpForm.value.price;
     this.lp.supplierId = this.createLpForm.value.supplierId;

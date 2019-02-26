@@ -36,7 +36,7 @@
           </td>
           <td>
             <mat-form-field class="create-game">
-              <mat-select formControlName="gameGenre" placeholder="Game genre">
+              <mat-select class="mat-select-menu" formControlName="gameGenre" placeholder="Game genre">
                 <mat-option *ngFor="let genre of gameGenres()" [value]="genre">
                   {{genre}}
                 </mat-option>

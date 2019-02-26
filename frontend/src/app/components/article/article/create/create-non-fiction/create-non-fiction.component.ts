@@ -22,7 +22,6 @@ export class CreateNonFictionComponent implements OnInit {
       author: ['', Validators.required],
       isbn: ['', Validators.required],
       nrOfPages: ['', Validators.required],
-      bookType: ['', Validators.required],
       nonFictionSubject: ['', Validators.required],
     });
 
@@ -44,14 +43,13 @@ export class CreateNonFictionComponent implements OnInit {
 
   createNonFiction = () => {
     this.nonFiction = new NonFiction();
-    this.nonFiction.type = this.createNonFictionForm.value.type;
+    this.nonFiction.type = "nonFiction";
     this.nonFiction.title = this.createNonFictionForm.value.title;
     this.nonFiction.price = this.createNonFictionForm.value.price;
     this.nonFiction.supplierId = this.createNonFictionForm.value.supplierId;
     this.nonFiction.author = this.createNonFictionForm.value.author;
     this.nonFiction.isbn = this.createNonFictionForm.value.isbn;
     this.nonFiction.nrOfPages = this.createNonFictionForm.value.nrOfPages;
-    this.nonFiction.bookType = this.createNonFictionForm.value.bookType;
     this.nonFiction.nonFictionSubject = this.createNonFictionForm.value.nonFictionSubject;
 
     this.nonFictionService.createNonFiction(this.nonFiction);

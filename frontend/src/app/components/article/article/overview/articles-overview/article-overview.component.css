@@ -3,7 +3,7 @@ table {
 }
 
 .mat-elevation-z8 {
-  width: 80%;
+  width: 70%;
 }
 
 .mat-form-field {
@@ -11,10 +11,10 @@ table {
   width: 50%;
 }
 
-td, th {
-  width: 25%;
-}
+/*td, th {*/
+  /*width: 25%;*/
+/*}*/
 
-.mat-header-row {
-  font-size: 18px;
-}
+/*.mat-header-row {*/
+  /*font-size: 18px;*/
+/*}*/

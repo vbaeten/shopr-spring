@@ -1,18 +1,19 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
 import {ArticleService} from "../../../../../services/article.service";
 import {Article} from "../../../../../models/article";
 import {MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
 import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-article',
+  selector: 'app-article-overview',
   templateUrl: './article-overview.component.html',
   styleUrls: ['./article-overview.component.css']
 })
 export class ArticleOverviewComponent implements OnInit, AfterViewInit {
+  @Input() type: string;
 
   selectedArticle: Article;
-  displayedColumns: string[] = ['articleId', 'title', 'price', 'supplierId', 'type', 'delete'];
+  displayedColumns: string[] = ['articleId', 'title', 'price', 'supplierId', 'type', 'delete', 'details'];
   dataSource = new MatTableDataSource<Article>();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

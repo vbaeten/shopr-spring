@@ -11,3 +11,11 @@ body {
   background-color: limegreen;
   color: white;
 }
+
+.mat-option {
+  height: 30px !important;
+}
+
+.mat-select-menu{
+  height: 10px;
+}

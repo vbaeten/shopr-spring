@@ -8,7 +8,7 @@ import {Component, OnInit} from '@angular/core';
 export class CreateArticleComponent implements OnInit {
 
   selectedValue: string;
-  articleTypes: string[] = ["game", "lp", "fiction", "nonFiction"];
+  articleTypes: string[] = ["Game", "Lp", "Fiction", "Non fiction"];
 
   constructor() {
   }
