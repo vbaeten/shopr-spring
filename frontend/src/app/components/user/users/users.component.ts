@@ -34,6 +34,10 @@ export class UsersComponent implements OnInit, OnDestroy {
     this.dataSource.sort = this.sort;
   }
 
+  deleteUser(user: User): void {
+    this.userService.deleteUser(user);
+  }
+
   refresh() {
     this.userService.getUsers().subscribe(data => {
       this.users = data;

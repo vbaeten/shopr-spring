@@ -32,7 +32,7 @@ export class UserService {
   }
 
   deleteUser(user: User) {
-    this.apiService.doDelete('/user/delete')
+    this.apiService.doDelete('/user/delete');
   }
 
   updateUser(user: User): Observable<User> {
