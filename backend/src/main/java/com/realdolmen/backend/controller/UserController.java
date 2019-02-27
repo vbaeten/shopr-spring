@@ -1,6 +1,5 @@
 package com.realdolmen.backend.controller;
 
-import com.realdolmen.backend.domain.User;
 import com.realdolmen.backend.dto.UserDto;
 import com.realdolmen.backend.facade.UserFacade;
 import com.realdolmen.backend.service.UserService;
@@ -22,20 +21,14 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("/reg")
-    @ResponseStatus(HttpStatus.OK)
-    public User registerUser(@RequestBody User user) {
-        return userService.save(user);
-    }
-
     @PostMapping("/register")
-    public ResponseEntity<UserDto> registerUserByDto(@RequestBody UserDto userDto) {
-        return new ResponseEntity<>(userService.createUser(userDto), HttpStatus.CREATED);
+    public ResponseEntity<UserDto> registerUser(@RequestBody UserDto userDto) {
+        return new ResponseEntity<>(userFacade.createUser(userDto), HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<UserDto> getUserById(@PathVariable Long id){
-        return new ResponseEntity<>(userService.findByUserId(id), HttpStatus.OK);
+        return new ResponseEntity<>(userFacade.findById(id), HttpStatus.OK);
     }
 
     @GetMapping("/list")
@@ -48,8 +41,13 @@ public class UserController {
         userService.deleteById(id);
     }
 
+//    @DeleteMapping("/delete")
+//    public void deleteUser(User user) {
+//        userService.delete(user);
+//    }
+
     @DeleteMapping("/delete")
-    public void deleteUser(User user) {
-        userService.delete(user);
+    public void deleteUser(UserDto userDto) {
+        userFacade.delete(userDto);
     }
 }

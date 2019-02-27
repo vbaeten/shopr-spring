@@ -1,24 +1,19 @@
 package com.realdolmen.backend.service;
 
 import com.realdolmen.backend.domain.User;
-import com.realdolmen.backend.dto.UserDto;
 import com.realdolmen.backend.exception.NotFoundException;
-import com.realdolmen.backend.mapper.UserMapper;
 import com.realdolmen.backend.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-    private final UserMapper userMapper;
 
-    public UserServiceImpl(UserRepository userRepository, UserMapper userMapper) {
+    public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
-        this.userMapper = userMapper;
     }
 
     @Override
@@ -43,18 +38,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto findByUserId(Long id) {
-        return userRepository.findById(id).map(userMapper::userToUserDto).orElseThrow(RuntimeException::new);
-    }
-
-    @Override
-    public List<UserDto> getAllUsers() {
-        return userRepository.findAll().stream().map(user -> {
-            return userMapper.userToUserDto(user);
-        }).collect(Collectors.toList());
-    }
-
-    @Override
     public List<User> findAll() {
         return userRepository.findAll();
     }
@@ -70,17 +53,6 @@ public class UserServiceImpl implements UserService {
         userRepository.delete(user);
     }
 
-    @Override
-    public UserDto createUser(UserDto userDto) {
-        User user = userMapper.userDtoToUser(userDto);
-        User savedUser = userRepository.save(user);
-        return userMapper.userToUserDto(savedUser);
-    }
-
-    @Override
-    public UserDto deleteUserById(Long id) {
-        return null;
-    }
 }
 
 

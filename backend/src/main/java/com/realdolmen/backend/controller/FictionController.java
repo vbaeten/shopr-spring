@@ -1,6 +1,8 @@
 package com.realdolmen.backend.controller;
 
 import com.realdolmen.backend.domain.Fiction;
+import com.realdolmen.backend.dto.FictionDto;
+import com.realdolmen.backend.facade.FictionFacade;
 import com.realdolmen.backend.service.FictionService;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,9 +13,11 @@ import java.util.List;
 public class FictionController {
 
     private FictionService fictionService;
+    private FictionFacade fictionFacade;
 
-    public FictionController(FictionService fictionService) {
+    public FictionController(FictionService fictionService, FictionFacade fictionFacade) {
         this.fictionService = fictionService;
+        this.fictionFacade = fictionFacade;
     }
 
     @GetMapping("/list")
@@ -22,9 +26,8 @@ public class FictionController {
     }
 
     @PostMapping("/add")
-    public Fiction addFiction(@RequestBody Fiction fiction) {
-        fictionService.create(fiction);
-        return fiction;
+    public FictionDto addFiction(@RequestBody FictionDto fictionDto) {
+        return fictionFacade.create(fictionDto);
     }
 
     @GetMapping("/{id}")

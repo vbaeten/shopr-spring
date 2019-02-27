@@ -1,6 +1,8 @@
 package com.realdolmen.backend.controller;
 
 import com.realdolmen.backend.domain.Game;
+import com.realdolmen.backend.dto.GameDto;
+import com.realdolmen.backend.facade.GameFacade;
 import com.realdolmen.backend.service.GameService;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,9 +13,12 @@ import java.util.List;
 public class GameController {
 
     private GameService gameService;
+    private GameFacade gameFacade;
 
-    public GameController(GameService gameService) {
+    public GameController(GameService gameService,
+                          GameFacade gameFacade) {
         this.gameService = gameService;
+        this.gameFacade = gameFacade;
     }
 
     @GetMapping("/list")
@@ -22,9 +27,8 @@ public class GameController {
     }
 
     @PostMapping("/add")
-    public Game addGame(@RequestBody Game game) {
-        gameService.create(game);
-        return game;
+    public GameDto addGame(@RequestBody GameDto gameDto) {
+        return gameFacade.create(gameDto);
     }
 
     @GetMapping("/{id}")

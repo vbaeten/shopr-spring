@@ -1,6 +1,8 @@
 package com.realdolmen.backend.controller;
 
 import com.realdolmen.backend.domain.NonFiction;
+import com.realdolmen.backend.dto.NonFictionDto;
+import com.realdolmen.backend.facade.NonFictionFacade;
 import com.realdolmen.backend.service.NonFictionService;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +13,7 @@ import java.util.List;
 public class NonFictionController {
 
     private NonFictionService nonFictionService;
+    private NonFictionFacade nonFictionFacade;
 
     public NonFictionController(NonFictionService nonFictionService) {
         this.nonFictionService = nonFictionService;
@@ -22,9 +25,8 @@ public class NonFictionController {
     }
 
     @PostMapping("/add")
-    public NonFiction addNonFiction(@RequestBody NonFiction nonFiction) {
-        nonFictionService.create(nonFiction);
-        return nonFiction;
+    public NonFictionDto addNonFictionDto(@RequestBody NonFictionDto nonFictionDto) {
+        return nonFictionFacade.create(nonFictionDto);
     }
 
     @GetMapping("/{id}")

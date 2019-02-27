@@ -22,10 +22,23 @@ public class UserFacade {
 
     public List<UserDto> findUsers() {
         List<User> users = userService.findAll();
-        List<UserDto> userDtos = users
+        return users
                 .stream()
                 .map(userMapper::userToUserDto)
                 .collect(Collectors.toList());
-        return userDtos;
+    }
+
+    public void delete(UserDto userDto) {
+    }
+
+    public UserDto findById(Long id) {
+        User user = userService.findById(id);
+        return userMapper.userToUserDto(user);
+    }
+
+    public UserDto createUser(UserDto userDto) {
+        User user = userMapper.userDtoToUser(userDto);
+        User savedUser = userService.save(user);
+        return userMapper.userToUserDto(savedUser);
     }
 }

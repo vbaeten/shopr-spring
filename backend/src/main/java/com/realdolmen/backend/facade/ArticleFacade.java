@@ -31,4 +31,10 @@ public class ArticleFacade {
     public void deleteArticle(ArticleDto articleDto) {
 
     }
+
+    public void delete(ArticleDto articleDto) {
+        Article article = articleMapper.articleDtoToArticle(articleDto);
+        articleService.delete(article);
+    }
+
 }

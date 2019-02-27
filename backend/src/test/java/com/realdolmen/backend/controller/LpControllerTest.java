@@ -16,7 +16,6 @@ public class LpControllerTest {
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        controller = new LpController(lpService);
     }
 
     @Test

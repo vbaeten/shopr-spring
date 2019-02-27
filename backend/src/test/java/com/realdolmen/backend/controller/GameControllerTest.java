@@ -1,10 +1,8 @@
 package com.realdolmen.backend.controller;
 
 import com.realdolmen.backend.service.GameService;
-import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 
 public class GameControllerTest {
 
@@ -13,11 +11,11 @@ public class GameControllerTest {
 
     GameController controller;
 
-    @Before
-    public void setUp() throws Exception {
-        MockitoAnnotations.initMocks(this);
-        controller = new GameController(gameService);
-    }
+//    @Before
+//    public void setUp() throws Exception {
+//        MockitoAnnotations.initMocks(this);
+//        controller = new GameController(gameService);
+//    }
 
     @Test
     public void getGames() {

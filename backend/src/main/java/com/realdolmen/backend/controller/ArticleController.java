@@ -33,9 +33,14 @@ public class ArticleController {
         articleService.deleteById(id);
     }
 
+//    @DeleteMapping("/delete")
+//    public void deleteArticle(Article article) {
+//        articleService.delete(article);
+//    }
+
     @DeleteMapping("/delete")
-    public void deleteArticle(Article article) {
-        articleService.delete(article);
+    public void deleteArticle(ArticleDto articleDto) {
+        articleFacade.delete(articleDto);
     }
 
 }

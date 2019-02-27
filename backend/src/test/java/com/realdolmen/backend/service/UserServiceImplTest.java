@@ -1,7 +1,6 @@
 package com.realdolmen.backend.service;
 
 import com.realdolmen.backend.domain.User;
-import com.realdolmen.backend.dto.UserDto;
 import com.realdolmen.backend.repository.UserRepository;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,11 +9,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import java.util.Arrays;
-import java.util.List;
-
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UserServiceImplTest {
@@ -45,26 +40,26 @@ public class UserServiceImplTest {
         User user2 = userService.findById(1L);
         assertEquals(1L, user.getId().longValue());
     }
-
-    @Test
-    public void getAllUsers() throws Exception {
-        User user1 = new User();
-        user1.setId(1L);
-        user1.setFirstName("Ines");
-        user1.setName("Van Gucht");
-
-        User user2 = new User();
-        user2.setId(2L);
-        user2.setFirstName("Jutta");
-        user2.setName("Roggen");
-
-        when(userRepository.findAll()).thenReturn(Arrays.asList(user1, user2));
-
-        List<UserDto> userDtos = userService.getAllUsers();
-
-        assertEquals(2, userDtos.size());
-
-    }
+//
+//    @Test
+//    public void getAllUsers() throws Exception {
+//        User user1 = new User();
+//        user1.setId(1L);
+//        user1.setFirstName("Ines");
+//        user1.setName("Van Gucht");
+//
+//        User user2 = new User();
+//        user2.setId(2L);
+//        user2.setFirstName("Jutta");
+//        user2.setName("Roggen");
+//
+//        when(userRepository.findAll()).thenReturn(Arrays.asList(user1, user2));
+//
+//        List<UserDto> userDtos = userService.getAllUsers();
+//
+//        assertEquals(2, userDtos.size());
+//
+//    }
 }
 
 
