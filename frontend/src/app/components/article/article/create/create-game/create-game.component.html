@@ -3,39 +3,39 @@
 
     <form (ngSubmit)="createGame()" [formGroup]="createGameForm">
 
-      <table cellspacing="20" class="create-game">
+      <table cellspacing="20">
         <tr>
           <td>
-            <mat-form-field class="create-game-read-only">
+            <mat-form-field>
               <input [readonly]="type" formControlName="type" matInput placeholder="Article type">
             </mat-form-field>
           </td>
           <td>
-            <mat-form-field class="create-game">
+            <mat-form-field>
               <input formControlName="publisher" matInput placeholder="Publisher">
             </mat-form-field>
           </td>
         </tr>
         <tr>
           <td>
-            <mat-form-field class="create-game">
+            <mat-form-field>
               <input formControlName="title" matInput placeholder="Title">
             </mat-form-field>
           </td>
           <td>
-            <mat-form-field class="create-game">
+            <mat-form-field>
               <input formControlName="minimumAge" matInput placeholder="Minimum age">
             </mat-form-field>
           </td>
         </tr>
         <tr>
           <td>
-            <mat-form-field class="create-game">
+            <mat-form-field>
               <input formControlName="price" matInput placeholder="Price">
             </mat-form-field>
           </td>
           <td>
-            <mat-form-field class="create-game">
+            <mat-form-field>
               <mat-select class="mat-select-menu" formControlName="gameGenre" placeholder="Game genre">
                 <mat-option *ngFor="let genre of gameGenres()" [value]="genre">
                   {{genre}}

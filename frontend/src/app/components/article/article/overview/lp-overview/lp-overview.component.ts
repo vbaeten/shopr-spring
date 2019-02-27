@@ -3,6 +3,7 @@ import {Lp} from "../../../../../models/lp";
 import {MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
 import {LpService} from "../../../../../services/lp.service";
 import {Router} from "@angular/router";
+import {ArticleService} from "../../../../../services/article.service";
 
 @Component({
   selector: 'app-lp-overview',
@@ -12,13 +13,13 @@ import {Router} from "@angular/router";
 export class LpOverviewComponent implements OnInit {
   @Input() type: string;
   selectedArticle: Lp;
-  displayedColumns: string[] = ['articleId', 'title', 'price', 'supplierId', 'type', 'delete'];
+  displayedColumns: string[] = ['articleId', 'title', 'price', 'supplierId', 'type', 'delete', 'details'];
   dataSource = new MatTableDataSource<Lp>();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private lpService: LpService, private router: Router) {
+  constructor(private lpService: LpService, private articleService: ArticleService, private router: Router) {
   }
 
   ngOnInit() {
@@ -38,7 +39,7 @@ export class LpOverviewComponent implements OnInit {
   };
 
   deleteLp = (id: number) => {
-    this.lpService.deleteLp(id).subscribe(() => {
+    this.articleService.deleteArticle(id).subscribe(() => {
       this.getAllLps();
     });
   };

@@ -3,6 +3,7 @@ import {MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
 import {Router} from "@angular/router";
 import {Fiction} from "../../../../../models/fiction";
 import {FictionService} from "../../../../../services/fiction.service";
+import {ArticleService} from "../../../../../services/article.service";
 
 @Component({
   selector: 'app-fiction-overview',
@@ -12,13 +13,13 @@ import {FictionService} from "../../../../../services/fiction.service";
 export class FictionOverviewComponent implements OnInit {
   @Input() type: string;
   selectedArticle: Fiction;
-  displayedColumns: string[] = ['articleId', 'title', 'price', 'supplierId', 'type', 'delete'];
+  displayedColumns: string[] = ['articleId', 'title', 'price', 'supplierId', 'type', 'delete', 'details'];
   dataSource = new MatTableDataSource<Fiction>();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private fictionService: FictionService, private router: Router) {
+  constructor(private fictionService: FictionService,private articleService: ArticleService, private router: Router) {
   }
 
   ngOnInit() {
@@ -38,7 +39,7 @@ export class FictionOverviewComponent implements OnInit {
   };
 
   deleteFiction = (id: number) => {
-    this.fictionService.deleteFiction(id).subscribe(() => {
+    this.articleService.deleteArticle(id).subscribe(() => {
       this.getAllFictions();
     });
   };

@@ -3,6 +3,7 @@ import {NonFiction} from "../../../../../models/nonFiction";
 import {MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
 import {NonFictionService} from "../../../../../services/non-fiction.service";
 import {Router} from "@angular/router";
+import {ArticleService} from "../../../../../services/article.service";
 
 @Component({
   selector: 'app-non-fiction-overview',
@@ -12,13 +13,13 @@ import {Router} from "@angular/router";
 export class NonFictionOverviewComponent implements OnInit {
   @Input() type: string;
   selectedArticle: NonFiction;
-  displayedColumns: string[] = ['articleId', 'title', 'price', 'supplierId', 'type', 'delete'];
+  displayedColumns: string[] = ['articleId', 'title', 'price', 'supplierId', 'type', 'delete', 'details'];
   dataSource = new MatTableDataSource<NonFiction>();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private nonFictionService: NonFictionService, private router: Router) {
+  constructor(private nonFictionService: NonFictionService, private articleService: ArticleService, private router: Router) {
   }
 
   ngOnInit() {
@@ -38,7 +39,7 @@ export class NonFictionOverviewComponent implements OnInit {
   };
 
   deleteNonFiction = (id: number) => {
-    this.nonFictionService.deleteNonFiction(id).subscribe(() => {
+    this.articleService.deleteArticle(id).subscribe(() => {
       this.getAllNonFictions();
     });
   };
