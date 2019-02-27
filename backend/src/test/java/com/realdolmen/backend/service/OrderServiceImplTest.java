@@ -47,7 +47,7 @@ public class OrderServiceImplTest {
 
         List<Order> orders = orderService.findAll();
 
-        assertEquals(orders.size(), 2);
+        assertEquals(2, orders.size());
         //check this is called 1 time
         verify(orderRepository, times(1)).findAll();
     }

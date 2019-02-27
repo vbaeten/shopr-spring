@@ -1,6 +1,8 @@
 package com.realdolmen.backend.controller;
 
 import com.realdolmen.backend.domain.Article;
+import com.realdolmen.backend.dto.ArticleDto;
+import com.realdolmen.backend.facade.ArticleFacade;
 import com.realdolmen.backend.service.ArticleService;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,14 +13,16 @@ import java.util.List;
 public class ArticleController {
 
     private ArticleService articleService;
+    private ArticleFacade articleFacade;
 
-    public ArticleController ( ArticleService articleService) {
+    public ArticleController ( ArticleService articleService, ArticleFacade articleFacade) {
         this.articleService = articleService;
+        this.articleFacade = articleFacade;
     }
 
     @GetMapping("/list")
-    public List<Article> getArticles() {
-        return articleService.findAll();
+    public List<ArticleDto> getArticles() {
+        return articleFacade.findArticles();
     }
 
     @GetMapping("/{id}")

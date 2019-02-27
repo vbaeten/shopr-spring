@@ -7,13 +7,18 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("orderline")
+@RequestMapping("/orderline")
 public class OrderLineController {
 
     private OrderLineService orderLineService;
 
     public OrderLineController(OrderLineService orderLineService) {
         this.orderLineService = orderLineService;
+    }
+
+    @PutMapping("/add")
+    public OrderLine addToCart() {
+        return null;
     }
 
     @GetMapping("/list/{id}")

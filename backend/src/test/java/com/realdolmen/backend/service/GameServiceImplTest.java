@@ -3,15 +3,16 @@ package com.realdolmen.backend.service;
 import com.realdolmen.backend.repository.GameRepository;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 public class GameServiceImplTest {
 
-    GameServiceImpl gameService;
-
     @Mock
     GameRepository gameRepository;
+    @InjectMocks
+    GameServiceImpl gameService;
 
     @Before
     public void setUp() throws Exception {
@@ -30,9 +31,5 @@ public class GameServiceImplTest {
 
     @Test
     public void findAll() {
-    }
-
-    @Test
-    public void delete() {
     }
 }

@@ -9,9 +9,9 @@ import {FooterComponent} from './components/layout/footer/footer.component';
 import {NavbarComponent} from './components/layout/navbar/navbar.component';
 import {UserService} from './services/user.service';
 import {HomeComponent} from './components/home/home.component';
-import {RegisterComponent} from './components/user/register/register.component';
+import {RegisterComponent} from './components/user/loginregisterpanel/register/register.component';
 import {AppMaterialModule} from './modules/app-material/app-material.module';
-import {LoginComponent} from './components/user/login/login.component';
+import {LoginComponent} from './components/user/loginregisterpanel/login/login.component';
 import {UsersComponent} from './components/user/users/users.component';
 import {LpDetailComponent} from './components/articles/details/lp-detail/lp-detail.component';
 import {GameDetailComponent} from './components/articles/details/game-detail/game-detail.component';
@@ -43,6 +43,7 @@ import {OrderLinesComponent} from './components/order/order-lines/order-lines.co
 import {CreateShoppingCartComponent} from './components/temp/create-shopping-cart/create-shopping-cart.component';
 import {StyleComponent} from './components/temp/style/style.component';
 import {ValidationModule} from './modules/validation/validation.module';
+import {LoginAndRegisterComponent} from './components/user/loginregisterpanel/login-and-register/login-and-register.component';
 
 
 @NgModule({
@@ -81,6 +82,7 @@ import {ValidationModule} from './modules/validation/validation.module';
     OrderLinesComponent,
     CreateShoppingCartComponent,
     StyleComponent,
+    LoginAndRegisterComponent,
   ],
   imports: [
     BrowserModule,

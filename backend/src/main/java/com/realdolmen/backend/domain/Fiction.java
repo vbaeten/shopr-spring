@@ -23,6 +23,13 @@ public class Fiction extends Book implements Serializable {
     @Size(max = 255)
     private String synopsis;
 
+    public Fiction() {
+    }
+
+    public Fiction(BookGenre bookGenre, @Size(max = 255) String synopsis) {
+        this.bookGenre = bookGenre;
+        this.synopsis = synopsis;
+    }
 
     @Override
     public boolean equals(Object o) {

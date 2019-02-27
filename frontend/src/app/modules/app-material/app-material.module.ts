@@ -1,18 +1,21 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {
+  MatBadgeModule,
   MatButtonModule,
   MatCardModule,
+  MatExpansionModule,
+  MatFormFieldModule,
+  MatGridListModule,
   MatIconModule,
-  MatTableModule,
-  MatToolbarModule,
+  MatInputModule,
   MatMenuModule,
   MatSelectModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatSortModule,
   MatSnackBarModule,
-  MatExpansionModule, MatTabsModule, MatBadgeModule
+  MatSortModule,
+  MatTableModule,
+  MatTabsModule,
+  MatToolbarModule
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -40,7 +43,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     MatSnackBarModule,
     MatExpansionModule,
     MatTabsModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatGridListModule
   ],
   exports: [
     MatCardModule,
@@ -60,7 +64,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     MatSnackBarModule,
     MatExpansionModule,
     MatTabsModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatGridListModule
   ]
 })
 
