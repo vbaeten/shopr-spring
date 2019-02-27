@@ -16,4 +16,7 @@ public class Rating {
 
     @ManyToOne
     private Product product;
+
+    @ManyToOne
+    private User user;
 }

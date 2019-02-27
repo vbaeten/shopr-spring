@@ -40,11 +40,12 @@ create table ratings
 	id bigint not null
 		primary key,
 	rating double not null,
-	product_id bigint null
+	product_id bigint null,
+	user_id bigint null
 )
 engine=MyISAM
 ;
 
-create index FKpvx3j2rgs4g99r0rti2vf57or
-	on ratings (product_id)
+create index FKgd4laqdp3puv1bxgmh62tj8hn
+	on ratings (user_id)
 ;
