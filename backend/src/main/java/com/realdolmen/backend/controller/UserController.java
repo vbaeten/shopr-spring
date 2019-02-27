@@ -2,7 +2,6 @@ package com.realdolmen.backend.controller;
 
 import com.realdolmen.backend.dto.UserDto;
 import com.realdolmen.backend.facade.UserFacade;
-import com.realdolmen.backend.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,11 +13,9 @@ import java.util.List;
 public class UserController {
 
     private final UserFacade userFacade;
-    private UserService userService;
 
-    public UserController(UserFacade userFacade, UserService userService) {
+    public UserController(UserFacade userFacade) {
         this.userFacade = userFacade;
-        this.userService = userService;
     }
 
     @PostMapping("/register")
@@ -36,10 +33,6 @@ public class UserController {
         return userFacade.findUsers();
     }
 
-//    @DeleteMapping("/delete/{id}")
-//    public void deleteUserById(@PathVariable("id") Long id) {
-//        userService.deleteById(id);
-//    }
 
     @DeleteMapping("/delete/{id}")
     public void deleteUserById(@PathVariable("id") Long id) {

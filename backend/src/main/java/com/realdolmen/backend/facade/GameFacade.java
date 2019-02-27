@@ -6,6 +6,9 @@ import com.realdolmen.backend.mapper.GameMapper;
 import com.realdolmen.backend.service.GameService;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Component
 public class GameFacade {
 
@@ -15,6 +18,16 @@ public class GameFacade {
     public GameFacade(GameService gameService, GameMapper gameMapper) {
         this.gameService = gameService;
         this.gameMapper = gameMapper;
+    }
+
+    public List<GameDto> findAll() {
+        List<Game> games = gameService.findAll();
+        return games.stream().map(gameMapper::gameToGameDto).collect(Collectors.toList());
+    }
+
+    public GameDto findById(Long id) {
+        Game game = gameService.findById(id);
+        return gameMapper.gameToGameDto(game);
     }
 
     public GameDto create(GameDto gameDto) {

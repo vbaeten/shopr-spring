@@ -1,6 +1,5 @@
 package com.realdolmen.backend.controller;
 
-import com.realdolmen.backend.domain.Fiction;
 import com.realdolmen.backend.dto.FictionDto;
 import com.realdolmen.backend.facade.FictionFacade;
 import com.realdolmen.backend.service.FictionService;
@@ -12,17 +11,15 @@ import java.util.List;
 @RequestMapping("/fiction")
 public class FictionController {
 
-    private FictionService fictionService;
     private FictionFacade fictionFacade;
 
     public FictionController(FictionService fictionService, FictionFacade fictionFacade) {
-        this.fictionService = fictionService;
         this.fictionFacade = fictionFacade;
     }
 
     @GetMapping("/list")
-    public List<Fiction> getFictionBooks() {
-        return fictionService.findAll();
+    public List<FictionDto> getFictionBooks() {
+        return fictionFacade.findAll();
     }
 
     @PostMapping("/add")
@@ -31,8 +28,8 @@ public class FictionController {
     }
 
     @GetMapping("/{id}")
-    public Fiction getFiction(@PathVariable("id") Long id) {
-        return fictionService.findById(id);
+    public FictionDto getFiction(@PathVariable("id") Long id) {
+        return fictionFacade.findById(id);
     }
 
 }
