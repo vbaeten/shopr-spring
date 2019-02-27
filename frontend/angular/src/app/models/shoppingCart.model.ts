@@ -1,5 +1,4 @@
 import {CartItem} from "./cartItem.model";
-import {UUID} from 'angular2-uuid';
 
 export class ShoppingCart {
 
@@ -16,7 +15,7 @@ export class ShoppingCart {
     this.totalPrice =  cart.totalPrice;
   }
 
-  public setId() {
-    this.id = UUID.UUID();
-  }
+  // public setId() {
+  //   this.id = UUID.UUID();
+  // }
 }

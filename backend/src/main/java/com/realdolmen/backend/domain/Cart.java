@@ -23,8 +23,9 @@ public class Cart {
 //    @OneToOne @MapsId
 //    private User user;
 
-    @Column(name = "cart_user_id")
-    private Long userId;
+    // Bidirectionnal
+//    @Column(name = "cart_user_id")
+//    private Long userId;
 
     @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<CartItem> cartItems;

@@ -1,3 +1,5 @@
+import {ShoppingCart} from "./shoppingCart.model";
+
 export class User {
   public username: string;
   public firstname: string;
@@ -6,5 +8,12 @@ export class User {
   public active: boolean;
   public role?: string;
   public id?: number;
+  public cart: ShoppingCart;
+
+  // public setUsersShoppingCart(cart: ShoppingCart) {
+  //   cart.userId = this.id;
+  //   cart.items = [];
+  //   cart.
+  // }
 
 }

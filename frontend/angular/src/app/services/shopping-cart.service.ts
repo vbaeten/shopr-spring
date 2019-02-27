@@ -5,6 +5,7 @@ import {ShoppingCart} from "../models/shoppingCart.model";
 import {CartItem} from "../models/cartItem.model";
 import {BehaviorSubject, Observable} from "rxjs";
 import {UserService} from "./user.service";
+import {TokenStorage} from "./token.storage";
 
 const CART_KEY = "cart";
 
@@ -17,19 +18,15 @@ export class ShoppingCartService {
 
   private _shoppingCartSubject: BehaviorSubject<ShoppingCart> = new BehaviorSubject(this.retrieve());
   private shoppingCartObs: Observable<ShoppingCart> = this._shoppingCartSubject.asObservable();
-  // private subscribers: Observer[ShoppingCart] = [];
 
-  constructor(private productService: ProductService, private userService: UserService) {
+  constructor(
+    private productService: ProductService,
+    private userService: UserService,
+    private tokenStorrage: TokenStorage
+  ) {
 
     this.productService.getProducts().subscribe((products) => this.products = products);
 
-    // this._shoppingCartSubject = new Observable<ShoppingCart>((observer: Observer<ShoppingCart>) => {
-    //   this.subscribers.push(observer);
-    //   observer.next(this.retrieve());
-    //   return () => {
-    //     this.subscribers = this.subscribers.filter((obs) => obs !== observer);
-    //   };
-    // });
   }
 
   public get(): Observable<ShoppingCart> {
@@ -52,10 +49,9 @@ export class ShoppingCartService {
     item.quantity += quantity;
     cart.totalItems += item.quantity;
 
-    console.log("ProdId " + JSON.stringify(cart.items.map(p => p.productId)));
-
     this.calculateCart(cart);
     this.save(cart);
+    this.tokenStorrage.setShoppId(cart);
     this._shoppingCartSubject.next(cart);
   }
 
@@ -69,7 +65,6 @@ export class ShoppingCartService {
   }
 
   private save(cart: ShoppingCart): void {
-    cart.setId();
     localStorage.setItem(CART_KEY, JSON.stringify(cart));
   }
 

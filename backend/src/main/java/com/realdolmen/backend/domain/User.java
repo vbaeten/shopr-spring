@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -36,5 +37,11 @@ public class User {
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "cart_id", nullable = true)
     private Cart cart;
+
+    @OneToMany(mappedBy = "id")
+    private List<Comment> comments;
+
+    @OneToMany(mappedBy = "id")
+    private List<FavoriteProduct> favoriteProducts;
 
 }

@@ -4,6 +4,7 @@ package com.realdolmen.backend.domain;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -21,4 +22,11 @@ public abstract class Product {
 
     @Column(name = "type", insertable = false, updatable = false)
     private String type;
+
+    @OneToMany(mappedBy = "id")
+    private List<Comment> comments;
+
+    @OneToMany(mappedBy = "id")
+    private List<Rating> ratings;
+
 }
