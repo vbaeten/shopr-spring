@@ -1,6 +1,5 @@
 package com.realdolmen.backend.controller;
 
-import com.realdolmen.backend.domain.Order;
 import com.realdolmen.backend.dto.OrderDto;
 import com.realdolmen.backend.facade.OrderFacade;
 import com.realdolmen.backend.service.OrderService;
@@ -25,9 +24,13 @@ public class OrderController {
         return orderFacade.save(orderDto);
     }
 
-    @GetMapping("/list/{id}")
-    public List<Order> findByUserId(@PathVariable("id") Long id) {
-        return orderService.findByUserId(id);
-    }
+//    @GetMapping("/list/{id}")
+//    public List<Order> findByUserId(@PathVariable("id") Long id) {
+//        return orderService.findByUserId(id);
+//    }
 
+    @GetMapping("/list/{id}")
+    public List<OrderDto> findByUserId(@PathVariable("id") Long id) {
+        return orderFacade.findOrdersByUser(id);
+    }
 }

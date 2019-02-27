@@ -20,6 +20,4 @@ public interface OrderLineRepository extends JpaRepository<OrderLine, Long> {
 
     @Query(value= "SELECT o FROM OrderLine o WHERE o.user.id = :id AND o.order is null")
     List<OrderLine> findCurrentCartByUserId(@Param("id") Long id);
-
-    OrderLine findOrderLineByUserAndAndArticleAndOrderIsNull(Long userId, Long articleId);
 }

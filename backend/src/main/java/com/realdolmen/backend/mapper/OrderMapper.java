@@ -9,6 +9,6 @@ public interface OrderMapper {
 
     OrderDto orderToOrderDto (Order order);
 
-    Order OrderDtoToOrder(OrderDto orderDto);
+    Order orderDtoToOrder(OrderDto orderDto);
 
 }

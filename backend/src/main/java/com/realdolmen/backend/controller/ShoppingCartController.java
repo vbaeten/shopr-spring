@@ -1,7 +1,6 @@
 package com.realdolmen.backend.controller;
 
 import com.realdolmen.backend.domain.OrderLine;
-import com.realdolmen.backend.domain.ShoppingCart;
 import com.realdolmen.backend.domain.User;
 import com.realdolmen.backend.dto.OrderLineDto;
 import com.realdolmen.backend.facade.OrderLineFacade;
@@ -34,12 +33,6 @@ public class ShoppingCartController {
     public List<OrderLine> getOrderLinesByUser(@PathVariable("user") User user) {
         return orderlineService.findByUser(user);
     }
-
-    @GetMapping("/cart/{id}")
-    public ShoppingCart getCartByUserId(@PathVariable("id") Long id) {
-        return shoppingCartService.findByUserId(id);
-    }
-
 
     @GetMapping("/list/{id}")
     public List<OrderLine> getOrderLinesByUserId(@PathVariable("id") Long id) {

@@ -6,6 +6,9 @@ import com.realdolmen.backend.mapper.OrderMapper;
 import com.realdolmen.backend.service.OrderService;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Component
 public class OrderFacade {
 
@@ -17,8 +20,13 @@ public class OrderFacade {
         this.orderMapper = orderMapper;
     }
 
+    public List<OrderDto> findOrdersByUser(Long id) {
+        List<Order> orders = orderService.findByUserId(id);
+        return orders.stream().map(orderMapper::orderToOrderDto).collect(Collectors.toList());
+    }
+
     public OrderDto save(OrderDto orderDto) {
-        Order order = orderMapper.OrderDtoToOrder(orderDto);
+        Order order = orderMapper.orderDtoToOrder(orderDto);
         Order createdOrder = orderService.save(order);
         return orderMapper.orderToOrderDto(createdOrder);
     }
