@@ -1,9 +1,7 @@
 package com.realdolmen.backend.controller;
 
-import com.realdolmen.backend.domain.Article;
 import com.realdolmen.backend.dto.ArticleDto;
 import com.realdolmen.backend.facade.ArticleFacade;
-import com.realdolmen.backend.service.ArticleService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,11 +10,9 @@ import java.util.List;
 @RequestMapping("/article")
 public class ArticleController {
 
-    private ArticleService articleService;
     private ArticleFacade articleFacade;
 
-    public ArticleController ( ArticleService articleService, ArticleFacade articleFacade) {
-        this.articleService = articleService;
+    public ArticleController ( ArticleFacade articleFacade) {
         this.articleFacade = articleFacade;
     }
 
@@ -26,11 +22,11 @@ public class ArticleController {
     }
 
     @GetMapping("/{id}")
-    public Article getArticle(@PathVariable("id") Long id) { return articleService.findById(id);}
+    public ArticleDto getArticle(@PathVariable("id") Long id) { return articleFacade.findById(id);}
 
     @DeleteMapping("/delete/{id}")
     public void deleteArticleById(@PathVariable("id") Long id) {
-        articleService.deleteById(id);
+        articleFacade.deleteById(id);
     }
 
     @DeleteMapping("/delete")

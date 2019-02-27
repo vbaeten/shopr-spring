@@ -28,8 +28,13 @@ public class ArticleFacade {
                 .collect(Collectors.toList());
     }
 
-    public void deleteArticleById(ArticleDto articleDto) {
+    public ArticleDto findById(Long id) {
+        Article article = articleService.findById(id);
+        return articleMapper.articleToArticleDto(article);
+    }
 
+    public void deleteById(Long id) {
+        articleService.deleteById(id);
     }
 
     public void deleteArticle(ArticleDto articleDto) {
