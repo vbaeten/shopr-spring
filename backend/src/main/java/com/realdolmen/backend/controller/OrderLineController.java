@@ -1,6 +1,8 @@
 package com.realdolmen.backend.controller;
 
 import com.realdolmen.backend.domain.OrderLine;
+import com.realdolmen.backend.dto.OrderLineDto;
+import com.realdolmen.backend.facade.OrderLineFacade;
 import com.realdolmen.backend.service.OrderLineService;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,14 +13,17 @@ import java.util.List;
 public class OrderLineController {
 
     private OrderLineService orderLineService;
+    private OrderLineFacade orderLineFacade;
 
-    public OrderLineController(OrderLineService orderLineService) {
+    public OrderLineController(OrderLineService orderLineService,
+                               OrderLineFacade orderLineFacade) {
         this.orderLineService = orderLineService;
+        this.orderLineFacade = orderLineFacade;
     }
 
-    @PutMapping("/add")
-    public OrderLine addToCart() {
-        return null;
+    @PostMapping("/add")
+    public OrderLineDto addToCart(@RequestBody OrderLineDto orderLineDto) {
+        return orderLineFacade.createOrderLine(orderLineDto);
     }
 
     @GetMapping("/list/{id}")
@@ -32,8 +37,8 @@ public class OrderLineController {
     }
 
     @DeleteMapping("/delete")
-    public void deleteUser(OrderLine orderLine) {
-        orderLineService.delete(orderLine);
+    public void deleteOrderLine(OrderLineDto orderLineDto) {
+        orderLineFacade.deleteOrderLine(orderLineDto);
     }
 
 }

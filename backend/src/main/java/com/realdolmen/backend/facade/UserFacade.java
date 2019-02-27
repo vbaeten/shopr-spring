@@ -29,6 +29,13 @@ public class UserFacade {
     }
 
     public void delete(UserDto userDto) {
+        User user = userMapper.userDtoToUser(userDto);
+        userService.delete(user);
+    }
+
+    public void deleteById(Long id) {
+        User user = userService.findById(id);
+        userService.delete(user);
     }
 
     public UserDto findById(Long id) {

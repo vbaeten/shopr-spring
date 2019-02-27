@@ -28,11 +28,11 @@ public class ArticleFacade {
                 .collect(Collectors.toList());
     }
 
-    public void deleteArticle(ArticleDto articleDto) {
+    public void deleteArticleById(ArticleDto articleDto) {
 
     }
 
-    public void delete(ArticleDto articleDto) {
+    public void deleteArticle(ArticleDto articleDto) {
         Article article = articleMapper.articleDtoToArticle(articleDto);
         articleService.delete(article);
     }

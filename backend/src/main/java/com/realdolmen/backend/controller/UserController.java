@@ -36,15 +36,15 @@ public class UserController {
         return userFacade.findUsers();
     }
 
+//    @DeleteMapping("/delete/{id}")
+//    public void deleteUserById(@PathVariable("id") Long id) {
+//        userService.deleteById(id);
+//    }
+
     @DeleteMapping("/delete/{id}")
     public void deleteUserById(@PathVariable("id") Long id) {
-        userService.deleteById(id);
+        userFacade.deleteById(id);
     }
-
-//    @DeleteMapping("/delete")
-//    public void deleteUser(User user) {
-//        userService.delete(user);
-//    }
 
     @DeleteMapping("/delete")
     public void deleteUser(UserDto userDto) {
