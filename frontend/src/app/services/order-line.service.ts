@@ -45,7 +45,12 @@ export class OrderLineService {
   }
 
   addOrderLineToCartLocalStorage(cart: OrderLine[], newOrderLine: OrderLine) {
-    cart.push(newOrderLine);
+    let orderLine = cart.find(orderLine => orderLine.article.articleId === newOrderLine.article.articleId);
+    console.log(orderLine);
+    if (orderLine) {
+      orderLine.quantity = +newOrderLine.quantity + +orderLine.quantity.valueOf()
+    } else {
+    cart.push(newOrderLine);}
     localStorage.setItem("cart", JSON.stringify(cart));
   }
 
@@ -65,12 +70,5 @@ export class OrderLineService {
     localStorage.removeItem('cart');
   }
 
-  setCurrentOrderLineToStorage(orderLine: OrderLine) {
-    if (this.getCurrentOrderLineFromStorage() === null) {
-      this.createOrderLine(orderLine).subscribe(newOrder => {
-        localStorage.setItem('currentOrder', JSON.stringify(newOrder));
-      });
-    }
-  }
 
 }

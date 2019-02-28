@@ -20,7 +20,7 @@ export class LpDetailsComponent implements OnInit {
   cart: OrderLine[];
   submitQuantityForm: FormGroup = this.formBuilder.group(
     {
-      quantity: ['', Validators.required]
+      quantity: ['1', Validators.required]
     });
 
   constructor(private route: ActivatedRoute, private articleService: ArticleService, private orderLineService: OrderLineService, private formBuilder: FormBuilder) {
