@@ -2,7 +2,6 @@ package com.realdolmen.backend.controller;
 
 import com.realdolmen.backend.dto.FictionDto;
 import com.realdolmen.backend.facade.FictionFacade;
-import com.realdolmen.backend.service.FictionService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,7 +12,7 @@ public class FictionController {
 
     private FictionFacade fictionFacade;
 
-    public FictionController(FictionService fictionService, FictionFacade fictionFacade) {
+    public FictionController(FictionFacade fictionFacade) {
         this.fictionFacade = fictionFacade;
     }
 

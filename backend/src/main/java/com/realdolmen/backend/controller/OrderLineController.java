@@ -1,9 +1,7 @@
 package com.realdolmen.backend.controller;
 
-import com.realdolmen.backend.domain.OrderLine;
 import com.realdolmen.backend.dto.OrderLineDto;
 import com.realdolmen.backend.facade.OrderLineFacade;
-import com.realdolmen.backend.service.OrderLineService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,12 +10,9 @@ import java.util.List;
 @RequestMapping("/orderline")
 public class OrderLineController {
 
-    private OrderLineService orderLineService;
     private OrderLineFacade orderLineFacade;
 
-    public OrderLineController(OrderLineService orderLineService,
-                               OrderLineFacade orderLineFacade) {
-        this.orderLineService = orderLineService;
+    public OrderLineController(OrderLineFacade orderLineFacade) {
         this.orderLineFacade = orderLineFacade;
     }
 
@@ -27,13 +22,13 @@ public class OrderLineController {
     }
 
     @GetMapping("/list/{id}")
-    public List<OrderLine> findByUserId(@PathVariable("id") Long id) {
-        return orderLineService.findByUserId(id);
+    public List<OrderLineDto> findByUserId(@PathVariable("id") Long id) {
+        return orderLineFacade.findByUserId(id);
     }
 
     @GetMapping("/current/{id}")
-    public List<OrderLine> findCurrentCartByUserId(@PathVariable("id") Long id) {
-        return orderLineService.findCurrentCartByUserId(id);
+    public List<OrderLineDto> findCurrentCartByUserId(@PathVariable("id") Long id) {
+        return orderLineFacade.loadShoppingCart(id);
     }
 
     @DeleteMapping("/delete")
