@@ -22,11 +22,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public <S extends User> S update(S user, S updatedUser) {
-        return null;
-    }
-
-    @Override
     public <S extends User> S save(S user) {
         return userRepository.save(user);
     }
