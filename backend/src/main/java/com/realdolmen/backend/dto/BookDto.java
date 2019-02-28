@@ -1,10 +1,12 @@
 package com.realdolmen.backend.dto;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
-@Builder(builderClassName = "Builder")
 @AllArgsConstructor
 @NoArgsConstructor
 public class BookDto extends ArticleDto {

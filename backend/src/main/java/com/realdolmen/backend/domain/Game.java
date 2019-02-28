@@ -1,6 +1,9 @@
 package com.realdolmen.backend.domain;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -12,7 +15,6 @@ import java.util.Objects;
 @DiscriminatorValue("Game")
 @Getter
 @Setter
-@Builder(builderClassName = "Builder")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Game extends Article implements Serializable {

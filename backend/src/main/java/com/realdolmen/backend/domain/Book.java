@@ -1,6 +1,9 @@
 package com.realdolmen.backend.domain;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +16,6 @@ import java.util.Objects;
 @Entity
 @Getter
 @Setter
-@Builder(builderClassName = "Builder")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Book extends Article implements Serializable {
