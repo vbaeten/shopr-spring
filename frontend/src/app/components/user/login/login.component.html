@@ -6,7 +6,7 @@
         <td>
           <mat-form-field class="login">
             <mat-select [(ngModel)]="selectedUser" placeholder="Username">
-              <mat-option *ngFor="let user of users" [value]="user.userName">
+              <mat-option *ngFor="let user of users" [value]="user">
                 {{user.userName}}
               </mat-option>
             </mat-select>

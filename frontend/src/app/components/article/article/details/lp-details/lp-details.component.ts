@@ -3,7 +3,6 @@ import {Lp} from "../../../../../models/lp";
 import {ActivatedRoute} from "@angular/router";
 import {ArticleService} from "../../../../../services/article.service";
 import {OrderLine} from "../../../../../models/orderLine";
-import {Order} from "../../../../../models/order";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {OrderLineService} from "../../../../../services/order-line.service";
 
@@ -17,6 +16,8 @@ export class LpDetailsComponent implements OnInit {
   selectedArticle: Lp;
   orderLine: OrderLine;
   quantity: number;
+  newOrderLine: OrderLine;
+  cart: OrderLine[];
   submitQuantityForm: FormGroup = this.formBuilder.group(
     {
       quantity: ['', Validators.required]
@@ -35,21 +36,15 @@ export class LpDetailsComponent implements OnInit {
   }
 
   submitQuantity() {
-    this.orderLine = new OrderLine();
-    this.orderLine.quantity = this.submitQuantityForm.value.quantity;
-    let order: Order = JSON.parse(localStorage.getItem('currentOrder'));
-    if (order.orderId != null) {
-      this.orderLine.order = order;
+    this.cart = this.orderLineService.getCartFromStorage();
+    if (this.cart === null) {
+      this.cart = [];
     }
-
-    this.orderLine.article = this.selectedArticle;
-    this.orderLine.subtotal = this.submitQuantityForm.value.quantity * this.selectedArticle.price;
-    this.orderLineService.createOrderLine(this.orderLine)
-      .subscribe(newOrderLine => {
-        localStorage.setItem('currentOrderLine', JSON.stringify(newOrderLine));
-        order.orderLines.push(newOrderLine);
-        localStorage.setItem('currentOrder', JSON.stringify(order));
-      });
+    this.newOrderLine = new OrderLine();
+    this.newOrderLine.quantity = this.submitQuantityForm.value.quantity;
+    this.newOrderLine.article = this.selectedArticle;
+    this.newOrderLine.subtotal = this.newOrderLine.quantity * this.newOrderLine.article.price;
+    this.orderLineService.addOrderLineToCartLocalStorage(this.cart, this.newOrderLine);
 
   }
 

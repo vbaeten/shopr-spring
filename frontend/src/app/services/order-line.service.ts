@@ -44,6 +44,15 @@ export class OrderLineService {
     return this.apiService.doGet(`/orderLine/order/${id}`);
   }
 
+  addOrderLineToCartLocalStorage(cart: OrderLine[], newOrderLine: OrderLine) {
+    cart.push(newOrderLine);
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }
+
+  getCartFromStorage(): OrderLine[] {
+    return JSON.parse(localStorage.getItem("cart"));
+  }
+
   getCurrentOrderLineFromStorage(): OrderLine {
     return JSON.parse(localStorage.getItem("currentOrder"));
   }

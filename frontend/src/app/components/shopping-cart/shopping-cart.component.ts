@@ -6,6 +6,7 @@ import {OrderLine} from "../../models/orderLine";
 import {OrderLineService} from "../../services/order-line.service";
 import {Order} from "../../models/order";
 import {OrderService} from "../../services/order.service";
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-shopping-cart',
@@ -15,17 +16,17 @@ import {OrderService} from "../../services/order.service";
 export class ShoppingCartComponent implements OnInit {
   selectedArticle: Article;
   displayedColumns: string[] = ['title', 'price', 'quantity', 'subtotal', 'delete'];
-  dataSource = new MatTableDataSource<OrderLine>();
-  currentOrder: Order;
+  orderLines = new MatTableDataSource<OrderLine>();
+  newOrder: Order;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private orderService: OrderService, private orderLineService: OrderLineService, private router: Router) {
+  constructor(private orderService: OrderService, private orderLineService: OrderLineService, private userService: UserService, private router: Router) {
   }
 
   ngOnInit() {
-    this.getCurrentOrder();
+    this.getCart();
   }
 
   ngAfterViewInit(): void {
@@ -36,19 +37,23 @@ export class ShoppingCartComponent implements OnInit {
     this.orderLineService.deleteOrderLine(id).subscribe()
   };
 
-  getCurrentOrder() {
-    let currentOrderFromStorage = this.orderService.getCurrentOrderFromStorage();
-    this.orderLineService.getOrderLinesByOrderId(currentOrderFromStorage.orderId).subscribe(orderLines => {
-      this.dataSource = new MatTableDataSource<OrderLine>(orderLines);
-      this.setSortAndPaginator();
-    })
+  getCart() {
+    let cartFromStorage = this.orderLineService.getCartFromStorage();
+    this.orderLines = new MatTableDataSource<OrderLine>(cartFromStorage);
+    this.setSortAndPaginator();
+
   }
 
-  buy(order: Order) {
-    order.confirmed = true;
-    this.orderService.edit(order);
-    let newOrder = new Order();
-    localStorage.setItem('currentOrder', JSON.stringify(newOrder))
+  buy(cart: OrderLine[]) {
+    if (this.userService.getCurrentUser() === null) {
+      this.router.navigate(["/login/"]);
+    } else {
+      this.newOrder = new Order();
+      this.newOrder.orderLines = cart;
+      this.newOrder.user = this.userService.getCurrentUser();
+      this.orderService.createOrder(this.newOrder);
+    }
+
   }
 
   calculateSubtotal(quantity: number, price: number): number {
@@ -57,7 +62,7 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   private setSortAndPaginator() {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
+    this.orderLines.sort = this.sort;
+    this.orderLines.paginator = this.paginator;
   }
 }

@@ -1,7 +1,4 @@
-import {Component, OnInit} from '@angular/core';
-import {User} from "./models/user";
-import {Order} from "./models/order";
-import {OrderService} from "./services/order.service";
+import {Component} from '@angular/core';
 
 
 @Component({
@@ -9,21 +6,12 @@ import {OrderService} from "./services/order.service";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'ShopR';
 
 
-  constructor(private orderService: OrderService) {
+  constructor() {
 
   }
-
-  ngOnInit(): void {
-    if (localStorage.getItem('currentUser') === null) {
-      localStorage.setItem('currentUser', JSON.stringify(new User()));
-    }
-    this.orderService.setCurrentOrderToStorage(new Order())
-
-    }
-
 
 }

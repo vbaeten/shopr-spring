@@ -3,35 +3,35 @@
 
     <form (ngSubmit)="createFiction()" [formGroup]="createFictionForm">
 
-      <table cellspacing="20" class="create-fiction">
+      <table cellspacing="20">
         <tr>
           <td>
-            <mat-form-field class="create-fiction-read-only">
+            <mat-form-field>
               <input formControlName="type" matInput placeholder="Article type">
             </mat-form-field>
           </td>
         </tr>
         <tr>
           <td>
-            <mat-form-field class="create-fiction">
+            <mat-form-field>
               <input formControlName="title" matInput placeholder="Title">
             </mat-form-field>
           </td>
           <td>
-            <mat-form-field class="create-fiction">
+            <mat-form-field>
               <input formControlName="author" matInput placeholder="Author">
             </mat-form-field>
           </td>
         </tr>
         <tr>
           <td>
-            <mat-form-field class="create-fiction">
+            <mat-form-field>
               <input [dropSpecialCharacters]="false" formControlName="price" mask="999999.00"
                      matInput placeholder="Price">
             </mat-form-field>
           </td>
           <td>
-            <mat-form-field class="create-fiction">
+            <mat-form-field>
               <mat-select class="mat-select-menu" formControlName="fictionGenre" placeholder="Fiction genre">
                 <mat-option *ngFor="let genre of fictionGenres()" [value]="genre">
                   {{genre}}
@@ -42,13 +42,13 @@
         </tr>
         <tr>
           <td>
-            <mat-form-field class="create-fiction">
+            <mat-form-field>
               <input [dropSpecialCharacters]="false" formControlName="isbn" mask="000-00-0000-000-0" matInput
                      placeholder="Isbn" type="text">
             </mat-form-field>
           </td>
           <td>
-            <mat-form-field class="create-fiction">
+            <mat-form-field>
               <input formControlName="nrOfPages" mask="9999" matInput
                      placeholder="nr of pages">
             </mat-form-field>
@@ -56,12 +56,12 @@
         </tr>
         <tr>
           <td>
-            <mat-form-field class="create-fiction">
+            <mat-form-field>
               <input formControlName="shortSummary" matInput placeholder="Short summary">
             </mat-form-field>
           </td>
           <td>
-            <mat-form-field class="create-fiction">
+            <mat-form-field>
               <input formControlName="supplierId" matInput placeholder="Supplier ID">
             </mat-form-field>
           </td>

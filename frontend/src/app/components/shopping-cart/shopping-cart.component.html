@@ -1,5 +1,5 @@
-<div *ngIf="dataSource" class="mat-elevation-z8">
-  <table [dataSource]="dataSource" class="shoppingCartTable" mat-table matSort>
+<div *ngIf="orderLines.data" class="mat-elevation-z8">
+  <table [dataSource]="orderLines" class="shoppingCartTable" mat-table matSort>
 
     <!-- Title Column -->
     <ng-container matColumnDef="title">
@@ -44,4 +44,14 @@
   </table>
 
   <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+  <button (click)="buy(orderLines.data)" mat-raised-button>
+    Buy
+  </button>
+</div>
+
+<div *ngIf="!orderLines.data">
+  <h4>
+    Shopping cart is empty
+  </h4>
 </div>

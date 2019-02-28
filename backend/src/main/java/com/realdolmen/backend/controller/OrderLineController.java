@@ -19,10 +19,10 @@ public class OrderLineController {
         return orderLineService.save(orderLine);
     }
 
-    @GetMapping("order/{id}")
-    public List<OrderLine> findByOrderId(@PathVariable Long id) {
-        return orderLineService.findByOrderId(id);
-    }
+//    @GetMapping("order/{id}")
+//    public List<OrderLine> findByOrderId(@PathVariable Long id) {
+//        return orderLineService.findByOrderId(id);
+//    }
 
     @GetMapping("/{id}")
     public OrderLine findById(@PathVariable Long id) {

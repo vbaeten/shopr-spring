@@ -1,9 +1,11 @@
 package com.realdolmen.backend.domain;
 
+import com.realdolmen.backend.listener.OrderListener;
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -12,6 +14,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
+@EntityListeners(OrderListener.class)
 public class Order {
 
     @Id
@@ -19,7 +22,6 @@ public class Order {
     @Column(name = "order_id")
     private Long orderId;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "date_of_order", updatable = false)
     private Date dateOfOrder;
 
@@ -27,6 +29,8 @@ public class Order {
     @JoinColumn(name = "user_id")
     private User user;
 
-    private boolean confirmed;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "order_line_id")
+    private List<OrderLine> orderLines;
 
 }

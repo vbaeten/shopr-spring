@@ -77,23 +77,22 @@ create table order_line
     primary key,
   quantity   decimal(19, 2) null,
   article_id bigint null,
-  order_id   bigint null
+  order_line_id   bigint null
 )
   engine = MyISAM;
 
 create index FKgyaq7gsm6vugjkw4smqwxsn4b
   on order_line (article_id);
 
-create index FKk9f9t1tmkbq5w27u8rrjbxxg6
-  on order_line (order_id);
+create index FKhka1ogmme7bp1cuysvtdtaa5d
+  on order_line (order_line_id);
 
 create table orders
 (
   order_id bigint auto_increment
     primary key,
-  confirmed bit not null,
   date_of_order datetime null,
-  user_id bigint
+  user_id bigint null
 )
   engine = MyISAM;
 

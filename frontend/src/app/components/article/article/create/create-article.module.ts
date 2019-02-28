@@ -7,7 +7,6 @@ import {CreateFictionComponent} from "./create-fiction/create-fiction.component"
 import {CreateGameComponent} from "./create-game/create-game.component";
 import {CreateLpComponent} from "./create-lp/create-lp.component";
 import {CreateNonFictionComponent} from "./create-non-fiction/create-non-fiction.component";
-import {NgxMaskModule} from "ngx-mask";
 import {FictionService} from "../../../../services/fiction.service";
 import {GameService} from "../../../../services/game.service";
 import {LpService} from "../../../../services/lp.service";
@@ -24,8 +23,7 @@ import {NonFictionService} from "../../../../services/non-fiction.service";
   imports: [
     CommonModule,
     SharedModule,
-    MaterialModule,
-    NgxMaskModule.forRoot()
+    MaterialModule
   ],
   exports: [
     CreateArticleComponent,

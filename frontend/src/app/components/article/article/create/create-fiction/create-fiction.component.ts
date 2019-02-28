@@ -16,8 +16,10 @@ export class CreateFictionComponent implements OnInit {
   createFictionForm: FormGroup = this.formBuilder.group(
     {
       type: ['', Validators.required],
-      title: ['', Validators.required],
-      price: ['', Validators.required],
+      title: ['', Validators.compose([
+        Validators.required, Validators.maxLength(100)
+      ])],
+      price: ['', Validators.required, Validators.requiredTrue],
       supplierId: ['', Validators.required],
       author: ['', Validators.required],
       isbn: ['', Validators.required],

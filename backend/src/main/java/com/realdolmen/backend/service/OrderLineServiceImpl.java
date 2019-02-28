@@ -40,8 +40,4 @@ public class OrderLineServiceImpl implements OrderLineService {
         orderLineRepository.deleteById(id);
     }
 
-    @Override
-    public List<OrderLine> findByOrderId(Long orderId) {
-        return orderLineRepository.findOrderLineByOrderOrderId(orderId);
-    }
 }

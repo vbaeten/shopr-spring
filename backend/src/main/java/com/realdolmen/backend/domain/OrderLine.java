@@ -26,12 +26,7 @@ public class OrderLine {
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "article_id", referencedColumnName = "article_id")
     private Article article;
-    @ManyToOne
-    @JoinColumn(name = "order_id", referencedColumnName = "order_id")
-    private Order order;
 
-    @Transient
-    private BigDecimal subTotal;
 
 
 }

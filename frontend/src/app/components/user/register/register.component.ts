@@ -3,7 +3,6 @@ import {UserService} from "../../../services/user.service";
 import {User} from "../../../models/user";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import {Order} from "../../../models/order";
 
 @Component({
   selector: 'app-register',
@@ -30,22 +29,21 @@ export class RegisterComponent implements OnInit {
   }
 
   registerUser() {
-    this.user = new User(
-      this.registerUserForm.value.userName,
-      this.registerUserForm.value.firstName,
-      this.registerUserForm.value.name,
-      this.registerUserForm.value.admin
-    );
+    this.user = new User();
+      this.user.userName = this.registerUserForm.value.userName;
+      this.user.firstName = this.registerUserForm.value.firstName;
+      this.user.name = this.registerUserForm.value.name;
+      this.user.admin = this.registerUserForm.value.admin;
     this.user.loggedin = true;
     this.userService.registerUser(this.user);
     this.userService.getUsers();
-    let currentOrder: Order = JSON.parse(localStorage.getItem('currentOrder'));
-    let currentUser: User = JSON.parse(localStorage.getItem('currentUser'));
-    if (currentOrder.user === undefined) {
-      currentOrder.user = currentUser;
-      localStorage.setItem('currentOrder', JSON.stringify(currentOrder))
-    }
-    this.router.navigate(["/articles/"])
+
+    // let currentUser: User = JSON.parse(localStorage.getItem('currentUser'));
+    // if (currentOrder.user === undefined) {
+    //   currentOrder.user = currentUser;
+    //   localStorage.setItem('currentOrder', JSON.stringify(currentOrder))
+    // }
+
   }
 
 

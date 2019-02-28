@@ -6,6 +6,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MaterialModule} from "../material-module/material.module";
 import {RouterModule} from "@angular/router";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {NgxMaskModule} from "ngx-mask";
 
 @NgModule({
   declarations: [],
@@ -18,6 +19,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     MaterialModule,
     RouterModule,
     BrowserAnimationsModule,
+    NgxMaskModule.forRoot()
   ],
   exports: [
     HttpClientModule,
@@ -27,6 +29,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     MaterialModule,
     RouterModule,
     BrowserAnimationsModule,
+    NgxMaskModule
   ],
   providers: []
 
