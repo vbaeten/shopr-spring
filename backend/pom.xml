@@ -17,7 +17,7 @@
     <properties>
         <java.version>1.8</java.version>
         <jacoco.reportPath>${project.basedir}/../target/jacoco.exec</jacoco.reportPath>
-        <jacoco.plugin.version>mvn 0.8.1</jacoco.plugin.version>
+        <jacoco.plugin.version>mvn 0.8.2</jacoco.plugin.version>
         <failOnMissingWebXml>false</failOnMissingWebXml>
     </properties>
 
@@ -97,27 +97,37 @@
             </plugin>
 
             <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.5.0.1254</version>
+            </plugin>
+            <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.2</version>
+                <configuration>
+                    <destFile>${sonar.jacoco.reportPath}</destFile>
+                    <append>true</append>
+                </configuration>
                 <executions>
                     <execution>
+                        <id>agent-for-ut</id>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
-                        <configuration>
-                            <destFile>${jacoco.reportPath}</destFile>
-                        </configuration>
                     </execution>
                     <execution>
-                        <id>report</id>
-                        <phase>prepare-package</phase>
+                        <id>agent-for-it</id>
+                        <goals>
+                            <goal>prepare-agent-integration</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>jacoco-site</id>
+                        <phase>verify</phase>
                         <goals>
                             <goal>report</goal>
                         </goals>
-                        <configuration>
-                            <dataFile>${jacoco.reportPath}</dataFile>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
