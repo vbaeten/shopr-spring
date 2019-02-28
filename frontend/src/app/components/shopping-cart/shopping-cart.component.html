@@ -1,57 +1,64 @@
 <div *ngIf="orderLines.data" class="mat-elevation-z8">
-  <table [dataSource]="orderLines" class="shoppingCartTable" mat-table matSort>
+  <mat-card>
+    <table [dataSource]="orderLines" class="shoppingCartTable" mat-table matSort>
 
-    <!-- Title Column -->
-    <ng-container matColumnDef="title">
-      <th *matHeaderCellDef mat-header-cell mat-sort-header="title"> Title</th>
-      <td *matCellDef="let orderLine" mat-cell> {{orderLine.article.title}} </td>
-    </ng-container>
+      <!-- Title Column -->
+      <ng-container matColumnDef="title">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header="title"> Title</th>
+        <td *matCellDef="let orderLine" mat-cell> {{orderLine.article.title}} </td>
+      </ng-container>
 
-    <!-- Price Column -->
-    <ng-container matColumnDef="price">
-      <th *matHeaderCellDef mat-header-cell mat-sort-header="price"> Price</th>
-      <td *matCellDef="let orderLine" mat-cell> {{orderLine.article.price}} </td>
-    </ng-container>
+      <!-- Price Column -->
+      <ng-container matColumnDef="price">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header="price"> Price</th>
+        <td *matCellDef="let orderLine" mat-cell> {{orderLine.article.price}} </td>
+      </ng-container>
 
-    <!-- Quantity Column -->
-    <ng-container matColumnDef="quantity">
-      <th *matHeaderCellDef mat-header-cell mat-sort-header="quantity"> Quantity</th>
-      <td *matCellDef="let orderLine" mat-cell> {{orderLine.quantity}} </td>
-    </ng-container>
+      <!-- Quantity Column -->
+      <ng-container matColumnDef="quantity">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header="quantity"> Quantity</th>
+        <td *matCellDef="let orderLine" mat-cell> {{orderLine.quantity}} </td>
+      </ng-container>
 
-    <!-- SubTotal Column -->
-    <ng-container matColumnDef="subtotal">
-      <th *matHeaderCellDef mat-header-cell mat-sort-header="subtotal"> SubTotal</th>
-      <td *matCellDef="let orderLine"
-          mat-cell>  {{calculateSubtotal(orderLine.quantity, orderLine.article.price)}} </td>
-    </ng-container>
+      <!-- SubTotal Column -->
+      <ng-container matColumnDef="subtotal">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header="subtotal"> SubTotal</th>
+        <td *matCellDef="let orderLine" mat-cell>
+          {{calculateSubtotal(orderLine.quantity, orderLine.article.price)}} </td>
+      </ng-container>
 
-    <!--Delete Column-->
-    <ng-container matColumnDef="delete">
-      <th *matHeaderCellDef mat-header-cell mat-sort-header="delete"> Delete</th>
-      <td *matCellDef="let orderLine" mat-cell>
-        <button (click)="deleteOrderLine(orderLine.id)" mat-raised-button>
-          <i class="material-icons">
-            delete_forever
-          </i>
-        </button>
-      </td>
-    </ng-container>
+      <!--Delete Column-->
+      <ng-container matColumnDef="delete">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header="delete"> Delete</th>
+        <td *matCellDef="let orderLine; let i = index;" mat-cell>
+          <button (click)="deleteOrderLine(i)" color="warn" mat-raised-button>
+            <i class="material-icons">
+              delete_forever
+            </i>
+          </button>
+        </td>
+      </ng-container>
 
-    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
-    <tr *matRowDef="let orderLine; columns: displayedColumns;" mat-row>
-    </tr>
-  </table>
+      <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+      <tr *matRowDef="let orderLine; columns: displayedColumns;" mat-row>
+      </tr>
+    </table>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 
-  <button (click)="buy(orderLines.data)" mat-raised-button>
-    Buy
-  </button>
+    <button (click)="buy(orderLines.data)" class="green-button" mat-raised-button>
+      Buy
+    </button>
+    <button (click)="clearCart()" class="clear-button" color="warn" mat-raised-button>
+      Clear
+    </button>
+  </mat-card>
 </div>
 
 <div *ngIf="!orderLines.data">
-  <h4>
-    Shopping cart is empty
-  </h4>
+  <mat-card>
+    <h4>
+      Shopping cart is empty
+    </h4>
+  </mat-card>
 </div>

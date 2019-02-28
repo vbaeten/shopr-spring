@@ -53,8 +53,16 @@ export class OrderLineService {
     return JSON.parse(localStorage.getItem("cart"));
   }
 
+  setCartToStorage(shoppingCart: OrderLine[]){
+    localStorage.setItem('cart',JSON.stringify(shoppingCart))
+}
+
   getCurrentOrderLineFromStorage(): OrderLine {
     return JSON.parse(localStorage.getItem("currentOrder"));
+  }
+
+  deleteCartFromStorage(){
+    localStorage.removeItem('cart');
   }
 
   setCurrentOrderLineToStorage(orderLine: OrderLine) {

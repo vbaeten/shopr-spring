@@ -1,24 +1,19 @@
 <mat-toolbar>
-  <a routerLink="/">
+  <a class="nav-shopr" routerLink="/">
     <span class="orange"><span class="green">Shop</span>R</span>
   </a>
-  <div>
-    <button [matMenuTriggerFor]="user" mat-button>User</button>
-    <mat-menu #user="matMenu">
-      <button mat-menu-item routerLink="/login">Register/Login</button>
-      <button (click)="userService.removeCurrentUser(userService.getCurrentUser())" mat-button>Logout</button>
-      <button mat-menu-item routerLink="/users">User overview</button>
-    </mat-menu>
-    <button [matMenuTriggerFor]="article" mat-button>Articles</button>
-    <mat-menu #article="matMenu">
-      <button mat-menu-item routerLink="/shop">Shop</button>
-      <button mat-menu-item routerLink="/article/create-article">Create Article</button>
-    </mat-menu>
-    <span *ngIf="currentUser">{{currentUser.firstName}} {{currentUser.name}}</span>
-    <button mat-button routerLink="/shoppingCart">ShoppingCart</button>
-  </div>
+  <button mat-button routerLink="/users">User overview</button>
+  <button mat-button routerLink="/shop">Shop</button>
+  <button mat-button routerLink="/article/create-article">Create Article</button>
+  <div fxFlex></div>
+  <button mat-button routerLink="/shoppingCart">ShoppingCart</button>
+  <button mat-button routerLink="/login">Register/Login</button>
+  <button *ngIf="currentUser" [matMenuTriggerFor]="user"
+          mat-button> {{currentUser.firstName}} {{currentUser.name}}</button>
+  <mat-menu #user="matMenu">
+    <button (click)="logout()" mat-button>Logout</button>
+  </mat-menu>
 </mat-toolbar>
-
 <!--<mat-toolbar>-->
 <!--<a routerLink="/">-->
 <!--<span class="orange"><span class="green">Shop</span>R</span>-->
@@ -33,6 +28,6 @@
 <!--</mat-menu>-->
 <!--<button mat-button *ngIf="currentUser!" routerLink="/login" >Register/Login</button>-->
 <!--<span>{{currentUser.firstName}} {{currentUser.name}}</span>-->
-<!--<button mat-button *ngIf="userService.getCurrentUser()" (click)="userService.removeCurrentUser(userService.getCurrentUser())">Logout</button>-->
+<!--<button mat-button *ngIf="userService.getCurrentUser()" (click)="userService.removeCurrentUserFromStorage(userService.getCurrentUser())">Logout</button>-->
 <!--</div>-->
 <!--</mat-toolbar>-->

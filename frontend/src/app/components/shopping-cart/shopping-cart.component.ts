@@ -18,6 +18,7 @@ export class ShoppingCartComponent implements OnInit {
   displayedColumns: string[] = ['title', 'price', 'quantity', 'subtotal', 'delete'];
   orderLines = new MatTableDataSource<OrderLine>();
   newOrder: Order;
+  shoppingCart: OrderLine[];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -33,13 +34,27 @@ export class ShoppingCartComponent implements OnInit {
     this.setSortAndPaginator();
   }
 
-  deleteOrderLine = (id: number) => {
-    this.orderLineService.deleteOrderLine(id).subscribe()
+  deleteOrderLine (index: number) {
+    const data = this.orderLines.data;
+      data.splice((this.paginator.pageIndex * this.paginator.pageSize) + index, 1);
+    this.orderLines.data = data;
+    this.shoppingCart = data;
+    if (this.shoppingCart.length < 1) {
+      this.orderLineService.deleteCartFromStorage();
+    } else {
+      this.orderLineService.setCartToStorage(this.shoppingCart);
+    }
   };
 
+  clearCart(){
+    this.shoppingCart = [];
+    this.orderLines.data = [];
+    this.orderLineService.deleteCartFromStorage();
+  }
+
   getCart() {
-    let cartFromStorage = this.orderLineService.getCartFromStorage();
-    this.orderLines = new MatTableDataSource<OrderLine>(cartFromStorage);
+    this.shoppingCart = this.orderLineService.getCartFromStorage();
+    this.orderLines = new MatTableDataSource<OrderLine>(this.shoppingCart);
     this.setSortAndPaginator();
 
   }
@@ -52,8 +67,8 @@ export class ShoppingCartComponent implements OnInit {
       this.newOrder.orderLines = cart;
       this.newOrder.user = this.userService.getCurrentUser();
       this.orderService.createOrder(this.newOrder);
+      this.getCart();
     }
-
   }
 
   calculateSubtotal(quantity: number, price: number): number {

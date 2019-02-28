@@ -20,9 +20,10 @@ export class NavBarComponent implements OnInit {
   }
 
 
-  // logout(){
-  //   this.userService.logout(this.user);
-  // }
+  logout(){
+    this.userService.removeCurrentUserFromStorage();
+
+  }
   //
   // get loggedIn(): boolean {
   //   return this.user.isLoggedIn;

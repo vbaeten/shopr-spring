@@ -14,11 +14,12 @@ export class OrderService {
 
   public createOrder(order: Order){
     this.apiService.doPost("/order", order).subscribe(response => {
+        localStorage.removeItem('cart');
         this.notification.open("New order created", "👍", {duration: 3000});
       },
       err => {
         this.notification.open("Something went wrong", "Order has not been created, try again! 👎", {duration: 3000});
-      });
+      },);
   };
 
   public edit(order: Order) {

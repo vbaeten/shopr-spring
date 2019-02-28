@@ -18,3 +18,11 @@ mat-toolbar {
 button {
   color: #f39200;
 }
+
+.fill-space{
+  flex: 1 1 auto;
+}
+
+.nav-shopr{
+  text-decoration: none;
+}

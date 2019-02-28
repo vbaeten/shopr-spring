@@ -78,13 +78,8 @@ export class UserService {
     this.setCurrentUser(user)
   }
 
-  public removeCurrentUser(user: User) {
-    if (this.getCurrentUser().userName === undefined) {
-      console.log("No user logged in")
-    } else {
+  public removeCurrentUserFromStorage() {
       localStorage.removeItem('currentUser');
-    }
-    this.logout(user);
   }
 
 }
