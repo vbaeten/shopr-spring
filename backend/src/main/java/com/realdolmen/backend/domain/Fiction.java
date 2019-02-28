@@ -1,7 +1,6 @@
 package com.realdolmen.backend.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -13,6 +12,9 @@ import java.util.Objects;
 @Table(name = "fiction")
 @Getter
 @Setter
+@Builder(builderClassName = "Builder")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Fiction extends Book implements Serializable {
 
     @Column(name = "genre")
@@ -22,14 +24,6 @@ public class Fiction extends Book implements Serializable {
     @Column
     @Size(max = 255)
     private String synopsis;
-
-    public Fiction() {
-    }
-
-    public Fiction(BookGenre bookGenre, @Size(max = 255) String synopsis) {
-        this.bookGenre = bookGenre;
-        this.synopsis = synopsis;
-    }
 
     @Override
     public boolean equals(Object o) {

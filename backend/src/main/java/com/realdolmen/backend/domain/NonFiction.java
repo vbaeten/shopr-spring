@@ -1,5 +1,9 @@
 package com.realdolmen.backend.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -10,6 +14,9 @@ import java.util.Objects;
 @Entity
 @Table(name = "non_fiction")
 @DiscriminatorValue("Non-Fiction")
+@Builder(builderClassName = "Builder")
+@AllArgsConstructor
+@NoArgsConstructor
 public class NonFiction extends Book implements Serializable {
 
     @Column

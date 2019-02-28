@@ -1,7 +1,6 @@
 package com.realdolmen.backend.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
@@ -16,6 +15,9 @@ import java.util.Objects;
 @DiscriminatorValue("Lp")
 @Getter
 @Setter
+@Builder(builderClassName = "Builder")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Lp extends Article implements Serializable {
 
     @Column(name="artist")

@@ -1,7 +1,6 @@
 package com.realdolmen.backend.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
@@ -16,6 +15,9 @@ import java.util.Objects;
 @DiscriminatorColumn(name = "type")
 @Getter
 @Setter
+@Builder(builderClassName = "Builder")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Article implements Serializable {
 
     @Id
@@ -40,15 +42,6 @@ public class Article implements Serializable {
 
     @Column(name = "type", insertable = false, updatable = false)
     private String type;
-
-    public Article() {
-    }
-
-    public Article(@NotNull @Size(max = 100) String title, @NotNull @Digits(integer = 6, fraction = 2) double price, @NotNull @Size(max = 100) String supplier) {
-        this.title = title;
-        this.price = price;
-        this.supplier = supplier;
-    }
 
     @Override
     public boolean equals(Object o) {

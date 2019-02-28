@@ -1,8 +1,7 @@
 package com.realdolmen.backend.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -11,6 +10,9 @@ import java.io.Serializable;
 @Table(name= "order_line")
 @Getter
 @Setter
+@Builder(builderClassName = "Builder")
+@AllArgsConstructor
+@NoArgsConstructor
 public class OrderLine implements Serializable {
 
     @Id

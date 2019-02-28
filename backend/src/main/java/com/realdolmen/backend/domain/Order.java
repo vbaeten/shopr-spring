@@ -1,7 +1,6 @@
 package com.realdolmen.backend.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,6 +12,9 @@ import java.util.List;
 @Table(name = "orders")
 @Getter
 @Setter
+@Builder(builderClassName = "Builder")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Order implements Serializable {
 
     @Id

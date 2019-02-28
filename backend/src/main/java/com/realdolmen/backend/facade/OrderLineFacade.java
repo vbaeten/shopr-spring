@@ -21,24 +21,24 @@ public class OrderLineFacade {
     }
 
     public OrderLineDto createOrderLine(OrderLineDto orderLineDto) {
-        OrderLine orderLine = orderLineMapper.OrderLineDtoToOrderLine(orderLineDto);
+        OrderLine orderLine = orderLineMapper.orderLineDtoToOrderLine(orderLineDto);
         OrderLine savedOrderLine = orderLineService.save(orderLine);
-        return orderLineMapper.OrderLineToOrderLineDto(savedOrderLine);
+        return orderLineMapper.orderLineToOrderLineDto(savedOrderLine);
     }
 
     public void deleteOrderLine(OrderLineDto orderLineDto) {
-        OrderLine orderLine = orderLineMapper.OrderLineDtoToOrderLine(orderLineDto);
+        OrderLine orderLine = orderLineMapper.orderLineDtoToOrderLine(orderLineDto);
         orderLineService.delete(orderLine);
     }
 
     public List<OrderLineDto> loadShoppingCart(Long id) {
         List<OrderLine> orderLines = orderLineService.findCurrentCartByUserId(id);
-        return orderLines.stream().map(orderLineMapper::OrderLineToOrderLineDto).collect(Collectors.toList());
+        return orderLines.stream().map(orderLineMapper::orderLineToOrderLineDto).collect(Collectors.toList());
     }
 
     public List<OrderLineDto> findByUserId(Long id) {
         List<OrderLine> orderLines = orderLineService.findByUserId(id);
-        return orderLines.stream().map(orderLineMapper::OrderLineToOrderLineDto).collect(Collectors.toList());
+        return orderLines.stream().map(orderLineMapper::orderLineToOrderLineDto).collect(Collectors.toList());
     }
 
     public void deleteById(Long id) {

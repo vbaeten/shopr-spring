@@ -10,4 +10,6 @@ public interface LpMapper {
     LpDto lpToLpDto(Lp lp);
 
     Lp lpDtoToLp(LpDto lpDto);
+
+
 }
