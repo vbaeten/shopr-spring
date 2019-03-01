@@ -34,9 +34,9 @@ export class ShoppingCartComponent implements OnInit {
     this.setSortAndPaginator();
   }
 
-  deleteOrderLine (index: number) {
+  deleteOrderLine(index: number) {
     const data = this.orderLines.data;
-      data.splice((this.paginator.pageIndex * this.paginator.pageSize) + index, 1);
+    data.splice((this.paginator.pageIndex * this.paginator.pageSize) + index, 1);
     this.orderLines.data = data;
     this.shoppingCart = data;
     if (this.shoppingCart.length < 1) {
@@ -46,7 +46,7 @@ export class ShoppingCartComponent implements OnInit {
     }
   };
 
-  clearCart(){
+  clearCart() {
     this.shoppingCart = [];
     this.orderLines.data = [];
     this.orderLineService.deleteCartFromStorage();
@@ -57,6 +57,11 @@ export class ShoppingCartComponent implements OnInit {
     this.orderLines = new MatTableDataSource<OrderLine>(this.shoppingCart);
     this.setSortAndPaginator();
 
+  }
+
+  getTotalPrice() {
+    let totalPrice = this.shoppingCart.map(o => o.subtotal * o.quantity).reduce((acc, value) => acc + value, 0);
+    return parseFloat(totalPrice.toFixed(2));
   }
 
   buy(cart: OrderLine[]) {
@@ -80,4 +85,5 @@ export class ShoppingCartComponent implements OnInit {
     this.orderLines.sort = this.sort;
     this.orderLines.paginator = this.paginator;
   }
+
 }
