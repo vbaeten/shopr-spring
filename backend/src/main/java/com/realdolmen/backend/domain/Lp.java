@@ -29,18 +29,18 @@ public class Lp extends Article implements Serializable {
     @Column(name = "genre")
     private MusicGenre musicGenre;
 
-//    @lombok.Builder(builderClassName = "LpBuilder")
+    @lombok.Builder(builderClassName = "LpBuilder")
     public Lp(Long id, @NotNull @Size(max = 100) String title, @NotNull @Digits(integer = 6, fraction = 2) double price, @NotNull @Size(max = 100) String supplier, String type, @Size(max = 100) String artist, MusicGenre musicGenre) {
         super(id, title, price, supplier, type);
         this.artist = artist;
         this.musicGenre = musicGenre;
     }
 
-//    public static class LpBuilder extends Builder {
-//        LpBuilder() {
-//            super();
-//        }
-//    }
+    public static class LpBuilder extends Builder {
+        LpBuilder() {
+            super();
+        }
+    }
 
     @Override
     public boolean equals(Object o) {
