@@ -20,6 +20,7 @@ public class OrderMapperTest {
 
         assertEquals(order.getOrderDate(), orderDto.getOrderDate());
         assertEquals(order.getId(), orderDto.getId());
+        assertEquals(order.getUser().getFirstName(), orderDto.getUser().getFirstName());
     }
 
     @Test
@@ -28,7 +29,7 @@ public class OrderMapperTest {
         Order order = orderMapper.orderDtoToOrder(orderDto);
 
         assertEquals(orderDto.getOrderDate(), order.getOrderDate());
-        assertEquals(orderDto.getUserDto(), order.getUser());
+        assertEquals(orderDto.getUser().getName(), order.getUser().getName());
     }
 
     @Test

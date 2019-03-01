@@ -19,11 +19,11 @@ public class OrderLineTestDataBuilder {
 
     public static OrderLineDto.Builder buildOrderLine1Dto() {
         ArticleDto article = ArticleTestDataBuilder.buildArticleFictionBookDto().build();
-        return OrderLineDto.builder().id(1L).articleDto(article).quantity(2);
+        return OrderLineDto.builder().id(1L).article(article).quantity(2);
     }
 
     public static OrderLineDto.Builder buildOrderLine2Dto() {
         ArticleDto article = ArticleTestDataBuilder.buildArticleFictionBookDto().build();
-        return OrderLineDto.builder().id(1L).articleDto(article).quantity(1);
+        return OrderLineDto.builder().id(1L).article(article).quantity(1);
     }
 }

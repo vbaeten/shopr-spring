@@ -2,6 +2,7 @@ package com.realdolmen.backend.facade;
 
 import com.realdolmen.backend.domain.Order;
 import com.realdolmen.backend.dto.OrderDto;
+import com.realdolmen.backend.dto.UserDto;
 import com.realdolmen.backend.mapper.OrderMapper;
 import com.realdolmen.backend.mapper.UserMapper;
 import com.realdolmen.backend.service.OrderService;
@@ -15,9 +16,8 @@ public class OrderFacade {
 
     private final OrderService orderService;
     private final OrderMapper orderMapper;
-    private final UserMapper userMapper
 
-    public OrderFacade(OrderService orderService, OrderMapper orderMapper) {
+    public OrderFacade(OrderService orderService, OrderMapper orderMapper, UserMapper userMapper) {
         this.orderService = orderService;
         this.orderMapper = orderMapper;
     }
@@ -27,7 +27,7 @@ public class OrderFacade {
         return orders.stream().map(orderMapper::orderToOrderDto).collect(Collectors.toList());
     }
 
-    public OrderDto save(OrderDto orderDto) {
+    public OrderDto save(OrderDto orderDto, UserDto userDto) {
         Order order = orderMapper.orderDtoToOrder(orderDto);
         Order createdOrder = orderService.save(order);
         return orderMapper.orderToOrderDto(createdOrder);

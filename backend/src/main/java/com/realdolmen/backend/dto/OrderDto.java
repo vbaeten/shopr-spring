@@ -15,7 +15,7 @@ public class OrderDto {
 
     private Long id;
     private Timestamp orderDate;
-    private UserDto userDto;
+    private UserDto user;
     private List<OrderLineDto> orderLines = new ArrayList<>();
     private double total;
 }

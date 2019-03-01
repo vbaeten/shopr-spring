@@ -1,6 +1,7 @@
 package com.realdolmen.backend.controller;
 
 import com.realdolmen.backend.dto.OrderDto;
+import com.realdolmen.backend.dto.UserDto;
 import com.realdolmen.backend.facade.OrderFacade;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,8 +18,8 @@ public class OrderController {
     }
 
     @PostMapping("/send")
-    public OrderDto sendToOrder(@RequestBody OrderDto orderDto) {
-        return orderFacade.save(orderDto);
+    public OrderDto sendToOrder(@RequestBody OrderDto orderDto, UserDto userDto) {
+        return orderFacade.save(orderDto, userDto);
     }
 
     @GetMapping("/list/{id}")

@@ -12,8 +12,8 @@ public class OrderLineDto {
     private Long id;
     private int quantity;
     private double subTotal;
-    private ArticleDto articleDto;
-    private OrderDto orderDto;
-    private UserDto userDto;
+    private ArticleDto article;
+    private OrderDto order;
+    private UserDto user;
 
 }
