@@ -1,6 +1,7 @@
 package com.realdolmen.backend.services;
 
 import com.realdolmen.backend.dao.ArticleDao;
+import com.realdolmen.backend.exceptions.NotFoundException;
 import com.realdolmen.backend.model.Article;
 import org.springframework.stereotype.Service;
 
@@ -20,4 +21,10 @@ private ArticleDao articleDao;
     {
         return articleDao.findAll();
     }
+
+    public Article findById(Long id)
+    {
+        return articleDao.findById(id).orElseThrow(() -> new NotFoundException("article not found"));
+    }
+
 }

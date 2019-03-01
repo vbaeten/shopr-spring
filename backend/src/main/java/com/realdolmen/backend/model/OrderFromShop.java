@@ -1,5 +1,6 @@
 package com.realdolmen.backend.model;
 
+import com.realdolmen.backend.model.enums.OrderStateEnum;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -19,9 +20,14 @@ public class OrderFromShop implements Serializable
 
     private Date orderDate;
     @OneToMany
-    private List<Article> articleList = new ArrayList<>();
-    @ManyToOne
+    private List<OrderLine> orderLines;
+
+    @ManyToOne(cascade = CascadeType.MERGE)
     User user;
+
+    @Enumerated(EnumType.STRING)
+    private OrderStateEnum orderState;
+
 
 
 

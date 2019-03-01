@@ -13,8 +13,15 @@ public class OrderLine implements Serializable
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id;
+
     @OneToOne
     private Article article;
+
+    @Transient
+    private int articleid;
+
+    @OneToOne
+    private OrderFromShop orderFromShop;
 
     private int amount;
 
