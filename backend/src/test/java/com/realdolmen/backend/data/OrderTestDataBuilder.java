@@ -3,6 +3,9 @@ package com.realdolmen.backend.data;
 import com.realdolmen.backend.domain.Order;
 import com.realdolmen.backend.domain.OrderLine;
 import com.realdolmen.backend.domain.User;
+import com.realdolmen.backend.dto.OrderDto;
+import com.realdolmen.backend.dto.OrderLineDto;
+import com.realdolmen.backend.dto.UserDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,5 +20,15 @@ public class OrderTestDataBuilder {
         orderLines.add(orderLine1);
         orderLines.add(orderLine2);
         return Order.builder().id(1L).total(500).user(user).orderLines(orderLines);
+    }
+
+    public static OrderDto.Builder buildOrderDto1() {
+        UserDto userDto = UserTestDataBuilder.buildUserDtoBernadetteSanz().build();
+        OrderLineDto orderLine1 = OrderLineTestDataBuilder.buildOrderLine1Dto().build();
+        OrderLineDto orderLine2 = OrderLineTestDataBuilder.buildOrderLine2Dto().build();
+        List<OrderLineDto> orderLines = new ArrayList<>();
+        orderLines.add(orderLine1);
+        orderLines.add(orderLine2);
+        return OrderDto.builder().id(1L).total(500).userDto(userDto).orderLines(orderLines);
     }
 }

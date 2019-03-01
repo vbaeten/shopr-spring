@@ -20,5 +20,6 @@ public class OrderRepositoryIT {
 
     @Test
     public void findByUserId() throws Exception {
+        orderRepository.findOrdersByUserId(1L);
     }
 }

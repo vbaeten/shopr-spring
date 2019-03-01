@@ -17,11 +17,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User create(User user) {
-        return userRepository.save(user);
-    }
-
-    @Override
     public <S extends User> S save(S user) {
         return userRepository.save(user);
     }
@@ -38,8 +33,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteById(Long id) {
-        User user = findById(id);
+    public void deleteById(Long id)  {
+        User user = userRepository.findById(id).orElseThrow(NotFoundException::new);
         userRepository.delete(user);
     }
 

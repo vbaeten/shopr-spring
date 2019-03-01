@@ -3,6 +3,7 @@ package com.realdolmen.backend.facade;
 import com.realdolmen.backend.domain.Order;
 import com.realdolmen.backend.dto.OrderDto;
 import com.realdolmen.backend.mapper.OrderMapper;
+import com.realdolmen.backend.mapper.UserMapper;
 import com.realdolmen.backend.service.OrderService;
 import org.springframework.stereotype.Component;
 
@@ -14,6 +15,7 @@ public class OrderFacade {
 
     private final OrderService orderService;
     private final OrderMapper orderMapper;
+    private final UserMapper userMapper
 
     public OrderFacade(OrderService orderService, OrderMapper orderMapper) {
         this.orderService = orderService;

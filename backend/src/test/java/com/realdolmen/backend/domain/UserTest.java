@@ -1,7 +1,11 @@
 package com.realdolmen.backend.domain;
 
+import com.realdolmen.backend.data.UserTestDataBuilder;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -11,6 +15,7 @@ public class UserTest {
 
     @Before
     public void SetUp(){
+        user = new User();
     }
 
 
@@ -33,5 +38,18 @@ public class UserTest {
         String firstName = "Jutta";
         user.setFirstName("Jutta");
         assertEquals(firstName, user.getFirstName());
+    }
+
+    @Test
+    public void getRatings() {
+        List<Rating> ratings = new ArrayList<>();
+        Rating rating1 = new Rating();
+        Rating rating2 = new Rating();
+        ratings.add(rating1);
+        ratings.add(rating2);
+        User user = UserTestDataBuilder.buildUserBernadetteSanz().build();
+        user.setRatings(ratings);
+
+        assertEquals(user.getRatings().size(), ratings.size());
     }
 }

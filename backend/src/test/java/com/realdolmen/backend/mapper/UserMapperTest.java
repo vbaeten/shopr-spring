@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.mapstruct.factory.Mappers;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class UserMapperTest {
 
@@ -28,5 +29,16 @@ public class UserMapperTest {
 
         assertEquals(userDto.getFirstName(), user.getFirstName());
         assertEquals(userDto.getName(), user.getName());
+    }
+
+    @Test
+    public void testUserShouldAssertNull() {
+        User user = userMapper.userDtoToUser(null);
+        assertNull(user);
+    }
+    @Test
+    public void testUserDtoShouldAssertNull() {
+        UserDto userDto = userMapper.userToUserDto(null);
+        assertNull(userDto);
     }
 }

@@ -14,7 +14,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UserFacadeTest {
@@ -38,14 +38,24 @@ public class UserFacadeTest {
 
     @Test
     public void findUsers() {
+        this.userFacade.findUsers();
+        verify(userService, times(1)).findAll();
     }
 
     @Test
     public void delete() {
+        UserDto userDto = UserTestDataBuilder.buildUserDtoBernadetteSanz().build();
+        userFacade.delete(userDto);
+
+        verify(userService, times(1)).delete(any());
     }
 
     @Test
     public void deleteById() {
+        userFacade.deleteById(any());
+
+        verify(userService, times(1)).deleteById(any());
+        verify(userService, times(1)).findById(any());
     }
 
     @Test
@@ -60,11 +70,16 @@ public class UserFacadeTest {
 
         assertNotNull(userDtoResult);
         assertEquals("Bernadette", userDtoResult.getFirstName());
+
+        verify(userService, times(1)).findById(any());
     }
 
     @Test
     public void createUser() {
         UserDto userDto = UserTestDataBuilder.buildUserDtoBernadetteSanz().build();
+        userFacade.createUser(userDto);
+
+        verify(userService, times(1)).save(any());
 
     }
 }
