@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -31,6 +32,20 @@ public class Book extends Article implements Serializable {
 
     @Column
     private int pages;
+
+    @lombok.Builder(builderClassName = "BookBuilder")
+    public Book(Long id, @NotNull @Size(max = 100) String title, @NotNull @Digits(integer = 6, fraction = 2) double price, @NotNull @Size(max = 100) String supplier, String type, @Size(max = 100) String author, @NotNull @Pattern(regexp = "\\d{3}-\\d{2}-\\d{4}-\\d{3}-\\d") long isbn, int pages) {
+        super(id, title, price, supplier, type);
+        this.author = author;
+        this.isbn = isbn;
+        this.pages = pages;
+    }
+
+    public static class BookBuilder extends Builder {
+        BookBuilder() {
+            super();
+        }
+    }
 
     @Override
     public boolean equals(Object o) {

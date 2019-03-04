@@ -1,16 +1,25 @@
 package com.realdolmen.backend.dto;
 
 import com.realdolmen.backend.domain.Subject;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 public class NonFictionDto extends BookDto {
 
     private Subject subject;
+
+//    @lombok.Builder(builderClassName = "NonFictionDtoBuilder")
+//    public NonFictionDto(Long id, String title, double price, String supplier, String type, String author, long isbn, int pages, Subject subject) {
+//        super(id, title, price, supplier, type, author, isbn, pages);
+//        this.subject = subject;
+//    }
+//
+//
+//    public static class NonFictionDtoBuilder extends BookDto.Builder {
+//        NonFictionDtoBuilder() {super();}
+//    }
 }

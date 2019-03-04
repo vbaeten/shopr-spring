@@ -20,6 +20,16 @@ public class NonFiction extends Book implements Serializable {
     @Column
     private Subject subject;
 
+//    @lombok.Builder(builderClassName = "NonFictionBuilder")
+//    public NonFiction(String author, long isbn, int pages, Subject subject) {
+//        super(author, isbn, pages);
+//        this.subject = subject;
+//    }
+//
+//    public static class NonFictionBuilder extends Book.Builder {
+//        NonFictionBuilder() {super();}
+//    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

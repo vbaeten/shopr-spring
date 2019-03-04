@@ -27,6 +27,17 @@ public class Fiction extends Book implements Serializable {
     @Size(max = 255)
     private String synopsis;
 
+//    @lombok.Builder(builderClassName = "FictionBuilder")
+//    public Fiction(String author, long isbn, int pages, BookGenre bookGenre, String synopsis) {
+//        super(author, isbn, pages);
+//        this.bookGenre = bookGenre;
+//        this.synopsis = synopsis;
+//    }
+
+//    public static class FictionBuilder extends Book.Builder {
+//        FictionBuilder() {super();}
+//    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
