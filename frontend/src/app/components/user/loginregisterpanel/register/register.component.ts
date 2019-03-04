@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../../../services/user.service';
 import {User} from '../../../../models/user';
-import {FormControl, FormGroup, NgForm} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatSnackBar} from '@angular/material';
 
 @Component({
@@ -11,6 +11,8 @@ import {MatSnackBar} from '@angular/material';
 })
 export class RegisterComponent implements OnInit {
 
+  message: string = '';
+  action: string = 'registered';
   registerForm: FormGroup;
 
   constructor(private userService: UserService,
@@ -19,12 +21,13 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = new FormGroup({
-      firstName: new FormControl(''),
-      name: new FormControl('')
+      firstName: new FormControl('', Validators.required),
+      name: new FormControl('', Validators.required)
     });
   }
 
   openSnackBar(message: string, action: string) {
+    this.action = 'registered';
     this.snackBar.open(message, action, {
       duration: 2000,
     });
