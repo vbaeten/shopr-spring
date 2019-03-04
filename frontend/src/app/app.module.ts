@@ -44,8 +44,6 @@ import {CreateShoppingCartComponent} from './components/temp/create-shopping-car
 import {StyleComponent} from './components/temp/style/style.component';
 import {ValidationModule} from './modules/validation/validation.module';
 import {LoginAndRegisterComponent} from './components/user/loginregisterpanel/login-and-register/login-and-register.component';
-import {RegisterFormComponent} from './components/temp/register-form/register-form.component';
-
 
 @NgModule({
   declarations: [
@@ -84,7 +82,6 @@ import {RegisterFormComponent} from './components/temp/register-form/register-fo
     CreateShoppingCartComponent,
     StyleComponent,
     LoginAndRegisterComponent,
-    RegisterFormComponent,
   ],
   imports: [
     BrowserModule,

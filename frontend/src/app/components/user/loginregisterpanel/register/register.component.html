@@ -1,17 +1,17 @@
 <mat-card>
   <div class="myPanel" id="register">
     <p>Register here!</p>
-    <form class="inesForm" #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
       <div fxLayout="row" fxLayoutGap="20px" fxFlexAlign="end">
         <mat-form-field appearance="standard">
-          <input matInput id="firstName" placeholder="First Name" type="text" name="firstName" ngModel
-                 required #firstName>
+          <input matInput id="firstName" placeholder="First Name" type="text"
+                 required #firstName formControlName="firstName">
         </mat-form-field>
         <mat-form-field appearance="standard">
-          <input matInput id="name" placeholder="Last Name" type="text" name="name" ngModel required
+          <input matInput id="name" placeholder="Last Name" type="text" formControlName="name"
                  #name>
         </mat-form-field>
-        <button id="register-button" mat-stroked-button color="accent" [disabled]="!f.valid"
+        <button id="register-button" mat-stroked-button color="accent"
                 (click)="openSnackBar(firstName.value, name.value)">Register
         </button>
       </div>
