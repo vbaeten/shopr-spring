@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.util.List;
 
@@ -24,10 +25,12 @@ public class User implements Serializable {
 
     @Column
     @NotBlank
+    @Pattern(regexp = "^[^0-9]+$", message = "Name should not contain any numbers.")
     private String name;
 
     @Column(name = "first_name")
     @NotBlank
+    @Pattern(regexp = "^[^0-9]+$", message = "First Name should not contain any numbers")
     private String firstName;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")

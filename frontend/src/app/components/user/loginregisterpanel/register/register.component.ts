@@ -15,6 +15,8 @@ export class RegisterComponent implements OnInit {
               private snackBar: MatSnackBar) {
   }
 
+  action: string = 'Registered';
+
   ngOnInit() {
   }
 
