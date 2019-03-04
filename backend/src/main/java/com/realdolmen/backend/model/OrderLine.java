@@ -27,5 +27,8 @@ public class OrderLine implements Serializable
 
     private int priceOrderDate;
 
+    @Transient
+    private int userid;
+
 
 }
