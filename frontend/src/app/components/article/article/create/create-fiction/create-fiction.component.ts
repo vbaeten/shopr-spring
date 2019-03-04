@@ -3,6 +3,8 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Fiction} from "../../../../../models/fiction";
 import {FictionGenre} from "../../../../../models/fiction-genre";
 import {FictionService} from "../../../../../services/fiction.service";
+import {ActivatedRoute} from "@angular/router";
+import {ArticleService} from "../../../../../services/article.service";
 
 @Component({
   selector: 'app-create-fiction',
@@ -13,22 +15,11 @@ export class CreateFictionComponent implements OnInit {
 
   @Input() type: string;
   fiction: Fiction;
-  createFictionForm: FormGroup = this.formBuilder.group(
-    {
-      type: ['', Validators.required],
-      title: ['', Validators.compose([
-        Validators.required, Validators.maxLength(100)
-      ])],
-      price: ['', Validators.required, Validators.requiredTrue],
-      supplierId: ['', Validators.required],
-      author: ['', Validators.required],
-      isbn: ['', Validators.required],
-      nrOfPages: ['', Validators.required],
-      shortSummary: ['', Validators.required],
-      fictionGenre: ['', Validators.required],
-    });
+  articleId: number;
+  selectedArticle: Fiction = new Fiction();
+  createFictionForm: FormGroup;
 
-  constructor(private fictionService: FictionService,
+  constructor(private fictionService: FictionService, private articleService: ArticleService, private activatedRoute: ActivatedRoute,
               private formBuilder: FormBuilder) {
   }
 
@@ -39,14 +30,25 @@ export class CreateFictionComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.createFictionForm.patchValue({type: this.type});
-    this.createFictionForm.patchValue({bookType: this.type})
+    this.fillInForm();
+    this.activatedRoute.params.subscribe(params => {
+      this.articleId = +params['id'];
+      if (this.articleId) {
+        this.articleService.getArticleById(this.articleId).subscribe(data => {
+          this.selectedArticle = data as Fiction;
+          this.type = this.selectedArticle.type;
+          this.fillInForm();
+        })
+      }
+    });
   }
-
 
   createFiction = () => {
     this.fiction = new Fiction();
-    this.fiction.type = "fiction";
+    if (this.createFictionForm.value.id) {
+      this.fiction.articleId = this.createFictionForm.value.id;
+    }
+    this.fiction.type = this.createFictionForm.value.type.toLowerCase();
     this.fiction.title = this.createFictionForm.value.title;
     this.fiction.price = this.createFictionForm.value.price;
     this.fiction.supplierId = this.createFictionForm.value.supplierId;
@@ -58,5 +60,22 @@ export class CreateFictionComponent implements OnInit {
 
     this.fictionService.createFiction(this.fiction);
 
+  }
+
+  private fillInForm() {
+    this.createFictionForm = this.formBuilder.group(
+      {
+        type: [this.type, Validators.required],
+        title: [this.selectedArticle.title, Validators.compose([
+          Validators.required, Validators.maxLength(100)
+        ])],
+        price: [this.selectedArticle.price, Validators.required],
+        supplierId: [this.selectedArticle.supplierId, Validators.required],
+        author: [this.selectedArticle.author, Validators.required],
+        isbn: [this.selectedArticle.isbn, Validators.required],
+        nrOfPages: [this.selectedArticle.nrOfPages, Validators.required],
+        shortSummary: [this.selectedArticle.shortSummary, Validators.required],
+        fictionGenre: [this.selectedArticle.fictionGenre, Validators.required],
+      });
   }
 }

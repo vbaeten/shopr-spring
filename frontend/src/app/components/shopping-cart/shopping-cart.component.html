@@ -27,7 +27,7 @@
       <ng-container matColumnDef="subtotal">
         <th *matHeaderCellDef mat-header-cell mat-sort-header="subtotal"> SubTotal</th>
         <td *matCellDef="let orderLine" mat-cell>
-          {{calculateSubtotal(orderLine.quantity, orderLine.article.price) | currency}} </td>
+          {{orderLine.subtotal | currency}} </td>
         <td *matFooterCellDef mat-footer-cell> {{getTotalPrice() | currency}} </td>
       </ng-container>
 

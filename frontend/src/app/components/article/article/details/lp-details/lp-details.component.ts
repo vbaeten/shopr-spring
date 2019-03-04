@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {Lp} from "../../../../../models/lp";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ArticleService} from "../../../../../services/article.service";
 import {OrderLine} from "../../../../../models/orderLine";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {OrderLineService} from "../../../../../services/order-line.service";
+import {Article} from "../../../../../models/article";
 
 @Component({
   selector: 'app-lp-details',
@@ -23,11 +24,11 @@ export class LpDetailsComponent implements OnInit {
       quantity: ['1', Validators.required]
     });
 
-  constructor(private route: ActivatedRoute, private articleService: ArticleService, private orderLineService: OrderLineService, private formBuilder: FormBuilder) {
+  constructor( private route: Router, private activatedRoute: ActivatedRoute, private articleService: ArticleService, private orderLineService: OrderLineService, private formBuilder: FormBuilder) {
   }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
+    this.activatedRoute.params.subscribe(params => {
       this.articleId = +params['id'];
       this.articleService.getArticleById(this.articleId).subscribe(data => {
         this.selectedArticle = data as Lp;
@@ -46,6 +47,29 @@ export class LpDetailsComponent implements OnInit {
     this.newOrderLine.subtotal = this.newOrderLine.quantity * this.newOrderLine.article.price;
     this.orderLineService.addOrderLineToCartLocalStorage(this.cart, this.newOrderLine);
 
+  }
+
+  editArticle(article: Article) {
+
+    switch (article.type) {
+      case "game": {
+        this.route.navigate(["/article/edit-game/", article.articleId])
+      }
+        break;
+      case "lp": {
+        this.route.navigate(["/article/edit-lp/", article.articleId])
+      }
+        break;
+      case "fiction": {
+        this.route.navigate(["/article/edit-fiction/", article.articleId])
+      }
+        break;
+      case "nonFiction": {
+        this.route.navigate(["/article/edit-nonFiction/", article.articleId])
+      }
+        break;
+    }
+    this.articleService.setArticleToStorage(article);
   }
 
 }

@@ -3,6 +3,8 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {NonFiction} from "../../../../../models/nonFiction";
 import {NonFictionSubject} from "../../../../../models/non-fiction-subject";
 import {NonFictionService} from '../../../../../services/non-fiction.service';
+import {ActivatedRoute} from "@angular/router";
+import {ArticleService} from "../../../../../services/article.service";
 
 @Component({
   selector: 'app-create-non-fiction',
@@ -13,20 +15,11 @@ export class CreateNonFictionComponent implements OnInit {
 
   @Input() type: string;
   nonFiction: NonFiction;
-  createNonFictionForm: FormGroup = this.formBuilder.group(
-    {
-      type: ['', Validators.required],
-      title: ['', Validators.required],
-      price: ['', Validators.required],
-      supplierId: ['', Validators.required],
-      author: ['', Validators.required],
-      isbn: ['', Validators.required],
-      nrOfPages: ['', Validators.required],
-      nonFictionSubject: ['', Validators.required],
-    });
+  articleId: number;
+  selectedArticle: NonFiction = new NonFiction();
+  createNonFictionForm: FormGroup;
 
-  constructor(private nonFictionService: NonFictionService,
-              private formBuilder: FormBuilder) {
+  constructor(private nonFictionService: NonFictionService, private activatedRoute: ActivatedRoute, private articleService: ArticleService, private formBuilder: FormBuilder) {
   }
 
   nonFictionSubjects(): Array<string> {
@@ -36,14 +29,25 @@ export class CreateNonFictionComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.createNonFictionForm.patchValue({type: this.type});
-    this.createNonFictionForm.patchValue({bookType: this.type})
+    this.fillInForm();
+    this.activatedRoute.params.subscribe(params => {
+      this.articleId = +params['id'];
+      if (this.articleId) {
+        this.articleService.getArticleById(this.articleId).subscribe(data => {
+          this.selectedArticle = data as NonFiction;
+          this.type = this.selectedArticle.type;
+          this.fillInForm();
+        })
+      }
+    });
   }
-
 
   createNonFiction = () => {
     this.nonFiction = new NonFiction();
-    this.nonFiction.type = "nonFiction";
+    if (this.createNonFictionForm.value.id) {
+      this.nonFiction.articleId = this.createNonFictionForm.value.id;
+    }
+    this.nonFiction.type = this.createNonFictionForm.value.type;
     this.nonFiction.title = this.createNonFictionForm.value.title;
     this.nonFiction.price = this.createNonFictionForm.value.price;
     this.nonFiction.supplierId = this.createNonFictionForm.value.supplierId;
@@ -55,4 +59,19 @@ export class CreateNonFictionComponent implements OnInit {
     this.nonFictionService.createNonFiction(this.nonFiction);
 
   }
+
+  private fillInForm() {
+    this.createNonFictionForm = this.formBuilder.group(
+      {
+        type: [this.type, Validators.required],
+        title: [this.selectedArticle.title, Validators.required],
+        price: [this.selectedArticle.price, Validators.required],
+        supplierId: [this.selectedArticle.supplierId, Validators.required],
+        author: [this.selectedArticle.author, Validators.required],
+        isbn: [this.selectedArticle.isbn, Validators.required],
+        nrOfPages: [this.selectedArticle.nrOfPages, Validators.required],
+        nonFictionSubject: [this.selectedArticle.nonFictionSubject, Validators.required],
+      });
+  }
+
 }

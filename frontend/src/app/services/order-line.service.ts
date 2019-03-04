@@ -48,7 +48,8 @@ export class OrderLineService {
     let orderLine = cart.find(orderLine => orderLine.article.articleId === newOrderLine.article.articleId);
     console.log(orderLine);
     if (orderLine) {
-      orderLine.quantity = +newOrderLine.quantity + +orderLine.quantity.valueOf()
+      orderLine.quantity = +newOrderLine.quantity + +orderLine.quantity;
+      orderLine.subtotal = orderLine.quantity * orderLine.article.price;
     } else {
     cart.push(newOrderLine);}
     localStorage.setItem("cart", JSON.stringify(cart));

@@ -16,6 +16,10 @@ import {LpOverviewComponent} from "./components/article/article/overview/lp-over
 import {FictionOverviewComponent} from "./components/article/article/overview/fiction-overview/fiction-overview.component";
 import {NonFictionOverviewComponent} from "./components/article/article/overview/non-fiction-overview/non-fiction-overview.component";
 import {OverviewComponent} from "./components/article/article/overview/overview.component";
+import {CreateGameComponent} from "./components/article/article/create/create-game/create-game.component";
+import {CreateLpComponent} from "./components/article/article/create/create-lp/create-lp.component";
+import {CreateFictionComponent} from "./components/article/article/create/create-fiction/create-fiction.component";
+import {CreateNonFictionComponent} from "./components/article/article/create/create-non-fiction/create-non-fiction.component";
 
 const routes: Routes = [
   // {path: '**', component: PageNotFoundComponent},
@@ -30,6 +34,10 @@ const routes: Routes = [
   {path: 'fictions', component: FictionOverviewComponent},
   {path: 'nonFictions', component: NonFictionOverviewComponent},
   {path: 'article/create-article', component: CreateArticleComponent},
+  {path: 'article/edit-game/:id', component: CreateGameComponent},
+  {path: 'article/edit-lp/:id', component: CreateLpComponent},
+  {path: 'article/edit-fiction/:id', component: CreateFictionComponent},
+  {path: 'article/edit-nonFiction/:id', component: CreateNonFictionComponent},
   {path: 'article/game-details/:id', component: GameDetailsComponent},
   {path: 'article/lp-details/:id', component: LpDetailsComponent},
   {path: 'article/fiction-details/:id', component: FictionDetailsComponent},

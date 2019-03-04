@@ -1,11 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ArticleService} from "../../../../../services/article.service";
 import {Game} from "../../../../../models/game";
 import {OrderLineService} from "../../../../../services/order-line.service";
 import {OrderLine} from "../../../../../models/orderLine";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {OrderService} from "../../../../../services/order.service";
+import {Article} from "../../../../../models/article";
 
 @Component({
   selector: 'app-game-details',
@@ -24,11 +25,11 @@ export class GameDetailsComponent implements OnInit {
       quantity: ['1', Validators.required]
     });
 
-  constructor(private route: ActivatedRoute, private articleService: ArticleService, private orderService: OrderService, private orderLineService: OrderLineService, private formBuilder: FormBuilder) {
+  constructor(private route: Router, private activatedRoute: ActivatedRoute, private articleService: ArticleService, private orderService: OrderService, private orderLineService: OrderLineService, private formBuilder: FormBuilder) {
   }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
+    this.activatedRoute.params.subscribe(params => {
       this.articleId = +params['id'];
       this.articleService.getArticleById(this.articleId).subscribe(data => {
         this.selectedArticle = data as Game;
@@ -48,5 +49,28 @@ export class GameDetailsComponent implements OnInit {
     this.orderLineService.addOrderLineToCartLocalStorage(this.cart, this.newOrderLine);
 
   }
+
+  editArticle(article: Article) {
+
+      switch (article.type) {
+        case "game": {
+          this.route.navigate(["/article/edit-game/", article.articleId])
+        }
+          break;
+        case "lp": {
+          this.route.navigate(["/article/edit-lp/", article.articleId])
+        }
+          break;
+        case "fiction": {
+          this.route.navigate(["/article/edit-fiction/", article.articleId])
+        }
+          break;
+        case "nonFiction": {
+          this.route.navigate(["/article/edit-nonFiction/", article.articleId])
+        }
+          break;
+      }
+      this.articleService.setArticleToStorage(article);
+    }
 
 }

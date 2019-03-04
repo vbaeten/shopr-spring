@@ -7,7 +7,7 @@
         <tr>
           <td>
             <mat-form-field>
-              <input formControlName="type" matInput placeholder="Article type">
+              <input [readonly]="type" formControlName="type" matInput placeholder="Article type">
             </mat-form-field>
           </td>
         </tr>
@@ -26,7 +26,7 @@
         <tr>
           <td>
             <mat-form-field>
-              <input [dropSpecialCharacters]="false" formControlName="price" mask="999999.00"
+              <input [dropSpecialCharacters]="false" [formControl]="createFictionForm.controls['price']" mask="999999.00"
                      matInput placeholder="Price">
             </mat-form-field>
           </td>
@@ -43,13 +43,13 @@
         <tr>
           <td>
             <mat-form-field>
-              <input [dropSpecialCharacters]="false" formControlName="isbn" mask="000-00-0000-000-0" matInput
+              <input [dropSpecialCharacters]="false" [formControl]="createFictionForm.controls['isbn']" mask="000-00-0000-000-0" matInput
                      placeholder="Isbn" type="text">
             </mat-form-field>
           </td>
           <td>
             <mat-form-field>
-              <input formControlName="nrOfPages" mask="9999" matInput
+              <input [formControl]="createFictionForm.controls['nrOfPages']" mask="9999" matInput
                      placeholder="nr of pages">
             </mat-form-field>
           </td>

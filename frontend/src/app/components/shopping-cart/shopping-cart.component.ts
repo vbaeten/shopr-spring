@@ -60,7 +60,7 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   getTotalPrice() {
-    let totalPrice = this.shoppingCart.map(o => o.subtotal * o.quantity).reduce((acc, value) => acc + value, 0);
+    let totalPrice = this.shoppingCart.map(o => o.subtotal).reduce((acc, value) => acc + value, 0);
     return parseFloat(totalPrice.toFixed(2));
   }
 
@@ -74,11 +74,6 @@ export class ShoppingCartComponent implements OnInit {
       this.orderService.createOrder(this.newOrder);
       this.getCart();
     }
-  }
-
-  calculateSubtotal(quantity: number, price: number): number {
-    let subtotal = quantity * price;
-    return parseFloat(subtotal.toFixed(2));
   }
 
   private setSortAndPaginator() {
