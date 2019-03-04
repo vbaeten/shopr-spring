@@ -23,7 +23,7 @@ public class BookDto extends ArticleDto {
         this.pages = pages;
     }
 
-    public static class BookDtoBuilder extends ArticleDto.Builder {
+    public static class BookDtoBuilder extends Builder {
         BookDtoBuilder() { super(); }
     }
 }

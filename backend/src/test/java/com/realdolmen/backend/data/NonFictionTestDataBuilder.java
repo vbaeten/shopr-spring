@@ -5,11 +5,11 @@ import com.realdolmen.backend.dto.NonFictionDto;
 
 public class NonFictionTestDataBuilder {
 
-    public static NonFiction.Builder buildNonFictionBook() {
+    public static NonFiction.NonFictionBuilder buildNonFictionBook() {
         return NonFiction.builder().id(1L).title("A book").price(50).supplier("Dreamland").type("NonFictionBook");
     }
 
-    public static NonFictionDto.Builder buildNonFictionBookDto() {
+    public static NonFictionDto.NonFictionDtoBuilder buildNonFictionBookDto() {
         return NonFictionDto.builder().id(1L).title("A book").price(50).supplier("Dreamland").type("NonFictionBook");
     }
 }
