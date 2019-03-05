@@ -55,7 +55,9 @@ export class CreateLpComponent implements OnInit {
     this.lp.supplierId = this.createLpForm.value.supplierId;
     this.lp.publisher = this.createLpForm.value.publisher;
     this.lp.lpGenre = this.createLpForm.value.lpGenre;
-
+    if (this.createLpForm.value.id) {
+      this.lpService.edit(this.lp.articleId, this.lp)
+    }
     this.lpService.createLp(this.lp);
 
   }
@@ -63,6 +65,7 @@ export class CreateLpComponent implements OnInit {
   private fillInForm() {
     this.createLpForm = this.formBuilder.group(
       {
+        id: [this.selectedArticle.articleId],
         type: [this.type, Validators.required],
         title: [this.selectedArticle.title, Validators.required],
         price: [this.selectedArticle.price, Validators.required],

@@ -20,8 +20,8 @@ export class GameService {
       })
   };
 
-  public edit(game: Game) {
-    this.apiService.doPut("/game", game).subscribe(response => {
+  public edit(id: number, game: Game) {
+    this.apiService.doPut("/game/" + id, game).subscribe(response => {
         this.notification.open("Game has been updated", "👍", {duration: 3000});
       },
       err => {

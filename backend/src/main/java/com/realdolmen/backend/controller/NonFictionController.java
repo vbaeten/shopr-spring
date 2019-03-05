@@ -1,6 +1,7 @@
 package com.realdolmen.backend.controller;
 
 import com.realdolmen.backend.domain.NonFiction;
+import com.realdolmen.backend.exceptions.NotFoundException;
 import com.realdolmen.backend.service.NonFictionService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,15 @@ public class NonFictionController {
 
     @PostMapping
     public NonFiction save(@RequestBody NonFiction nonFiction) {
+        return nonFictionService.save(nonFiction);
+    }
+
+    @PutMapping("/{id}")
+    public NonFiction edit(@PathVariable Long id, @RequestBody NonFiction nonFiction) {
+        NonFiction currentNonFiction = findById(id);
+        if (currentNonFiction == null) {
+            throw new NotFoundException("Article not found");
+        }
         return nonFictionService.save(nonFiction);
     }
 

@@ -1,6 +1,7 @@
 package com.realdolmen.backend.controller;
 
 import com.realdolmen.backend.domain.Fiction;
+import com.realdolmen.backend.exceptions.NotFoundException;
 import com.realdolmen.backend.service.FictionService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,15 @@ public class FictionController {
 
     @PostMapping
     public Fiction save(@RequestBody Fiction fiction) {
+        return fictionService.save(fiction);
+    }
+
+    @PutMapping("/{id}")
+    public Fiction edit(@PathVariable Long id, @RequestBody Fiction fiction) {
+        Fiction currentFiction = findById(id);
+        if (currentFiction == null) {
+            throw new NotFoundException("Article not found");
+        }
         return fictionService.save(fiction);
     }
 

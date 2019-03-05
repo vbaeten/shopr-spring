@@ -20,8 +20,8 @@ export class FictionService {
       })
   };
 
-  public edit(fiction: Fiction) {
-    this.apiService.doPut("/fiction", fiction).subscribe(response => {
+  public edit(id: number,fiction: Fiction) {
+    this.apiService.doPut("/fiction/" + id, fiction).subscribe(response => {
         this.notification.open("Fiction book has been updated", "👍", {duration: 3000});
       },
       err => {

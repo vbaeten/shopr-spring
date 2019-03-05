@@ -55,14 +55,17 @@ export class CreateNonFictionComponent implements OnInit {
     this.nonFiction.isbn = this.createNonFictionForm.value.isbn;
     this.nonFiction.nrOfPages = this.createNonFictionForm.value.nrOfPages;
     this.nonFiction.nonFictionSubject = this.createNonFictionForm.value.nonFictionSubject;
-
-    this.nonFictionService.createNonFiction(this.nonFiction);
-
-  }
+    if (this.createNonFictionForm.value.id) {
+      this.nonFictionService.edit(this.nonFiction.articleId, this.nonFiction);
+    } else {
+      this.nonFictionService.createNonFiction(this.nonFiction);
+    }
+  };
 
   private fillInForm() {
     this.createNonFictionForm = this.formBuilder.group(
       {
+        id: [this.selectedArticle.articleId],
         type: [this.type, Validators.required],
         title: [this.selectedArticle.title, Validators.required],
         price: [this.selectedArticle.price, Validators.required],

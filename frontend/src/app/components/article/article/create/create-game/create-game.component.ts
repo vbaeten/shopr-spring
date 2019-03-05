@@ -55,10 +55,13 @@ export class CreateGameComponent implements OnInit {
     this.game.publisher = this.createGameForm.value.publisher;
     this.game.minimumAge = this.createGameForm.value.minimumAge;
     this.game.gameGenre = this.createGameForm.value.gameGenre;
+    if (this.createGameForm.value.id) {
+      this.gameService.edit(this.game.articleId, this.game);
+    } else {
+      this.gameService.createGame(this.game);
+    }
+  };
 
-    this.gameService.createGame(this.game);
-
-  }
 
   private fillInForm() {
     this.createGameForm = this.formBuilder.group({

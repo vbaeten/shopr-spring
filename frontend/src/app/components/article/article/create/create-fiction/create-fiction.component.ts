@@ -57,14 +57,17 @@ export class CreateFictionComponent implements OnInit {
     this.fiction.nrOfPages = this.createFictionForm.value.nrOfPages;
     this.fiction.shortSummary = this.createFictionForm.value.shortSummary;
     this.fiction.fictionGenre = this.createFictionForm.value.fictionGenre;
-
-    this.fictionService.createFiction(this.fiction);
-
-  }
+    if (this.createFictionForm.value.id) {
+      this.fictionService.edit(this.fiction.articleId, this.fiction);
+    } else {
+      this.fictionService.createFiction(this.fiction);
+    }
+  };
 
   private fillInForm() {
     this.createFictionForm = this.formBuilder.group(
       {
+        id: [this.selectedArticle.articleId],
         type: [this.type, Validators.required],
         title: [this.selectedArticle.title, Validators.compose([
           Validators.required, Validators.maxLength(100)

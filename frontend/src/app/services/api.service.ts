@@ -19,7 +19,7 @@ export class ApiService {
   }
 
   public doPut(uri: string, body: Object, parameters?: Map<string, string>) {
-    return this.httpClient.put(uri, body, {params: this.appendParameters(parameters)});
+    return this.httpClient.put<any>(uri, body, {params: this.appendParameters(parameters)});
   }
 
   public doDelete(uri: string) {

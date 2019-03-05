@@ -20,8 +20,8 @@ export class LpService {
       })
   };
 
-  public edit(lp: Lp) {
-    this.apiService.doPut("/lp", lp).subscribe(response => {
+  public edit(id: number, lp: Lp) {
+    this.apiService.doPut("/lp/" + id, lp).subscribe(response => {
         this.notification.open("Lp has been updated", "👍", {duration: 3000});
       },
       err => {

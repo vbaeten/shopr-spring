@@ -1,6 +1,7 @@
 package com.realdolmen.backend.controller;
 
 import com.realdolmen.backend.domain.Game;
+import com.realdolmen.backend.exceptions.NotFoundException;
 import com.realdolmen.backend.service.GameService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,15 @@ public class GameController {
 
     @PostMapping
     public Game save(@RequestBody Game game) {
+        return gameService.save(game);
+    }
+
+    @PutMapping("/{id}")
+    public Game edit(@PathVariable Long id, @RequestBody Game game) {
+        Game currentGame = findById(id);
+        if (currentGame == null) {
+            throw new NotFoundException("Article not found");
+        }
         return gameService.save(game);
     }
 

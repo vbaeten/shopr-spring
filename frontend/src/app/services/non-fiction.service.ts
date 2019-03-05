@@ -20,8 +20,8 @@ export class NonFictionService {
       })
   };
 
-  public edit(nonFiction: NonFiction) {
-    this.apiService.doPut("/nonFiction", nonFiction).subscribe(response => {
+  public edit(id: number, nonFiction: NonFiction) {
+    this.apiService.doPut("/nonFiction/" + id, nonFiction).subscribe(response => {
         this.notification.open("Non fiction book has been updated", "👍", {duration: 3000});
       },
       err => {

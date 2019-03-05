@@ -1,4 +1,4 @@
-<form>
+
   <mat-form-field>
     <mat-select [(ngModel)]="selectedValue" name="articleType" placeholder="Article type">
       <mat-option *ngFor="let articleType of articleTypes" [value]="articleType">
@@ -6,7 +6,6 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-</form>
 
 <app-create-game *ngIf="selectedValue === 'Game'" [type]="selectedValue"></app-create-game>
 <app-create-fiction *ngIf="selectedValue === 'Fiction'" [type]="selectedValue"></app-create-fiction>
