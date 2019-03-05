@@ -43,7 +43,7 @@
     <ng-container matColumnDef="delete">
       <th mat-header-cell *matHeaderCellDef mat-sort-header="delete"> Delete</th>
       <td mat-cell *matCellDef="let lp">
-        <button mat-raised-button (click)="deleteLp(lp.articleId)">
+        <button color="warn" mat-raised-button (click)="deleteLp(lp.articleId)">
           <i class="material-icons">
             delete_forever
           </i>
@@ -55,7 +55,7 @@
     <ng-container matColumnDef="details">
       <th mat-header-cell *matHeaderCellDef mat-sort-header="details"> Details</th>
       <td mat-cell *matCellDef="let article">
-        <button mat-raised-button (click)="goToDetailsPage(article)">
+        <button color="primary" mat-raised-button (click)="goToDetailsPage(article)">
           <i class="material-icons">
             edit
           </i>

@@ -19,3 +19,8 @@ body {
 .mat-select-menu{
   height: 10px;
 }
+
+.submit-quantity{
+  width: 8%;
+  margin-right: 3%;
+}
