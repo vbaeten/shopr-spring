@@ -51,6 +51,16 @@ public class UserServiceImplTest {
         assertEquals(expectedUser.getId(), foundUser.getId());
     }
 
+    @Test(expected = NotFoundException.class)
+    public void findByIdUserNotFound() throws Exception {
+
+        Optional<User> userOptional = Optional.empty();
+
+        when(userRepository.findById(any())).thenReturn(userOptional);
+
+        assertNull(userServiceImpl.findById(any()));
+    }
+
     @Test
     public void testSaveProfile() {
         User expectedUser = UserTestDataBuilder.buildUserBernadetteSanz().build();
@@ -88,15 +98,6 @@ public class UserServiceImplTest {
         verify(userRepository, times(1)).delete(user);
     }
 
-    @Test(expected = NotFoundException.class)
-    public void findByIdUserNotFound() {
-        User notFound = userServiceImpl.findById(1L);
-
-        when(userRepository.findById(any())).thenReturn(Optional.of(notFound));
-
-        verify(userRepository, times(1)).findById(any());
-        assertNull(userServiceImpl.findById(any()));
-    }
 
     @Test
     public void deleteById() throws NotFoundException {
