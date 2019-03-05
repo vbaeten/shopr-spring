@@ -14,7 +14,7 @@ import {UserService} from "../../services/user.service";
     NavBarComponent
   ],
   providers: [
-    UserService
+    UserService,
   ]
 })
 export class NavBarModule {

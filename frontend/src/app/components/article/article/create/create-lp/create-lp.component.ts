@@ -30,7 +30,7 @@ export class CreateLpComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.fillInForm()
+    this.fillInForm();
     this.activatedRoute.params.subscribe(params => {
       this.articleId = +params['id'];
       if (this.articleId) {
@@ -60,7 +60,7 @@ export class CreateLpComponent implements OnInit {
     }
     this.lpService.createLp(this.lp);
 
-  }
+  };
 
   private fillInForm() {
     this.createLpForm = this.formBuilder.group(

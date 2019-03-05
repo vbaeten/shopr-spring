@@ -16,13 +16,16 @@ export class NavBarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.currentUser = this.userService.getCurrentUser()
+    // this.currentUser = this.userService.getCurrentUser();
+    this.userService.getEmitter().subscribe(user => {
+      this.currentUser = user;
+      console.log("Component is notified of successful login!");
+    });
   }
 
 
   logout(){
-    this.userService.removeCurrentUserFromStorage();
-
+    this.userService.logout(this.currentUser);
   }
   //
   // get loggedIn(): boolean {

@@ -7,7 +7,7 @@
   <button mat-button routerLink="/article/create-article">Create Article</button>
   <div fxFlex></div>
   <button mat-button routerLink="/shoppingCart">ShoppingCart</button>
-  <button mat-button routerLink="/login">Register/Login</button>
+  <button *ngIf="!currentUser" mat-button routerLink="/login">Register/Login</button>
   <button *ngIf="currentUser" [matMenuTriggerFor]="user"
           mat-button> {{currentUser.firstName}} {{currentUser.name}}</button>
   <mat-menu #user="matMenu">
