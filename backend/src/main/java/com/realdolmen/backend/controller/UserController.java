@@ -44,4 +44,5 @@ public class UserController {
     public void deleteUser(UserDto userDto) {
         userFacade.delete(userDto);
     }
+
 }

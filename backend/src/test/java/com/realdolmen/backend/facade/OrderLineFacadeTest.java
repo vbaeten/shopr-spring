@@ -37,14 +37,17 @@ public class OrderLineFacadeTest {
 
     @Test
     public void createOrderLine() {
-    }
+        OrderLineDto orderLineDto = OrderLineTestDataBuilder.buildOrderLine2Dto().build();
+        orderLineFacade.createOrderLine(orderLineDto);
 
-    @Test
-    public void deleteOrderLine() {
+        verify(orderLineService, times(1)).save(any());
     }
 
     @Test
     public void loadShoppingCart() {
+        orderLineFacade.loadShoppingCart(1L);
+
+        verify(orderLineService, times(1)).findCurrentCartByUserId(1L);
     }
 
     @Test

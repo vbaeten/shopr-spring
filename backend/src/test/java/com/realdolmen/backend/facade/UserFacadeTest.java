@@ -80,6 +80,5 @@ public class UserFacadeTest {
         userFacade.createUser(userDto);
 
         verify(userService, times(1)).save(any());
-
     }
 }
