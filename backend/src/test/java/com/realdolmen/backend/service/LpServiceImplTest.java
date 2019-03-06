@@ -19,7 +19,7 @@ import static org.mockito.Mockito.*;
 @RunWith(MockitoJUnitRunner.class)
 public class LpServiceImplTest {
     @Mock
-    private LpRepository gameRepository;
+    private LpRepository lpRepository;
     @InjectMocks
     private LpServiceImpl lpService;
 
@@ -27,21 +27,21 @@ public class LpServiceImplTest {
     public void save() {
         Lp expectedLp = LpTestDataBuilder.buildLpHelloComputer().build();
 
-        when(gameRepository.save(any())).thenReturn(expectedLp);
+        when(lpRepository.save(any())).thenReturn(expectedLp);
 
-        Lp savedLp = this.gameRepository.save(expectedLp);
+        Lp savedLp = this.lpService.save(expectedLp);
 
-        verify(gameRepository, times(1)).save(expectedLp);
+        verify(lpRepository, times(1)).save(expectedLp);
         assertEquals(expectedLp, savedLp);
     }
 
     @Test
     public void findById() {
         Lp expectedLp = LpTestDataBuilder.buildLpHelloComputer().build();
-        when(gameRepository.findById(1L)).thenReturn(java.util.Optional.ofNullable(expectedLp));
+        when(lpRepository.findById(1L)).thenReturn(java.util.Optional.ofNullable(expectedLp));
         Lp foundLp = this.lpService.findById(1L);
 
-        verify(gameRepository, times(1)).findById(1L);
+        verify(lpRepository, times(1)).findById(1L);
         assertEquals(expectedLp.getPrice(), foundLp.getPrice(), 0.01);
     }
 
@@ -51,11 +51,11 @@ public class LpServiceImplTest {
         Lp lp1 = LpTestDataBuilder.buildLpHelloComputer().build();
         expectedLps.add(lp1);
 
-        when(gameRepository.findAll()).thenReturn(expectedLps);
+        when(lpRepository.findAll()).thenReturn(expectedLps);
 
         List<Lp> actualLps = lpService.findAll();
 
-        verify(gameRepository, times(1)).findAll();
+        verify(lpRepository, times(1)).findAll();
         assertEquals(expectedLps.size(), actualLps.size());
     }
 
@@ -64,6 +64,6 @@ public class LpServiceImplTest {
         Lp lp = LpTestDataBuilder.buildLpHelloComputer().build();
         lpService.delete(lp);
 
-        verify(gameRepository, times(1)).delete(lp);
+        verify(lpRepository, times(1)).delete(lp);
     }
 }

@@ -28,7 +28,7 @@ public class OrderLineMapperTest {
         OrderLine orderLine = orderLineMapper.orderLineDtoToOrderLine(orderLineDto);
 
         assertEquals(orderLineDto.getId(), orderLine.getId());
-        assertEquals(orderLineDto.getUser(), orderLine.getUser());
+        assertEquals(orderLineDto.getUser().getName(), orderLine.getUser().getName());
     }
 
     @Test

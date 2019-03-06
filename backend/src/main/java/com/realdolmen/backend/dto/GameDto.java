@@ -22,7 +22,7 @@ public class GameDto extends ArticleDto {
         this.gameGenre = gameGenre;
     }
 
-    public static class GameDtoBuilder extends GameDto.Builder {
+    public static class GameDtoBuilder extends Builder {
         GameDtoBuilder() { super(); }
     }
 

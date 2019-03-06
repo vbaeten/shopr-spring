@@ -7,10 +7,26 @@ import com.realdolmen.backend.dto.GameDto;
 public class GameTestDataBuilder {
 
     public static Game.GameBuilder buildGameZelda() {
-        return Game.builder().id(1L).title("Zelda").gameGenre(GameGenre.RPG).minAge(8).supplier("Dreamland").publisher("Nintendo").price(50);
+        return Game.builder()
+                .id(1L)
+                .title("Zelda")
+                .price(69)
+                .supplier("Dreamland")
+                .minAge(12)
+                .publisher("Nintendo")
+                .gameGenre(GameGenre.RPG)
+                .type("Game");
     }
 
     public static GameDto.GameDtoBuilder buildGameZeldaDTO() {
-        return GameDto.builder().id(1L).title("Zelda").gameGenre(GameGenre.RPG).minAge(8).supplier("Dreamland").publisher("Nintendo").price(50);
+        return GameDto.builder()
+                .id(1L)
+                .title("Zelda")
+                .price(69)
+                .supplier("Dreamland")
+                .minAge(12)
+                .publisher("Nintendo")
+                .gameGenre(GameGenre.RPG)
+                .type("Game");
     }
 }

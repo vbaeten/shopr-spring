@@ -1,5 +1,6 @@
 package com.realdolmen.backend.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.realdolmen.backend.data.GameTestDataBuilder;
 import com.realdolmen.backend.dto.GameDto;
 import com.realdolmen.backend.facade.GameFacade;
@@ -10,12 +11,14 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -46,7 +49,15 @@ public class GameControllerTest {
     }
 
     @Test
-    public void addGame() {
+    public void addGame() throws Exception {
+        GameDto gameDto = GameTestDataBuilder.buildGameZeldaDTO().build();
+
+        String gameDtoString = new ObjectMapper().writeValueAsString(gameDto);
+
+        mockMvc.perform(post("/game/add")
+                .content(gameDtoString)
+                .contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(status().isCreated());
     }
 
     @Test

@@ -2,6 +2,7 @@ package com.realdolmen.backend.controller;
 
 import com.realdolmen.backend.dto.OrderLineDto;
 import com.realdolmen.backend.facade.OrderLineFacade;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,6 +18,7 @@ public class OrderLineController {
     }
 
     @PostMapping("/add")
+    @ResponseStatus(HttpStatus.CREATED)
     public OrderLineDto addToCart(@RequestBody OrderLineDto orderLineDto) {
         return orderLineFacade.createOrderLine(orderLineDto);
     }

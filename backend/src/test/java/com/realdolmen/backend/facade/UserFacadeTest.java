@@ -55,7 +55,6 @@ public class UserFacadeTest {
         userFacade.deleteById(any());
 
         verify(userService, times(1)).deleteById(any());
-        verify(userService, times(1)).findById(any());
     }
 
     @Test

@@ -2,6 +2,7 @@ package com.realdolmen.backend.controller;
 
 import com.realdolmen.backend.dto.FictionDto;
 import com.realdolmen.backend.facade.FictionFacade;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,6 +23,7 @@ public class FictionController {
     }
 
     @PostMapping("/add")
+    @ResponseStatus(HttpStatus.CREATED)
     public FictionDto addFiction(@RequestBody FictionDto fictionDto) {
         return fictionFacade.create(fictionDto);
     }

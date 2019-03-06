@@ -1,5 +1,6 @@
 package com.realdolmen.backend.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.realdolmen.backend.data.NonFictionTestDataBuilder;
 import com.realdolmen.backend.dto.NonFictionDto;
 import com.realdolmen.backend.facade.NonFictionFacade;
@@ -10,12 +11,14 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -46,7 +49,15 @@ public class NonFictionControllerTest {
     }
 
     @Test
-    public void addNonNonFiction() {
+    public void addNonFiction() throws Exception {
+        NonFictionDto nonFictionDto = NonFictionTestDataBuilder.buildNonFictionBookDto().build();
+
+        String nonFictionDtoString = new ObjectMapper().writeValueAsString(nonFictionDto);
+
+        mockMvc.perform(post("/nonfiction/add")
+                .content(nonFictionDtoString)
+                .contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(status().isCreated());
     }
 
     @Test

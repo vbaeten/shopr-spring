@@ -1,5 +1,6 @@
 package com.realdolmen.backend.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.realdolmen.backend.data.UserTestDataBuilder;
 import com.realdolmen.backend.dto.UserDto;
 import com.realdolmen.backend.facade.UserFacade;
@@ -10,13 +11,13 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -38,20 +39,23 @@ public class UserControllerTest {
         mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
     }
 
-//    @Test
-//    public void registerUser() throws Exception {
-//        UserDto userDto = new UserDto();
-//        userDto.setId(2L);
-//        userDto.setFirstName("Bernie");
-//        userDto.setName("Sanz");
-//
-//        when(userFacade.createUser(any())).thenReturn(userDto);
-//
-//        mockMvc.perform(post("/user/register").contentType(MediaType.APPLICATION_JSON))
-//                .andExpect(status().isOk());
-//
-//        verify(userFacade, times(1)).createUser(userDto);
-//    }
+    @Test
+    public void registerUser() throws Exception {
+        UserDto userDto = new UserDto();
+        userDto.setId(2L);
+        userDto.setFirstName("Bernie");
+        userDto.setName("Sanz");
+
+        String userDtoString = new ObjectMapper().writeValueAsString(userDto);
+
+
+        mockMvc.perform(post("/user/register")
+                .content(userDtoString)
+                .contentType(MediaType.APPLICATION_JSON)
+        )
+                .andExpect(status().isCreated());
+
+    }
 
 
     @Test

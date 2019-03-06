@@ -34,7 +34,6 @@ public class UserFacade {
     }
 
     public void deleteById(Long id) {
-        User user = userService.findById(id);
         userService.deleteById(id);
     }
 

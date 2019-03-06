@@ -2,6 +2,7 @@ package com.realdolmen.backend.controller;
 
 import com.realdolmen.backend.dto.GameDto;
 import com.realdolmen.backend.facade.GameFacade;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,6 +23,7 @@ public class GameController {
     }
 
     @PostMapping("/add")
+    @ResponseStatus(HttpStatus.CREATED)
     public GameDto addGame(@RequestBody GameDto gameDto) {
         return gameFacade.create(gameDto);
     }

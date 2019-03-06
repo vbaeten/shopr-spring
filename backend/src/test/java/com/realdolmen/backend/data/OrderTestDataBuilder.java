@@ -21,6 +21,7 @@ public class OrderTestDataBuilder {
         orderLines.add(orderLine2);
         return Order.builder().id(1L).total(500).user(user).orderLines(orderLines);
     }
+
     public static Order.Builder buildOrder2() {
         User user = UserTestDataBuilder.buildUserBernadetteSanz().build();
         OrderLine orderLine1 = OrderLineTestDataBuilder.buildOrderLine1().build();

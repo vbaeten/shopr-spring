@@ -37,7 +37,7 @@ public class FictionServiceImplTest {
 
         when(fictionBookRepository.save(any())).thenReturn(expectedFiction);
 
-        Fiction savedFiction = this.fictionBookRepository.save(expectedFiction);
+        Fiction savedFiction = this.fictionService.save(expectedFiction);
 
         verify(fictionBookRepository, times(1)).save(expectedFiction);
         assertEquals(expectedFiction, savedFiction);

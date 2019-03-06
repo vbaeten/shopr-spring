@@ -2,6 +2,7 @@ package com.realdolmen.backend.controller;
 
 import com.realdolmen.backend.dto.NonFictionDto;
 import com.realdolmen.backend.facade.NonFictionFacade;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,6 +23,7 @@ public class NonFictionController {
     }
 
     @PostMapping("/add")
+    @ResponseStatus(HttpStatus.CREATED)
     public NonFictionDto addNonFictionDto(@RequestBody NonFictionDto nonFictionDto) {
         return nonFictionFacade.create(nonFictionDto);
     }

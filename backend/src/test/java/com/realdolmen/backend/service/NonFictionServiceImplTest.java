@@ -20,29 +20,29 @@ import static org.mockito.Mockito.*;
 public class NonFictionServiceImplTest {
 
     @Mock
-    private NonFictionBookRepository gameRepository;
+    private NonFictionBookRepository nonFictionRepository;
     @InjectMocks
-    private NonFictionServiceImpl fictionService;
+    private NonFictionServiceImpl nonFictionService;
 
     @Test
     public void save() {
         NonFiction expectedNonFiction = NonFictionTestDataBuilder.buildNonFictionBook().build();
 
-        when(gameRepository.save(any())).thenReturn(expectedNonFiction);
+        when(nonFictionRepository.save(any())).thenReturn(expectedNonFiction);
 
-        NonFiction savedNonFiction = this.gameRepository.save(expectedNonFiction);
+        NonFiction savedNonFiction = this.nonFictionService.save(expectedNonFiction);
 
-        verify(gameRepository, times(1)).save(expectedNonFiction);
+        verify(nonFictionRepository, times(1)).save(expectedNonFiction);
         assertEquals(expectedNonFiction, savedNonFiction);
     }
 
     @Test
     public void findById() {
         NonFiction expectedNonFiction = NonFictionTestDataBuilder.buildNonFictionBook().build();
-        when(gameRepository.findById(1L)).thenReturn(java.util.Optional.ofNullable(expectedNonFiction));
-        NonFiction foundNonFiction = this.fictionService.findById(1L);
+        when(nonFictionRepository.findById(1L)).thenReturn(java.util.Optional.ofNullable(expectedNonFiction));
+        NonFiction foundNonFiction = this.nonFictionService.findById(1L);
 
-        verify(gameRepository, times(1)).findById(1L);
+        verify(nonFictionRepository, times(1)).findById(1L);
         assertEquals(expectedNonFiction.getPrice(), foundNonFiction.getPrice(), 0.01);
     }
 
@@ -52,19 +52,19 @@ public class NonFictionServiceImplTest {
         NonFiction fiction1 = NonFictionTestDataBuilder.buildNonFictionBook().build();
         expectedNonFictions.add(fiction1);
 
-        when(gameRepository.findAll()).thenReturn(expectedNonFictions);
+        when(nonFictionRepository.findAll()).thenReturn(expectedNonFictions);
 
-        List<NonFiction> actualNonFictions = fictionService.findAll();
+        List<NonFiction> actualNonFictions = nonFictionService.findAll();
 
-        verify(gameRepository, times(1)).findAll();
+        verify(nonFictionRepository, times(1)).findAll();
         assertEquals(expectedNonFictions.size(), actualNonFictions.size());
     }
 
     @Test
     public void delete() {
         NonFiction nonFiction = NonFictionTestDataBuilder.buildNonFictionBook().build();
-        fictionService.delete(nonFiction);
+        nonFictionService.delete(nonFiction);
 
-        verify(gameRepository, times(1)).delete(nonFiction);
+        verify(nonFictionRepository, times(1)).delete(nonFiction);
     }
 }

@@ -10,10 +10,12 @@ public class NonFictionTestDataBuilder {
         return NonFiction.builder()
                 .id(1L)
                 .title("A book")
-                .author("me")
+                .author("Johnny")
                 .price(50)
                 .supplier("Dreamland")
-                .type("NonFictionBook")
+                .type("Fiction")
+                .pages(120)
+                .isbn(111-11-1111-111-3)
                 .subject(Subject.SCIENCE);
     }
 
@@ -21,10 +23,12 @@ public class NonFictionTestDataBuilder {
         return NonFictionDto.builder()
                 .id(1L)
                 .title("A book")
-                .author("me")
+                .author("Johnny")
                 .price(50)
                 .supplier("Dreamland")
-                .type("NonFictionBook")
+                .type("Fiction")
+                .pages(120)
+                .isbn(111-11-1111-111-3)
                 .subject(Subject.SCIENCE);
     }
 }

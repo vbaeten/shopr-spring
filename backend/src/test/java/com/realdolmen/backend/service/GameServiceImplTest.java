@@ -21,7 +21,7 @@ public class GameServiceImplTest {
     @Mock
     private GameRepository gameRepository;
     @InjectMocks
-    private GameServiceImpl fictionService;
+    private GameServiceImpl gameService;
 
     @Before
     public void setUp() {
@@ -34,7 +34,7 @@ public class GameServiceImplTest {
 
         when(gameRepository.save(any())).thenReturn(expectedGame);
 
-        Game savedGame = this.gameRepository.save(expectedGame);
+        Game savedGame = this.gameService.save(expectedGame);
 
         verify(gameRepository, times(1)).save(expectedGame);
         assertEquals(expectedGame, savedGame);
@@ -44,7 +44,7 @@ public class GameServiceImplTest {
     public void findById() {
         Game expectedGame = GameTestDataBuilder.buildGameZelda().build();
         when(gameRepository.findById(1L)).thenReturn(java.util.Optional.ofNullable(expectedGame));
-        Game foundGame = this.fictionService.findById(1L);
+        Game foundGame = this.gameService.findById(1L);
 
         verify(gameRepository, times(1)).findById(1L);
         assertEquals(expectedGame.getPrice(), foundGame.getPrice(), 0.01);
@@ -58,7 +58,7 @@ public class GameServiceImplTest {
 
         when(gameRepository.findAll()).thenReturn(expectedGames);
 
-        List<Game> actualGames = fictionService.findAll();
+        List<Game> actualGames = gameService.findAll();
 
         verify(gameRepository, times(1)).findAll();
         assertEquals(expectedGames.size(), actualGames.size());
@@ -67,7 +67,7 @@ public class GameServiceImplTest {
     @Test
     public void delete() {
         Game fiction = GameTestDataBuilder.buildGameZelda().build();
-        fictionService.delete(fiction);
+        gameService.delete(fiction);
 
         verify(gameRepository, times(1)).delete(fiction);
     }

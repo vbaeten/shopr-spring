@@ -1,5 +1,6 @@
 package com.realdolmen.backend.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.realdolmen.backend.data.FictionTestDataBuilder;
 import com.realdolmen.backend.dto.FictionDto;
 import com.realdolmen.backend.facade.FictionFacade;
@@ -10,12 +11,14 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -46,7 +49,15 @@ public class FictionControllerTest {
     }
 
     @Test
-    public void addFiction() {
+    public void addFiction() throws Exception {
+        FictionDto fictionDto = FictionTestDataBuilder.buildFictionBookDto().build();
+
+        String fictionDtoString = new ObjectMapper().writeValueAsString(fictionDto);
+
+        mockMvc.perform(post("/fiction/add")
+        .content(fictionDtoString)
+        .contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(status().isCreated());
     }
 
     @Test

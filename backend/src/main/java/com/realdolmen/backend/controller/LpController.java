@@ -2,6 +2,7 @@ package com.realdolmen.backend.controller;
 
 import com.realdolmen.backend.dto.LpDto;
 import com.realdolmen.backend.facade.LpFacade;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,6 +23,7 @@ public class LpController {
     }
 
     @PostMapping("/add")
+    @ResponseStatus(HttpStatus.CREATED)
     public LpDto addLp(@RequestBody LpDto lpDto) {
         return lpFacade.create(lpDto);
     }
