@@ -1,24 +1,48 @@
 package com.realdolmen.backend.controller;
 
-import com.realdolmen.backend.service.FictionService;
+import com.realdolmen.backend.data.FictionTestDataBuilder;
+import com.realdolmen.backend.dto.FictionDto;
+import com.realdolmen.backend.facade.FictionFacade;
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+@RunWith(MockitoJUnitRunner.class)
 public class FictionControllerTest {
 
     @Mock
-    FictionService fictionService;
+    FictionFacade facade;
 
+    @InjectMocks
     FictionController controller;
 
-//    @Before
-//    public void setUp() throws Exception {
-//        MockitoAnnotations.initMocks(this);
-//        controller = new FictionController(fictionService);
-//    }
+    MockMvc mockMvc;
+
+    @Before
+    public void setUp() {
+        MockitoAnnotations.initMocks(this);
+
+        controller = new FictionController(facade);
+        mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
+    }
 
     @Test
-    public void getFictionBooks() {
+    public void getFictionBooks() throws Exception {
+        mockMvc.perform(get("/fiction/list"))
+                .andExpect(status().isOk());
+
+        verify(facade, times(1)).findAll();
     }
 
     @Test
@@ -26,6 +50,15 @@ public class FictionControllerTest {
     }
 
     @Test
-    public void getFiction() {
+    public void getFictionById() throws Exception {
+
+        FictionDto fictionDto = FictionTestDataBuilder.buildFictionBookDto().build();
+
+        when(facade.findById(anyLong())).thenReturn(fictionDto);
+
+        mockMvc.perform(get("/fiction/1")).andExpect(status().isOk());
+
+        verify(facade, times(1)).findById(anyLong());
+
     }
 }

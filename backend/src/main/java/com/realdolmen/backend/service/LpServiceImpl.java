@@ -22,11 +22,6 @@ public class LpServiceImpl implements LpService {
     }
 
     @Override
-    public Lp create(Lp lp) {
-        return lpRepository.save(lp);
-    }
-
-    @Override
     public Lp findById(Long id) {
         return lpRepository.findById(id)
                 .orElseThrow(NotFoundException::new);

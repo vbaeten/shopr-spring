@@ -1,31 +1,64 @@
 package com.realdolmen.backend.controller;
 
-import com.realdolmen.backend.service.NonFictionService;
+import com.realdolmen.backend.data.NonFictionTestDataBuilder;
+import com.realdolmen.backend.dto.NonFictionDto;
+import com.realdolmen.backend.facade.NonFictionFacade;
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+@RunWith(MockitoJUnitRunner.class)
 public class NonFictionControllerTest {
 
     @Mock
-    NonFictionService nonFictionService;
+    NonFictionFacade facade;
 
+    @InjectMocks
     NonFictionController controller;
 
-//    @Before
-//    public void setUp() throws Exception {
-//        MockitoAnnotations.initMocks(this);
-//        controller = new NonFictionController(nonFictionService);
-//    }
+    MockMvc mockMvc;
 
-    @Test
-    public void getNonFictionBooks() {
+    @Before
+    public void setUp() {
+        MockitoAnnotations.initMocks(this);
+
+        controller = new NonFictionController(facade);
+        mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
     }
 
     @Test
-    public void addNonFiction() {
+    public void getNonNonFictionBooks() throws Exception {
+        mockMvc.perform(get("/nonfiction/list"))
+                .andExpect(status().isOk());
+
+        verify(facade, times(1)).findAll();
     }
 
     @Test
-    public void getNonFiction() {
+    public void addNonNonFiction() {
+    }
+
+    @Test
+    public void getNonFictionById() throws Exception {
+
+        NonFictionDto nonfictionDto = NonFictionTestDataBuilder.buildNonFictionBookDto().build();
+
+        when(facade.findById(anyLong())).thenReturn(nonfictionDto);
+
+        mockMvc.perform(get("/nonfiction/1")).andExpect(status().isOk());
+
+        verify(facade, times(1)).findById(anyLong());
+
     }
 }

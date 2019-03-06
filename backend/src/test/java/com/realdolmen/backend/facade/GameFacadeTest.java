@@ -62,6 +62,6 @@ public class GameFacadeTest {
     @Test
     public void create() {
         gameFacade.create(gameDto);
-        verify(gameService, times(1)).create(any());
+        verify(gameService, times(1)).save(any());
     }
 }

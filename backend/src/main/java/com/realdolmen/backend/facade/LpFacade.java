@@ -32,7 +32,7 @@ public class LpFacade {
 
     public LpDto create(LpDto lpDto) {
         Lp lp = lpMapper.lpDtoToLp(lpDto);
-        Lp savedLp = lpService.create(lp);
+        Lp savedLp = lpService.save(lp);
         return lpMapper.lpToLpDto(savedLp);
     }
 }

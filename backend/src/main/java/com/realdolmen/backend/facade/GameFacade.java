@@ -32,7 +32,7 @@ public class GameFacade {
 
     public GameDto create(GameDto gameDto) {
         Game game = gameMapper.gameDtoToGame(gameDto);
-        Game savedGame = gameService.create(game);
+        Game savedGame = gameService.save(game);
         return gameMapper.gameToGameDto(savedGame);
     }
 }

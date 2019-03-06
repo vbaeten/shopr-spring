@@ -22,11 +22,6 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
-    public Game create(Game game) {
-        return gameRepository.save(game);
-    }
-
-    @Override
     public Game findById(Long id) {
         return gameRepository.findById(id).orElseThrow(NotFoundException::new);
     }

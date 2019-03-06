@@ -63,6 +63,6 @@ public class LpFacadeTest {
     @Test
     public void create() {
         lpFacade.create(lpDto);
-        verify(lpService, times(1)).create(any());
+        verify(lpService, times(1)).save(any());
     }
 }

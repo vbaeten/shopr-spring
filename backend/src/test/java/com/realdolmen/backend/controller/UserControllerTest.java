@@ -86,4 +86,12 @@ public class UserControllerTest {
 
         verify(userFacade, times(1)).delete(any());
     }
+
+    @Test
+    public void findUsers() throws Exception {
+        mockMvc.perform(get("/user/list"))
+                .andExpect(status().isOk());
+
+        verify(userFacade, times(1)).findUsers();
+    }
 }
