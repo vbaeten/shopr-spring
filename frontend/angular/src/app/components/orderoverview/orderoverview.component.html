@@ -5,7 +5,7 @@
   <!--</mat-form-field>-->
   <div id="inner" class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" matSort>
-      <h2 class="ellis">Check out your orders, {{this.currentUser.userName}}!</h2>
+      <h2 class="ellis" *ngIf="currentUser">Check out your orders, {{this.currentUser.userName}}!</h2>
       <!--OrderId Column-->
       <ng-container matColumnDef="orderId">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Order Id</th>

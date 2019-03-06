@@ -32,13 +32,13 @@ public class OrderRestController {
     }
 
     @PutMapping(path = "/ordernow")
-    public void orderNow(@RequestBody @Valid Order order) {
+    public Order orderNow(@RequestBody @Valid Order order) {
         Order orderThis = findCurrentCartByUserId(order.getUser().getUserId());
         orderThis.setOrderStatus(OrderStatus.ORDERED);
-        orderService.save(orderThis);
+        return orderService.save(orderThis);
     }
 
-    @PutMapping(path = "/save")
+    @PostMapping(path = "/save")
     public void saveOrder(@RequestBody @Valid Order order) {
         orderService.save(order);
     }

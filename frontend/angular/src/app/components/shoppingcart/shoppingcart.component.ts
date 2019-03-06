@@ -51,8 +51,7 @@ export class ShoppingcartComponent implements OnInit {
   }
 
   orderThisOrder(order: Order) {
-    this.orderService.orderNow(order).subscribe();
-    this.router.navigate(["/orders/", this.currentUser.userId]);
+    this.orderService.orderNow(order).subscribe(() => this.router.navigate(["/orders/", this.currentUser.userId]));
   }
 
   private fetchOrderlines() {

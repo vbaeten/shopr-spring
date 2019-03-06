@@ -18,6 +18,7 @@ import java.util.Optional;
 import static java.util.Objects.nonNull;
 
 @Service
+@Transactional
 public class OrderServiceImpl implements OrderService {
 
     private final OrderRepository orderRepository;
@@ -44,22 +45,6 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void saveOrderline(Order savedOrder, List<Orderline> persistedOrderlines, Orderline orderline) {
-        if (nonNull(orderline.getOrderlineId())) {
-            Orderline tempOrderline = orderlineRepository.findById(orderline.getOrderlineId())
-                    .orElseThrow(RuntimeException::new);
-            tempOrderline.setQuantity(orderline.getQuantity());
-            tempOrderline.setSubTotal(orderline.getSubTotal());
-            tempOrderline = orderlineRepository.save(tempOrderline);
-            persistedOrderlines.add(tempOrderline);
-        } else {
-            orderline.setOrder(savedOrder);
-            Orderline savedOrderline = orderlineRepository.save(orderline);
-            persistedOrderlines.add(savedOrderline);
-        }
-    }
-
-    @Override
     public List<Order> findAllByUser(User user) {
         return orderRepository.findAllByUser(user);
     }
@@ -74,12 +59,28 @@ public class OrderServiceImpl implements OrderService {
         return orderRepository.save(order);
     }
 
-    @Transactional
     public Order save(Order order) {
+        List<Orderline> originalOrderlines = order.getOrderlineList();
+        order.setOrderlineList(null);
         Order savedOrder = orderRepository.save(order);
         List<Orderline> persistedOrderlines = new ArrayList<>();
-        order.getOrderlineList().forEach(orderline -> saveOrderline(savedOrder, persistedOrderlines, orderline));
+        originalOrderlines.forEach(orderline -> saveOrderline(savedOrder, persistedOrderlines, orderline));
         savedOrder.setOrderlineList(persistedOrderlines);
         return savedOrder;
+    }
+
+    private void saveOrderline(Order savedOrder, List<Orderline> persistedOrderlines, Orderline orderline) {
+        if (nonNull(orderline.getOrderlineId())) {
+            Orderline tempOrderline = orderlineRepository.findById(orderline.getOrderlineId())
+                    .orElseThrow(RuntimeException::new);
+            tempOrderline.setQuantity(orderline.getQuantity());
+            tempOrderline.setSubTotal(orderline.getSubTotal());
+            tempOrderline = orderlineRepository.save(tempOrderline);
+            persistedOrderlines.add(tempOrderline);
+        } else {
+            orderline.setOrder(savedOrder);
+            Orderline savedOrderline = orderlineRepository.save(orderline);
+            persistedOrderlines.add(savedOrderline);
+        }
     }
 }

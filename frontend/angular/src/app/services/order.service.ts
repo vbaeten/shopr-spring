@@ -14,7 +14,7 @@ export class OrderService {
   private orderList: Order[];
 
   saveOrder(order: Order): Observable<Order> {
-    return this.httpClient.put<Order>("/orders/save", order)
+    return this.httpClient.post<Order>("/orders/save", order)
   }
 
   findCurrentCartByUserId(userId: number): Observable<Order> {
