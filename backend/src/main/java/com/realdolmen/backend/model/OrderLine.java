@@ -20,6 +20,12 @@ public class OrderLine implements Serializable
     @Transient
     private int articleid;
 
+    @Transient
+    private String type;
+
+    @Transient
+    private String title;
+
     @OneToOne
     private OrderFromShop orderFromShop;
 

@@ -28,6 +28,9 @@ public class OrderFromShop implements Serializable
     @Enumerated(EnumType.STRING)
     private OrderStateEnum orderState;
 
+    @Transient
+    private Boolean paymentState;
+
 
 
 
