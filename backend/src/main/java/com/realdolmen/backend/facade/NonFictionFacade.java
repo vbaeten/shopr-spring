@@ -32,7 +32,7 @@ public class NonFictionFacade {
 
     public NonFictionDto create(NonFictionDto nonFictionDto) {
         NonFiction nonFiction = nonFictionMapper.nonFictionDtoToFiction(nonFictionDto);
-        NonFiction savedNonFiction = nonFictionService.create(nonFiction);
+        NonFiction savedNonFiction = nonFictionService.save(nonFiction);
         return nonFictionMapper.nonFictionToNonFictionDto(savedNonFiction);
     }
 }

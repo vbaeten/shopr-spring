@@ -63,6 +63,6 @@ public class FictionFacadeTest {
     @Test
     public void create() {
         fictionFacade.create(fictionDto);
-        verify(fictionService, times(1)).create(any());
+        verify(fictionService, times(1)).save(any());
     }
 }

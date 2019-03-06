@@ -21,10 +21,6 @@ public class FictionServiceImpl implements FictionService {
         return fictionBookRepository.save(entity);
     }
 
-    @Override
-    public Fiction create(Fiction fiction) {
-        return fictionBookRepository.save(fiction);
-    }
 
     @Override
     public Fiction findById(Long id) {

@@ -10,9 +10,6 @@ public interface OrderLineService extends CrudService<OrderLine, Long> {
     @Override
     <S extends OrderLine> S save(S entity);
 
-    @Override
-    OrderLine findById(Long aLong);
-
     List<OrderLine> findByUser(User user);
 
     List<OrderLine> findByUserId(Long id);

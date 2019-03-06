@@ -62,6 +62,6 @@ public class NonFictionFacadeTest {
     @Test
     public void create() {
         nonFictionFacade.create(nonFictionDto);
-        verify(nonFictionService, times(1)).create(any());
+        verify(nonFictionService, times(1)).save(any());
     }
 }

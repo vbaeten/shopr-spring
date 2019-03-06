@@ -22,11 +22,6 @@ public class NonFictionServiceImpl implements NonFictionService {
     }
 
     @Override
-    public NonFiction create(NonFiction nonFiction) {
-        return nonFictionBookRepository.save(nonFiction);
-    }
-
-    @Override
     public NonFiction findById(Long id) {
         return nonFictionBookRepository.findById(id).orElseThrow(NotFoundException::new);
     }

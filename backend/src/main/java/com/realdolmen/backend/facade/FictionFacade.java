@@ -32,7 +32,7 @@ public class FictionFacade {
 
     public FictionDto create(FictionDto fictionDto) {
         Fiction fiction = fictionMapper.fictionDtoToFiction(fictionDto);
-        Fiction savedFiction = fictionService.create(fiction);
+        Fiction savedFiction = fictionService.save(fiction);
         return fictionMapper.fictionToFictionDto(savedFiction);
     }
 }
