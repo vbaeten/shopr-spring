@@ -2,12 +2,10 @@ package com.realdolmen.backend.service;
 
 import com.realdolmen.backend.domain.Article;
 import com.realdolmen.backend.repository.ArticleRepository;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import static org.junit.Assert.assertNull;
@@ -20,10 +18,7 @@ public class ArticleServiceImplTest {
     @InjectMocks
     private ArticleServiceImpl articleServiceImpl;
 
-    @Before
-    public void setUp() {
-        MockitoAnnotations.initMocks(this);
-    }
+    private Article article;
 
     @Test
     public void save() {

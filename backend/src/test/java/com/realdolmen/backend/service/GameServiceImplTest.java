@@ -1,5 +1,7 @@
 package com.realdolmen.backend.service;
 
+import com.realdolmen.backend.data.GameTestDataBuilder;
+import com.realdolmen.backend.domain.Game;
 import com.realdolmen.backend.repository.GameRepository;
 import org.junit.Before;
 import org.junit.Test;
@@ -7,29 +9,66 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
+
 public class GameServiceImplTest {
 
     @Mock
-    GameRepository gameRepository;
+    private GameRepository gameRepository;
     @InjectMocks
-    GameServiceImpl gameService;
+    private GameServiceImpl fictionService;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         MockitoAnnotations.initMocks(this);
-
-        gameService = new GameServiceImpl(gameRepository);
     }
 
     @Test
     public void save() {
+        Game expectedGame = GameTestDataBuilder.buildGameZelda().build();
+
+        when(gameRepository.save(any())).thenReturn(expectedGame);
+
+        Game savedGame = this.gameRepository.save(expectedGame);
+
+        verify(gameRepository, times(1)).save(expectedGame);
+        assertEquals(expectedGame, savedGame);
     }
 
     @Test
     public void findById() {
+        Game expectedGame = GameTestDataBuilder.buildGameZelda().build();
+        when(gameRepository.findById(1L)).thenReturn(java.util.Optional.ofNullable(expectedGame));
+        Game foundGame = this.fictionService.findById(1L);
+
+        verify(gameRepository, times(1)).findById(1L);
+        assertEquals(expectedGame.getPrice(), foundGame.getPrice(), 0.01);
     }
 
     @Test
-    public void findAll() {
+    public void findAll() throws Exception {
+        List<Game> expectedGames = new ArrayList<>();
+        Game fiction1 = GameTestDataBuilder.buildGameZelda().build();
+        expectedGames.add(fiction1);
+
+        when(gameRepository.findAll()).thenReturn(expectedGames);
+
+        List<Game> actualGames = fictionService.findAll();
+
+        verify(gameRepository, times(1)).findAll();
+        assertEquals(expectedGames.size(), actualGames.size());
+    }
+
+    @Test
+    public void delete() {
+        Game fiction = GameTestDataBuilder.buildGameZelda().build();
+        fictionService.delete(fiction);
+
+        verify(gameRepository, times(1)).delete(fiction);
     }
 }
