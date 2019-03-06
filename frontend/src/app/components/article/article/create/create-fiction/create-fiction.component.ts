@@ -64,6 +64,40 @@ export class CreateFictionComponent implements OnInit {
     }
   };
 
+  validation_messages = {
+    'title': [
+      {type: 'required', message: 'Title is required'},
+      {type: 'maxlength', message: 'Title cannot be more than 100 characters long'},
+    ],
+    'price': [
+      {type: 'required', message: 'Price is required'},
+      {type: 'max', message: 'Price cannot be more than $9999.99'},
+    ],
+    'supplierId': [
+      {type: 'required', message: 'Supplier id is required'},
+      {type: 'maxlength', message: 'Supplier id cannot be more than 100 characters long'},
+    ],
+    'author': [
+      {type: 'required', message: 'Author is required'},
+      {type: 'maxlength', message: 'Author cannot be more than 100 characters long'},
+    ],
+    'isbn': [
+      {type: 'required', message: 'Isbn is required'},
+      {type: 'maxlength', message: 'Isbn cannot be more than 13 characters long'},
+    ],
+    'nrOfPages': [
+      {type: 'required', message: 'Nr. of pages is required'},
+      {type: 'max', message: 'Nr. of pages cannot be more than 9999'},
+    ],
+    'shortSummary': [
+      {type: 'required', message: 'Short summary is required'},
+      {type: 'maxlength', message: 'Short summary cannot be more than 255 characters long'},
+    ],
+    'fictionGenre': [
+      {type: 'required', message: 'Fiction genre is required'}
+    ]
+  };
+
   private fillInForm() {
     this.createFictionForm = this.formBuilder.group(
       {
@@ -72,13 +106,26 @@ export class CreateFictionComponent implements OnInit {
         title: [this.selectedArticle.title, Validators.compose([
           Validators.required, Validators.maxLength(100)
         ])],
-        price: [this.selectedArticle.price, Validators.required],
-        supplierId: [this.selectedArticle.supplierId, Validators.required],
-        author: [this.selectedArticle.author, Validators.required],
-        isbn: [this.selectedArticle.isbn, Validators.required],
-        nrOfPages: [this.selectedArticle.nrOfPages, Validators.required],
-        shortSummary: [this.selectedArticle.shortSummary, Validators.required],
+        price: [this.selectedArticle.price, Validators.compose([
+          Validators.required, Validators.max(9999.99)
+        ])],
+        supplierId: [this.selectedArticle.supplierId, Validators.compose([
+          Validators.required, Validators.maxLength(100)
+        ])],
+        author: [this.selectedArticle.author, Validators.compose([
+          Validators.required, Validators.maxLength(100)
+        ])],
+        isbn: [this.selectedArticle.isbn, Validators.compose([
+          Validators.required, Validators.maxLength(17)
+        ])],
+        nrOfPages: [this.selectedArticle.nrOfPages, Validators.compose([
+          Validators.required, Validators.max(9999)
+        ])],
+        shortSummary: [this.selectedArticle.shortSummary, Validators.compose([
+          Validators.required, Validators.maxLength(255)
+        ])],
         fictionGenre: [this.selectedArticle.fictionGenre, Validators.required],
       });
   }
+
 }

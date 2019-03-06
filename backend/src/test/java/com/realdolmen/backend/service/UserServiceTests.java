@@ -2,7 +2,6 @@ package com.realdolmen.backend.service;
 
 import com.realdolmen.backend.domain.User;
 import com.realdolmen.backend.repository.UserRepository;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -54,27 +53,27 @@ public class UserServiceTests {
         ));
     }
 
-    @Test
-    public void testSaveCustomArgsUser() {
-        //Create test data
-        User expectedUser = new User(100L,"no", "id", "expectedUser",false,true);
-
-        //Mocking of Repository
-        when(userRepository.save(any())).thenReturn(expectedUser);
-
-        //Execute method to be tested
-        User savedUser = this.userService.save(expectedUser);
-
-        //Verifications & Assertions
-        verify(userRepository, times(1)).save(expectedUser);
-
-        assertEquals(expectedUser.getId(), savedUser.getId());
-        System.out.println(expectedUser.getId());
-        assertEquals(expectedUser.getFirstName(), savedUser.getFirstName());
-        System.out.println(expectedUser.getFirstName());
-        assertEquals(expectedUser.getName(), savedUser.getName());
-        System.out.println(expectedUser.getName());
-    }
+//    @Test
+//    public void testSaveCustomArgsUser() {
+//        //Create test data
+//        User expectedUser = new User(100L,"no", "id", "expectedUser",false,true);
+//
+//        //Mocking of Repository
+//        when(userRepository.save(any())).thenReturn(expectedUser);
+//
+//        //Execute method to be tested
+//        User savedUser = this.userService.save(expectedUser);
+//
+//        //Verifications & Assertions
+//        verify(userRepository, times(1)).save(expectedUser);
+//
+//        assertEquals(expectedUser.getId(), savedUser.getId());
+//        System.out.println(expectedUser.getId());
+//        assertEquals(expectedUser.getFirstName(), savedUser.getFirstName());
+//        System.out.println(expectedUser.getFirstName());
+//        assertEquals(expectedUser.getName(), savedUser.getName());
+//        System.out.println(expectedUser.getName());
+//    }
 
     @Test
     public void testSettersUser() {

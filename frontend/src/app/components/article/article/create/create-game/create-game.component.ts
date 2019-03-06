@@ -63,16 +63,52 @@ export class CreateGameComponent implements OnInit {
   };
 
 
+  validation_messages = {
+    'title': [
+      {type: 'required', message: 'Title is required'},
+      {type: 'maxlength', message: 'Title cannot be more than 100 characters long'},
+    ],
+    'price': [
+      {type: 'required', message: 'Price is required'},
+      {type: 'max', message: 'Price cannot be more than $9999.99'},
+    ],
+    'supplierId': [
+      {type: 'required', message: 'Supplier id is required'},
+      {type: 'maxlength', message: 'Supplier id cannot be more than 100 characters long'},
+    ],
+    'publisher': [
+      {type: 'required', message: 'Publisher is required'},
+      {type: 'maxlength', message: 'Publisher cannot be more than 100 characters long'},
+    ],
+    'minimumAge': [
+      {type: 'required', message: 'Minimum age is required'}
+    ],
+    'gameGenre': [
+      {type: 'required', message: 'Fiction genre is required'}
+    ]
+  };
+
   private fillInForm() {
     this.createGameForm = this.formBuilder.group({
       id: [this.selectedArticle.articleId],
       type: [this.type, Validators.required],
-      title: [this.selectedArticle.title, Validators.required],
-      price: [this.selectedArticle.price, Validators.required],
-      supplierId: [this.selectedArticle.supplierId, Validators.required],
-      publisher: [this.selectedArticle.publisher, Validators.required],
-      minimumAge: [this.selectedArticle.minimumAge, Validators.required],
+      title: [this.selectedArticle.title, Validators.compose([
+        Validators.required, Validators.maxLength(100)
+      ])],
+      price: [this.selectedArticle.price, Validators.compose([
+        Validators.required, Validators.max(9999.99)
+      ])],
+      supplierId: [this.selectedArticle.supplierId, Validators.compose([
+        Validators.required, Validators.maxLength(100)
+      ])],
+      publisher: [this.selectedArticle.publisher, Validators.compose([
+        Validators.required, Validators.maxLength(100)
+      ])],
+      minimumAge: [this.selectedArticle.minimumAge, Validators.compose([
+        Validators.required, Validators.max(21)
+      ])],
       gameGenre: [this.selectedArticle.gameGenre, Validators.required],
     });
   }
+
 }

@@ -62,17 +62,59 @@ export class CreateNonFictionComponent implements OnInit {
     }
   };
 
+  validation_messages = {
+    'title': [
+      {type: 'required', message: 'Title is required'},
+      {type: 'maxlength', message: 'Title cannot be more than 100 characters long'},
+    ],
+    'price': [
+      {type: 'required', message: 'Price is required'},
+      {type: 'max', message: 'Price cannot be more than $9999.99'},
+    ],
+    'supplierId': [
+      {type: 'required', message: 'Supplier id is required'},
+      {type: 'maxlength', message: 'Supplier id cannot be more than 100 characters long'},
+    ],
+    'author': [
+      {type: 'required', message: 'Author is required'},
+      {type: 'maxlength', message: 'Author cannot be more than 100 characters long'},
+    ],
+    'isbn': [
+      {type: 'required', message: 'Isbn is required'},
+      {type: 'maxlength', message: 'Isbn cannot be more than 13 characters long'},
+    ],
+    'nrOfPages': [
+      {type: 'required', message: 'Nr. of pages is required'},
+      {type: 'max', message: 'Nr. of pages cannot be more than 9999'},
+    ],
+    'nonFictionSubject': [
+      {type: 'required', message: 'Non fiction subject is required'}
+    ]
+  };
+
   private fillInForm() {
     this.createNonFictionForm = this.formBuilder.group(
       {
         id: [this.selectedArticle.articleId],
         type: [this.type, Validators.required],
-        title: [this.selectedArticle.title, Validators.required],
-        price: [this.selectedArticle.price, Validators.required],
-        supplierId: [this.selectedArticle.supplierId, Validators.required],
-        author: [this.selectedArticle.author, Validators.required],
-        isbn: [this.selectedArticle.isbn, Validators.required],
-        nrOfPages: [this.selectedArticle.nrOfPages, Validators.required],
+        title: [this.selectedArticle.title, Validators.compose([
+          Validators.required, Validators.maxLength(100)
+        ])],
+        price: [this.selectedArticle.price, Validators.compose([
+          Validators.required, Validators.max(9999.99)
+        ])],
+        supplierId: [this.selectedArticle.supplierId, Validators.compose([
+          Validators.required, Validators.maxLength(100)
+        ])],
+        author: [this.selectedArticle.author, Validators.compose([
+          Validators.required, Validators.maxLength(100)
+        ])],
+        isbn: [this.selectedArticle.isbn, Validators.compose([
+          Validators.required, Validators.maxLength(17)
+        ])],
+        nrOfPages: [this.selectedArticle.nrOfPages, Validators.compose([
+          Validators.required, Validators.max(9999)
+        ])],
         nonFictionSubject: [this.selectedArticle.nonFictionSubject, Validators.required],
       });
   }

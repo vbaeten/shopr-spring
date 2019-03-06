@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 
 @Setter
@@ -21,15 +22,17 @@ public class User {
     private Long id;
     @NotNull
     @Column
+    @Size(max = 100)
     private String name;
     @NotNull
     @Column(name = "first_name")
+    @Size(max = 100)
     private String firstName;
     @NotNull
-    @Column(name = "user_name", unique = true, length = 100)
+    @Column(name = "user_name", unique = true, length = 30)
+    @Size(min = 3, max = 30)
     private String userName;
 
     private boolean admin;
-    private boolean loggedIn;
 
 }

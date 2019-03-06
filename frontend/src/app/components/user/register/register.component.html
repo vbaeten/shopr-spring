@@ -5,27 +5,37 @@
 
       <table cellspacing="0" class="register-user">
         <tr>
-          <td>
             <mat-form-field class="register-user">
               <input formControlName="userName" matInput placeholder="userName">
+              <mat-error *ngFor="let validation of validation_messages.userName">
+                <mat-error *ngIf="registerUserForm.get('userName').hasError(validation.type) && (registerUserForm.get('userName').dirty
+                 || registerUserForm.get('userName').touched || registerUserForm.get('userName').pending)" class="error-message">{{validation.message}}</mat-error>
+              </mat-error>
             </mat-form-field>
-          </td>
-          <td>
+          </tr>
+          <tr>
             <mat-form-field class="register-user">
               <input formControlName="firstName" matInput placeholder="First name">
+              <mat-error *ngFor="let validation of validation_messages.firstName">
+                <mat-error *ngIf="registerUserForm.get('firstName').hasError(validation.type) && (registerUserForm.get('firstName').dirty
+                 || registerUserForm.get('firstName').touched)" class="error-message">{{validation.message}}</mat-error>
+              </mat-error>
             </mat-form-field>
-          </td>
-          <td>
+          </tr>
+          <tr>
             <mat-form-field class="register-user">
               <input formControlName="name" matInput placeholder="Name">
+              <mat-error *ngFor="let validation of validation_messages.name">
+                <mat-error *ngIf="registerUserForm.get('name').hasError(validation.type) && (registerUserForm.get('name').dirty
+                 || registerUserForm.get('name').touched)" class="error-message">{{validation.message}}</mat-error>
+              </mat-error>
             </mat-form-field>
-          </td>
-          <td>
+          </tr>
+          <tr>
             <mat-checkbox formControlName="admin">
               Admin
             </mat-checkbox>
-          </td>
-        </tr>
+          </tr>
         <tr>
           <button class="green-button" mat-raised-button type=submit>
             Register

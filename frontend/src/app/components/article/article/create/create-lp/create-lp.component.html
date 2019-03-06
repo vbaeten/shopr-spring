@@ -13,6 +13,10 @@
           <td>
             <mat-form-field class="create-lp">
               <input formControlName="publisher" matInput placeholder="Publisher">
+              <mat-error *ngFor="let validation of validation_messages.publisher">
+                <mat-error *ngIf="createLpForm.get('publisher').hasError(validation.type) && (createLpForm.get('publisher').dirty
+                 || createLpForm.get('publisher').touched || createLpForm.get('publisher').pending)" class="error-message">{{validation.message}}</mat-error>
+              </mat-error>
             </mat-form-field>
           </td>
         </tr>
@@ -20,11 +24,19 @@
           <td>
             <mat-form-field class="create-lp">
               <input formControlName="title" matInput placeholder="Title">
+              <mat-error *ngFor="let validation of validation_messages.title">
+                <mat-error *ngIf="createLpForm.get('title').hasError(validation.type) && (createLpForm.get('title').dirty
+                 || createLpForm.get('title').touched || createLpForm.get('title').pending)" class="error-message">{{validation.message}}</mat-error>
+              </mat-error>
             </mat-form-field>
           </td>
           <td>
             <mat-form-field class="create-lp">
               <input formControlName="price" matInput placeholder="Price">
+              <mat-error *ngFor="let validation of validation_messages.price">
+                <mat-error *ngIf="createLpForm.get('price').hasError(validation.type) && (createLpForm.get('price').dirty
+                 || createLpForm.get('price').touched || createLpForm.get('price').pending)" class="error-message">{{validation.message}}</mat-error>
+              </mat-error>
             </mat-form-field>
           </td>
         </tr>
@@ -32,6 +44,10 @@
           <td>
             <mat-form-field class="create-lp">
               <input formControlName="supplierId" matInput placeholder="Supplier ID">
+              <mat-error *ngFor="let validation of validation_messages.supplierId">
+                <mat-error *ngIf="createLpForm.get('supplierId').hasError(validation.type) && (createLpForm.get('supplierId').dirty
+                 || createLpForm.get('supplierId').touched || createLpForm.get('supplierId').pending)" class="error-message">{{validation.message}}</mat-error>
+              </mat-error>
             </mat-form-field>
           </td>
           <td>
@@ -41,6 +57,10 @@
                   {{genre}}
                 </mat-option>
               </mat-select>
+              <mat-error *ngFor="let validation of validation_messages.lpGenre">
+                <mat-error *ngIf="createLpForm.get('lpGenre').hasError(validation.type) && (createLpForm.get('lpGenre').dirty
+                 || createLpForm.get('lpGenre').touched || createLpForm.get('lpGenre').pending)" class="error-message">{{validation.message}}</mat-error>
+              </mat-error>
             </mat-form-field>
           </td>
         </tr>

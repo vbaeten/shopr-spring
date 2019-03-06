@@ -15,11 +15,19 @@
           <td>
             <mat-form-field>
               <input formControlName="title" matInput placeholder="Title">
+              <mat-error *ngFor="let validation of validation_messages.title">
+                <mat-error *ngIf="createFictionForm.get('title').hasError(validation.type) && (createFictionForm.get('title').dirty
+                 || createFictionForm.get('title').touched || createFictionForm.get('title').pending)" class="error-message">{{validation.message}}</mat-error>
+              </mat-error>
             </mat-form-field>
           </td>
           <td>
             <mat-form-field>
               <input formControlName="author" matInput placeholder="Author">
+              <mat-error *ngFor="let validation of validation_messages.author">
+                <mat-error *ngIf="createFictionForm.get('author').hasError(validation.type) && (createFictionForm.get('author').dirty
+                 || createFictionForm.get('author').touched || createFictionForm.get('author').pending)" class="error-message">{{validation.message}}</mat-error>
+              </mat-error>
             </mat-form-field>
           </td>
         </tr>
@@ -28,6 +36,10 @@
             <mat-form-field>
               <input [dropSpecialCharacters]="false" [formControl]="createFictionForm.controls['price']" mask="999999.00"
                      matInput placeholder="Price">
+              <mat-error *ngFor="let validation of validation_messages.price">
+                <mat-error *ngIf="createFictionForm.get('price').hasError(validation.type) && (createFictionForm.get('price').dirty
+                 || createFictionForm.get('price').touched || createFictionForm.get('price').pending)" class="error-message">{{validation.message}}</mat-error>
+              </mat-error>
             </mat-form-field>
           </td>
           <td>
@@ -37,6 +49,10 @@
                   {{genre}}
                 </mat-option>
               </mat-select>
+              <mat-error *ngFor="let validation of validation_messages.fictionGenre">
+                <mat-error *ngIf="createFictionForm.get('fictionGenre').hasError(validation.type) && (createFictionForm.get('fictionGenre').dirty
+                 || createFictionForm.get('fictionGenre').touched || createFictionForm.get('fictionGenre').pending)" class="error-message">{{validation.message}}</mat-error>
+              </mat-error>
             </mat-form-field>
           </td>
         </tr>
@@ -45,12 +61,20 @@
             <mat-form-field>
               <input [dropSpecialCharacters]="false" [formControl]="createFictionForm.controls['isbn']" mask="000-00-0000-000-0" matInput
                      placeholder="Isbn" type="text">
+              <mat-error *ngFor="let validation of validation_messages.isbn">
+                <mat-error *ngIf="createFictionForm.get('isbn').hasError(validation.type) && (createFictionForm.get('isbn').dirty
+                 || createFictionForm.get('isbn').touched || createFictionForm.get('isbn').pending)" class="error-message">{{validation.message}}</mat-error>
+              </mat-error>
             </mat-form-field>
           </td>
           <td>
             <mat-form-field>
               <input [formControl]="createFictionForm.controls['nrOfPages']" mask="9999" matInput
                      placeholder="nr of pages">
+              <mat-error *ngFor="let validation of validation_messages.nrOfPages">
+                <mat-error *ngIf="createFictionForm.get('nrOfPages').hasError(validation.type) && (createFictionForm.get('nrOfPages').dirty
+                 || createFictionForm.get('nrOfPages').touched || createFictionForm.get('nrOfPages').pending)" class="error-message">{{validation.message}}</mat-error>
+              </mat-error>
             </mat-form-field>
           </td>
         </tr>
@@ -58,11 +82,19 @@
           <td>
             <mat-form-field>
               <input formControlName="shortSummary" matInput placeholder="Short summary">
+              <mat-error *ngFor="let validation of validation_messages.shortSummary">
+                <mat-error *ngIf="createFictionForm.get('shortSummary').hasError(validation.type) && (createFictionForm.get('shortSummary').dirty
+                 || createFictionForm.get('shortSummary').touched || createFictionForm.get('shortSummary').pending)" class="error-message">{{validation.message}}</mat-error>
+              </mat-error>
             </mat-form-field>
           </td>
           <td>
             <mat-form-field>
               <input formControlName="supplierId" matInput placeholder="Supplier ID">
+              <mat-error *ngFor="let validation of validation_messages.supplierId">
+                <mat-error *ngIf="createFictionForm.get('supplierId').hasError(validation.type) && (createFictionForm.get('supplierId').dirty
+                 || createFictionForm.get('supplierId').touched || createFictionForm.get('supplierId').pending)" class="error-message">{{validation.message}}</mat-error>
+              </mat-error>
             </mat-form-field>
           </td>
         </tr>

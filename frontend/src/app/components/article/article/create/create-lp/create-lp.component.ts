@@ -62,16 +62,50 @@ export class CreateLpComponent implements OnInit {
 
   };
 
+  validation_messages = {
+    'title': [
+      {type: 'required', message: 'Title is required'},
+      {type: 'maxlength', message: 'Title cannot be more than 100 characters long'},
+    ],
+    'price': [
+      {type: 'required', message: 'Price is required'},
+      {type: 'max', message: 'Price cannot be more than $9999.99'},
+    ],
+    'supplierId': [
+      {type: 'required', message: 'Supplier id is required'},
+      {type: 'maxlength', message: 'Supplier id cannot be more than 100 characters long'},
+    ],
+    'publisher': [
+      {type: 'required', message: 'Publisher is required'},
+      {type: 'maxlength', message: 'Publisher cannot be more than 100 characters long'},
+    ],
+    'minimumAge': [
+      {type: 'required', message: 'Minimum age is required'}
+    ],
+    'lpGenre': [
+      {type: 'required', message: 'Lp genre is required'}
+    ]
+  };
+
   private fillInForm() {
     this.createLpForm = this.formBuilder.group(
       {
         id: [this.selectedArticle.articleId],
         type: [this.type, Validators.required],
-        title: [this.selectedArticle.title, Validators.required],
-        price: [this.selectedArticle.price, Validators.required],
-        supplierId: [this.selectedArticle.supplierId, Validators.required],
-        publisher: [this.selectedArticle.publisher, Validators.required],
+        title: [this.selectedArticle.title, Validators.compose([
+          Validators.required, Validators.maxLength(100)
+        ])],
+        price: [this.selectedArticle.price, Validators.compose([
+          Validators.required, Validators.max(9999.99)
+        ])],
+        supplierId: [this.selectedArticle.supplierId, Validators.compose([
+          Validators.required, Validators.maxLength(100)
+        ])],
+        publisher: [this.selectedArticle.publisher, Validators.compose([
+          Validators.required, Validators.maxLength(100)
+        ])],
         lpGenre: [this.selectedArticle.lpGenre, Validators.required],
       });
   }
+
 }

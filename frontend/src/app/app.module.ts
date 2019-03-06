@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {Injector, NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {UserModule} from "./components/user/user.module";
@@ -10,6 +10,8 @@ import {OverviewModule} from "./components/article/article/overview/overview.mod
 import {CreateArticleModule} from "./components/article/article/create/create-article.module";
 import {PageNotFoundModule} from "./components/page-not-found/page-not-found.module";
 import {ShoppingCartModule} from "./components/shopping-cart/shopping-cart.module";
+import {AppInjector} from "./services/app-injector.service";
+import {UserService} from "./services/user.service";
 
 @NgModule({
   declarations: [
@@ -29,8 +31,12 @@ import {ShoppingCartModule} from "./components/shopping-cart/shopping-cart.modul
 
 
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
+
+  constructor(inject: Injector) {
+    AppInjector.setInjector(inject);
+  }
 }

@@ -13,6 +13,10 @@
           <td>
             <mat-form-field>
               <input formControlName="publisher" matInput placeholder="Publisher">
+              <mat-error *ngFor="let validation of validation_messages.publisher">
+                <mat-error *ngIf="createGameForm.get('publisher').hasError(validation.type) && (createGameForm.get('publisher').dirty
+                 || createGameForm.get('publisher').touched || createGameForm.get('publisher').pending)" class="error-message">{{validation.message}}</mat-error>
+              </mat-error>
             </mat-form-field>
           </td>
         </tr>
@@ -20,11 +24,19 @@
           <td>
             <mat-form-field>
               <input formControlName="title" matInput placeholder="Title">
+              <mat-error *ngFor="let validation of validation_messages.title">
+                <mat-error *ngIf="createGameForm.get('title').hasError(validation.type) && (createGameForm.get('title').dirty
+                 || createGameForm.get('title').touched || createGameForm.get('title').pending)" class="error-message">{{validation.message}}</mat-error>
+              </mat-error>
             </mat-form-field>
           </td>
           <td>
             <mat-form-field>
               <input formControlName="minimumAge" matInput placeholder="Minimum age">
+              <mat-error *ngFor="let validation of validation_messages.minimumAge">
+                <mat-error *ngIf="createGameForm.get('minimumAge').hasError(validation.type) && (createGameForm.get('minimumAge').dirty
+                 || createGameForm.get('minimumAge').touched || createGameForm.get('minimumAge').pending)" class="error-message">{{validation.message}}</mat-error>
+              </mat-error>
             </mat-form-field>
           </td>
         </tr>
@@ -32,6 +44,10 @@
           <td>
             <mat-form-field>
               <input formControlName="price" matInput placeholder="Price">
+              <mat-error *ngFor="let validation of validation_messages.price">
+                <mat-error *ngIf="createGameForm.get('price').hasError(validation.type) && (createGameForm.get('price').dirty
+                 || createGameForm.get('price').touched || createGameForm.get('price').pending)" class="error-message">{{validation.message}}</mat-error>
+              </mat-error>
             </mat-form-field>
           </td>
           <td>
@@ -41,6 +57,10 @@
                   {{genre}}
                 </mat-option>
               </mat-select>
+              <mat-error *ngFor="let validation of validation_messages.gameGenre">
+                <mat-error *ngIf="createGameForm.get('gameGenre').hasError(validation.type) && (createGameForm.get('gameGenre').dirty
+                 || createGameForm.get('gameGenre').touched || createGameForm.get('gameGenre').pending)" class="error-message">{{validation.message}}</mat-error>
+              </mat-error>
             </mat-form-field>
           </td>
         </tr>
@@ -48,6 +68,10 @@
           <td>
             <mat-form-field class="create-game">
               <input formControlName="supplierId" matInput placeholder="Supplier ID">
+              <mat-error *ngFor="let validation of validation_messages.supplierId">
+                <mat-error *ngIf="createGameForm.get('supplierId').hasError(validation.type) && (createGameForm.get('supplierId').dirty
+                 || createGameForm.get('supplierId').touched || createGameForm.get('supplierId').pending)" class="error-message">{{validation.message}}</mat-error>
+              </mat-error>
             </mat-form-field>
           </td>
         </tr>

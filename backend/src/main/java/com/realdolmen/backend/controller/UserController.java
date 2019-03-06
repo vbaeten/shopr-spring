@@ -3,6 +3,8 @@ package com.realdolmen.backend.controller;
 import com.realdolmen.backend.domain.User;
 import com.realdolmen.backend.service.UserService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,8 +27,13 @@ public class UserController {
 //    }
 
     @GetMapping("/{userName}")
-    public User findByUserName(@PathVariable("userName") String userName) {
-        return userService.findByUserName(userName);
+    public ResponseEntity<User> checkIfUserAlreadyExist(@PathVariable("userName") String userName) {
+        try {
+            User user = userService.findByUserName(userName);
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(user);
+        } catch (Exception e) {
+            return ResponseEntity.ok().build();
+        }
     }
 
     @GetMapping

@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
@@ -24,6 +25,7 @@ public class Game extends Article {
     @Size(max = 100)
     @Column
     private String publisher;
+    @Max(21)
     @Column(name = "minimum_age")
     private int minimumAge;
 
