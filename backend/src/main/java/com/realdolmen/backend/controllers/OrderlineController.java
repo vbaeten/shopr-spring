@@ -12,19 +12,20 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/orderline")
+@RequestMapping("/order")
 public class OrderlineController
 {
 
     private OrderlineServiceImpl orderlineService;
     private ArticleServiceImpl articleService;
+    private OrderFromShopSer orderFromShop;
     Article article = new Article();
-    OrderFromShop currentOrder;
 
-    public OrderlineController(OrderlineServiceImpl orderlineService, ArticleServiceImpl articleService)
+    public OrderlineController(OrderlineServiceImpl orderlineService, ArticleServiceImpl articleService, OrderFromShop orderFromShop)
     {
         this.orderlineService = orderlineService;
         this.articleService = articleService;
+        this.orderFromShop = orderFromShop;
     }
 
     @PostMapping(path = "/save", consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -38,6 +39,13 @@ public class OrderlineController
 
         return orderlineService.save(orderLine);
 
+    }
+
+    @PostMapping(path = "/saveorder", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.CREATED)
+    public OrderFromShop save(@RequestBody @Valid OrderFromShop order)
+    {
+        return
     }
 
 }
