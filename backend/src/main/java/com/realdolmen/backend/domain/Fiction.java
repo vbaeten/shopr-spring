@@ -1,6 +1,5 @@
 package com.realdolmen.backend.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,7 +17,6 @@ import java.util.Objects;
 @Table(name = "fiction")
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 public class Fiction extends Book implements Serializable {
 
