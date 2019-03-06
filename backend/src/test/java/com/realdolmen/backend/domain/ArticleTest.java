@@ -3,7 +3,7 @@ package com.realdolmen.backend.domain;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class ArticleTest {
 
@@ -44,4 +44,21 @@ public class ArticleTest {
         article.setType("FICTION");
         assertEquals("FICTION", article.getType());
     }
+
+    @Test
+    public void testEqualsAndHashCode() {
+        Article article1 = new Article();
+        Article article2 = article1;
+        assertEquals(article1, article2);
+        assertTrue(article1.hashCode()==article2.hashCode());
+    }
+
+    @Test
+    public void doesntEquals() throws Exception {
+        Article article1 = new Article();
+        Article article2 = new Article();
+        article1.setId(5L);
+        assertNotEquals(article1, article2);
+    }
+
 }
