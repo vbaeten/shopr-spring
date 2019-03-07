@@ -22,8 +22,7 @@ public class OrderRestController {
 
     @GetMapping("/findCurrentCartByUserId/{userId}")
     public Order findCurrentCartByUserId(@PathVariable Long userId) {
-        return orderService.findByUserAndOrderStatus(userService.findById(userId), OrderStatus.IN_CART)
-                .orElse(null);
+        return orderService.findByUserAndOrderStatus(userService.findById(userId), OrderStatus.IN_CART);
     }
 
     @GetMapping("/all/{userId}")
@@ -33,9 +32,7 @@ public class OrderRestController {
 
     @PutMapping(path = "/ordernow")
     public Order orderNow(@RequestBody @Valid Order order) {
-        Order orderThis = findCurrentCartByUserId(order.getUser().getUserId());
-        orderThis.setOrderStatus(OrderStatus.ORDERED);
-        return orderService.save(orderThis);
+        return orderService.orderNow(order);
     }
 
     @PostMapping(path = "/save")

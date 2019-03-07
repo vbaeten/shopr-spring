@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import static java.util.Objects.nonNull;
 
@@ -50,8 +49,9 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Optional<Order> findByUserAndOrderStatus(User user, OrderStatus orderStatus) {
-        return orderRepository.findByUserAndOrderStatus(user, OrderStatus.IN_CART);
+    public Order findByUserAndOrderStatus(User user, OrderStatus orderStatus) {
+        return orderRepository.findByUserAndOrderStatus(user, OrderStatus.IN_CART)
+                .orElse(null);
     }
 
     @Override
@@ -60,11 +60,11 @@ public class OrderServiceImpl implements OrderService {
     }
 
     public Order save(Order order) {
-        List<Orderline> originalOrderlines = order.getOrderlineList();
-        order.setOrderlineList(null);
+//        List<Orderline> originalOrderlines = order.getOrderlineList();
+//        order.setOrderlineList(null);
         Order savedOrder = orderRepository.save(order);
         List<Orderline> persistedOrderlines = new ArrayList<>();
-        originalOrderlines.forEach(orderline -> saveOrderline(savedOrder, persistedOrderlines, orderline));
+        order.getOrderlineList().forEach(orderline -> saveOrderline(savedOrder, persistedOrderlines, orderline));
         savedOrder.setOrderlineList(persistedOrderlines);
         return savedOrder;
     }
@@ -82,5 +82,12 @@ public class OrderServiceImpl implements OrderService {
             Orderline savedOrderline = orderlineRepository.save(orderline);
             persistedOrderlines.add(savedOrderline);
         }
+    }
+
+    @Override
+    public Order orderNow(Order order) {
+        Order orderThis = findByUserAndOrderStatus(order.getUser(), OrderStatus.IN_CART);
+        orderThis.setOrderStatus(OrderStatus.ORDERED);
+        return orderRepository.save(orderThis);
     }
 }

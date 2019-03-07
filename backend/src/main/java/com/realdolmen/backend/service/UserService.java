@@ -4,7 +4,6 @@ import com.realdolmen.backend.domain.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public interface UserService extends CrudService<User, Long> {
@@ -17,7 +16,7 @@ public interface UserService extends CrudService<User, Long> {
 
     void deleteById(Long id);
 
-    Optional<User> findByUserName(String userName);
+    User findByUserName(String userName);
 
 
 }

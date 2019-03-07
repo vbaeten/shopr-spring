@@ -6,7 +6,6 @@ import com.realdolmen.backend.domain.enums.OrderStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public interface OrderService {
@@ -19,10 +18,11 @@ public interface OrderService {
 
     List<Order> findAllByUser(User user);
 
-    Optional<Order> findByUserAndOrderStatus(User user, OrderStatus orderStatus);
+    Order findByUserAndOrderStatus(User user, OrderStatus orderStatus);
 
     Order create(Order order);
 
     Order save(Order order);
 
+    Order orderNow(Order order);
 }
