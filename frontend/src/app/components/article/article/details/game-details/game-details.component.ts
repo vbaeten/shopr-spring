@@ -22,8 +22,17 @@ export class GameDetailsComponent implements OnInit {
 
   submitQuantityForm: FormGroup = this.formBuilder.group(
     {
-      quantity: ['1', Validators.required]
+      quantity: ['1', Validators.compose([
+        Validators.required, Validators.min(1)
+      ])]
     });
+
+  validation_messages = {
+    'quantity': [
+      {type: 'required', message: 'Quantity is required'},
+      {type: 'min', message: 'Minimum quantity is 1'}
+    ]
+  };
 
   constructor(private route: Router, private activatedRoute: ActivatedRoute, private articleService: ArticleService, private orderService: OrderService, private orderLineService: OrderLineService, private formBuilder: FormBuilder) {
   }
@@ -52,25 +61,25 @@ export class GameDetailsComponent implements OnInit {
 
   editArticle(article: Article) {
 
-      switch (article.type) {
-        case "game": {
-          this.route.navigate(["/article/edit-game/", article.articleId])
-        }
-          break;
-        case "lp": {
-          this.route.navigate(["/article/edit-lp/", article.articleId])
-        }
-          break;
-        case "fiction": {
-          this.route.navigate(["/article/edit-fiction/", article.articleId])
-        }
-          break;
-        case "nonFiction": {
-          this.route.navigate(["/article/edit-nonFiction/", article.articleId])
-        }
-          break;
+    switch (article.type) {
+      case "game": {
+        this.route.navigate(["/article/edit-game/", article.articleId])
       }
-      this.articleService.setArticleToStorage(article);
+        break;
+      case "lp": {
+        this.route.navigate(["/article/edit-lp/", article.articleId])
+      }
+        break;
+      case "fiction": {
+        this.route.navigate(["/article/edit-fiction/", article.articleId])
+      }
+        break;
+      case "nonFiction": {
+        this.route.navigate(["/article/edit-nonFiction/", article.articleId])
+      }
+        break;
     }
+    this.articleService.setArticleToStorage(article);
+  }
 
 }

@@ -22,8 +22,17 @@ export class FictionDetailsComponent implements OnInit {
   cart: OrderLine[];
   submitQuantityForm: FormGroup = this.formBuilder.group(
     {
-      quantity: ['1', Validators.required]
+      quantity: ['1', Validators.compose([
+        Validators.required, Validators.min(1)
+      ])]
     });
+
+  validation_messages = {
+    'quantity': [
+      {type: 'required', message: 'Quantity is required'},
+      {type: 'min', message: 'Minimum quantity is 1'}
+    ],
+  };
 
   constructor(private route: Router, private activatedRoute: ActivatedRoute, private articleService: ArticleService, private orderLineService: OrderLineService, private orderService: OrderService, private formBuilder: FormBuilder) {
   }

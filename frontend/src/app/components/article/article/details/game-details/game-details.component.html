@@ -14,6 +14,10 @@
     <form (ngSubmit)="submitQuantity()" [formGroup]="submitQuantityForm">
       <mat-form-field class="submit-quantity">
         <input formControlName="quantity" matInput placeholder="Quantity">
+        <mat-error *ngFor="let validation of validation_messages.quantity">
+          <mat-error *ngIf="submitQuantityForm.get('quantity').hasError(validation.type) && (submitQuantityForm.get('quantity').dirty
+                 || submitQuantityForm.get('quantity').touched || submitQuantityForm.get('quantity').pending)" class="error-message">{{validation.message}}</mat-error>
+        </mat-error>
       </mat-form-field>
 
       <button class="green-button" mat-raised-button type=submit>

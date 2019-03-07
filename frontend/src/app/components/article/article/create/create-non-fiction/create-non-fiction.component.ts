@@ -62,6 +62,34 @@ export class CreateNonFictionComponent implements OnInit {
     }
   };
 
+
+  private fillInForm() {
+    this.createNonFictionForm = this.formBuilder.group(
+      {
+        id: [this.selectedArticle.articleId],
+        type: [this.type, Validators.required],
+        title: [this.selectedArticle.title, Validators.compose([
+          Validators.required, Validators.maxLength(100)
+        ])],
+        price: [this.selectedArticle.price, Validators.compose([
+          Validators.required, Validators.max(9999.99)
+        ])],
+        supplierId: [this.selectedArticle.supplierId, Validators.compose([
+          Validators.required, Validators.maxLength(100)
+        ])],
+        author: [this.selectedArticle.author, Validators.compose([
+          Validators.required, Validators.maxLength(100)
+        ])],
+        isbn: [this.selectedArticle.isbn, Validators.compose([
+          Validators.required, Validators.maxLength(17)
+        ])],
+        nrOfPages: [this.selectedArticle.nrOfPages, Validators.compose([
+          Validators.required, Validators.max(9999)
+        ])],
+        nonFictionSubject: [this.selectedArticle.nonFictionSubject, Validators.required],
+      });
+  }
+
   validation_messages = {
     'title': [
       {type: 'required', message: 'Title is required'},
@@ -91,32 +119,5 @@ export class CreateNonFictionComponent implements OnInit {
       {type: 'required', message: 'Non fiction subject is required'}
     ]
   };
-
-  private fillInForm() {
-    this.createNonFictionForm = this.formBuilder.group(
-      {
-        id: [this.selectedArticle.articleId],
-        type: [this.type, Validators.required],
-        title: [this.selectedArticle.title, Validators.compose([
-          Validators.required, Validators.maxLength(100)
-        ])],
-        price: [this.selectedArticle.price, Validators.compose([
-          Validators.required, Validators.max(9999.99)
-        ])],
-        supplierId: [this.selectedArticle.supplierId, Validators.compose([
-          Validators.required, Validators.maxLength(100)
-        ])],
-        author: [this.selectedArticle.author, Validators.compose([
-          Validators.required, Validators.maxLength(100)
-        ])],
-        isbn: [this.selectedArticle.isbn, Validators.compose([
-          Validators.required, Validators.maxLength(17)
-        ])],
-        nrOfPages: [this.selectedArticle.nrOfPages, Validators.compose([
-          Validators.required, Validators.max(9999)
-        ])],
-        nonFictionSubject: [this.selectedArticle.nonFictionSubject, Validators.required],
-      });
-  }
 
 }
