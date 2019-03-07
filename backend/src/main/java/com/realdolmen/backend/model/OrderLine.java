@@ -26,7 +26,7 @@ public class OrderLine implements Serializable
     @Transient
     private String title;
 
-    @OneToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     private OrderFromShop orderFromShop;
 
     private int amount;

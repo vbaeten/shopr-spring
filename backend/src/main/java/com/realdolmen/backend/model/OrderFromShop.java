@@ -20,6 +20,7 @@ public class OrderFromShop implements Serializable
 
     private Date orderDate;
     @OneToMany
+    @JoinColumn(name = "orderId")
     private List<OrderLine> orderLines;
 
     @ManyToOne(cascade = CascadeType.MERGE)

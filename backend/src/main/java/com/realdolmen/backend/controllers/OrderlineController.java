@@ -11,6 +11,8 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/order")
@@ -20,7 +22,9 @@ public class OrderlineController
     private OrderlineServiceImpl orderlineService;
     private ArticleServiceImpl articleService;
     private OrderFromShopServiceImpl orderFromShopService;
-    Article article = new Article();
+    private List<OrderLine> orderlines = new ArrayList<>();
+    OrderFromShop completeOrder;
+
 
     public OrderlineController(OrderlineServiceImpl orderlineService, ArticleServiceImpl articleService, OrderFromShopServiceImpl orderFromShopService)
     {
@@ -29,20 +33,28 @@ public class OrderlineController
         this.orderFromShopService = orderFromShopService;
     }
 
-    @PostMapping(path = "/orderline", consumes = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.CREATED)
-    public OrderLine save(@RequestBody @Valid OrderLine orderLine)
-    {
-
-
-
-    }
+//    @PostMapping(path = "/orderline", consumes = MediaType.APPLICATION_JSON_VALUE)
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public void save(@RequestBody @Valid OrderLine orderLine)
+//    {
+//
+//
+//
+//    }
 
     @PostMapping(path = "/order", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public OrderFromShop save(@RequestBody @Valid OrderFromShop order)
     {
-        return orderFromShopService.save(order);
+        completeOrder = new OrderFromShop();
+        orderlines = order.getOrderLines();
+        for (OrderLine o : orderlines)
+        {
+            o.setOrderFromShop(completeOrder);
+            orderlineService.save(o);
+        }
+        completeOrder = orderFromShopService.save(order);
+        return completeOrder;
     }
 
 }
