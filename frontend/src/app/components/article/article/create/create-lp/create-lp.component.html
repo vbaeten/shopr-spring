@@ -23,7 +23,7 @@
         <tr>
           <td>
             <mat-form-field class="create-lp">
-              <input formControlName="title" matInput placeholder="Title">
+              <input formControlName="title" matInput placeholder="Title*">
               <mat-error *ngFor="let validation of validation_messages.title">
                 <mat-error *ngIf="createLpForm.get('title').hasError(validation.type) && (createLpForm.get('title').dirty
                  || createLpForm.get('title').touched || createLpForm.get('title').pending)" class="error-message">{{validation.message}}</mat-error>
@@ -32,7 +32,7 @@
           </td>
           <td>
             <mat-form-field class="create-lp">
-              <input formControlName="price" matInput placeholder="Price">
+              <input formControlName="price" mask="999999.00" matInput placeholder="Price*">
               <mat-error *ngFor="let validation of validation_messages.price">
                 <mat-error *ngIf="createLpForm.get('price').hasError(validation.type) && (createLpForm.get('price').dirty
                  || createLpForm.get('price').touched || createLpForm.get('price').pending)" class="error-message">{{validation.message}}</mat-error>
@@ -43,7 +43,7 @@
         <tr>
           <td>
             <mat-form-field class="create-lp">
-              <input formControlName="supplierId" matInput placeholder="Supplier ID">
+              <input formControlName="supplierId" matInput placeholder="Supplier ID*">
               <mat-error *ngFor="let validation of validation_messages.supplierId">
                 <mat-error *ngIf="createLpForm.get('supplierId').hasError(validation.type) && (createLpForm.get('supplierId').dirty
                  || createLpForm.get('supplierId').touched || createLpForm.get('supplierId').pending)" class="error-message">{{validation.message}}</mat-error>
@@ -52,7 +52,7 @@
           </td>
           <td>
             <mat-form-field class="create-lp">
-              <mat-select class="mat-select-menu" formControlName="lpGenre" placeholder="Lp genre">
+              <mat-select class="mat-select-menu" formControlName="lpGenre" placeholder="Lp genre*">
                 <mat-option *ngFor="let genre of lpGenres()" [value]="genre">
                   {{genre}}
                 </mat-option>

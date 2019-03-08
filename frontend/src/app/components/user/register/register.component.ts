@@ -3,7 +3,7 @@ import {UserService} from "../../../services/user.service";
 import {User} from "../../../models/user";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import {ValidateDuplicate} from "../../../validators/duplicate-user.directive";
+import {ValidateDuplicateUser} from "../../../validators/duplicate-user.directive";
 
 @Component({
   selector: 'app-register',
@@ -25,29 +25,32 @@ export class RegisterComponent implements OnInit {
       {type: 'required', message: 'Username is required'},
       {type: 'minlength', message: 'Username must be at least 3 characters long'},
       {type: 'maxlength', message: 'Username cannot be more than 30 characters long'},
-      // {type: 'pattern', message: 'Your username must contain only numbers and letters'},
+      {type: 'pattern', message: 'Your username must contain only numbers and letters'},
       {type: 'isDuplicate', message: 'Your username has already been taken'}
     ],
       'firstName':[
         {type: 'required', message: 'First name is required'},
         {type: 'maxlength', message: 'First name cannot be more than 50 characters long'},
+        {type: 'pattern', message: 'first name must contain only letters'}
       ],
     'name':[
       {type: 'required', message: 'Last name is required'},
       {type: 'maxlength', message: 'Last name cannot be more than 50 characters long'},
+      {type: 'pattern', message: 'Name must contain only letters'}
     ]
   };
 
   ngOnInit() {
     this.registerUserForm = this.formBuilder.group({
       userName: ['', Validators.compose([
-        Validators.required, Validators.minLength(3), Validators.maxLength(30), ValidateDuplicate.isDuplicate]
+        Validators.required, Validators.minLength(3), Validators.maxLength(30),
+        ValidateDuplicateUser.isDuplicate, Validators.pattern('[a-zA-Z0-9]*')]
       )],
       firstName: ['', Validators.compose([
-        Validators.required, Validators.maxLength(50)
+        Validators.required, Validators.maxLength(50), Validators.pattern('[a-zA-Z]*')
       ])],
       name: ['', Validators.compose([
-        Validators.required, Validators.maxLength(50)
+        Validators.required, Validators.maxLength(50), Validators.pattern('[a-zA-Z]*')
       ])],
       admin: [false, Validators.required],
     });

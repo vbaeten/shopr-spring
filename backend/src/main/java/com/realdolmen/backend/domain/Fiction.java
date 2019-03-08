@@ -3,6 +3,7 @@ package com.realdolmen.backend.domain;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Getter
@@ -19,6 +20,7 @@ public class Fiction extends Book {
     @Column(name = "short_summary")
     private String shortSummary;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
     @Column(name = "fiction_genre")
     private FictionGenre fictionGenre;

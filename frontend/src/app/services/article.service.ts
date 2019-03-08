@@ -37,11 +37,12 @@ export class ArticleService {
     return this.apiService.doGet("/article")
   }
 
+
   public deleteArticle(id: number) {
     return this.apiService.doDelete("/article/" + id)
   }
 
-  public setArticleToStorage(article: Article){
+  public setArticleToStorage(article: Article) {
     sessionStorage.setItem('selectedArticle', JSON.stringify(article))
   }
 

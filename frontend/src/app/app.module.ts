@@ -12,6 +12,7 @@ import {PageNotFoundModule} from "./components/page-not-found/page-not-found.mod
 import {ShoppingCartModule} from "./components/shopping-cart/shopping-cart.module";
 import {AppInjector} from "./services/app-injector.service";
 import {UserService} from "./services/user.service";
+import {BookService} from "./services/book.service";
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import {UserService} from "./services/user.service";
 
 
   ],
-  providers: [UserService],
+  providers: [UserService, BookService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -24,7 +24,7 @@
     <!-- Price Column -->
     <ng-container matColumnDef="price">
       <th mat-header-cell *matHeaderCellDef mat-sort-header="price"> Price</th>
-      <td mat-cell *matCellDef="let article"> {{article.price}} </td>
+      <td mat-cell *matCellDef="let article"> {{article.price | currency:'EUR'}} </td>
     </ng-container>
 
     <!-- SupplierId Column -->

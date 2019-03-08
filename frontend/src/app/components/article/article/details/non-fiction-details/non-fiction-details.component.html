@@ -5,7 +5,7 @@
       <mat-list-item> Article id: {{selectedArticle.articleId}}</mat-list-item>
       <mat-list-item> Title: {{selectedArticle.title}} </mat-list-item>
       <mat-list-item> Supplier id: {{selectedArticle.supplierId}} </mat-list-item>
-      <mat-list-item> Price: {{selectedArticle.price}} </mat-list-item>
+      <mat-list-item> Price: {{selectedArticle.price | currency:'EUR'}} </mat-list-item>
       <mat-list-item> Isbn: {{selectedArticle.isbn}} </mat-list-item>
       <mat-list-item> Author: {{selectedArticle.author}} </mat-list-item>
       <mat-list-item> Nr. of pages: {{selectedArticle.nrOfPages}} </mat-list-item>

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
+import {MatPaginator, MatSnackBar, MatSort, MatTableDataSource} from "@angular/material";
 import {Router} from "@angular/router";
 import {Fiction} from "../../../../../models/fiction";
 import {FictionService} from "../../../../../services/fiction.service";
@@ -19,7 +19,7 @@ export class FictionOverviewComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private fictionService: FictionService,private articleService: ArticleService, private router: Router) {
+  constructor(private notification: MatSnackBar, private fictionService: FictionService,private articleService: ArticleService, private router: Router) {
   }
 
   ngOnInit() {
@@ -39,9 +39,13 @@ export class FictionOverviewComponent implements OnInit {
   };
 
   deleteFiction = (id: number) => {
-    this.articleService.deleteArticle(id).subscribe(() => {
-      this.getAllFictions();
-    });
+    this.articleService.deleteArticle(id).subscribe(response => {
+        this.getAllFictions();
+        this.notification.open("Article has been deleted", "👍", {duration: 3000});
+      },
+      error => {
+        this.notification.open("Something went wrong", "article has not been deleted, try again! 👎", {duration: 3000});
+      })
   };
 
   getFictionById(id: number) {

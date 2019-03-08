@@ -14,7 +14,7 @@
         <tr>
           <td>
             <mat-form-field class="create-non-fiction">
-              <input formControlName="title" matInput placeholder="Title">
+              <input formControlName="title" matInput placeholder="Title*">
               <mat-error *ngFor="let validation of validation_messages.title">
                 <mat-error *ngIf="createNonFictionForm.get('title').hasError(validation.type) && (createNonFictionForm.get('title').dirty
                  || createNonFictionForm.get('title').touched || createNonFictionForm.get('title').pending)" class="error-message">{{validation.message}}</mat-error>
@@ -35,7 +35,7 @@
           <td>
             <mat-form-field class="create-non-fiction">
               <input [dropSpecialCharacters]="false" [formControl]="createNonFictionForm.controls['price']" mask="999999.00"
-                     matInput placeholder="Price">
+                     matInput placeholder="Price*">
               <mat-error *ngFor="let validation of validation_messages.price">
               <mat-error *ngIf="createNonFictionForm.get('price').hasError(validation.type) && (createNonFictionForm.get('price').dirty
                  || createNonFictionForm.get('price').touched || createNonFictionForm.get('price').pending)" class="error-message">{{validation.message}}</mat-error>
@@ -44,7 +44,7 @@
           </td>
           <td>
             <mat-form-field class="create-non-fiction">
-              <mat-select class="mat-select-menu" formControlName="nonFictionSubject" placeholder="Non fiction subject">
+              <mat-select class="mat-select-menu" formControlName="nonFictionSubject" placeholder="Non fiction subject*">
                 <mat-option *ngFor="let genre of nonFictionSubjects()" [value]="genre">
                   {{genre}}
                 </mat-option>
@@ -60,7 +60,7 @@
           <td>
             <mat-form-field class="create-non-fiction">
               <input [dropSpecialCharacters]="false" [formControl]="createNonFictionForm.controls['isbn']" mask="000-00-0000-000-0" matInput
-                     placeholder="Isbn" type="text">
+                     placeholder="Isbn*" type="text">
               <mat-error *ngFor="let validation of validation_messages.isbn">
                 <mat-error *ngIf="createNonFictionForm.get('isbn').hasError(validation.type) && (createNonFictionForm.get('isbn').dirty
                  || createNonFictionForm.get('isbn').touched || createNonFictionForm.get('isbn').pending)" class="error-message">{{validation.message}}</mat-error>
@@ -69,7 +69,7 @@
           </td>
           <td>
             <mat-form-field class="create-non-fiction">
-              <input [formControl]="createNonFictionForm.controls['nrOfPages']" mask="9999" matInput
+              <input [formControl]="createNonFictionForm.controls['nrOfPages']" matInput
                      placeholder="nr of pages">
               <mat-error *ngFor="let validation of validation_messages.nrOfPages">
                 <mat-error *ngIf="createNonFictionForm.get('nrOfPages').hasError(validation.type) && (createNonFictionForm.get('nrOfPages').dirty
@@ -81,7 +81,7 @@
         <tr>
           <td>
             <mat-form-field class="create-non-fiction">
-              <input formControlName="supplierId" matInput placeholder="Supplier ID">
+              <input formControlName="supplierId" matInput placeholder="Supplier ID*">
               <mat-error *ngFor="let validation of validation_messages.supplierId">
                 <mat-error *ngIf="createNonFictionForm.get('supplierId').hasError(validation.type) && (createNonFictionForm.get('supplierId').dirty
                  || createNonFictionForm.get('supplierId').touched || createNonFictionForm.get('supplierId').pending)" class="error-message">{{validation.message}}</mat-error>

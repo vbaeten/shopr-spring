@@ -5,7 +5,7 @@
       <mat-list-item> Article id: {{selectedArticle.articleId}}</mat-list-item>
       <mat-list-item> Title: {{selectedArticle.title}} </mat-list-item>
       <mat-list-item> Supplier id: {{selectedArticle.supplierId}} </mat-list-item>
-      <mat-list-item> Price: {{selectedArticle.price}} </mat-list-item>
+      <mat-list-item> Price: {{selectedArticle.price | currency:'EUR'}} </mat-list-item>
       <mat-list-item> Publisher: {{selectedArticle.publisher}} </mat-list-item>
       <mat-list-item> Genre: {{selectedArticle.gameGenre}} </mat-list-item>
       <mat-list-item> Minimum age: {{selectedArticle.minimumAge}} </mat-list-item>

@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
 import {ArticleService} from "../../../../../services/article.service";
 import {Article} from "../../../../../models/article";
-import {MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
+import {MatPaginator, MatSnackBar, MatSort, MatTableDataSource} from "@angular/material";
 import {Router} from "@angular/router";
 
 @Component({
@@ -19,7 +19,7 @@ export class ArticleOverviewComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private articleService: ArticleService, private router: Router) {
+  constructor(private notification: MatSnackBar, private articleService: ArticleService, private router: Router) {
   }
 
   ngOnInit() {
@@ -39,9 +39,13 @@ export class ArticleOverviewComponent implements OnInit, AfterViewInit {
   };
 
   deleteArticle = (id: number) => {
-    this.articleService.deleteArticle(id).subscribe(() => {
-      this.getAllArticles();
-    });
+    this.articleService.deleteArticle(id).subscribe(response => {
+        this.getAllArticles();
+        this.notification.open("Article has been deleted", "👍", {duration: 3000});
+      },
+      error => {
+        this.notification.open("Something went wrong", "article has not been deleted, try again! 👎", {duration: 3000});
+      })
   };
 
   goToDetailsPage(article: Article) {

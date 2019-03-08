@@ -11,4 +11,6 @@ public interface ArticleService {
     List<Article> findAll();
 
     void delete(Article article);
+
+
 }

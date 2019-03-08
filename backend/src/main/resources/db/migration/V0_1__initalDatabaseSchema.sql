@@ -25,7 +25,7 @@ engine=MyISAM;
 
 create table shopr.fiction
 (
-	fiction_genre varchar(255) null,
+	fiction_genre varchar(255) not null,
 	short_summary varchar(255) null,
 	article_id bigint not null
 		primary key
@@ -34,7 +34,7 @@ engine=MyISAM;
 
 create table shopr.game
 (
-	game_genre varchar(255) null,
+	game_genre varchar(255) not null,
 	minimum_age int null,
 	publisher varchar(100) null,
 	article_id bigint not null
@@ -44,7 +44,7 @@ engine=MyISAM;
 
 create table shopr.lp
 (
-	lp_genre varchar(255) null,
+	lp_genre varchar(255) not null,
 	publisher varchar(100) null,
 	article_id bigint not null
 		primary key
@@ -53,7 +53,7 @@ engine=MyISAM;
 
 create table shopr.non_fiction
 (
-	non_fiction_subject varchar(255) null,
+	non_fiction_subject varchar(255) not null,
 	article_id bigint not null
 		primary key
 )

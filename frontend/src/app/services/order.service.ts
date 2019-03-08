@@ -1,25 +1,29 @@
 import {Injectable} from '@angular/core';
 import {Order} from "../models/order";
-import {Observable} from "rxjs";
+import {Observable, Subject} from "rxjs";
 import {MatSnackBar} from "@angular/material";
 import {ApiService} from "./api.service";
+import {OrderLineService} from "./order-line.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
 
-  constructor(private notification: MatSnackBar, private apiService: ApiService) {
+  constructor(private orderLineService: OrderLineService, private notification: MatSnackBar, private apiService: ApiService) {
   }
 
-  public createOrder(order: Order){
+  public createOrder(order: Order): Observable<boolean> {
+    const processing: Subject<boolean> = new Subject();
     this.apiService.doPost("/order", order).subscribe(response => {
         localStorage.removeItem('cart');
-        this.notification.open("New order created", "👍", {duration: 3000});
+        processing.next(true);
+        this.notification.open("Order has been completed", "👍", {duration: 3000});
       },
       err => {
-        this.notification.open("Something went wrong", "Order has not been created, try again! 👎", {duration: 3000});
+        this.notification.open("Something went wrong", "Order has not been completed, try again! 👎", {duration: 3000});
       },);
+    return processing.asObservable();
   };
 
   public edit(order: Order) {

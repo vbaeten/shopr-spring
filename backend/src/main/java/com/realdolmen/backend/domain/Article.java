@@ -43,6 +43,7 @@ public abstract class Article implements Serializable {
     @Size(max = 100)
     @Column(name = "title")
     private String title;
+    @NotNull
     @Digits(integer = 4, fraction = 2)
     @Column(name = "price")
     private BigDecimal price;

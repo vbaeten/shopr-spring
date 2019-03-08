@@ -1,20 +1,21 @@
 import {AbstractControl} from "@angular/forms";
 import {AppInjector} from "../services/app-injector.service";
-import {UserService} from "../services/user.service";
+import {BookService} from "../services/book.service";
+
 
 let error = {};
 
-export class ValidateDuplicateUser {
+export class ValidateDuplicateIsbn {
 
 
 
   static isDuplicate (control: AbstractControl) {
     if (control.value) {
       let injector = AppInjector.getInjector();
-      const userService = injector.get(UserService);
+      const bookService = injector.get(BookService);
 
-      userService.getUserByUserName(control.value).subscribe
-      (user => {}, () => { control.setErrors({isDuplicate: true}); });
+      bookService.getBookByIsbn(control.value).subscribe
+      (book => {}, () => { control.setErrors({isDuplicate: true}); });
 
     }
     return null;

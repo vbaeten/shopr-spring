@@ -24,6 +24,7 @@ public class Lp extends Article {
     @Column(name = "publisher")
     private String publisher;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
     private LpGenre lpGenre;
 

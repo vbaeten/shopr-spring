@@ -8,5 +8,6 @@ public interface BookService extends CrudService<Book, Long> {
 
     List<Book> findAll();
 
+    Book findByIsbn(String isbn);
 
 }

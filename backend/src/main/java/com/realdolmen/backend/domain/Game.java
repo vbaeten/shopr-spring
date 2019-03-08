@@ -29,6 +29,7 @@ public class Game extends Article {
     @Column(name = "minimum_age")
     private int minimumAge;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
     @Column(name = "game_genre")
     private GameGenre gameGenre;

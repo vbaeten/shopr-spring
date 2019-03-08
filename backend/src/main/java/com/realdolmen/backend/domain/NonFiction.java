@@ -3,6 +3,7 @@ package com.realdolmen.backend.domain;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
@@ -14,6 +15,7 @@ import javax.persistence.*;
 @EqualsAndHashCode(callSuper = true)
 public class NonFiction extends Book {
 
+    @NotNull
     @Enumerated(EnumType.STRING)
     @Column(name = "non_fiction_subject")
     private NonFictionSubject nonFictionSubject;

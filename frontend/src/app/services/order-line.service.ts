@@ -46,28 +46,30 @@ export class OrderLineService {
 
   addOrderLineToCartLocalStorage(cart: OrderLine[], newOrderLine: OrderLine) {
     let orderLine = cart.find(orderLine => orderLine.article.articleId === newOrderLine.article.articleId);
-    console.log(orderLine);
     if (orderLine) {
       orderLine.quantity = +newOrderLine.quantity + +orderLine.quantity;
       orderLine.subtotal = orderLine.quantity * orderLine.article.price;
     } else {
-    cart.push(newOrderLine);}
+      cart.push(newOrderLine);
+    }
     localStorage.setItem("cart", JSON.stringify(cart));
+    this.notification.open('You have added ' + newOrderLine.quantity + " article(s) to shopping cart"
+      , "👍", {duration: 3000})
   }
 
   getCartFromStorage(): OrderLine[] {
     return JSON.parse(localStorage.getItem("cart"));
   }
 
-  setCartToStorage(shoppingCart: OrderLine[]){
-    localStorage.setItem('cart',JSON.stringify(shoppingCart))
-}
+  setCartToStorage(shoppingCart: OrderLine[]) {
+    localStorage.setItem('cart', JSON.stringify(shoppingCart))
+  }
 
   getCurrentOrderLineFromStorage(): OrderLine {
     return JSON.parse(localStorage.getItem("currentOrder"));
   }
 
-  deleteCartFromStorage(){
+  deleteCartFromStorage() {
     localStorage.removeItem('cart');
   }
 
