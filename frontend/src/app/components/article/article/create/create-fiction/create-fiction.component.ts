@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Fiction} from "../../../../../models/fiction";
 import {FictionGenre} from "../../../../../models/fiction-genre";
 import {FictionService} from "../../../../../services/fiction.service";
@@ -118,7 +118,7 @@ export class CreateFictionComponent implements OnInit {
         Validators.maxLength(100)
       ])],
       isbn: [this.selectedArticle.isbn, Validators.compose([
-        Validators.required, Validators.maxLength(17), ValidateDuplicateIsbn.isDuplicate
+        Validators.required
       ])],
       nrOfPages: [this.selectedArticle.nrOfPages, Validators.compose([
         Validators.min(1), Validators.max(9999), Validators.pattern('[0-9]*')
@@ -129,11 +129,26 @@ export class CreateFictionComponent implements OnInit {
       fictionGenre: [this.selectedArticle.fictionGenre, Validators.required],
     };
     this.createFictionForm = this.formBuilder.group(controlsConfig);
-    if (this.articleId) {
-      controlsConfig.isbn = [this.selectedArticle.isbn, Validators.compose([
-        Validators.required, Validators.maxLength(17)])];
-      this.createFictionForm = this.formBuilder.group(controlsConfig);
+
+    if (this.articleId !== undefined) {
+      this.fictionService.getFictionById(this.articleId).subscribe(book => {
+        this.createFictionForm.setControl('isbn', new FormControl(this.selectedArticle.isbn, [
+          Validators.required, Validators.maxLength(17), ValidateDuplicateIsbn.isDuplicate(this.articleId, book)
+        ]));
+      });
+    } else {
+      this.createFictionForm.setControl('isbn', new FormControl(this.selectedArticle.isbn, [
+        Validators.required, Validators.maxLength(17), ValidateDuplicateIsbn.isDuplicate(this.articleId)
+      ]));
     }
+
+
+    console.log(this.createFictionForm.controls["isbn"]);
+    // if (this.articleId) {
+    //   controlsConfig.isbn = [this.selectedArticle.isbn, Validators.compose([
+    //     Validators.required, Validators.maxLength(17)])];
+    //   this.createFictionForm = this.formBuilder.group(controlsConfig);
+    // }
   }
 
 }

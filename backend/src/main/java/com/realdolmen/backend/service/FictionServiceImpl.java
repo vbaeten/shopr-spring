@@ -21,7 +21,7 @@ public class FictionServiceImpl implements FictionService {
     }
 
     @Override
-    public Fiction findById(Long id) {
+    public Fiction findById(Long id) throws NotFoundException {
         return fictionRepository.findById(id)
                 .orElseThrow(NotFoundException::new);
     }

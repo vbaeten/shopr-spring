@@ -20,7 +20,7 @@ public class OrderLineServiceImpl implements OrderLineService {
     }
 
     @Override
-    public OrderLine findById(Long id) {
+    public OrderLine findById(Long id) throws NotFoundException {
         return orderLineRepository.findById(id)
                 .orElseThrow(NotFoundException::new);
     }

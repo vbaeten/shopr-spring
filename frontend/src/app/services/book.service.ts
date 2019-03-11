@@ -11,7 +11,15 @@ export class BookService {
   }
 
   public getBookByIsbn(isbn: string) {
-    return this.apiService.doGet("/book/" + isbn);
+    return this.apiService.doGet("/book/isbn/" + isbn);
+  }
+
+  public getBookByIsbnEdit(isbn: string, id: number){
+    return this.apiService.doGet("/book/" + isbn + "/" + id)
+  }
+
+  public getBookByArticleId(id: number) {
+    return this.apiService.doGet("/book/" + id);
   }
 
 }

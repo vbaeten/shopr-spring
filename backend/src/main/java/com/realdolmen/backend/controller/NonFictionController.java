@@ -21,7 +21,7 @@ public class NonFictionController {
     }
 
     @PutMapping("/{id}")
-    public NonFiction edit(@PathVariable Long id, @RequestBody NonFiction nonFiction) {
+    public NonFiction edit(@PathVariable Long id, @RequestBody NonFiction nonFiction) throws NotFoundException {
         NonFiction currentNonFiction = findById(id);
         if (currentNonFiction == null) {
             throw new NotFoundException("Article not found");
@@ -30,7 +30,7 @@ public class NonFictionController {
     }
 
     @GetMapping("/{id}")
-    public NonFiction findById(@PathVariable Long id) {
+    public NonFiction findById(@PathVariable Long id) throws NotFoundException {
         return nonFictionService.findById(id);
     }
 

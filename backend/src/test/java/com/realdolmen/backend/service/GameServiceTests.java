@@ -1,6 +1,7 @@
 package com.realdolmen.backend.service;
 
 import com.realdolmen.backend.domain.Game;
+import com.realdolmen.backend.exceptions.NotFoundException;
 import com.realdolmen.backend.repository.GameReopsitory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,7 +11,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.Optional;
 
-import static com.realdolmen.backend.data.ArticleTestDataBuilder.*;
+import static com.realdolmen.backend.data.ArticleTestDataBuilder.buildGameArticleNFS;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
@@ -47,7 +48,7 @@ public class GameServiceTests {
     }
 
     @Test
-    public void findById() {
+    public void findById() throws NotFoundException {
 
         Game expectedGame = buildGameArticleNFS().build();
         expectedGame.setArticleId(10L);

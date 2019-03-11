@@ -20,9 +20,9 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book findById(Long id) {
+    public Book findById(Long id) throws NotFoundException {
         return bookRepository.findById(id)
-                .orElseThrow(NotFoundException::new);
+                .orElseThrow(() -> new NotFoundException("Book not found"));
     }
 
     @Override
@@ -31,7 +31,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book findByIsbn(String isbn) {
+    public Book findByIsbn(String isbn) throws NotFoundException {
         return bookRepository.findByIsbn(isbn).orElseThrow(() -> new NotFoundException("Book not found"));
     }
 

@@ -21,7 +21,7 @@ public class FictionController {
     }
 
     @PutMapping("/{id}")
-    public Fiction edit(@PathVariable Long id, @RequestBody Fiction fiction) {
+    public Fiction edit(@PathVariable Long id, @RequestBody Fiction fiction) throws NotFoundException {
         Fiction currentFiction = findById(id);
         if (currentFiction == null) {
             throw new NotFoundException("Article not found");
@@ -30,7 +30,7 @@ public class FictionController {
     }
 
     @GetMapping("/{id}")
-    public Fiction findById(@PathVariable Long id) {
+    public Fiction findById(@PathVariable Long id) throws NotFoundException {
         return fictionService.findById(id);
     }
 

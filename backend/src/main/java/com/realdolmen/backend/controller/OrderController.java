@@ -1,6 +1,7 @@
 package com.realdolmen.backend.controller;
 
 import com.realdolmen.backend.domain.Order;
+import com.realdolmen.backend.exceptions.NotFoundException;
 import com.realdolmen.backend.service.OrderService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +21,7 @@ public class OrderController {
     }
 
     @GetMapping("/{id}")
-    public Order findById(@PathVariable Long id) {
+    public Order findById(@PathVariable Long id) throws NotFoundException {
         return orderService.findById(id);
     }
 

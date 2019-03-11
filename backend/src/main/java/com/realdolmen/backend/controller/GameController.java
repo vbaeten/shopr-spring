@@ -21,7 +21,7 @@ public class GameController {
     }
 
     @PutMapping("/{id}")
-    public Game edit(@PathVariable Long id, @RequestBody Game game) {
+    public Game edit(@PathVariable Long id, @RequestBody Game game) throws NotFoundException {
         Game currentGame = findById(id);
         if (currentGame == null) {
             throw new NotFoundException("Article not found");
@@ -30,7 +30,7 @@ public class GameController {
     }
 
     @GetMapping("/{id}")
-    public Game findById(@PathVariable Long id) {
+    public Game findById(@PathVariable Long id) throws NotFoundException {
         return gameService.findById(id);
     }
 

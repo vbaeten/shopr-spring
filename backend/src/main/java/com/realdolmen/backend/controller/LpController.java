@@ -21,7 +21,7 @@ public class LpController {
     }
 
     @PutMapping("/{id}")
-    public Lp edit(@PathVariable Long id, @RequestBody Lp lp) {
+    public Lp edit(@PathVariable Long id, @RequestBody Lp lp) throws NotFoundException {
         Lp currentLp = findById(id);
         if (currentLp == null) {
             throw new NotFoundException("Article not found");
@@ -30,7 +30,7 @@ public class LpController {
     }
 
     @GetMapping("/{id}")
-    public Lp findById(@PathVariable Long id) {
+    public Lp findById(@PathVariable Long id) throws NotFoundException {
         return lpService.findById(id);
     }
 

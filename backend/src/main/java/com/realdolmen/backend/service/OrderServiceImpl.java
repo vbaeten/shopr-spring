@@ -20,7 +20,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Order findById(Long id) {
+    public Order findById(Long id) throws NotFoundException {
         return orderRepository.findById(id)
                 .orElseThrow(NotFoundException::new);
     }

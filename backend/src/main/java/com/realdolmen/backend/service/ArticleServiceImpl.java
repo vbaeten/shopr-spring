@@ -15,7 +15,7 @@ public class ArticleServiceImpl implements ArticleService {
     private ArticleRepository articleRepository;
 
     @Override
-    public Article findById(Long id) {
+    public Article findById(Long id) throws NotFoundException {
         return articleRepository.findById(id)
                 .orElseThrow(NotFoundException::new);
     }

@@ -20,13 +20,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findById(Long id) {
+    public User findById(Long id) throws NotFoundException {
         return userRepository.findById(id)
                 .orElseThrow(NotFoundException::new);
     }
 
     @Override
-    public User findByUserName(String userName) {
+    public User findByUserName(String userName) throws NotFoundException {
         return userRepository.findByUserName(userName).orElseThrow(() -> new NotFoundException("User not found"));
     }
 

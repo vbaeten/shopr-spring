@@ -1,6 +1,7 @@
 package com.realdolmen.backend.controller;
 
 import com.realdolmen.backend.domain.Article;
+import com.realdolmen.backend.exceptions.NotFoundException;
 import com.realdolmen.backend.service.ArticleService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +16,7 @@ public class ArticleController {
     private final ArticleService articleService;
 
     @GetMapping("/{id}")
-    public Article findById(@PathVariable("id") Long id) {
+    public Article findById(@PathVariable("id") Long id) throws NotFoundException {
         return articleService.findById(id);
     }
 
@@ -25,7 +26,7 @@ public class ArticleController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteById(@PathVariable("id") Long id) {
+    public void deleteById(@PathVariable("id") Long id) throws NotFoundException {
         Article article = findById(id);
         articleService.delete(article);
     }

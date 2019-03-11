@@ -20,7 +20,7 @@ public class NonFictionServiceImpl implements NonFictionService {
     }
 
     @Override
-    public NonFiction findById(Long id) {
+    public NonFiction findById(Long id) throws NotFoundException {
         return nonFictionRepository.findById(id)
                 .orElseThrow(NotFoundException::new);
     }

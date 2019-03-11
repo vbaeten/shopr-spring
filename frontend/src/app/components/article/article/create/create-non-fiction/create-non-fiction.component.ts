@@ -121,6 +121,7 @@ export class CreateNonFictionComponent implements OnInit {
     if (this.articleId) {
       controlsConfig.isbn = [this.selectedArticle.isbn, Validators.compose([
         Validators.required, Validators.maxLength(17)])];
+      this.createNonFictionForm = this.formBuilder.group(controlsConfig);
     }
   }
 

@@ -1,6 +1,7 @@
 package com.realdolmen.backend.service;
 
 import com.realdolmen.backend.domain.User;
+import com.realdolmen.backend.exceptions.NotFoundException;
 import com.realdolmen.backend.repository.UserRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -100,7 +101,7 @@ public class UserServiceTests {
     }
 
     @Test
-    public void testFindById() {
+    public void testFindById() throws NotFoundException {
         //Create test data
         User expectedUser = buildUserKarel().build();
 

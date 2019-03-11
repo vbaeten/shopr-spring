@@ -20,7 +20,7 @@ public class LpServiceImpl implements LpService {
     }
 
     @Override
-    public Lp findById(Long id) {
+    public Lp findById(Long id) throws NotFoundException {
         return lpRepository.findById(id)
                 .orElseThrow(NotFoundException::new);
     }

@@ -20,7 +20,7 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
-    public Game findById(Long id) {
+    public Game findById(Long id) throws NotFoundException {
         return gameReopsitory.findById(id)
                 .orElseThrow(NotFoundException::new);
     }
