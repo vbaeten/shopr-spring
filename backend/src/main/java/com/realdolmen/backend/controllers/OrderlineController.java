@@ -33,26 +33,20 @@ public class OrderlineController
         this.orderFromShopService = orderFromShopService;
     }
 
-//    @PostMapping(path = "/orderline", consumes = MediaType.APPLICATION_JSON_VALUE)
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public void save(@RequestBody @Valid OrderLine orderLine)
-//    {
-//
-//
-//
-//    }
+    @PostMapping(path = "/orderline", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.CREATED)
+    public OrderLine save(@RequestBody @Valid OrderLine orderLine)
+    {
+        return orderlineService.save(orderLine);
+
+
+    }
 
     @PostMapping(path = "/order", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public OrderFromShop save(@RequestBody @Valid OrderFromShop order)
     {
         completeOrder = new OrderFromShop();
-        orderlines = order.getOrderLines();
-        for (OrderLine o : orderlines)
-        {
-            o.setOrderFromShop(completeOrder);
-            orderlineService.save(o);
-        }
         completeOrder = orderFromShopService.save(order);
         return completeOrder;
     }

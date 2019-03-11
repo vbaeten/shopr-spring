@@ -31,7 +31,8 @@ public class OrderLine implements Serializable
 
     private int amount;
 
-    private int priceOrderDate;
+    @Column(name = "priceOrderDate")
+    private int price;
 
     @Transient
     private int userid;
