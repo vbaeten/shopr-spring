@@ -2,6 +2,7 @@ package com.realdolmen.backend.controllers;
 
 import com.realdolmen.backend.model.OrderFromShop;
 import com.realdolmen.backend.model.OrderLine;
+import com.realdolmen.backend.model.enums.OrderStateEnum;
 import com.realdolmen.backend.services.ArticleServiceImpl;
 import com.realdolmen.backend.services.OrderFromShopServiceImpl;
 import com.realdolmen.backend.services.OrderlineServiceImpl;
@@ -21,7 +22,6 @@ public class OrderlineController
     OrderFromShop orderFromShop;
 
 
-
     public OrderlineController(OrderlineServiceImpl orderlineService, ArticleServiceImpl articleService, OrderFromShopServiceImpl orderFromShopService)
     {
         this.orderlineService = orderlineService;
@@ -39,25 +39,20 @@ public class OrderlineController
     }
 
     @PostMapping(path = "/createorder")
-    public OrderFromShop save( OrderFromShop orderFromShop)
+    public OrderFromShop save(OrderFromShop orderFromShop)
     {
         return orderFromShopService.save(orderFromShop);
     }
 
     @PutMapping(path = "edit")
-    public void update(@RequestBody @Valid OrderFromShop orderFromShop){
+    public void update(@RequestBody @Valid OrderFromShop orderFromShop)
+    {
 
-        orderFromShop = orderFromShopService.findById(orderFromShop.getId());
+        this.orderFromShop = orderFromShopService.findById(orderFromShop.getId());
+        this.orderFromShop.setOrderState(OrderStateEnum.COMPLETED);
+        orderFromShopService.save(this.orderFromShop);
 
 
     }
-//    @PostMapping(path = "/order", consumes = MediaType.APPLICATION_JSON_VALUE)
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public OrderFromShop edit(@RequestBody @Valid OrderFromShop order)
-//    {
-//        completeOrder = new OrderFromShop();
-//        completeOrder = orderFromShopService.save(order);
-//        return completeOrder;
-//    }
 
 }
