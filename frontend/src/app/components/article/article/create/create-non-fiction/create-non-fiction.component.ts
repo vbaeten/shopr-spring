@@ -1,10 +1,11 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {NonFiction} from "../../../../../models/nonFiction";
 import {NonFictionSubject} from "../../../../../models/non-fiction-subject";
 import {NonFictionService} from '../../../../../services/non-fiction.service';
 import {ActivatedRoute} from "@angular/router";
 import {ArticleService} from "../../../../../services/article.service";
+import {ValidateDuplicateIsbn} from "../../../../../validators/duplicate-isbn.directive";
 
 @Component({
   selector: 'app-create-non-fiction',
@@ -18,29 +19,6 @@ export class CreateNonFictionComponent implements OnInit {
   articleId: number;
   selectedArticle: NonFiction = new NonFiction();
   createNonFictionForm: FormGroup;
-
-  constructor(private nonFictionService: NonFictionService, private activatedRoute: ActivatedRoute, private articleService: ArticleService, private formBuilder: FormBuilder) {
-  }
-
-  nonFictionSubjects(): Array<string> {
-    return Object.keys(NonFictionSubject).filter(
-      (type) => isNaN(<any>type) && type !== 'values'
-    );
-  }
-
-  ngOnInit() {
-    this.fillInForm();
-    this.activatedRoute.params.subscribe(params => {
-      this.articleId = +params['id'];
-      if (this.articleId) {
-        this.articleService.getArticleById(this.articleId).subscribe(data => {
-          this.selectedArticle = data as NonFiction;
-          this.type = this.selectedArticle.type;
-          this.fillInForm();
-        })
-      }
-    });
-  }
 
   validation_messages = {
     'title': [
@@ -62,6 +40,7 @@ export class CreateNonFictionComponent implements OnInit {
     'isbn': [
       {type: 'required', message: 'Isbn is required'},
       {type: 'maxlength', message: 'Isbn cannot be more than 13 characters long'},
+      {type: 'isDuplicate', message: 'Isbn already exists'}
     ],
     'nrOfPages': [
       {type: 'min', message: 'Nr. of pages cannot be less than 1'},
@@ -72,6 +51,30 @@ export class CreateNonFictionComponent implements OnInit {
       {type: 'required', message: 'Non fiction subject is required'}
     ]
   };
+
+  nonFictionSubjects(): Array<string> {
+    return Object.keys(NonFictionSubject).filter(
+      (type) => isNaN(<any>type) && type !== 'values'
+    );
+  }
+
+  ngOnInit() {
+    this.fillInForm();
+    this.activatedRoute.params.subscribe(params => {
+      this.articleId = +params['id'];
+      if (this.articleId) {
+        this.articleService.getArticleById(this.articleId).subscribe(data => {
+          this.selectedArticle = data as NonFiction;
+          this.type = this.selectedArticle.type;
+          this.fillInForm();
+        })
+      }
+    });
+  }
+
+  constructor(private nonFictionService: NonFictionService, private activatedRoute: ActivatedRoute,
+              private articleService: ArticleService, private formBuilder: FormBuilder) {
+  }
 
   createNonFiction = () => {
     this.nonFiction = new NonFiction();
@@ -86,6 +89,7 @@ export class CreateNonFictionComponent implements OnInit {
     this.nonFiction.isbn = this.createNonFictionForm.value.isbn;
     this.nonFiction.nrOfPages = this.createNonFictionForm.value.nrOfPages;
     this.nonFiction.nonFictionSubject = this.createNonFictionForm.value.nonFictionSubject;
+
     if (this.createNonFictionForm.value.id) {
       this.nonFictionService.edit(this.nonFiction.articleId, this.nonFiction);
     } else {
@@ -95,34 +99,44 @@ export class CreateNonFictionComponent implements OnInit {
 
   private fillInForm() {
     let controlsConfig = {
-        id: [this.selectedArticle.articleId],
-        type: [this.type, Validators.required],
-        title: [this.selectedArticle.title, Validators.compose([
-          Validators.required, Validators.maxLength(100)
-        ])],
-        price: [this.selectedArticle.price, Validators.compose([
-          Validators.required,Validators.min(0.01), Validators.max(9999.99)
-        ])],
-        supplierId: [this.selectedArticle.supplierId, Validators.compose([
-          Validators.required, Validators.maxLength(100)
-        ])],
-        author: [this.selectedArticle.author, Validators.compose([
-          Validators.maxLength(100)
-        ])],
-        isbn: [this.selectedArticle.isbn, Validators.compose([
-          Validators.required, Validators.maxLength(17)
-        ])],
-        nrOfPages: [this.selectedArticle.nrOfPages, Validators.compose([
-          Validators.min(1), Validators.max(9999), Validators.pattern('[0-9]*')
-        ])],
-        nonFictionSubject: [this.selectedArticle.nonFictionSubject, Validators.required],
-      };
+      id: [this.selectedArticle.articleId],
+      type: [this.type, Validators.required],
+      title: [this.selectedArticle.title, Validators.compose([
+        Validators.required, Validators.maxLength(100)
+      ])],
+      price: [this.selectedArticle.price, Validators.compose([
+        Validators.required, Validators.min(0.01), Validators.max(9999.99)
+      ])],
+      supplierId: [this.selectedArticle.supplierId, Validators.compose([
+        Validators.required, Validators.maxLength(100)
+      ])],
+      author: [this.selectedArticle.author, Validators.compose([
+        Validators.maxLength(100)
+      ])],
+      isbn: [this.selectedArticle.isbn, Validators.compose([
+        Validators.required, Validators.maxLength(17)
+      ])],
+      nrOfPages: [this.selectedArticle.nrOfPages, Validators.compose([
+        Validators.min(1), Validators.max(9999), Validators.pattern('[0-9]*')
+      ])],
+      nonFictionSubject: [this.selectedArticle.nonFictionSubject, Validators.required],
+    };
     this.createNonFictionForm = this.formBuilder.group(controlsConfig);
-    if (this.articleId) {
-      controlsConfig.isbn = [this.selectedArticle.isbn, Validators.compose([
-        Validators.required, Validators.maxLength(17)])];
-      this.createNonFictionForm = this.formBuilder.group(controlsConfig);
+
+    if (this.articleId != undefined) {
+      this.nonFictionService.getNonFictionById(this.articleId).subscribe(book => {
+        this.createNonFictionForm.setControl('isbn', new FormControl(this.selectedArticle.isbn, [
+          Validators.required, Validators.maxLength(17), ValidateDuplicateIsbn.isDuplicate(this.articleId, book)
+        ]));
+      });
+    } else {
+      this.createNonFictionForm.setControl('isbn', new FormControl(this.selectedArticle.isbn, [
+        Validators.required, Validators.maxLength(17), ValidateDuplicateIsbn.isDuplicate(this.articleId)
+      ]));
     }
+
+    console.log(this.createNonFictionForm.controls["isbn"]);
+
   }
 
 }

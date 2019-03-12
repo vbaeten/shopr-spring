@@ -20,8 +20,8 @@ export class CreateFictionComponent implements OnInit {
   selectedArticle: Fiction = new Fiction();
   createFictionForm: FormGroup;
 
-  constructor(private fictionService: FictionService, private articleService: ArticleService, private activatedRoute: ActivatedRoute,
-              private formBuilder: FormBuilder) {
+  constructor(private fictionService: FictionService, private articleService: ArticleService,
+              private activatedRoute: ActivatedRoute, private formBuilder: FormBuilder) {
   }
 
   fictionGenres(): Array<string> {
@@ -118,7 +118,7 @@ export class CreateFictionComponent implements OnInit {
         Validators.maxLength(100)
       ])],
       isbn: [this.selectedArticle.isbn, Validators.compose([
-        Validators.required
+        Validators.required, Validators.maxLength(17)
       ])],
       nrOfPages: [this.selectedArticle.nrOfPages, Validators.compose([
         Validators.min(1), Validators.max(9999), Validators.pattern('[0-9]*')
@@ -142,13 +142,8 @@ export class CreateFictionComponent implements OnInit {
       ]));
     }
 
-
     console.log(this.createFictionForm.controls["isbn"]);
-    // if (this.articleId) {
-    //   controlsConfig.isbn = [this.selectedArticle.isbn, Validators.compose([
-    //     Validators.required, Validators.maxLength(17)])];
-    //   this.createFictionForm = this.formBuilder.group(controlsConfig);
-    // }
+
   }
 
 }
