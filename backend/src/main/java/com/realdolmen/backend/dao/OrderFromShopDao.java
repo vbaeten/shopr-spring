@@ -10,4 +10,5 @@ public interface OrderFromShopDao extends JpaRepository<OrderFromShop, Long>
 {
 
 
+
 }

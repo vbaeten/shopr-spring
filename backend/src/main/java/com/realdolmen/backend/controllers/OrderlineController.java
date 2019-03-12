@@ -18,6 +18,8 @@ public class OrderlineController
     private OrderlineServiceImpl orderlineService;
     private ArticleServiceImpl articleService;
     private OrderFromShopServiceImpl orderFromShopService;
+    OrderFromShop orderFromShop;
+
 
 
     public OrderlineController(OrderlineServiceImpl orderlineService, ArticleServiceImpl articleService, OrderFromShopServiceImpl orderFromShopService)
@@ -42,6 +44,13 @@ public class OrderlineController
         return orderFromShopService.save(orderFromShop);
     }
 
+    @PutMapping(path = "edit")
+    public void update(@RequestBody @Valid OrderFromShop orderFromShop){
+
+        orderFromShop = orderFromShopService.findById(orderFromShop.getId());
+
+
+    }
 //    @PostMapping(path = "/order", consumes = MediaType.APPLICATION_JSON_VALUE)
 //    @ResponseStatus(HttpStatus.CREATED)
 //    public OrderFromShop edit(@RequestBody @Valid OrderFromShop order)

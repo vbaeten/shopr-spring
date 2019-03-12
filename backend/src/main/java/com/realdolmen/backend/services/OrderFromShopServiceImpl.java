@@ -1,7 +1,9 @@
 package com.realdolmen.backend.services;
 
 import com.realdolmen.backend.dao.OrderFromShopDao;
+import com.realdolmen.backend.exceptions.NotFoundException;
 import com.realdolmen.backend.model.OrderFromShop;
+import org.hibernate.criterion.Order;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,5 +20,10 @@ public class OrderFromShopServiceImpl
     {
         return orderFromShopDao.save(orderFromShop);
     }
+
+   public OrderFromShop findById (long Id){
+
+        return orderFromShopDao.findById(Id).orElseThrow(() -> new NotFoundException("lp not found"));
+   }
 
 }
