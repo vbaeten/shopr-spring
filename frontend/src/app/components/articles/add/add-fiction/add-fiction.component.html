@@ -1,11 +1,11 @@
 <mat-card>
-  <form class="addForm" #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <form class="addForm" [formGroup]="addFictionForm" (ngSubmit)="onSubmit()">
 
     <div fxLayout="row" fxLayoutGap="20px">
       <div class="item item-1" fxFlex="50%">
         <mat-form-field class="formField" appearance="standard">
           <mat-label>Title:</mat-label>
-          <input matInput type="text" name="title" ngModel>
+          <input matInput type="text" formControlName="title">
           <mat-hint>Max 100</mat-hint>
         </mat-form-field>
       </div>
@@ -13,7 +13,7 @@
       <div class="item item-2" fxFlex="25%">
         <mat-form-field class="formField"  appearance="standard">
           <mat-label>Price:</mat-label>
-          <input matInput type="number" name="price" ngModel>
+          <input matInput type="number" formControlName="price">
           <span matPrefix>€&nbsp;</span>
         </mat-form-field>
       </div>
@@ -21,7 +21,7 @@
       <div class="item item-3" fxFlex="25%">
         <mat-form-field class="formField"  appearance="standard">
           <mat-label>Supplier:</mat-label>
-          <input matInput type="text" name="supplier" ngModel>
+          <input matInput type="text" formControlName="supplier">
           <mat-hint>Max 100</mat-hint>
         </mat-form-field>
       </div>
@@ -32,26 +32,26 @@
       <div class="item item-1" fxFlex="25%">
         <mat-form-field class="formField" appearance="standard">
           <mat-label>Author:</mat-label>
-          <input matInput type="text" name="author" ngModel>
+          <input matInput type="text" formControlName="author">
         </mat-form-field>
       </div>
 
       <div class="item item-2" fxFlex="25%">
         <mat-form-field class="formField" appearance="standard">
           <mat-label>Isbn:</mat-label>
-          <input matInput type="text" name="isbn" ngModel>
+          <input matInput type="text" formControlName="isbn">
         </mat-form-field>
       </div>
       <div class="item item-3" fxFlex="25%">
         <mat-form-field class="formField" appearance="standard">
           <mat-label>Pages:</mat-label>
-          <input matInput type="number" name="pages" ngModel>
+          <input matInput type="number" formControlName="pages">
         </mat-form-field>
       </div>
       <div class="item item-4" fxFlex="25%">
         <mat-form-field class="formField" appearance="standard">
           <mat-label>Genre:</mat-label>
-          <input matInput type="text" name="genre" ngModel>
+          <input matInput type="text" formControlName="genre">
         </mat-form-field>
       </div>
     </div>
@@ -59,7 +59,7 @@
     <div fxLayout="row" fxLayout="20px">
       <mat-form-field appearance="outline" fxFlex="100%">
         <mat-label>Synopsis:</mat-label>
-        <input matInput #input maxlength="255" type="text" name="synopsis" ngModel>
+        <input matInput #input maxlength="255" type="text" formControlName="synopsis">
         <mat-hint>Max 255</mat-hint>
         <mat-hint align="end">{{input.value?.length || 0}}/255</mat-hint>
       </mat-form-field>

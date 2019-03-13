@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {NgForm} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
 import {Fiction} from '../../../../models/fiction';
 import {FictionService} from '../../../../services/fiction.service';
 
@@ -11,22 +11,33 @@ import {FictionService} from '../../../../services/fiction.service';
 export class AddFictionComponent implements OnInit {
 
   fiction: Fiction;
+  addFictionForm: FormGroup;
 
   constructor(private fictionService: FictionService) { }
 
   ngOnInit() {
+    this.addFictionForm = new FormGroup({
+      title: new FormControl(''),
+      author: new FormControl(''),
+      genre: new FormControl(''),
+      isbn: new FormControl(''),
+      pages: new FormControl(''),
+      synopsis: new FormControl(''),
+      price: new FormControl(''),
+      supplier: new FormControl('')
+    });
   }
 
-  onSubmit(form: NgForm) {
+  onSubmit() {
     this.fiction = new Fiction();
-    this.fiction.title = form.value.title;
-    this.fiction.author = form.value.author;
-    this.fiction.genre = form.value.genre;
-    this.fiction.isbn = form.value.isbn;
-    this.fiction.pages = form.value.pages;
-    this.fiction.synopsis = form.value.synopsis;
-    this.fiction.price = form.value.price;
-    this.fiction.supplier = form.value.supplier;
+    this.fiction.title = this.addFictionForm.value.title;
+    this.fiction.author = this.addFictionForm.value.author;
+    this.fiction.genre = this.addFictionForm.value.genre;
+    this.fiction.isbn = this.addFictionForm.value.isbn;
+    this.fiction.pages = this.addFictionForm.value.pages;
+    this.fiction.synopsis = this.addFictionForm.value.synopsis;
+    this.fiction.price = this.addFictionForm.value.price;
+    this.fiction.supplier = this.addFictionForm.value.supplier;
     this.fiction.type = 'Fiction';
     this.fictionService.addFiction(this.fiction).subscribe(data => this.fiction = data);
   }

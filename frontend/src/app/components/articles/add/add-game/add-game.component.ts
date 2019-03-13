@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {NgForm} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 import {Game} from '../../../../models/game';
 import {GameService} from '../../../../services/game.service';
 
@@ -11,20 +11,29 @@ import {GameService} from '../../../../services/game.service';
 export class AddGameComponent implements OnInit {
 
   game: Game;
+  addGameForm: FormGroup;
 
-  constructor(private gameService: GameService) { }
+  constructor(private gameService: GameService) {  }
 
   ngOnInit() {
+    this.addGameForm = new FormGroup({
+      title: new FormControl(''),
+      genre: new FormControl(''),
+      minAge: new FormControl(''),
+      price: new FormControl(''),
+      supplier: new FormControl(''),
+      publisher: new FormControl('')
+    });
   }
 
-  onSubmit(form: NgForm) {
+  onSubmit() {
     this.game = new Game();
-    this.game.title = form.value.title;
-    this.game.genre = form.value.genre;
-    this.game.minAge = form.value.minAge;
-    this.game.price = form.value.price;
-    this.game.supplier = form.value.supplier;
-    this.game.publisher = form.value.publisher;
+    this.game.title = this.addGameForm.value.title;
+    this.game.genre = this.addGameForm.value.genre;
+    this.game.minAge = this.addGameForm.value.minAge;
+    this.game.price = this.addGameForm.value.price;
+    this.game.supplier = this.addGameForm.value.supplier;
+    this.game.publisher = this.addGameForm.value.publisher;
     this.game.type = 'Game';
     this.gameService.addGame(this.game).subscribe(data => this.game = data);
   }

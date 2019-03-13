@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {NgForm} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
 import {NonFiction} from '../../../../models/non-fiction';
 import {NonFictionService} from '../../../../services/non-fiction.service';
 
@@ -11,21 +11,31 @@ import {NonFictionService} from '../../../../services/non-fiction.service';
 export class AddNonFictionComponent implements OnInit {
 
   nonFiction: NonFiction;
+  addNonFictionForm: FormGroup;
 
   constructor(private nonFictionService: NonFictionService) { }
 
   ngOnInit() {
+    this.addNonFictionForm = new FormGroup({
+      title: new FormControl(''),
+      author: new FormControl(''),
+      subject: new FormControl(''),
+      price: new FormControl(''),
+      pages: new FormControl(''),
+      supplier: new FormControl(''),
+      isbn: new FormControl('')
+    });
   }
 
-  onSubmit(form: NgForm) {
+  onSubmit() {
     this.nonFiction = new NonFiction();
-    this.nonFiction.title = form.value.title;
-    this.nonFiction.author = form.value.author;
-    this.nonFiction.subject = form.value.subject;
-    this.nonFiction.price = form.value.price;
-    this.nonFiction.pages = form.value.pages;
-    this.nonFiction.supplier = form.value.supplier;
-    this.nonFiction.isbn = form.value.isbn;
+    this.nonFiction.title = this.addNonFictionForm.value.title;
+    this.nonFiction.author = this.addNonFictionForm.value.author;
+    this.nonFiction.subject = this.addNonFictionForm.value.subject;
+    this.nonFiction.price = this.addNonFictionForm.value.price;
+    this.nonFiction.pages = this.addNonFictionForm.value.pages;
+    this.nonFiction.supplier = this.addNonFictionForm.value.supplier;
+    this.nonFiction.isbn = this.addNonFictionForm.value.isbn;
     this.nonFiction.type = 'Non-Fiction';
     this.nonFictionService.addNonFiction(this.nonFiction).subscribe(data => this.nonFiction  = data);
   }
