@@ -24,7 +24,7 @@ public class NonFiction extends Book implements Serializable {
 
 
     @lombok.Builder(builderClassName = "NonFictionBuilder")
-    public NonFiction(Long id, @NotNull @Size(max = 100) String title, @NotNull @Digits(integer = 6, fraction = 2) double price, @NotNull @Size(max = 100) String supplier, String type, @Size(max = 100) String author, @NotNull @Pattern(regexp = "\\d{3}-\\d{2}-\\d{4}-\\d{3}-\\d") long isbn, int pages, Subject subject) {
+    public NonFiction(Long id, @NotNull @Size(max = 100) String title, @NotNull @Digits(integer = 6, fraction = 2) double price, @NotNull @Size(max = 100) String supplier, String type, @Size(max = 100) String author, @NotNull @Pattern(regexp = "\\d{3}-\\d{2}-\\d{4}-\\d{3}-\\d") String isbn, int pages, Subject subject) {
         super(id, title, price, supplier, type, author, isbn, pages);
         this.subject = subject;
     }

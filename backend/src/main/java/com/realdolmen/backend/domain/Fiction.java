@@ -29,7 +29,7 @@ public class Fiction extends Book implements Serializable {
     private String synopsis;
 
     @lombok.Builder(builderClassName = "FictionBuilder")
-    public Fiction(Long id, @NotNull @Size(max = 100) String title, @NotNull @Digits(integer = 6, fraction = 2) double price, @NotNull @Size(max = 100) String supplier, String type, @Size(max = 100) String author, @NotNull @Pattern(regexp = "\\d{3}-\\d{2}-\\d{4}-\\d{3}-\\d") long isbn, int pages, BookGenre bookGenre, @Size(max = 255) String synopsis) {
+    public Fiction(Long id, @NotNull @Size(max = 100) String title, @NotNull @Digits(integer = 6, fraction = 2) double price, @NotNull @Size(max = 100) String supplier, String type, @Size(max = 100) String author, @NotNull @Pattern(regexp = "\\d{3}-\\d{2}-\\d{4}-\\d{3}-\\d") String isbn, int pages, BookGenre bookGenre, @Size(max = 255) String synopsis) {
         super(id, title, price, supplier, type, author, isbn, pages);
         this.bookGenre = bookGenre;
         this.synopsis = synopsis;

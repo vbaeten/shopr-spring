@@ -15,7 +15,7 @@ public class FictionDto extends BookDto {
 
 
     @lombok.Builder(builderClassName = "FictionDtoBuilder")
-    public FictionDto(Long id, String title, double price, String supplier, String type, String author, long isbn, int pages, BookGenre bookGenre, String synopsis) {
+    public FictionDto(Long id, String title, double price, String supplier, String type, String author, String isbn, int pages, BookGenre bookGenre, String synopsis) {
         super(id, title, price, supplier, type, author, isbn, pages);
         this.bookGenre = bookGenre;
         this.synopsis = synopsis;

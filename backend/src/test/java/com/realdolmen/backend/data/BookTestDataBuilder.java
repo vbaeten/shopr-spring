@@ -14,7 +14,7 @@ public class BookTestDataBuilder {
                 .supplier("Dreamland")
                 .type("Fiction")
                 .pages(30)
-                .isbn(111-11-1111-111-1);
+                .isbn("111-11-1111-111-1");
     }
 
     public static BookDto.BookDtoBuilder buildBookFictionBookDto() {
@@ -26,6 +26,6 @@ public class BookTestDataBuilder {
                 .supplier("Dreamland")
                 .type("Fiction")
                 .pages(30)
-                .isbn(111-11-1111-111-1);
+                .isbn("111-11-1111-111-1");
     }
 }

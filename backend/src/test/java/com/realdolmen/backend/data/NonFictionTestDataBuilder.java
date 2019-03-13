@@ -15,7 +15,7 @@ public class NonFictionTestDataBuilder {
                 .supplier("Dreamland")
                 .type("Fiction")
                 .pages(120)
-                .isbn(111-11-1111-111-3)
+                .isbn("111-11-1111-111-2")
                 .subject(Subject.SCIENCE);
     }
 
@@ -28,7 +28,7 @@ public class NonFictionTestDataBuilder {
                 .supplier("Dreamland")
                 .type("Fiction")
                 .pages(120)
-                .isbn(111-11-1111-111-3)
+                .isbn("111-11-1111-111-3")
                 .subject(Subject.SCIENCE);
     }
 }

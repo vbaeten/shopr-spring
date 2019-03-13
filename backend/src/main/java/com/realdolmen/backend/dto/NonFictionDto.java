@@ -13,7 +13,7 @@ public class NonFictionDto extends BookDto {
     private Subject subject;
 
     @lombok.Builder(builderClassName = "NonFictionDtoBuilder")
-    public NonFictionDto(Long id, String title, double price, String supplier, String type, String author, long isbn, int pages, Subject subject) {
+    public NonFictionDto(Long id, String title, double price, String supplier, String type, String author, String isbn, int pages, Subject subject) {
         super(id, title, price, supplier, type, author, isbn, pages);
         this.subject = subject;
     }
