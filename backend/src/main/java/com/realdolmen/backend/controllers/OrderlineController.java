@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Date;
 
 @RestController
 @RequestMapping("/order")
@@ -41,15 +42,19 @@ public class OrderlineController
     @PostMapping(path = "/createorder")
     public OrderFromShop save(OrderFromShop orderFromShop)
     {
+
         return orderFromShopService.save(orderFromShop);
     }
 
-    @PutMapping(path = "edit")
+    @PutMapping(path = "/edit")
     public void update(@RequestBody @Valid OrderFromShop orderFromShop)
     {
 
         this.orderFromShop = orderFromShopService.findById(orderFromShop.getId());
         this.orderFromShop.setOrderState(OrderStateEnum.COMPLETED);
+        this.orderFromShop.setOrderLines(orderFromShop.getOrderLines());
+        this.orderFromShop.setUser(orderFromShop.getUser());
+        this.orderFromShop.setOrderDate(new Date());
         orderFromShopService.save(this.orderFromShop);
 
 

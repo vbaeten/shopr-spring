@@ -1,5 +1,6 @@
 package com.realdolmen.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.realdolmen.backend.model.enums.OrderStateEnum;
 import lombok.Data;
 
@@ -11,6 +12,7 @@ import java.util.List;
 
 @Entity
 @Data
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class OrderFromShop implements Serializable
 {
     @Id
@@ -18,12 +20,13 @@ public class OrderFromShop implements Serializable
     @Column
     private Long id;
 
+
     private Date orderDate;
-    @OneToMany
+    @OneToMany(cascade=CascadeType.ALL)
     @JoinColumn(name = "orderId")
     private List<OrderLine> orderLines;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
     User user;
 
     @Enumerated(EnumType.STRING)
