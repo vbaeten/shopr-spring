@@ -6,10 +6,10 @@ import {NgxMaskModule} from 'ngx-mask';
   declarations: [],
   imports: [
     CommonModule,
-    NgxMaskModule
+    NgxMaskModule,
   ],
   exports: [
-    NgxMaskModule
+    NgxMaskModule,
   ]
 })
 export class ValidationModule { }

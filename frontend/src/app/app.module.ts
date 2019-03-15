@@ -44,6 +44,7 @@ import {CreateShoppingCartComponent} from './components/temp/create-shopping-car
 import {StyleComponent} from './components/temp/style/style.component';
 import {ValidationModule} from './modules/validation/validation.module';
 import {LoginAndRegisterComponent} from './components/user/loginregisterpanel/login-and-register/login-and-register.component';
+import {NgxMaskModule} from "ngx-mask";
 
 @NgModule({
   declarations: [
@@ -92,7 +93,8 @@ import {LoginAndRegisterComponent} from './components/user/loginregisterpanel/lo
     MatPaginatorModule,
     MatSortModule,
     FormsModule,
-    ValidationModule
+    ValidationModule,
+    NgxMaskModule.forRoot()
   ],
   providers: [
     UserService,
