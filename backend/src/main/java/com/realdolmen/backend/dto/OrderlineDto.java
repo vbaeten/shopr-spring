@@ -20,9 +20,10 @@ public class OrderlineDto extends BaseObjectDto {
         this.order = order;
     }
 
-    public static class OrderDtoBuilder extends BaseObjectBuilder {
+    public static class OrderDtoBuilder {
         OrderDtoBuilder() {
-            super();
         }
+
+        ;
     }
 }

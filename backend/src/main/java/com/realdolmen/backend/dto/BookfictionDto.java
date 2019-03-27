@@ -19,9 +19,5 @@ public class BookfictionDto extends BookDto {
         this.summary = summary;
     }
 
-    public static class BookfictionDtoBuilder extends BookDto.BookDtoBuilder {
-        BookfictionDtoBuilder() {
-            super();
-        }
-    }
+
 }

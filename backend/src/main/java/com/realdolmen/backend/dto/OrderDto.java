@@ -21,9 +21,8 @@ public class OrderDto extends BaseObjectDto {
         this.orderStatus = orderStatus;
     }
 
-    public static class OrderDtoBuilder extends BaseObjectBuilder {
+    public static class OrderDtoBuilder {
         OrderDtoBuilder() {
-            super();
         }
     }
 }

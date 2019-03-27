@@ -24,9 +24,8 @@ public class UserDto extends BaseObjectDto {
         this.admin = admin;
     }
 
-    public static class UserDtoBuilder extends BaseObjectBuilder {
+    public static class UserDtoBuilder {
         UserDtoBuilder() {
-            super();
         }
     }
 }

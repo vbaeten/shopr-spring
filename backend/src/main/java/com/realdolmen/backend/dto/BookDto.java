@@ -12,7 +12,6 @@ public class BookDto extends ArticleDto {
     private String isbn;
     private Integer numberOfPages;
 
-    @lombok.Builder(builderClassName = "BookDtoBuilder")
     public BookDto(Long versionId, Long articleId, String title, Double price, String supplierId, String type, String author, String isbn, Integer numberOfPages) {
         super(versionId, articleId, title, price, supplierId, type);
         this.author = author;
@@ -20,10 +19,6 @@ public class BookDto extends ArticleDto {
         this.numberOfPages = numberOfPages;
     }
 
-    public static class BookDtoBuilder extends ArticleBuilder {
-        BookDtoBuilder() {
-            super();
-        }
-    }
+
 }
 

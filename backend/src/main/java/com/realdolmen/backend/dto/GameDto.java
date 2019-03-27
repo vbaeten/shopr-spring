@@ -21,9 +21,5 @@ public class GameDto extends ArticleDto {
         this.publisher = publisher;
     }
 
-    public static class GameDtoBuilder extends ArticleDto.ArticleDtoBuilder {
-        GameDtoBuilder() {
-            super();
-        }
-    }
+
 }

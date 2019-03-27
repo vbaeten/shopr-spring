@@ -18,9 +18,5 @@ public class BooknonfictionDto extends BookDto {
         this.booknonfictionGenre = booknonfictionGenre;
     }
 
-    public static class BooknonfictionDtoBuilder extends BookDto.BookDtoBuilder {
-        BooknonfictionDtoBuilder() {
-            super();
-        }
-    }
+
 }

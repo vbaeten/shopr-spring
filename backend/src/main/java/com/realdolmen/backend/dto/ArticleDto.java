@@ -15,7 +15,7 @@ public class ArticleDto extends BaseObjectDto {
     private String supplierId;
     private String type;
 
-    @lombok.Builder(builderClassName = "ArticleBuilder")
+
     public ArticleDto(Long versionId, Long articleId, String title, Double price, String supplierId, String type) {
         super(versionId);
         this.articleId = articleId;
@@ -25,9 +25,5 @@ public class ArticleDto extends BaseObjectDto {
         this.type = type;
     }
 
-    public static class ArticleDtoBuilder extends BaseObjectBuilder {
-        ArticleDtoBuilder() {
-            super();
-        }
-    }
+
 }

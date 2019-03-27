@@ -19,9 +19,5 @@ public class LpDto extends ArticleDto {
         this.artist = artist;
     }
 
-    public static class LpDtoBuilder extends ArticleDtoBuilder {
-        LpDtoBuilder() {
-            super();
-        }
-    }
+
 }
