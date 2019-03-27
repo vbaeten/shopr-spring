@@ -1,7 +1,6 @@
 package com.realdolmen.backend.restcontrollers;
 
 import com.realdolmen.backend.domain.User;
-import com.realdolmen.backend.exception.NotFoundException;
 import com.realdolmen.backend.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -53,8 +52,7 @@ public class UserRestController {
 
     @PostMapping(path = "/login/")
     public User login(@RequestBody String userName) {
-        return userService.findByUserName(userName).orElseThrow(NotFoundException::new);
-
+        return userService.findByUserName(userName);
     }
 
 

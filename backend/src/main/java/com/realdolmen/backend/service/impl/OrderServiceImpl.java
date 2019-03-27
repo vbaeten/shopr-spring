@@ -60,8 +60,6 @@ public class OrderServiceImpl implements OrderService {
     }
 
     public Order save(Order order) {
-//        List<Orderline> originalOrderlines = order.getOrderlineList();
-//        order.setOrderlineList(null);
         Order savedOrder = orderRepository.save(order);
         List<Orderline> persistedOrderlines = new ArrayList<>();
         order.getOrderlineList().forEach(orderline -> saveOrderline(savedOrder, persistedOrderlines, orderline));

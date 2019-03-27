@@ -42,12 +42,9 @@ public class UserServiceImpl implements UserService {
         userRepository.deleteById(id);
     }
 
-    //TODO check if this works correct with the wrapper
     @Override
     public User findByUserName(String userName) {
         return userRepository.findByUserName(userName)
                 .orElseThrow(NotFoundException::new);
     }
-
-
 }
