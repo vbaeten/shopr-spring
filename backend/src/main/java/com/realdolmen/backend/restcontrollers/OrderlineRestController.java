@@ -14,26 +14,28 @@ import java.util.stream.Collectors;
 @RequestMapping("/orderlines")
 public class OrderlineRestController {
     private final OrderlineService orderlineService;
+    private final OrderlineMapper orderlineMapper;
 
-    public OrderlineRestController(OrderlineService orderlineService) {
+    public OrderlineRestController(OrderlineService orderlineService, OrderlineMapper orderlineMapper) {
         this.orderlineService = orderlineService;
+        this.orderlineMapper = orderlineMapper;
     }
 
     @GetMapping(value = "/all")
     public List<OrderlineDto> findAllOrderlines() {
         return orderlineService.findAll().stream()
-                .map(OrderlineMapper::convertOrderlineToDto)
+                .map(orderlineMapper::convertOrderlineToDto)
                 .collect(Collectors.toList());
     }
 
     @PostMapping(value = "/add")
     public OrderlineDto createOrderLine(@RequestBody @Valid Orderline orderline) {
-        return OrderlineMapper.convertOrderlineToDto(orderlineService.save(orderline));
+        return orderlineMapper.convertOrderlineToDto(orderlineService.save(orderline));
     }
 
     @GetMapping(value = "/{orderlineId}")
     public OrderlineDto getOrderline(@PathVariable Long orderlineId) {
-        return OrderlineMapper.convertOrderlineToDto(orderlineService.findById(orderlineId));
+        return orderlineMapper.convertOrderlineToDto(orderlineService.findById(orderlineId));
     }
 
     @DeleteMapping("/{orderlineId}")

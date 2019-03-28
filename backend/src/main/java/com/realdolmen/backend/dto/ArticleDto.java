@@ -1,29 +1,21 @@
 package com.realdolmen.backend.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@AllArgsConstructor
 @NoArgsConstructor
-public class ArticleDto extends BaseObjectDto {
+public class ArticleDto {
 
     private Long articleId;
     private String title;
     private Double price;
     private String supplierId;
     private String type;
-
-
-    public ArticleDto(Long versionId, Long articleId, String title, Double price, String supplierId, String type) {
-        super(versionId);
-        this.articleId = articleId;
-        this.title = title;
-        this.price = price;
-        this.supplierId = supplierId;
-        this.type = type;
-    }
 
 
 }

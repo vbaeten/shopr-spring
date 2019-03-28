@@ -17,15 +17,17 @@ import java.util.stream.Collectors;
 @RequestMapping(path = "/booknonfiction")
 public class BooknonfictionRestController {
     private final BooknonfictionService booknonfictionService;
+    private final BooknonfictionMapper booknonfictionMapper;
 
-    public BooknonfictionRestController(BooknonfictionService booknonfictionService) {
+    public BooknonfictionRestController(BooknonfictionService booknonfictionService, BooknonfictionMapper booknonfictionMapper) {
         this.booknonfictionService = booknonfictionService;
+        this.booknonfictionMapper = booknonfictionMapper;
     }
 
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     public BooknonfictionDto createBooknonfiction(@RequestBody @Valid Booknonfiction booknonfiction) {
-        return BooknonfictionMapper.convertBooknonfictionToDto(booknonfictionService.save(booknonfiction));
+        return booknonfictionMapper.convertBooknonfictionToDto(booknonfictionService.save(booknonfiction));
     }
 
     @GetMapping("/genres")
@@ -35,7 +37,7 @@ public class BooknonfictionRestController {
 
     @GetMapping(value = "/{articleId}")
     public BooknonfictionDto getBookFiction(@PathVariable Long articleId) {
-        return BooknonfictionMapper.convertBooknonfictionToDto(booknonfictionService.findById(articleId));
+        return booknonfictionMapper.convertBooknonfictionToDto(booknonfictionService.findById(articleId));
     }
 
     @PutMapping(path = "/edit")

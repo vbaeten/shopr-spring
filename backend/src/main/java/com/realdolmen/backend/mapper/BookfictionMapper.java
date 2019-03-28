@@ -2,17 +2,17 @@ package com.realdolmen.backend.mapper;
 
 import com.realdolmen.backend.domain.Bookfiction;
 import com.realdolmen.backend.dto.BookfictionDto;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
+@Component
+@RequiredArgsConstructor
 public class BookfictionMapper {
 
-    private static ModelMapper modelMapper;
+    private final ModelMapper modelMapper;
 
-    private BookfictionMapper(ModelMapper modelMapper) {
-        this.modelMapper = modelMapper;
-    }
-
-    public static BookfictionDto convertBookfictionToDto(Bookfiction bookfiction) {
+    public BookfictionDto convertBookfictionToDto(Bookfiction bookfiction) {
         return modelMapper.map(bookfiction, BookfictionDto.class);
     }
 }

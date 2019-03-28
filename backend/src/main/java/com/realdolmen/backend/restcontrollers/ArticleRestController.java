@@ -15,18 +15,19 @@ import java.util.stream.Collectors;
 public class ArticleRestController {
 
     private ArticleService articleService;
+    private final ArticleMapper articleMapper;
 
 
     @GetMapping(path = "/all")
     public List<ArticleDto> getAllArticles() {
         return articleService.findAll().stream()
-                .map(ArticleMapper::convertArticleToDto)
+                .map(articleMapper::convertArticleToDto)
                 .collect(Collectors.toList());
     }
 
     @GetMapping(value = "/{articleId}")
     public ArticleDto getArticle(@PathVariable Long articleId) {
-        return ArticleMapper.convertArticleToDto(articleService.findById(articleId));
+        return articleMapper.convertArticleToDto(articleService.findById(articleId));
     }
 
     @DeleteMapping("/{articleId}")

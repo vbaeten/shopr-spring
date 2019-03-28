@@ -2,16 +2,22 @@ package com.realdolmen.backend.mapper;
 
 import com.realdolmen.backend.domain.Order;
 import com.realdolmen.backend.dto.OrderDto;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
+import static java.util.Objects.isNull;
+
+@Component
+@RequiredArgsConstructor
 public class OrderMapper {
-    private static ModelMapper modelMapper;
+    private final ModelMapper modelMapper;
 
-    private OrderMapper(ModelMapper modelMapper) {
-        this.modelMapper = modelMapper;
-    }
+    public OrderDto convertOrderToDto(Order order) {
+        if (isNull(order)) {
+            return null;
+        }
 
-    public static OrderDto convertOrderToDto(Order order) {
         return modelMapper.map(order, OrderDto.class);
     }
 }

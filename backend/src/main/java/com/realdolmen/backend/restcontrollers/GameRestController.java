@@ -17,15 +17,17 @@ import java.util.stream.Collectors;
 @RequestMapping(path = "/game")
 public class GameRestController {
     private final GameService gameService;
+    private final GameMapper gameMapper;
 
-    public GameRestController(GameService gameService) {
+    public GameRestController(GameService gameService, GameMapper gameMapper) {
         this.gameService = gameService;
+        this.gameMapper = gameMapper;
     }
 
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     public GameDto createGame(@RequestBody @Valid Game game) {
-        return GameMapper.convertGameToDto(gameService.save(game));
+        return gameMapper.convertGameToDto(gameService.save(game));
     }
 
     @GetMapping("/genres")
@@ -35,7 +37,7 @@ public class GameRestController {
 
     @GetMapping(value = "/{articleId}")
     public GameDto getBookFiction(@PathVariable Long articleId) {
-        return GameMapper.convertGameToDto(gameService.findById(articleId));
+        return gameMapper.convertGameToDto(gameService.findById(articleId));
     }
 
     @PutMapping(path = "/edit")

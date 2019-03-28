@@ -12,12 +12,10 @@ public class LpDto extends ArticleDto {
     private LpGenre lpGenre;
     private String artist;
 
-    @lombok.Builder(builderClassName = "LpDtoBuilder")
-    public LpDto(Long versionId, Long articleId, String title, Double price, String supplierId, String type, LpGenre lpGenre, String artist) {
-        super(versionId, articleId, title, price, supplierId, type);
+    public LpDto(Long articleId, String title, Double price, String supplierId, String type, LpGenre lpGenre, String artist) {
+        super(articleId, title, price, supplierId, type);
         this.lpGenre = lpGenre;
         this.artist = artist;
     }
-
 
 }

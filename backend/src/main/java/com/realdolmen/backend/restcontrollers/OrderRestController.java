@@ -17,27 +17,29 @@ import java.util.stream.Collectors;
 public class OrderRestController {
     private final OrderService orderService;
     private final UserService userService;
+    private final OrderMapper orderMapper;
 
-    public OrderRestController(OrderService orderService, UserService userService) {
+    public OrderRestController(OrderService orderService, UserService userService, OrderMapper orderMapper) {
         this.orderService = orderService;
         this.userService = userService;
+        this.orderMapper = orderMapper;
     }
 
     @GetMapping("/findCurrentCartByUserId/{userId}")
     public OrderDto findCurrentCartByUserId(@PathVariable Long userId) {
-        return OrderMapper.convertOrderToDto(orderService.findByUserAndOrderStatus(userService.findById(userId), OrderStatus.IN_CART));
+        return orderMapper.convertOrderToDto(orderService.findByUserAndOrderStatus(userService.findById(userId), OrderStatus.IN_CART));
     }
 
     @GetMapping("/all/{userId}")
     public List<OrderDto> findOrdersByUserId(@PathVariable Long userId) {
         return orderService.findAllByUser(userService.findById(userId)).stream()
-                .map(OrderMapper::convertOrderToDto)
+                .map(orderMapper::convertOrderToDto)
                 .collect(Collectors.toList());
     }
 
     @PutMapping(path = "/ordernow")
     public OrderDto orderNow(@RequestBody @Valid Order order) {
-        return OrderMapper.convertOrderToDto(orderService.orderNow(order));
+        return orderMapper.convertOrderToDto(orderService.orderNow(order));
     }
 
     @PostMapping(path = "/save")

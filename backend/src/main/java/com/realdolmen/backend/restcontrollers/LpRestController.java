@@ -17,15 +17,17 @@ import java.util.stream.Collectors;
 @RequestMapping("/lp")
 public class LpRestController {
     private final LpService lpService;
+    private final LpMapper lpMapper;
 
-    public LpRestController(LpService lpService) {
+    public LpRestController(LpService lpService, LpMapper lpMapper) {
         this.lpService = lpService;
+        this.lpMapper = lpMapper;
     }
 
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     public LpDto createLp(@RequestBody @Valid Lp lp) {
-        return LpMapper.convertLpToDto(lpService.save(lp));
+        return lpMapper.convertLpToDto(lpService.save(lp));
     }
 
     @GetMapping("/genres")
@@ -34,7 +36,7 @@ public class LpRestController {
 
     @GetMapping(value = "/{articleId}")
     public LpDto getBookFiction(@PathVariable Long articleId) {
-        return LpMapper.convertLpToDto(lpService.findById(articleId));
+        return lpMapper.convertLpToDto(lpService.findById(articleId));
     }
 
     @PutMapping(path = "/edit")

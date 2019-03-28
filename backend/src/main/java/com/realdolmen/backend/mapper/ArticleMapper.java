@@ -2,16 +2,16 @@ package com.realdolmen.backend.mapper;
 
 import com.realdolmen.backend.domain.Article;
 import com.realdolmen.backend.dto.ArticleDto;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
+@Component
+@RequiredArgsConstructor
 public class ArticleMapper {
-    private static ModelMapper modelMapper;
+    private final ModelMapper modelMapper;
 
-    private ArticleMapper(ModelMapper modelMapper) {
-        this.modelMapper = modelMapper;
-    }
-
-    public static ArticleDto convertArticleToDto(Article article) {
+    public ArticleDto convertArticleToDto(Article article) {
         return modelMapper.map(article, ArticleDto.class);
     }
 }

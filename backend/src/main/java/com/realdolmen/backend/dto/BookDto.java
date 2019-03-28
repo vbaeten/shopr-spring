@@ -12,8 +12,8 @@ public class BookDto extends ArticleDto {
     private String isbn;
     private Integer numberOfPages;
 
-    public BookDto(Long versionId, Long articleId, String title, Double price, String supplierId, String type, String author, String isbn, Integer numberOfPages) {
-        super(versionId, articleId, title, price, supplierId, type);
+    public BookDto(Long articleId, String title, Double price, String supplierId, String type, String author, String isbn, Integer numberOfPages) {
+        super(articleId, title, price, supplierId, type);
         this.author = author;
         this.isbn = isbn;
         this.numberOfPages = numberOfPages;

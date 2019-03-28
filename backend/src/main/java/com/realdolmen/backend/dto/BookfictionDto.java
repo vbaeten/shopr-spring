@@ -12,12 +12,10 @@ public class BookfictionDto extends BookDto {
     private BookfictionGenre bookfictionGenre;
     private String summary;
 
-    @lombok.Builder(builderClassName = "BookfictionDtoBuilder")
-    public BookfictionDto(Long versionId, Long articleId, String title, Double price, String supplierId, String type, String author, String isbn, Integer numberOfPages, BookfictionGenre bookfictionGenre, String summary) {
-        super(versionId, articleId, title, price, supplierId, type, author, isbn, numberOfPages);
+    public BookfictionDto(Long articleId, String title, Double price, String supplierId, String type, String author, String isbn, Integer numberOfPages, BookfictionGenre bookfictionGenre, String summary) {
+        super(articleId, title, price, supplierId, type, author, isbn, numberOfPages);
         this.bookfictionGenre = bookfictionGenre;
         this.summary = summary;
     }
-
 
 }

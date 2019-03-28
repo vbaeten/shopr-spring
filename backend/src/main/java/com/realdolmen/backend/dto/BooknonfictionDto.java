@@ -11,10 +11,8 @@ import lombok.Setter;
 public class BooknonfictionDto extends BookDto {
     private BooknonfictionGenre booknonfictionGenre;
 
-
-    @lombok.Builder(builderClassName = "BooknonfictionDtoBuilder")
-    public BooknonfictionDto(Long versionId, Long articleId, String title, Double price, String supplierId, String type, String author, String isbn, Integer numberOfPages, BooknonfictionGenre booknonfictionGenre) {
-        super(versionId, articleId, title, price, supplierId, type, author, isbn, numberOfPages);
+    public BooknonfictionDto(Long articleId, String title, Double price, String supplierId, String type, String author, String isbn, Integer numberOfPages, BooknonfictionGenre booknonfictionGenre) {
+        super(articleId, title, price, supplierId, type, author, isbn, numberOfPages);
         this.booknonfictionGenre = booknonfictionGenre;
     }
 
