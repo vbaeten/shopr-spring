@@ -2,8 +2,9 @@ package com.realdolmen.backend.restcontrollers;
 
 import com.realdolmen.backend.domain.Lp;
 import com.realdolmen.backend.domain.enums.LpGenre;
-import com.realdolmen.backend.exception.NotFoundException;
-import com.realdolmen.backend.repositories.LpRepository;
+import com.realdolmen.backend.dto.LpDto;
+import com.realdolmen.backend.mapper.LpMapper;
+import com.realdolmen.backend.service.LpService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,16 +16,16 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/lp")
 public class LpRestController {
-    private final LpRepository lpRepository;
+    private final LpService lpService;
 
-    public LpRestController(LpRepository lpRepository) {
-        this.lpRepository = lpRepository;
+    public LpRestController(LpService lpService) {
+        this.lpService = lpService;
     }
 
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public Lp createLp(@RequestBody @Valid Lp lp) {
-        return lpRepository.save(lp);
+    public LpDto createLp(@RequestBody @Valid Lp lp) {
+        return LpMapper.convertLpToDto(lpService.save(lp));
     }
 
     @GetMapping("/genres")
@@ -32,16 +33,14 @@ public class LpRestController {
 
 
     @GetMapping(value = "/{articleId}")
-    public Lp getBookFiction(@PathVariable Long articleId) {
-        return lpRepository.findById(articleId)
-                .orElseThrow(NotFoundException::new);
+    public LpDto getBookFiction(@PathVariable Long articleId) {
+        return LpMapper.convertLpToDto(lpService.findById(articleId));
     }
 
     @PutMapping(path = "/edit")
     public void updateById(@RequestBody @Valid Lp lp) {
-        Lp existingLp = lpRepository.findById(lp.getArticleId())
-                .orElseThrow(NotFoundException::new);
-        lp.setVersionId(existingLp.getVersionId());
-        lpRepository.save(lp);
+        Lp existingGame = lpService.findById(lp.getArticleId());
+        lp.setVersionId(existingGame.getVersionId());
+        lpService.save(lp);
     }
 }

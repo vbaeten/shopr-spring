@@ -2,6 +2,8 @@ package com.realdolmen.backend.restcontrollers;
 
 import com.realdolmen.backend.domain.Bookfiction;
 import com.realdolmen.backend.domain.enums.BookfictionGenre;
+import com.realdolmen.backend.dto.BookfictionDto;
+import com.realdolmen.backend.mapper.BookfictionMapper;
 import com.realdolmen.backend.service.BookfictionService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -22,8 +24,8 @@ public class BookfictionRestController {
 
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public Bookfiction createBookfiction(@RequestBody @Valid Bookfiction bookfiction) {
-        return bookfictionService.save(bookfiction);
+    public BookfictionDto createBookfiction(@RequestBody @Valid Bookfiction bookfiction) {
+        return BookfictionMapper.convertBookfictionToDto(bookfictionService.save(bookfiction));
     }
 
     @GetMapping("/genres")
@@ -32,8 +34,8 @@ public class BookfictionRestController {
     }
 
     @GetMapping(value = "/{articleId}")
-    public Bookfiction getBookFiction(@PathVariable Long articleId) {
-        return bookfictionService.findById(articleId);
+    public BookfictionDto getBookFiction(@PathVariable Long articleId) {
+        return BookfictionMapper.convertBookfictionToDto(bookfictionService.findById(articleId));
     }
 
     @PutMapping(path = "/edit")

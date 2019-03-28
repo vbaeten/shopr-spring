@@ -2,16 +2,16 @@ package com.realdolmen.backend.mapper;
 
 import com.realdolmen.backend.domain.User;
 import com.realdolmen.backend.dto.UserDto;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
+@Component
+@RequiredArgsConstructor
 public class UserMapper {
-    private static ModelMapper modelMapper;
+    private final ModelMapper modelMapper;
 
-    private UserMapper(ModelMapper modelMapper) {
-        this.modelMapper = modelMapper;
-    }
-
-    public static UserDto convertUserToDto(User user) {
+    public UserDto convertUserToDto(User user) {
         return modelMapper.map(user, UserDto.class);
     }
 }

@@ -2,12 +2,15 @@ package com.realdolmen.backend.restcontrollers;
 
 import com.realdolmen.backend.domain.Order;
 import com.realdolmen.backend.domain.enums.OrderStatus;
+import com.realdolmen.backend.dto.OrderDto;
+import com.realdolmen.backend.mapper.OrderMapper;
 import com.realdolmen.backend.service.OrderService;
 import com.realdolmen.backend.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(path = "/orders")
@@ -21,18 +24,20 @@ public class OrderRestController {
     }
 
     @GetMapping("/findCurrentCartByUserId/{userId}")
-    public Order findCurrentCartByUserId(@PathVariable Long userId) {
-        return orderService.findByUserAndOrderStatus(userService.findById(userId), OrderStatus.IN_CART);
+    public OrderDto findCurrentCartByUserId(@PathVariable Long userId) {
+        return OrderMapper.convertOrderToDto(orderService.findByUserAndOrderStatus(userService.findById(userId), OrderStatus.IN_CART));
     }
 
     @GetMapping("/all/{userId}")
-    public List<Order> findOrdersByUserId(@PathVariable Long userId) {
-        return orderService.findAllByUser(userService.findById(userId));
+    public List<OrderDto> findOrdersByUserId(@PathVariable Long userId) {
+        return orderService.findAllByUser(userService.findById(userId)).stream()
+                .map(OrderMapper::convertOrderToDto)
+                .collect(Collectors.toList());
     }
 
     @PutMapping(path = "/ordernow")
-    public Order orderNow(@RequestBody @Valid Order order) {
-        return orderService.orderNow(order);
+    public OrderDto orderNow(@RequestBody @Valid Order order) {
+        return OrderMapper.convertOrderToDto(orderService.orderNow(order));
     }
 
     @PostMapping(path = "/save")

@@ -2,6 +2,8 @@ package com.realdolmen.backend.restcontrollers;
 
 import com.realdolmen.backend.domain.Game;
 import com.realdolmen.backend.domain.enums.GameGenre;
+import com.realdolmen.backend.dto.GameDto;
+import com.realdolmen.backend.mapper.GameMapper;
 import com.realdolmen.backend.service.GameService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -22,8 +24,8 @@ public class GameRestController {
 
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public Game createGame(@RequestBody @Valid Game game) {
-        return gameService.save(game);
+    public GameDto createGame(@RequestBody @Valid Game game) {
+        return GameMapper.convertGameToDto(gameService.save(game));
     }
 
     @GetMapping("/genres")
@@ -32,8 +34,8 @@ public class GameRestController {
     }
 
     @GetMapping(value = "/{articleId}")
-    public Game getBookFiction(@PathVariable Long articleId) {
-        return gameService.findById(articleId);
+    public GameDto getBookFiction(@PathVariable Long articleId) {
+        return GameMapper.convertGameToDto(gameService.findById(articleId));
     }
 
     @PutMapping(path = "/edit")

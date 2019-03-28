@@ -2,6 +2,7 @@ package com.realdolmen.backend.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
+@NoArgsConstructor
 @Entity
 @Getter
 @Setter

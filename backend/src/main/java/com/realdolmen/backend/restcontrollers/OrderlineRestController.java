@@ -1,11 +1,14 @@
 package com.realdolmen.backend.restcontrollers;
 
 import com.realdolmen.backend.domain.Orderline;
+import com.realdolmen.backend.dto.OrderlineDto;
+import com.realdolmen.backend.mapper.OrderlineMapper;
 import com.realdolmen.backend.service.OrderlineService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/orderlines")
@@ -17,18 +20,20 @@ public class OrderlineRestController {
     }
 
     @GetMapping(value = "/all")
-    public List<Orderline> findAllOrderlines() {
-        return orderlineService.findAll();
+    public List<OrderlineDto> findAllOrderlines() {
+        return orderlineService.findAll().stream()
+                .map(OrderlineMapper::convertOrderlineToDto)
+                .collect(Collectors.toList());
     }
 
     @PostMapping(value = "/add")
-    public Orderline createOrderLine(@RequestBody @Valid Orderline orderline) {
-        return orderlineService.save(orderline);
+    public OrderlineDto createOrderLine(@RequestBody @Valid Orderline orderline) {
+        return OrderlineMapper.convertOrderlineToDto(orderlineService.save(orderline));
     }
 
     @GetMapping(value = "/{orderlineId}")
-    public Orderline getOrderline(@PathVariable Long orderlineId) {
-        return orderlineService.findById(orderlineId);
+    public OrderlineDto getOrderline(@PathVariable Long orderlineId) {
+        return OrderlineMapper.convertOrderlineToDto(orderlineService.findById(orderlineId));
     }
 
     @DeleteMapping("/{orderlineId}")

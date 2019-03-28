@@ -2,11 +2,13 @@ package com.realdolmen.backend.domain;
 
 import com.realdolmen.backend.domain.enums.GameGenre;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Objects;
 
+@NoArgsConstructor
 @Getter
 @Setter
 @Entity
