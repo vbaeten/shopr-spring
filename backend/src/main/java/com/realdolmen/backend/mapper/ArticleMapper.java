@@ -14,4 +14,8 @@ public class ArticleMapper {
     public ArticleDto convertArticleToDto(Article article) {
         return modelMapper.map(article, ArticleDto.class);
     }
+
+    public Article convertArticleDtoToArticle(ArticleDto articleDto) {
+        return modelMapper.map(articleDto, Article.class);
+    }
 }

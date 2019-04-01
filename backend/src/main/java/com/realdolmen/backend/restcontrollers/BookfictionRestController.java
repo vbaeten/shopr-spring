@@ -26,8 +26,9 @@ public class BookfictionRestController {
 
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public BookfictionDto createBookfiction(@RequestBody @Valid Bookfiction bookfiction) {
-        return bookfictionMapper.convertBookfictionToDto(bookfictionService.save(bookfiction));
+    public BookfictionDto createBookfiction(@RequestBody @Valid BookfictionDto bookfictionDto) {
+        Bookfiction bookfiction = bookfictionMapper.convertBookfictionDtoToBookFiction(bookfictionDto);
+        return bookfictionMapper.convertBookfictionToDto(bookfictionService.create(bookfiction));
     }
 
     @GetMapping("/genres")
@@ -42,8 +43,6 @@ public class BookfictionRestController {
 
     @PutMapping(path = "/edit")
     public void updateById(@RequestBody @Valid Bookfiction bookfiction) {
-        Bookfiction existingBookfiction = bookfictionService.findById(bookfiction.getArticleId());
-        bookfiction.setVersionId(existingBookfiction.getVersionId());
         bookfictionService.save(bookfiction);
     }
 }

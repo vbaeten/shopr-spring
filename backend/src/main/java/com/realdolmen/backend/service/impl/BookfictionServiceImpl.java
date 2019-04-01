@@ -29,6 +29,8 @@ public class BookfictionServiceImpl implements BookfictionService {
 
     @Override
     public <S extends Bookfiction> S save(S entity) {
+        Bookfiction existingBookfiction = findById(entity.getArticleId());
+        entity.setVersionId(existingBookfiction.getVersionId());
         return bookfictionRepository.save(entity);
     }
 

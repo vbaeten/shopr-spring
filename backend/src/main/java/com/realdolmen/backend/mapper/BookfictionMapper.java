@@ -15,4 +15,8 @@ public class BookfictionMapper {
     public BookfictionDto convertBookfictionToDto(Bookfiction bookfiction) {
         return modelMapper.map(bookfiction, BookfictionDto.class);
     }
+
+    public Bookfiction convertBookfictionDtoToBookFiction(BookfictionDto bookfictionDto) {
+        return modelMapper.map(bookfictionDto, Bookfiction.class);
+    }
 }
